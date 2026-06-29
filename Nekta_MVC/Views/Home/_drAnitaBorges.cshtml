@@ -1,0 +1,76 @@
+@using Nekta_BusinessLogic.Entity
+@using Nekta_MVC.Helpers
+@model List<HomeCommonModel>
+
+
+@{
+    var Component = Model
+    .Where(x => x.IsBlock == 0)
+    .OrderBy(x => x.Sequence)
+    .FirstOrDefault();
+}
+<section class="section-pb memory-section relative">
+    <div class="container">
+        <div class="relative memory-inner-outer">
+            <!-- MAIN BOX -->
+            <div class="relative z-10 
+                    w-full 
+                    -right-[10vw] lg:-right-[10vw] right-0 
+                    h-auto lg:h-[460px]  rounded-2xl
+                    sm:rounded-tl-2xl sm:rounded-bl-2xl 
+                    overflow-hidden lg:overflow-visible">
+
+                <!-- BG IMAGE -->
+
+                <img src="/Assets/images/homepage/memory-bg.webp" alt=""
+                    class="absolute inset-0 w-full h-full object-cover rounded-tl-2xl rounded-bl-2xl -z-1 dark-grayscaleinvert0" />
+
+
+                <!-- CONTENT -->
+                <div class="max-w-full sm:max-w-xl sm:mx-auto h-full flex justify-center items-center flex-col 
+                        memory-content-inner 
+                        px-5 py-10 lg:px-0 lg:py-0 
+                        text-center lg:text-left">
+
+                    <!-- Top text -->
+                    <span
+                        class="text-xs uppercase tracking-widest opacity-80 mb-2 flex gap-3 top-text items-center justify-center md:justify-start">
+                        <img src="/Assets/images/homepage/star-icon.svg" alt="" class="w-3 h-3" />
+                        @Component.Section_title
+                        <img src="/Assets/images/homepage/star-icon.svg" alt="" class="w-3 h-3" />
+                    </span>
+
+                    <!-- Title -->
+                    <h2> @Component.Title</h2>
+
+                    <!-- Subtitle -->
+                    <h3> @Html.Raw(Component.Intro.CleanParagraphTags()) </h3>
+
+                    @Html.Raw(Component.Content)
+
+                </div>
+            </div>
+
+            <!-- LEFT IMAGE -->
+            <div class="
+                    max-w-[90%] lg:max-w-140 
+                    relative lg:absolute 
+                    mx-auto lg:mx-0 
+                    mt-8 lg:mt-0 
+                    lg:-bottom-[5vw] 
+                    z-10 memory-img-left">
+
+                <img src="@Component.ComponentThumbnail" alt="@Component.ComponentThumbnailAltText"
+                    class="object-cover rounded-2xl w-full" />
+
+                <div class="memory-vector floating-icon">
+                    <img src="/Assets/images/common-images/hexagon-Vector-mid.svg" alt=""
+                        class="object-cover dark-grayscaleinvert" />
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+

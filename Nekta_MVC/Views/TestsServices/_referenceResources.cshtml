@@ -1,0 +1,132 @@
+@using Nekta_BusinessLogic.Entity
+@using Nekta_MVC.Helpers
+@model List<ContentCommonModel>
+
+
+@{
+    var Component = Model
+    .Where(x => x.IsBlock == 0)
+    .OrderBy(x => x.Sequence)
+    .FirstOrDefault();
+}
+
+<section class="relative section-pt">
+    <div class="consult-vector bg-vector-wrap"><img src="/Assets/images/vector-shape-bg.svg" alt="" /></div>
+
+    <div class="container">
+        <div class="flex flex-col lg:flex-row relative justify-between">
+            <!-- LEFT CONTENT -->
+            <div class="lg:w-2/5">
+                <div class="wrapper-title-outer">
+                    <div
+                        class="wrapper-title title-heading-outer title-heading-outer-start pb-5 sm:pb-5 no-titlepadding-wrapper flex-col">
+                        <span class="uppercase text-sm font-medium mb-2 dark-textwhite">@Component.Section_title</span>
+                        <h2 class="text-h2 title-heading-anim">
+                            @Html.Raw(Component.DisplayTitle.CleanParagraphTags())
+                        </h2>
+                        <p>
+                            @Html.Raw(Component.Intro.CleanParagraphTags())
+                        </p>
+                    </div>
+                     @if (!string.IsNullOrEmpty(Component.Url))
+                            {
+                                <div class="text-start my-5">
+                                    <a href="@Component.Url" class="themeht-btn color-btn">
+                                        @Component.Url_Text
+                                    </a>
+                                </div>
+                            }
+                </div>
+            </div>
+
+            <!-- RIGHT GRID -->
+
+            <div class="lg:max-w-full reveal-group">
+
+                
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center lg:justify-end ">
+
+
+                    @foreach (var item in Model
+    .Where(x => x.IsBlock == 1 && x.Sequence <= 2)
+    .OrderBy(x => x.Sequence))
+                    {
+                        if (!string.IsNullOrEmpty(item.Title))
+{
+                        <div
+                            class="bg-white dark-bgblack grid-item-box grid-item-box-2 px-6 pt-6 pb-10 text-secondary-wrapper icon-transform-item sm:max-w-[280px] shrink-0 reveal-item">
+                            <div class="card-icon mb-2 icon-transform">
+@if (!string.IsNullOrEmpty(item.Icon_Image))
+                                {
+                                <img src="@item.Icon_Image" class="object-cover" alt="@item.Title">
+}
+                            </div>
+                            <h3>@item.Title</h3>
+                            <p>
+                                @Html.Raw(item.Intro.CleanParagraphTags())
+                            </p>
+
+                           
+                            <div>
+                               @if (!string.IsNullOrEmpty(item.File_path))
+                                {
+                                    <a href="@item.File_path" target="_blank" class="themeht-btn color-btn icon-btn">
+                                        <span>Download</span>
+                                        <img src="/Assets/images/common-images/download-icon.svg" alt="icon">
+                                    </a>
+                                }
+                            </div>
+                            
+                        </div>
+                        }
+                    }
+
+
+                </div>
+
+                <div class="flex flex-col sm:flex-row md:flex-wrap lg:flex-nowrap gap-3 sm:gap-5 justify-center lg:justify-end mt-5">
+
+
+                  @foreach (var item in Model
+    .Where(x => x.IsBlock == 1 && x.Sequence > 2)
+    .OrderBy(x => x.Sequence))
+{
+                        <div class="bg-white dark-bgblack grid-item-box grid-item-box-2 px-6 pt-6 pb-10 text-secondary-wrapper icon-transform-item sm:max-w-[280px] shrink-0 reveal-item md:w-[calc(50%-10px)] lg:w-auto">
+                            <div class="card-icon mb-2 icon-transform">
+@if (!string.IsNullOrEmpty(item.Icon_Image))
+                                {
+                                <img src="@item.Icon_Image" class="object-cover" alt="@item.Title">
+}
+                            </div>
+                            <h3>@item.Title</h3>
+                            <p>
+                                @Html.Raw(item.Intro.CleanParagraphTags())
+                            </p>
+
+                            <div>
+                                @if (!string.IsNullOrEmpty(item.File_path))
+                                {
+                                    <a href="@item.File_path" target="_blank" class="themeht-btn color-btn icon-btn">
+                                        <span>Download</span>
+                                        <img src="/Assets/images/common-images/download-icon.svg" alt="icon">
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    }
+
+
+
+
+
+                </div>
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+</section>

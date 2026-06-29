@@ -1,0 +1,30 @@
+.outcome-vector {position: absolute; bottom: 10vw; left: 0;z-index: 0;width: 100%;}
+.bg-wrapper-flat {background-color: #F5F8FD; position: absolute; top:0vw; left: 0; width: 100%; height: 90%; }
+.dark .bg-wrapper-flat {background-color: #424140;}
+.banner-inner-section {z-index: 1;}
+.fellowshipprogramme-vector-bg {position: absolute; top: 0vw; left: 0;z-index: 0;width: 100%; height: 100%;}
+.programmeoverview-section {margin-bottom: -10vw;z-index: 2;}
+.whyapply-section {padding-top: 10vw;}
+
+
+.dark .fellowshipprogramme-vector-bg img {filter: grayscale(1);}
+.dark .link-underline {color: #fff;}
+.dark .line-bar {background-color: #fff;}
+
+.po-wrap .line-bar {position: absolute; left: 0;  top: calc(var(--spacing) * 1); height: 100%;width: calc(var(--spacing) * 0.5); background-color: var(--color-primary);}
+.po-wrap .text-muted{margin-bottom: 0 !important;}
+.decoration-primary\! {text-decoration-color: var(--color-primary) !important;text-underline-offset: 6px;}
+.po-wrap {padding-left: calc(var(--spacing) * 4);}
+.dark .po-wrap .line-bar {background-color: #fff;}
+.po-bottom span {flex-shrink: 0;}
+
+@media (max-width: 1023px) {
+.programmeoverview-section {margin-bottom: -25vw;}
+.whyapply-section {padding-top: 25vw;}
+
+}
+
+@media (max-width: 767px) {
+.intro-hexagon-inner .wrapper-title { margin-top: 15px;}
+
+}

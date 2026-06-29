@@ -1,0 +1,90 @@
+@model Core_project_BusinessLogic.Entity.Manage.MainSpotTemplateMaster
+@{
+    Layout = "~/Views/Shared/Manage/_Layout_RHS.cshtml";
+}
+
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/manage/dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Add Components Layout
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <h2>Add Components Layout</h2>
+
+    <form asp-action="Add" method="post">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <label asp-for="Language_Master_ID" class="form-label">Language</label>
+                    <select asp-for="Language_Master_ID" class="form-control form-select"
+                        asp-items="@(new SelectList(ViewBag.Languages, "ID", "Language_Name"))">
+                        <option value="">-- Select --</option>
+                    </select>
+                    <span asp-validation-for="Language_Master_ID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <label class="form-label">Name</label>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+            </div>
+            @*  <div class="col-md-4">
+
+        <div class="form-group">
+            <label>Template Type</label>
+            <select asp-for="Template_Type_ID" class="form-control"
+                    asp-items="@(new SelectList(ViewBag.TemplateTypes, "ID", "Template_Type"))"></select>
+        </div>
+        </div> *@
+            <div class="col-md-6">
+                <label>Templates</label>
+                <select asp-for="SelectedTemplateIds"
+                    asp-items="@(new MultiSelectList(ViewBag.TemplateMasters, "ID", "Name"))" multiple
+                    class="form-control form-select">
+                </select>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group mb-3">
+                    <label class="form-label">Design Layout</label>
+                    @Html.TextAreaFor(model => model.Design_Layout, new { @class = "form-control editor-full",
+                    placeholder = "Enter design layout" })
+                    @* <textarea asp-for="Design_Layout" class="form-control editor-full"></textarea> *@
+                </div>
+            </div>
+
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+@section head {
+    <link rel="stylesheet" href="/Assets/ckeditor5/ckeditor5.css" />
+}
+
+
+
+@section Scripts {
+    <script type="importmap">
+            {
+                "imports": {
+                    "ckeditor5": "@Url.Content("~/Assets/ckeditor5/ckeditor5.js")",
+                    "ckeditor5/": "@Url.Content("~/Assets/ckeditor5/")"
+                }
+            }
+        </script>
+    <script src="~/Assets/scripts/add_ck_editor.js" type="module"></script>
+}

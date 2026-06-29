@@ -1,0 +1,302 @@
+@using Nekta_MVC.Helpers
+@model Nekta_BusinessLogic.Entity.UpdatesModel
+@{
+    ViewData["Title"] = "Updates";
+}
+
+@section head {
+    <title>@Model.Content.cont_window_title</title>
+
+    <meta content="@Model.Content.cont_metatag" name="keywords" />
+    <meta content="@Model.Content.cont_metadesc" name="description" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="" />
+    <meta name="twitter:title" content="@Model.Content.ContTitle" />
+    <meta name="twitter:description" content="@Model.Content.cont_metadesc" />
+
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Centre for Oncopathology" />
+    <meta property="og:title" content="@Model.Content.ContTitle" />
+    <meta property="og:description" content="@Model.Content.cont_metadesc" />
+    <meta property="og:url" content="https://www.oncopath.org/" />
+    <meta property="og:image" content="@Model.Content.cont_meta_image" />
+
+    <meta itemprop="name" content="Centre for Oncopathology" />
+    <meta itemprop="description" content="@Model.Content.cont_metadesc" />
+    <meta itemprop="image" content="@Model.Content.cont_meta_image" />
+
+    <!-- Facebook / Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Centre for Oncopathology" />
+    <meta property="og:title" content="@Model.Content.ContTitle" />
+    <meta property="og:description" content="@Model.Content.cont_metadesc" />
+    <meta property="og:image" content="@Model.Content.cont_meta_image" />
+    <meta property="og:url" content="https://www.oncopath.org/" />
+
+    <link rel="canonical" href="@Model.Content.CanonicalUrl" />
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/Assets/css/innerbanner-style.css" />
+    <link rel="stylesheet" href="~/Assets/css/landing-media.css" />
+}
+
+
+
+<section class="banner-inner-section mt-[99px] lg:mt-[153px] h-full relative">
+    <picture class="bannerinner-picture relative block w-full h-full">
+        <source media="(min-width:992px)" srcset="@Model.Content.MastheadImage" />
+        <source media="(max-width:991px)" srcset="@Model.Content.MobileMastheadImage" />
+        <img alt="@Model.Content.Masthead_image_Alt_text" class="object-cover" src="@Model.Content.MastheadImage" />
+    </picture>
+    <div class="banner-inner-outer relative w-full h-full">
+
+
+        <div class="inner-banner-vector">
+            <img src="/Assets/images/inner-banner-vector.svg" alt="" class="banner-vector-img" />
+            <div class="banner-mask">
+                <img src="/Assets/images/abstract-elements-banner.webp" class="masked-img" />
+            </div>
+            <div
+                class="absolute top-[15%] md:top-[30%] left-0 w-full px-0 md:px-8 xl:px-6 2xl:px-8 inner-banner-caption">
+                <div class="container">
+                    <nav aria-label="breadcrumb" class="breadcrumb_container pb-2 lg:pb-0 mb-2">
+                        @Html.Raw(Model.Content.BreadcrumPath)
+                    </nav>
+                    <div class="w-full sm:max-w-[60vw] lg:max-w-[35vw] innerbanner-title-outer">
+                        <h1 class="text-h1 innerbanner-title-heading ">
+                            @Html.Raw(
+                            string.IsNullOrWhiteSpace(Model.Content.Cont_hmpg_intro)
+                            ? Model.Content.ContTitle
+                            : Model.Content.Cont_hmpg_intro.CleanParagraphTags())
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="section-pt introwrapper-section relative">
+    <div class="container">
+        <div class="introwrapper-inner sm:max-w-[75vw] sm:w-[90%] lg:max-w-[50vw] lg:w-[90%] m-auto">
+            <p>@Html.Raw(Model.Content.Cont_intro.CleanParagraphTags())</p>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="section-pb annual-reports-section relative pt-10 sm:pt-15">
+    <div class="container">
+        <div class="annual-reports-inner">
+
+            <!-- Tabs -->
+            <div
+                class="flex gap-6 text-20 font-semibold mb-6 justify-center reports-tabs tab-btn-wrapper overflow-x-auto">
+
+                @foreach (var item in Model.Updates_Section_List.Where(x => x.Sequence == 1))
+                {
+                    <button class="tab-btn relative active dark-textwhite" data-tab="annual-reports-tab1">
+                        Annual Reports
+                    </button>
+
+                    <input type="hidden" id="AnnualId" value="@item.ContId" />
+                }
+
+                @foreach (var item in Model.Updates_Section_List.Where(x => x.Sequence == 2))
+                {
+                    <button class="tab-btn relative dark-textwhite" data-tab="media-tab2">
+                        Media
+                    </button>
+                    <input type="hidden" id="MediaId" value="@item.ContId" />
+                }
+                <div class="tab-indicator"></div>
+            </div>
+            <div class="w-full h-[1px] bg-[#F4A29A]"></div>
+
+            <!-- TAB 1 -->
+            <div class="tab-content active" id="annual-reports-tab1">
+                <div class="tab-contentinner">
+                    <!-- Filters -->
+                    <div class="flex items-left gap-3 mb-6 mediatab-filters mt-8 sm:mt-10 w-[350px] ">
+
+                        <!-- SELECT -->
+                        <!-- Year Select -->
+                        <div class="fy-select-inner ">
+
+                            <select id="ddlYear"
+                                class="w-full appearance-none border border-[#E9E9E9] rounded-2xl px-4 py-2.5 bg-white focus:outline-none focus:border-brand cursor-pointer font-body transition-colors fy-select">
+                                <option value="0">Select year</option>
+                                @foreach (var item in Model.AnnualReport_Year_List)
+                                {
+                                    <option value="@item.FinancialYear">@item.FinancialYear</option>
+                                }
+                            </select>
+
+                        </div>
+
+                        <!-- Filter Button -->
+                        <button id="btnSearch" class="themeht-btn color-btn darkwhite-btn"> Filter </button>
+
+
+                    </div>
+
+                    <!-- Cards Grid -->
+                    <!-- Reports Grid -->
+                    <div id="DivAnnual" class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 articlesection-content">
+
+                        <!-- Left Column -->
+
+
+                        <!-- Report Item -->
+
+                        @foreach (var item in Model.Annual_Report_Article_List)
+                        {
+                            <div
+                                class="resources-financial-item flex gap-4 py-5 sm:py-6 lg:px-0 flex-row sm:flex-row justify-start items-end sm:items-end border-[#B9B9B9] lg:border-r lg:last:border-r-0 bottom-border-full article-item annual-list-item">
+
+                                <!-- Image -->
+                                <div class="w-[140px] sm:w-auto flex-shrink-0">
+                                    <img src="@item.Thumbnail_img" alt="@item.Thumbnail_img_alt_text"
+                                        class="w-full object-cover rounded-xs">
+                                </div>
+
+                                <!-- Content -->
+                                <div class="year-content flex-1">
+
+                                    <h3 class="text-[18px] sm:text-20 leading-tight">
+                                        @Html.Raw(
+                                        string.IsNullOrWhiteSpace(item.Cont_hmpg_intro)
+                                        ? item.ContTitle
+                                        : item.Cont_hmpg_intro.CleanParagraphTags())
+                                </h3>
+
+                                @if (!string.IsNullOrWhiteSpace(item.filepath))
+                                    {
+                                        <a href="@item.filepath" target="@item.Url_target"
+                                            class="inline-block mt-3 font-medium leading-none pb-[2px] download-link">
+                                            Download PDF
+                                        </a>
+                                    }
+
+                                </div>
+
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            @if (Model.MediaCount > 10)
+            {
+                <div class="flex justify-center mt-8">
+                    <button id="btnAnnualReportLoad" class="themeht-btn color-btn darkwhite-btn"> View More </button>
+                </div>
+            }
+        </div>
+
+
+        <!-- TAB 2 -->
+        <div class="tab-content" id="media-tab2">
+
+            <div class="tab-contentinner">
+
+                <!-- Cards Grid -->
+                <div id="DivMedia"
+                    class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-6 sm:gap-y-10 mt-8 sm:mt-14">
+
+                    @foreach (var item in Model.Media_Article_List)
+                    {
+                        <!-- Card -->
+                        <div
+                            class="bg-white dark-bgblack rounded-2xl shadow-lg px-3 sm:px-4 pt-6 pb-6 relative drop-shadow-custom grid-item-inner group cursor-pointer grid-item-box media-list-item">
+                            <a href="@item.Url" class="stretched-link" target="@item.Url_target"></a>
+                            <div class="grid-img-wrap rounded-lg overflow-hidden relative aspect-390/220">
+
+                                <img src="@item.Thumbnail_img" alt="@item.Thumbnail_img_alt_text"
+                                    class="rounded-lg w-full h-full object-cover block transition-transform duration-700 ease-out will-change-transform group-hover:scale-105">
+
+                                <!-- Gradient Overlay -->
+                                <div class="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent">
+                                </div>
+
+                            </div>
+
+                            <!-- Content -->
+                            <div class="grid-info flex flex-col gap-y-2 pt-4">
+
+                                <div class="flex items-center justify-between gap-4">
+
+                                    <!-- Title -->
+                                    <div class="max-w-[85%] transition-all duration-300 hover:text-[#DE392E]">
+
+                                        <h3 class="grid-heading">
+                                            @item.ContTitle
+                                        </h3>
+
+                                    </div>
+
+                                    <!-- Arrow -->
+
+                                    <div
+                                        class="group min-w-[32px] w-[32px] h-[32px] rounded-full border border-[#DE392E] flex items-center justify-center transition-all duration-300 hover:bg-[#DE392E] circle-arrow-btn">
+
+                                        <img src="/Assets/images/common-images/btn-arrow-red.svg" alt="Arrow"
+                                            class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-[3px] ">
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    }
+
+
+
+                </div>
+
+                @if (Model.MediaCount > 10)
+                {
+                    <div class="flex justify-center mt-8">
+                        <button id="btnMediaLoad" class="themeht-btn color-btn darkwhite-btn"> View More </button>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+    </div>
+</section>
+
+
+<input type="hidden" id="CurrentPage" value="1" />
+<input type="hidden" id="PageSize" value="10" />
+<input type="hidden" id="MediaCurrentPage" value="1" />
+<input type="hidden" id="MediaPageSize" value="10" />
+<input type="hidden" id="MediaTotalCount" value="@Model.MediaCount" />
+<input type="hidden" id="AnnualTotalCount" value="@Model.AnnualReportCount" />
+<input type="hidden" id="ContentId" value="@Model.Content.ContId" />
+
+@section Scripts {
+    <script src="~/Assets/js/innerbanner-script.js"></script>
+    <script src="~/Assets/js/fy-select-script.js"></script>
+    <script src="~/Assets/js/landing-media-script.js"></script>
+    <script src="~/scripts/Updates/Media.js"></script>
+}

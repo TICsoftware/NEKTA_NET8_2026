@@ -1,0 +1,85 @@
+@using Nekta_BusinessLogic.Entity
+@using Nekta_MVC.Helpers
+@model List<HomeCommonModel>
+
+
+@{
+    var Component = Model
+    .Where(x => x.IsBlock == 0)
+    .OrderBy(x => x.Sequence)
+    .FirstOrDefault();
+}
+
+
+<section class="section-pb treatmentdecisions-section relative">
+    <div class="tq-line-vector">
+        <svg viewBox="0 0 1600 200" class="line-svg">
+            <path id="linePath02" class="linePath"
+                d="M1609.7 158.802C1672.53 -30.8498 1572.81 227.972 1436.75 231.919C1375.92 233.683 1341.49 210.656 1298.73 172.764C1260.67 139.044 1218.3 102.174 1173.56 78.0095C1052.61 12.6785 780.533 -83.7248 470.405 145.254C458.562 153.999 445.875 162.01 432.641 168.457C297.789 234.152 98.6833 328.006 -0.282471 7.02375"
+                fill="none" stroke="#DE392E" stroke-width="1.00225" />
+
+            <circle class="dot dot1" r="6" cx="0" cy="0" fill="#DE392E"></circle>
+            <circle class="dot dot2" r="6" cx="0" cy="0" fill="#DE392E"></circle>
+
+        </svg>
+    </div>
+
+    <div class="curve-bg-wrapper">
+        <img src="/Assets/images/homepage/treatment-decisions-vector.svg" alt="" />
+    </div>
+    <div class="container">
+        <div class="wrapper-title-outer sm:max-w-3xl sm:mx-auto wrapper-title-outer-center">
+            <div class="wrapper-title title-heading-outer title-heading-outer-center pb-5 sm:pb-10">
+                <h2 class="text-h2 title-heading-anim">
+                    @Html.Raw(Component.DisplayTitle.CleanParagraphTags())
+                </h2>
+            </div>
+        </div>
+
+
+        <!-- Cards grid -->
+        <div class="relative z-10 max-w-full mx-auto 
+            grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 
+            lg:grid-flow-col lg:auto-cols-fr 
+            justify-center items-center 
+           sm:mx-auto sm:max-w-6xl reveal-group">
+
+
+            @foreach (var item in Model
+                        .Where(x => x.IsBlock == 1)
+                        .OrderBy(x => x.Sequence))
+            {
+                <div
+                    class="px-0 md:px-6 lg:px-8 py-6 flex flex-col gap-3 card-divider items-start team-item-box reveal-item icon-transform-item">
+                    <div class="card-icon mb-2 icon-transform">
+                        <img src="@item.Icon_Image" class="" alt="@item.ThumbnailAltText" />
+                    </div>
+                    <h3 class="font-semibold text-20 leading-snug">
+                        @item.Title
+                    </h3>
+
+                    @if (!string.IsNullOrEmpty(item.Url))
+                    {
+                        <a href="@item.Url" class="themeht-btn color-btn arrow-btn">
+                            @(string.IsNullOrWhiteSpace(item.Url_Text) ? "Learn More" : item.Url_Text)
+                            <img src="/Assets/images/common-images/btn-arrow-white.svg" alt="arrow icon">
+                        </a>
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(item.Popup_Display_Title))
+                        {
+                            <a class="themeht-btn color-btn arrow-btn cancer-diagnosis" data-id="@item.GroupId"> Learn
+                                More <img src="/Assets/images/common-images/btn-arrow-white.svg" alt="arrow icon"> </a>
+                        }
+                    }
+                </div>
+            }
+
+
+
+
+        </div>
+
+    </div>
+</section>

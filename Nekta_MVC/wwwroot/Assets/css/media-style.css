@@ -1,0 +1,31 @@
+
+.date-format-style p { font-size: 14px; line-height: 20px; margin-bottom: 20px;}
+.description-style{ max-width: 64%;}
+.blogs-section h3 { color: var(--color-primary);  margin-bottom: 10px;}
+.right-blogs-section .right-blogs-inner img{ width: 170px; height: 135px;}
+.right-blogs-inner a p{ color: #8A8A8A;transition: all 0.3s ease;}
+.right-blogs-inner a:hover p{color: #DE392E !important;}
+.blogs-wrapper{ align-items: flex-start;}
+.heading-style h3{ font-size: 20px;}
+.right-blogs-inner p{ font-size: 16px;}
+
+
+/* paginations css */
+.swiper-pagination{position: relative;}
+.swiper-pagination-bullet{ width: 10px; height: 10px; background: #CFCFCF; opacity: 1;}
+.swiper-pagination-bullet-active{background: #DE392E;}
+.custom-arrow-slider .swiper-button-next {  right: 10px;}
+.custom-arrow-slider .swiper-button-prev { left: 10px;}
+
+ .blog-caption{background: #6e6e6e52;align-items: left;  padding: 10px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;} 
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {  left: 0; top: -72px;}
+
+.dark p, .dark h3 {color: #fff;}
+.innerbanner-title-heading {font-size: 1.625rem;}
+
+@media screen and (max-width: 767px) {
+    .description-style {  max-width: 100%;  }
+    .swiper-pagination{position: relative;}
+   .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction { top: -65px;}
+    .right-blogs-section {margin-top: 30px;}
+}

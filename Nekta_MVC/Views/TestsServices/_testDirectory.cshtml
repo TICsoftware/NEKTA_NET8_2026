@@ -1,0 +1,62 @@
+@using Nekta_BusinessLogic.Entity
+@using Nekta_MVC.Helpers
+@model List<ContentCommonModel>
+
+
+@{
+    var Component = Model
+    .Where(x => x.IsBlock == 0)
+    .OrderBy(x => x.Sequence)
+    .FirstOrDefault();
+}
+
+<div class="cop_bb_outer">
+    <section class="relative cop_bb_section lg:h-screen">
+        <div class="cop_bb_cell_inner">
+            <div class="cop_bb_row cop_bb_row_push_right">
+                <div class="cop_bb_row_holder flex flex-col lg:flex-row">
+
+                    <div class="cop_bb_column cop_bb_details_right-inner">
+                        <div class="hexagon-shape-left floating-icon"><img src="/Assets/images/hexagon-shape-white.svg"
+                                class="w-auto" alt=""></div>
+                    </div>
+
+                    <div class="cop_bb_column cop_bb_details_middle-inner">
+                        <div class="cop_bb_column_content text-secondary-wrapper">
+                            <div class="wrapper-title-outer">
+                                <div
+                                    class="wrapper-title title-heading-outer title-heading-outer-start pb-5 sm:pb-5 no-titlepadding-wrapper">
+                                    <h2 class="text-h2 title-heading-anim">
+                                        @Html.Raw(Component.DisplayTitle.CleanParagraphTags())
+                                    </h2>
+                                </div>
+                            </div>
+                            <p>
+                                @Html.Raw(Component.Intro.CleanParagraphTags())
+                            </p>
+
+                            @Html.Raw(Component.Content.CleanParagraphTags())
+
+                            @if (!string.IsNullOrEmpty(Component.Url))
+                            {
+                                <div class="text-start my-5">
+                                    <a href="@Component.Url" class="themeht-btn color-btn">
+                                        @Component.Url_Text
+                                    </a>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+
+                    <div class="cop_bb_column cop_bb_details_left-inner">
+                        <div class="cop_bb_column_content_img">
+                            <img src="@Component.ComponentThumbnail" alt="@Component.ComponentThumbnailAltText">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

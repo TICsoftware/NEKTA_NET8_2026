@@ -1,0 +1,350 @@
+@model Nekta_MVC.Models.Manage_Model.Main_spot_template_details_Model
+
+@{
+    Layout = "~/Views/Shared/Manage/_Layout_RHS.cshtml";
+    ViewData["Title"] = "Main Components Details | TIC CMS";
+}
+
+<title>@ViewData["Title"]</title>
+
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/manage/dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Add Components Details
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("Add", "MainSpotTemplateDetails", FormMethod.Post,
+        new { enctype = "multipart/form-data", id = "MainSpotForm" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(m => m.ID)
+
+        <section class="section content-main">
+            <div class="row">
+                <div class="col-12 col-md-12">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Components Details</h2>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <!-- Language -->
+                                    <div class="form-group mb-3">
+                                        @Html.LabelFor(x => x.Language_Master_ID)
+                                        <select asp-for="Language_Master_ID" class="form-control form-select"
+                                                asp-items="@(new SelectList(ViewBag.Languages, "ID", "Language_Name"))">
+                                            <option value="">Select Language</option>
+                                        </select>
+                                        <span asp-validation-for="Language_Master_ID" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <!-- Main Spot Template Master -->
+                                    <div class="form-group mb-3">
+                                        @Html.LabelFor(x => x.main_spot_template_reference_id)
+                                        <select asp-for="main_spot_template_reference_id" class="form-control form-select"
+                                                asp-items="@(new SelectList(ViewBag.MainSpotReference, "Reference_ID", "Reference_Title"))">
+                                            <option value="">Select components reference</option>
+                                        </select>
+                                        <span asp-validation-for="main_spot_template_reference_id" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <!-- Spot Reference -->
+                                    <div class="form-group mb-3">
+                                        @Html.LabelFor(x => x.spot_reference_id)
+                                        <select asp-for="spot_reference_id" class="form-control form-select"
+                                                asp-items="@(new SelectList(ViewBag.SpotReference, "ID", "Name"))">
+                                            <option value="">Select block reference</option>
+                                        </select>
+                                        <span asp-validation-for="spot_reference_id" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <!-- Title -->
+                                    <div class="form-group mb-3">
+                                        @Html.LabelFor(x => x.Title)
+                                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", placeholder = "Enter title" })
+                                        <span asp-validation-for="Title" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <!-- Intro -->
+                                    <div class="form-group mb-3">
+                                        @Html.LabelFor(x => x.Intro)
+                                        @Html.TextAreaFor(x => x.Intro,
+                                            new { @class = "form-control editor-full", rows = 4 })
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <!-- Content -->
+                                    <div class="form-group mb-3">
+                                        @Html.LabelFor(x => x.Spot_Content)
+                                        @Html.TextAreaFor(x => x.Spot_Content,
+                                            new { @class = "form-control editor-full" })
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <!-- Thumbnail -->
+                                            <div class="form-group mb-3">
+                                                @Html.LabelFor(x => x.Thumbnail_Image_Media_Id , new { @class = "form-label" })
+                                                <button type="button" class="btn btn-outline-primary d-block select-media"
+                                                        data-bs-toggle="modal" data-bs-target="#btnSelectFiles"
+                                                        data-target-field="Thumbnail_Image">
+                                                    Select Thumbnail
+                                                </button>
+
+                                                @Html.HiddenFor(x => x.Thumbnail_Image_Media_Id)
+                                                <img class="imgPreview" src="@(Model.Thumbnail_Image ?? "")" />
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                @Html.LabelFor(x => x.Thumbnail_Alt)
+                                                @Html.TextBoxFor(x => x.Thumbnail_Alt,
+                                                    new { @class = "form-control", placeholder = "Enter alt text" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <!-- Background -->
+                                                <div class="form-group mb-3">
+                                                    @Html.LabelFor(x => x.Background_Image_Media_Id , new { @class = "form-label" })
+                                                    <button type="button" class="btn btn-outline-primary d-block select-media"
+                                                            data-bs-toggle="modal" data-bs-target="#btnSelectFiles"
+                                                            data-target-field="Background_Image">
+                                                        Select Background
+                                                    </button>
+
+                                                    @Html.HiddenFor(x => x.Background_Image_Media_Id)
+                                                    <img class="imgPreview" src="@(Model.Background_Image ?? "")" />
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    @Html.LabelFor(x => x.Background_Alt)
+                                                    @Html.TextBoxFor(x => x.Background_Alt,
+                                                        new { @class = "form-control", placeholder = "Enter alt text" })
+                                                </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <!-- Logo -->
+                                            <div class="form-group mb-3">
+                                                @Html.LabelFor(x => x.Logo_Image , new { @class = "form-label" })
+                                                <button type="button" class="btn btn-outline-primary d-block select-media"
+                                                        data-bs-toggle="modal" data-bs-target="#btnSelectFiles"
+                                                        data-target-field="Logo_Image">
+                                                    Select Logo
+                                                </button>
+
+                                                @Html.HiddenFor(x => x.Logo_Image_Media_Id)
+                                                <img class="imgPreview" src="@(Model.Logo_Image ?? "")" />
+                                            </div>
+
+                                            <!-- URL -->
+                                            <div class="form-group mb-3">
+                                                @Html.LabelFor(x => x.Url)
+                                                @Html.TextBoxFor(x => x.Url, new { @class = "form-control", placeholder = "Enter URL" })
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                @Html.CheckBoxFor(x => x.Is_External, new { @class = "form-check-input" })
+                                                @Html.LabelFor(x => x.Is_External)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                             <!-- Button One -->
+                                            <h5 class="mt-4">Button One</h5>
+                                            <div class="form-group mb-3">
+                                                @Html.LabelFor(x => x.Button_One_Title)
+                                                @Html.TextBoxFor(x => x.Button_One_Title, new { @class = "form-control" })
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                @Html.LabelFor(x => x.Link_Url_Button_One)
+                                                @Html.TextBoxFor(x => x.Link_Url_Button_One, new { @class = "form-control" })
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                @Html.CheckBoxFor(x => x.Botton_One_Is_External, new { @class = "form-check-input" })
+                                                @Html.LabelFor(x => x.Botton_One_Is_External)
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <!-- Button Two -->
+                                            <h5 class="mt-4">Button Two</h5>
+                                            <div class="form-group mb-3">
+                                                @Html.LabelFor(x => x.Button_Two_Title)
+                                                @Html.TextBoxFor(x => x.Button_Two_Title, new { @class = "form-control" })
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                @Html.LabelFor(x => x.Link_Url_Button_Two)
+                                                @Html.TextBoxFor(x => x.Link_Url_Button_Two, new { @class = "form-control" })
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                @Html.CheckBoxFor(x => x.Botton_Two_Is_External, new { @class = "form-check-input" })
+                                                @Html.LabelFor(x => x.Botton_Two_Is_External)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="row">
+                                                <div class="col-md-4">
+                                                    <!-- Video -->
+                                                    <div class="form-group mb-3">
+                                                        @Html.LabelFor(x => x.Video_Path_Media_Id, new { @class = "form-label" })
+                                                        <button type="button" class="btn btn-outline-primary d-block select-media"
+                                                                data-bs-toggle="modal" data-bs-target="#btnSelectFiles"
+                                                                data-target-field="Video_Preview_Image">
+                                                            Select Video
+                                                        </button>
+                                                        @Html.HiddenFor(x => x.Video_Path_Media_Id)
+                                                        <div class="filePreview" >
+                                                            <a href="@(Model.Upload_File_Media_Id > 0 ? Model.Upload_File : "#")" target="_blank" class="btn btn-sm btn-dark fileLink">
+                                                                <i class="bi bi-file-earmark"></i> View File
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                 <div class="col-md-4">
+                                                    <div class="form-group mb-3">
+                                                        @Html.LabelFor(x => x.Video_Preview_Image_Media_Id, new { @class = "form-label" })
+                                                        <button type="button" class="btn btn-outline-primary d-block select-media"
+                                                                data-bs-toggle="modal" data-bs-target="#btnSelectFiles"
+                                                                data-target-field="Video_Preview_Image">
+                                                            Select Preview Image
+                                                        </button>
+                                                        @Html.HiddenFor(x => x.Video_Preview_Image_Media_Id)
+                                                        <img class="imgPreview" src="@(Model.Video_Preview_Image ?? "")" />
+                                                    </div>
+                                                </div>
+                                                 <div class="col-md-4">
+                                                    <!-- File Upload -->
+                                                    <div class="form-group mb-3">
+                                                        @Html.LabelFor(x => x.Upload_File_Media_Id, new { @class = "form-label" })
+                                                        <button type="button" class="btn btn-outline-primary d-block select-media"
+                                                                data-bs-toggle="modal" data-bs-target="#btnSelectFiles"
+                                                                data-target-field="Upload_File">
+                                                            Select File
+                                                        </button>
+                                                        @Html.HiddenFor(x => x.Upload_File_Media_Id)
+                                                        <div class="filePreview" >
+                                                            <a href="@(Model.Upload_File_Media_Id > 0 ? Model.Upload_File : "#")" target="_blank" class="btn btn-sm btn-dark fileLink">
+                                                                <i class="bi bi-file-earmark"></i> View File
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group mb-3">
+                                                        @Html.LabelFor(x => x.Display_Date)
+                                                        @Html.TextBoxFor(x => x.Display_Date,
+                                                            new { @class = "form-control", type = "date" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group mb-3">
+                                                        @Html.LabelFor(x => x.Sequence)
+                                                        @Html.DropDownListFor(x => x.Sequence,
+                                                            Enumerable.Range(1, 50)
+                                                                .Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }),
+                                                            "Select Sequence",
+                                                            new { @class = "form-control form-select" })
+                                                    </div>
+                                                </div>
+                                    </div>
+                                </div>
+
+                               
+
+                               
+
+                                <!-- Hidden audit fields -->
+                                @Html.HiddenFor(x => x.Status)
+                                @Html.HiddenFor(x => x.Created_UserID)
+                                @Html.HiddenFor(x => x.Created_Date)
+                                @Html.HiddenFor(x => x.Updated_UserID)
+                                @Html.HiddenFor(x => x.Updated_Date)
+                                @Html.HiddenFor(x => x.Published_UserID)
+                                @Html.HiddenFor(x => x.Published_Date)
+                                @Html.HiddenFor(x => x.DeActivated_UserID)
+                                @Html.HiddenFor(x => x.DeActivated_Date)
+
+                                <!-- SAVE -->
+                               <div class="col-md-12 text-center mt-3">
+                                    <input type="submit" value="Save & Publish" class="btn btn-primary" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    }
+</div>
+
+<!-- Media Manager Modal -->
+<div class="modal fade" id="btnSelectFiles" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Media Manager</h5>
+                <button type="button" class="close" data-bs-dismiss="modal"><i data-feather="x"></i></button>
+            </div>
+
+            <div class="modal-body" id="mediaManagerModalBody"></div>
+
+            <div class="modal-footer">
+                <button id="btnAddImage" type="button" class="btn btn-primary">Add</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section head{
+    <link rel="stylesheet" href="/Assets/ckeditor5/ckeditor5.css" />
+}
+
+@section Scripts{
+    <script type="importmap">
+        {
+            "imports": {
+                "ckeditor5": "@Url.Content("~/Assets/ckeditor5/ckeditor5.js")",
+                "ckeditor5/": "@Url.Content("~/Assets/ckeditor5/")"
+            }
+        }
+    </script>
+    <script src="~/Assets/scripts/add_ck_editor.js" type="module"></script>
+}

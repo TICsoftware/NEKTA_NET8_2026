@@ -1,0 +1,352 @@
+@using Nekta_MVC.Helpers
+@model Nekta_BusinessLogic.Entity.TestDirectory
+@{
+    ViewData["Title"] = "Test and services";
+}
+
+@section head {
+     <title>@Model.Content.cont_window_title</title>
+
+    <meta content="@Model.Content.cont_metatag" name="keywords" />
+    <meta content="@Model.Content.cont_metadesc" name="description" />
+
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="" />
+    <meta name="twitter:title" content="@Model.Content.ContTitle" />
+    <meta name="twitter:description" content="@Model.Content.cont_metadesc" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Centre for Oncopathology" />
+    <meta property="og:title" content="@Model.Content.ContTitle" />
+    <meta property="og:description" content="@Model.Content.cont_metadesc" />
+    <meta property="og:url" content="https://www.oncopath.org/" />
+    <meta property="og:image" content="@Model.Content.cont_meta_image" />
+
+    <meta itemprop="name" content="Centre for Oncopathology" />
+    <meta itemprop="description" content="@Model.Content.cont_metadesc" />
+    <meta itemprop="image" content="@Model.Content.cont_meta_image" />
+
+    <!-- Facebook / Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Centre for Oncopathology" />
+    <meta property="og:title" content="@Model.Content.ContTitle" />
+    <meta property="og:description" content="@Model.Content.cont_metadesc" />
+    <meta property="og:image" content="@Model.Content.cont_meta_image" />
+    <meta property="og:url" content="https://www.oncopath.org/" />
+
+    <link rel="canonical" href="@Model.Content.CanonicalUrl" />
+}
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/Assets/css/innerbanner-style.css" />
+    <link rel="stylesheet" href="~/Assets/css/testdirectory-style.css" />
+}
+
+@{
+    var filters = ViewBag.Filters;
+    int? specimenId = filters?.Specimen_Id as int?;
+    int? typeTestId = filters?.TypeTestId as int?;
+    int? organId = filters?.OrganId as int?;
+    int? departmentId = filters?.DepartmentId as int?;
+    string title = filters?.Title as string ?? "";
+}
+
+
+<section class="banner-inner-section mt-[99px] lg:mt-[153px] h-full relative">
+    <picture class="bannerinner-picture relative block w-full h-full">
+        <source media="(min-width:992px)" srcset="@Model.Content.MastheadImage" />
+        <source media="(max-width:991px)" srcset="@Model.Content.MobileMastheadImage" />
+        <img alt="" class="object-cover" src="@Model.Content.MastheadImage" />
+    </picture>
+    <div class="banner-inner-outer relative w-full h-full">
+
+
+        <div class="inner-banner-vector">
+            <img src="/Assets/images/inner-banner-vector.svg" alt="" class="banner-vector-img" />
+            <div class="banner-mask">
+                <img src="/Assets/images/abstract-elements-banner.webp" class="masked-img" />
+            </div>
+            <div
+                class="absolute top-[15%] md:top-[30%] left-0 w-full px-0 md:px-8 xl:px-6 2xl:px-8 inner-banner-caption">
+                <div class="container">
+                    <nav aria-label="breadcrumb" class="breadcrumb_container pb-2 lg:pb-0 mb-2">
+                       @Html.Raw(Model.Content.BreadcrumPath)
+                    </nav>
+                    <div class="w-full sm:max-w-[60vw] lg:max-w-[35vw] innerbanner-title-outer">
+                        <h1 class="text-h1 innerbanner-title-heading ">
+                        @Html.Raw(Model.Content.Cont_hmpg_intro.CleanParagraphTags())
+                         </h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="section-pt introwrapper-section relative">
+    <div class="container">
+        <div class="introwrapper-inner sm:max-w-[75vw] sm:w-[90%] lg:max-w-[50vw] lg:w-[90%] m-auto">
+            <p>@Html.Raw(Model.Content.Cont_intro.CleanParagraphTags())</p>
+        </div>
+    </div>
+</section>
+
+<section class="section-pb testdirectory-section relative pt-10 sm:pt-15">
+    <div class="container">
+        <div class="testdirectory-inner">
+
+
+
+            <!-- Filters -->
+            <div class="flex flex-wrap gap-3 mb-6 mt-5 sm:mt-10 testdirectory-filters">
+
+                <!-- SELECT -->
+                <div
+                    class="fy-select-inner w-[calc(50%-6px)] sm:w-[calc(50%-6px)] md:w-[calc(50%-6px)] lg:flex-[1_1_160px] xl:flex-[1_1_160px]">
+                    <select id="ddSpecimen"
+                        class="w-full appearance-none border border-[#E9E9E9] rounded-2xl px-4 py-2.5 bg-white focus:outline-none focus:border-brand cursor-pointer font-body transition-colors fy-select whitespace-nowrap overflow-hidden text-ellipsis">
+
+
+                        @foreach (var item in Model.Specimen)
+                        {
+                            <option value="@item.id" selected="@(item.id == specimenId)">@item.title</option>
+                        }
+                    </select>
+                </div>
+
+                <div
+                    class="fy-select-inner w-[calc(50%-6px)] sm:w-[calc(50%-6px)] md:w-[calc(50%-6px)]  lg:flex-[1_1_160px] xl:flex-[1_1_160px]">
+                    <select id="ddTypeTest"
+                        class="w-full appearance-none border border-[#E9E9E9] rounded-2xl px-4 py-2.5 bg-white focus:outline-none focus:border-brand cursor-pointer font-body transition-colors fy-select whitespace-nowrap overflow-hidden text-ellipsis">
+
+                        @foreach (var item in Model.TypeTest)
+                        {
+                            <option value="@item.id" selected="@(item.id == typeTestId)">@item.title</option>
+                        }
+                    </select>
+                </div>
+
+                <div
+                    class="fy-select-inner w-[calc(50%-6px)] sm:w-[calc(50%-6px)] md:w-[calc(50%-6px)] lg:flex-[1_1_160px] xl:flex-[1_1_160px]">
+                    <select id="ddOrgan"
+                        class="w-full appearance-none border border-[#E9E9E9] rounded-2xl px-4 py-2.5 bg-white focus:outline-none focus:border-brand cursor-pointer font-body transition-colors fy-select whitespace-nowrap overflow-hidden text-ellipsis">
+
+                        @foreach (var item in Model.Organ)
+                        {
+                            <option value="@item.id" selected="@(item.id == organId)">@item.title</option>
+                        }
+                    </select>
+                </div>
+
+                <div
+                    class="fy-select-inner w-[calc(50%-6px)] sm:w-[calc(50%-6px)] md:w-[calc(50%-6px)] lg:flex-[1_1_160px] xl:flex-[1_1_160px]">
+                    <select id="ddDepartment"
+                        class="w-full appearance-none border border-[#E9E9E9] rounded-2xl px-4 py-2.5 bg-white focus:outline-none focus:border-brand cursor-pointer font-body transition-colors fy-select whitespace-nowrap overflow-hidden text-ellipsis">
+
+                        @foreach (var item in Model.Department)
+                        {
+                            <option value="@item.id" selected="@(item.id == departmentId)">@item.title</option>
+                        }
+                    </select>
+                </div>
+
+                <!-- SEARCH -->
+                <div class="relative flex-[2_1_250px] testdirectory-search-outer">
+                    <input type="text" placeholder="Search by test name..." value="@(ViewBag.Filters?.Title ?? "")"
+                        class="w-full px-4 py-2.5 pr-10 border border-[#E9E9E9] rounded-full focus:outline-none bg-white testdirectory-search" />
+
+                    <span class="absolute right-4 top-1/2 -translate-y-1/2">
+                        <img src="/Assets/images/common-images/search-icon.svg" class="w-4 h-4" />
+                    </span>
+                </div>
+
+                <div class="flex flex-[1_1_120px] items-center justify-center lg:justify-end">
+                    <button id="btnClearFilters" class="themeht-btn color-btn" style="display:none;">
+                        Clear Filters
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="tab-wrapper ">
+
+                <!-- Tabs -->
+                <div class="flex gap-6 text-20 font-semibold mb-6 justify-center testdirectory-tabs sm:mt-5">
+                    <button class="tab-btn relative active dark-textwhite" data-tab="testdirectory-tab1">
+                        <div> Tests covered under NABL accreditation </div> <span
+                            id="nabl1Count">(@Model.NABL_option_1_count)</span>
+                    </button>
+                    <button class="tab-btn relative dark-textwhite" data-tab="testdirectory-tab2">
+                        <div> Tests not covered under NABL accreditation </div> <span
+                            id="nabl2Count">(@Model.NABL_option_2_count)</span>
+                    </button>
+                    <div class="tab-indicator"></div>
+                </div>
+
+                <!-- TAB 1 -->
+                <div class="tab-content active" id="testdirectory-tab1">
+                    <div class="tab-contentinner">
+
+
+                        <!-- Cards Grid -->
+                        <div class="grid md:grid-cols-2 gap-5" id="DivNABL">
+
+                            @if (Model.Tests != null && Model.Tests.Any(x => x.covered_under_NABL == 1))
+                            {
+                                foreach (var item in Model.Tests.Where(x => x.covered_under_NABL == 1))
+                                {
+                                    <div
+                                        class="bg-white rounded-2xl drop-shadow-custom p-5 testdirectory-card-wrappper dark-bglight">
+
+                                        <h3 class="text-20 font-medium mb-4">
+                                            @item.Title
+                                        </h3>
+
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-4">
+                                            <div class="no-margin-wrap">
+                                                <p class="text-primary">Specimen</p>
+                                                <p>@item.Specimen</p>
+                                            </div>
+                                            <div class="no-margin-wrap">
+                                                <p class="text-primary">Type of test</p>
+                                                <p>@item.TypeTest</p>
+                                            </div>
+                                            <div class="no-margin-wrap">
+                                                <p class="text-primary">Organ</p>
+                                                <p>@item.Organ</p>
+                                            </div>
+                                            <div class="no-margin-wrap">
+                                                <p class="text-primary">Department/ Section</p>
+                                                <p>@item.Department</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <p>No data found</p>
+                            }
+
+                        </div>
+
+                        @if (Model.NABL_option_1_count > 10)
+                        {
+                            <div class="flex justify-center mt-8">
+                                <button class="themeht-btn color-btn darkwhite-btn" id="btnLoadMoreNABL"> Load more
+                                </button>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="flex justify-center mt-8">
+                                <button class="themeht-btn color-btn darkwhite-btn" style="display: none;" id="btnLoadMoreNABL"> Load more
+                                </button>
+                            </div>
+                        }
+
+
+
+                    </div>
+                </div>
+
+                <!-- TAB 2 -->
+                <div class="tab-content" id="testdirectory-tab2">
+                    <div class="tab-contentinner">
+
+                        <!-- Cards Grid -->
+                        <div class="grid md:grid-cols-2 gap-5" id="DivNONABL">
+
+                            @if (Model.Tests != null && Model.Tests.Any(x => x.covered_under_NABL == 2))
+                            {
+                                foreach (var item in Model.Tests.Where(x => x.covered_under_NABL == 2))
+                                {
+                                    <div
+                                        class="bg-white rounded-2xl drop-shadow-custom p-5 testdirectory-card-wrappper dark-bglight">
+
+                                        <h3 class="text-20 font-medium mb-4">
+                                            @item.Title
+                                        </h3>
+
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-4">
+                                            <div class="no-margin-wrap">
+                                                <p class="text-primary">Specimen</p>
+                                                <p>@item.Specimen</p>
+                                            </div>
+                                            <div class="no-margin-wrap">
+                                                <p class="text-primary">Type of test</p>
+                                                <p>@item.TypeTest</p>
+                                            </div>
+                                            <div class="no-margin-wrap">
+                                                <p class="text-primary">Organ</p>
+                                                <p>@item.Organ</p>
+                                            </div>
+                                            <div class="no-margin-wrap">
+                                                <p class="text-primary">Department/ Section</p>
+                                                <p>@item.Department</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <p>No data found</p>
+                            }
+
+                        </div>
+
+
+                        <!-- View More -->
+
+                        @if (Model.NABL_option_2_count > 10)
+                        {
+                            <div class="flex justify-center mt-8">
+                                <button class="themeht-btn color-btn darkwhite-btn" id="btnLoadMoreNONNABL"> Load more
+                                </button>
+                            </div>
+
+                        }
+                        else
+                        {
+                            <div class="flex justify-center mt-8" >
+                                <button class="themeht-btn color-btn darkwhite-btn" style="display: none;" id="btnLoadMoreNONNABL"> Load more
+                                </button>
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+
+@* <div id="loader" style="display:none;">Loading...</div> *@
+
+
+<a href="https://himstccf.org/WEBPatientPortal/CompanyPortal/CompanyLandingPage" target="_blank" class="floating-book-btn">
+  <span>Book a Test</span>
+
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</a>
+
+@section Scripts {
+    <script src="~/Assets/js/innerbanner-script.js"></script>
+    <script src="~/Assets/js/fy-select-script.js"></script>
+    <script src="~/Assets/js/testdirectory-script.js"></script>
+    <script src="~/scripts/TestDirectory/TestDirectory.js"></script>
+}

@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch ASP.NET Core",
+      "type": "dotnet",
+      "request": "launch",  
+      "projectPath": "${workspaceFolder}/Oncopathology_MVC/bin/Debug/net8.0/Oncopathology_MVC.dll",
+       
+    }
+  ]
+}

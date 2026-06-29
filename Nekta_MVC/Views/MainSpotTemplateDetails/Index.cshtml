@@ -1,0 +1,133 @@
+@model IEnumerable<Core_project_BusinessLogic.Entity.Manage.Main_spot_template_details>
+@{
+    Layout = "~/Views/Shared/Manage/_Layout_RHS.cshtml";
+}
+
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/manage/dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                             Components Details List
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+<h2>Components Details List</h2>
+
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-info">@TempData["msg"]</div>
+}
+
+<a class="btn btn-primary mb-3" asp-action="Add">Add New</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Language</th>
+            <th>Title</th>
+            <th>Components Title</th>
+            <th>Block Reference</th>
+            <th>Status</th>
+            <th width="130">Created Date</th>
+            <th width="250">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @using Core_project_BusinessLogic
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Language_Master_ID</td>
+                <td>@item.Title</td>
+                <td>@item.Main_Spot_Template_Reference</td>
+                <td>@item.spot_reference_name</td>
+             <td>
+                    @if (item.Status == 1)
+                    {
+                        <span class="badge bg-success">Active</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">Inactive</span>
+                    }
+                </td>
+                <td>@item.Created_Date?.ToString("dd-MMM-yyyy")</td>
+                <td>
+                    <a class="btn btn-sm btn-outline-secondary btn-sm" asp-action="Add"
+                        asp-route-Id="@CryptoEngine.Encrypt(item.ID.ToString())">Edit</a>
+                        
+                    <button type="button" class="btn btn-sm btn-outline-primary"
+                        onclick="showLayout('@CryptoEngine.Encrypt(item.ID.ToString())')">
+                        View Layout
+                    </button>
+
+                    @if (item.Status == 1)
+                    {
+                        <a class="btn btn-outline-danger btn-sm" asp-action="Deactivate"
+                            asp-route-Id="@CryptoEngine.Encrypt(item.ID.ToString())"
+                            onclick="return confirm('Deactivate this template?');">
+                            Deactivate
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="modal fade spot-layoutModal" id="layoutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content shadow-lg rounded-4 border-0">
+
+            <!-- Header -->
+            <div class="modal-header">
+                <h5 class="modal-title fw-semibold">
+                    Layout Details
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body p-4" id="layoutModalBody">
+                
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer rounded-bottom-4">
+                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+<script>
+   function showLayout(encId) {
+    $.ajax({
+        url: '/MainSpotTemplateDetails/ViewLayout',
+        type: 'GET',
+        data: { id: encId },
+        success: function (html) {
+            $('#layoutModalBody').html(html); // 👈 HTML injected here
+            $('#layoutModal').modal('show');
+        },
+        error: function () {
+            alert('Failed to load layout.');
+        }
+    });
+}
+</script>

@@ -1,0 +1,72 @@
+@model Core_project_BusinessLogic.Entity.Manage.MainSpotTemplateReference
+@{
+    Layout = "~/Views/Shared/Manage/_Layout_RHS.cshtml";
+}
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/manage/dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Edit Components Reference
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+<h2>Edit Components Reference</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Reference_ID" />
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group mb-3">
+                <label asp-for="Language_Master_ID" class="form-label">Language</label>
+                <select asp-for="Language_Master_ID" class="form-control form-select"
+                    asp-items="@(new SelectList(ViewBag.Languages, "ID", "Language_Name"))">
+                    <option value="">Select language</option>
+                </select>
+                <span asp-validation-for="Language_Master_ID" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+                <label asp-for="Main_spot_template_master_id" class="form-label">Main spot template master</label>
+                <select asp-for="Main_spot_template_master_id" class="form-control form-select"
+                    asp-items="@(new SelectList(ViewBag.MainStopTemplate, "ID", "Name"))">
+                    <option value="">Select main spot template</option>
+                </select>
+                <span asp-validation-for="Main_spot_template_master_id" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <!-- Main Spot Template Master -->
+            <div class="form-group mb-3">
+                <label asp-for="Template_master_id" class="form-label">Tmplate master</label>
+                <select asp-for="Template_master_id" class="form-control form-select"
+                    asp-items="@(new SelectList(ViewBag.GetTemplates, "ID", "Name"))">
+                    <option value="">Select template</option>
+                </select>
+                <span asp-validation-for="Template_master_id" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+                <label class="form-label">Name</label>
+                <input asp-for="Reference_Title" class="form-control" />
+            </div>
+        </div>
+
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-success cms-btn-custom">Update</button>
+        </div>
+    </div>
+
+</form>

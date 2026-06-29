@@ -1,0 +1,34 @@
+@using Nekta_MVC.Helpers
+@model List<Nekta_BusinessLogic.Entity.Common_List>
+
+@foreach (var item in Model)
+{
+    <div
+        class="resources-financial-item flex gap-4 py-5 sm:py-6 lg:px-0 flex-row sm:flex-row justify-start items-end sm:items-end border-[#B9B9B9] lg:border-r lg:last:border-r-0 bottom-border-full article-item annual-list-item">
+
+        <!-- Image -->
+        <div class="w-[140px] sm:w-auto flex-shrink-0">
+            <img src="@item.Thumbnail_img" alt="@item.Thumbnail_img_alt_text" class="w-full object-cover rounded-xs">
+        </div>
+
+        <!-- Content -->
+        <div class="year-content flex-1">
+
+            <h3 class="text-[18px] sm:text-20 leading-tight">
+                @Html.Raw(
+                string.IsNullOrWhiteSpace(item.Cont_hmpg_intro)
+                ? item.ContTitle
+                : item.Cont_hmpg_intro.CleanParagraphTags())
+        </h3>
+
+        @if (!string.IsNullOrWhiteSpace(item.filepath))
+            {
+                <a href="@item.filepath" target="@item.Url_target" class="inline-block mt-3 font-medium leading-none pb-[2px] download-link">
+                    Download PDF
+                </a>
+            }
+
+        </div>
+
+    </div>
+}

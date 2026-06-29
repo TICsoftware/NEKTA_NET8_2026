@@ -1,0 +1,1625 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/Assets/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="~/Assets/css/homepage-style.css" />
+    <link rel="stylesheet" href="~/Assets/css/swiper-custom.css" />
+}
+
+
+
+<section class="relative overflow-hidden hero-section">
+    <div class="hero-grid max-h-[630px]">
+        <!-- ================= LEFT ================= -->
+        <div class="relative w-full overflow-hidden h-[630px]">
+            <div class="hero-vid-wrap">
+                <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover" poster="">
+                    <source src="/Assets/images/homepage/banner/video.mp4" type="video/mp4">
+                </video>
+                <!-- 🔲 Dark Overlay (for readability) -->
+                <div class="absolute inset-0 bg-white/55"></div>
+            </div>
+            <div class="container">
+                <div class="relative z-10 max-w-xl herobanner-content-wrapper py-8">
+
+                    <h1 class="text-h1-home font-medium h1-title-heading-anim">
+                        Centre for <br />
+                        <span class="highlight-span">Oncopathology</span>
+                    </h1>
+
+                    <h2 class="mt-4 text-24 font-normal leading-snug"> India's specialist oncopathology reference lab,
+                        built for diagnostic certainty</h2>
+
+                    <p class="mt-2 text-base"> A unit of Tata Cancer Care Foundation</p>
+
+                    <!-- HEX GRID -->
+                    <div class="flex flex-wrap gap-4 mt-4 sm:mt-8">
+
+                        <!-- HEX -->
+                        <div
+                            class="relative z-10 flex flex-wrap md:flex-nowrap justify-center md:justify-start gap-4 herosection-hex-outer">
+
+                            <!-- HEX 1 -->
+                            <div class="hex-wrap">
+                                <svg viewBox="0 0 200 180" class="hex-svg">
+                                    <polygon points="50,5 150,5 195,90 150,175 50,175 5,90" fill="white"
+                                        stroke="#e5e7eb" stroke-width="1" />
+                                </svg>
+                                <div class="hex-content">
+                                    <div class="text-red-500 mb-2">
+                                        <img src="/Assets/images/homepage/banner/advanced-diagnostics-icon.svg"
+                                            alt="" />
+                                    </div>
+                                    <p>Advanced<br />Diagnostics</p>
+                                </div>
+                            </div>
+
+                            <!-- HEX 2 -->
+                            <div class="hex-wrap">
+                                <svg viewBox="0 0 200 180" class="hex-svg">
+                                    <polygon points="50,5 150,5 195,90 150,175 50,175 5,90" fill="white"
+                                        stroke="#e5e7eb" />
+                                </svg>
+                                <div class="hex-content">
+                                    <div class="text-red-500 mb-2">
+                                        <img src="/Assets/images/homepage/banner/tata-legacy-icon.svg" alt="" />
+                                    </div>
+                                    <p>Tata Legacy</p>
+                                </div>
+                            </div>
+
+                            <!-- CENTER HEX -->
+                            <div class="hex-wrap">
+                                <svg viewBox="0 0 200 180" class="hex-svg">
+                                    <polygon points="50,5 150,5 195,90 150,175 50,175 5,90" fill="white"
+                                        stroke="#e5e7eb" />
+                                </svg>
+                                <div class="hex-content">
+                                    <div class="text-red-500 mb-2">
+                                        <img src="/Assets/images/homepage/banner/specialist-oncopathology-icon.svg"
+                                            alt="" />
+                                    </div>
+                                    <p>Specialist<br />Oncopathology</p>
+                                </div>
+                            </div>
+
+                            <!-- HEX 4 -->
+                            <div class="hex-wrap">
+                                <svg viewBox="0 0 200 180" class="hex-svg">
+                                    <polygon points="50,5 150,5 195,90 150,175 50,175 5,90" fill="white"
+                                        stroke="#e5e7eb" />
+                                </svg>
+                                <div class="hex-content">
+                                    <div class=" mb-2">
+                                        <img src="/Assets/images/homepage/banner/envisioned-icon.svg" alt="" />
+                                    </div>
+                                    <p> Envisioned by late<br />Dr Anita Borges </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= RIGHT ================= -->
+        <div class="relative hero-right-wrap">
+
+            <div class="pxl-banner-inner">
+                <div class="box-image-main">
+                    <div class="box-image-main-inner">
+                        <div class="swiper heroSwiper">
+
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <img src="/Assets/images/homepage/banner/banner-img1.webp"
+                                        class="w-full h-full object-cover hero-img" alt=""
+                                        data-swiper-parallax="-20%" />
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <img src=/images/homepage/banner/banner-img2.webp"
+                                        class="w-full h-full object-cover hero-img" alt=""
+                                        data-swiper-parallax="-20%" />
+                                </div>"/Assets
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@* JOURNEY SECTION *@
+<section class="section-pb journey-section relative">
+    <div class="section-wrapper">
+
+        <!-- ── LEFT: Photo + floating Doctor card ── -->
+        <div class="photo-block">
+            <div class="photo-img-box">
+                <img src="/Assets/images/homepage/journey/journey-img.webp" alt="" />
+            </div>
+
+            <div class="journey-photo-vector floating-icon"><img src="/Assets/images/common-images/hexagon-sm-white.svg"
+                    alt="" class="object-cover" /></div>
+        </div>
+
+        <!-- ── RIGHT: Heading + 3 cards ── -->
+        <div class="container">
+            <div class="right-block-outer">
+                <div class="wrapper-title-outer sm:max-w-[32vw] 2xl:max-w-[32vw] sm:m-auto">
+                    <div class="wrapper-title title-heading-outer title-heading-outer-center pb-5 sm:pb-10">
+                        <h2 class="text-h2 title-heading-anim">
+                            Choose Your <span class="highlight-span"> Journey </span>
+                        </h2>
+                        <p>Tailored pathways for every stakeholder in cancer care</p>
+                    </div>
+                </div>
+
+                <div class="outer-view">
+                    <div class="journey-vector floating-icon"><img
+                            src="/Assets/images/common-images/hexagon-sm-white.svg" alt="" class="object-cover" /></div>
+                    <div class="journey-slider relative custom-arrow-slider mt-5 ">
+
+                        <div class="swiper journeySwiper">
+                            <div class="swiper-wrapper">
+
+                                <!-- Slide 1 -->
+                                <div class="swiper-slide">
+                                    <div class="journey-card">
+                                        <div class="c-icon">
+                                            <img src="/Assets/images/homepage/journey/doctor-icon.svg" alt="" />
+                                        </div>
+                                        <p class="c-label">Doctor</p>
+                                        <p class="c-sub">Submit cases, order tests, access reports</p>
+                                        <div class="arrow-circle">
+                                            <img src="/Assets/images/common-images/arrow-black.svg" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Slide 2 -->
+                                <div class="swiper-slide">
+                                    <div class="journey-card data-trigger" data-trigger="modal"
+                                        data-target="#copPartnerPopup">
+                                        <div class="c-icon">
+                                            <img src="/Assets/images/homepage/journey/lab-icon.svg" alt="" />
+                                        </div>
+                                        <p class="c-label">Lab / Hospital</p>
+                                        <p class="c-sub">Partner with us for specialized testing</p>
+                                        <div class="arrow-circle">
+                                            <img src="/Assets/images/common-images/arrow-black.svg" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Slide 3 -->
+                                <div class="swiper-slide">
+                                    <div class="journey-card data-trigger" data-trigger="modal"
+                                        data-target="#secondOpinionPopup">
+                                        <div class="c-icon">
+                                            <img src="/Assets/images/homepage/journey/patient-icon.svg" alt="" />
+                                        </div>
+                                        <p class="c-label">Patient / Caregiver</p>
+                                        <p class="c-sub">Request second opinion</p>
+                                        <div class="arrow-circle">
+                                            <img src="/Assets/images/common-images/arrow-black.svg" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Slide 4 -->
+                                <div class="swiper-slide">
+                                    <div class="journey-card pointer-events-none">
+                                        <div class="c-icon">
+                                            <img src="/Assets/images/homepage/journey/student-icon.svg" alt="" />
+                                        </div>
+                                        <p class="c-label">Student / Fellow</p>
+                                        <p class="c-sub">Training programs, fellowships, resources</p>
+                                        @* <div class="arrow-circle">
+                                                <img src="/Assets/images/common-images/arrow-black.svg" alt="" />
+                                           </div> *@
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                        <!-- Arrows -->
+                        <div class="swiper-button-prev custom-arrow">
+                            <img src="/Assets/images/common-images/left-arrow-swiper.svg" />
+                        </div>
+                        <div class="swiper-button-next custom-arrow">
+                            <img src="/Assets/images/common-images/right-arrow-swiper.svg" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="bg-vector-journey bg-vector-wrap"><img src="/Assets/images/vector-bg-01.svg" alt="" /></div>
+</section>
+
+@* TREATMENT DECISIONS SECTION *@
+<section class="section-pb treatmentdecisions-section relative">
+    <div class="tq-line-vector">
+        <svg viewBox="0 0 1600 200" class="line-svg">
+            <path id="linePath02" class="linePath"
+                d="M1609.7 158.802C1672.53 -30.8498 1572.81 227.972 1436.75 231.919C1375.92 233.683 1341.49 210.656 1298.73 172.764C1260.67 139.044 1218.3 102.174 1173.56 78.0095C1052.61 12.6785 780.533 -83.7248 470.405 145.254C458.562 153.999 445.875 162.01 432.641 168.457C297.789 234.152 98.6833 328.006 -0.282471 7.02375"
+                fill="none" stroke="#DE392E" stroke-width="1.00225" />
+
+            <circle class="dot dot1" r="6" cx="0" cy="0" fill="#DE392E"></circle>
+            <circle class="dot dot2" r="6" cx="0" cy="0" fill="#DE392E"></circle>
+
+        </svg>
+    </div>
+
+    <div class="curve-bg-wrapper">
+        <img src="/Assets/images/homepage/treatment-decisions-vector.svg" alt="" />
+    </div>
+    <div class="container">
+        <div class="wrapper-title-outer">
+            <div class="wrapper-title title-heading-outer title-heading-outer-center pb-5 sm:pb-10">
+                <h2 class="text-h2 title-heading-anim">
+                    Precision in cancer diagnosis <span class="highlight-span"> changes </span> </br> <span
+                        class="highlight-span"> treatment decisions </span>
+                </h2>
+            </div>
+        </div>
+
+
+        <!-- Cards grid -->
+        <div class="relative z-10 max-w-full mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 mt-10 reveal-group">
+
+            <!-- Card 1 -->
+            <div
+                class="px-0 md:px-6 lg:px-8 py-6 flex flex-col gap-3 card-divider items-start team-item-box reveal-item icon-transform-item">
+                <div class="card-icon mb-2 icon-transform">
+                    <img src="/Assets/images/homepage/treatment-decisions/onopathology-expertise.svg" class="" alt="" />
+                </div>
+                <h3 class="font-semibold text-20 leading-snug">
+                    Onopathology<br />expertise
+                </h3>
+                <a class="themeht-btn color-btn arrow-btn" data-trigger="modal" data-target="#oncopathologyPopup"> Learn
+                    More <img src="/Assets/images/common-images/btn-arrow-white.svg" alt="arrow icon"> </a>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+                class="px-0 md:px-6 lg:px-8 py-6 flex flex-col gap-3 card-divider items-start team-item-box reveal-item icon-transform-item">
+                <div class="card-icon mb-2 icon-transform">
+                    <img src="/Assets/images/homepage/treatment-decisions/advanced-biomarkers.svg" class="" alt="" />
+                </div>
+                <h3 class="font-semibold text-20 leading-snug">
+                    Advanced biomarkers<br />&amp; molecular testing
+                </h3>
+                <a class="themeht-btn color-btn arrow-btn" data-trigger="modal" data-target="#biomarkerPopup"> Learn
+                    More <img src="/Assets/images/common-images/btn-arrow-white.svg" alt="arrow icon"> </a>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+                class="px-0 md:px-6 lg:px-8 py-6 flex flex-col gap-3 card-divider items-start team-item-box reveal-item icon-transform-item">
+                <div class="card-icon mb-2 icon-transform">
+                    <img src="/Assets/images/homepage/treatment-decisions/second-opinions.svg" class="" alt="" />
+                </div>
+                <h3 class="font-semibold text-20 leading-snug">
+                    Second<br />opinions
+                </h3>
+                <a class="themeht-btn color-btn arrow-btn data-trigger" data-trigger="modal"
+                    data-target="#secondOpinionDiagnosisPopup"> Learn More <img
+                        src="/Assets/images/common-images/btn-arrow-white.svg" alt="arrow icon"> </a>
+            </div>
+
+            <!-- Card 4 -->
+            <div
+                class="px-0 md:px-6 lg:px-8 py-6 flex flex-col gap-3 card-divider items-start team-item-box reveal-item icon-transform-item">
+                <div class="card-icon mb-2 icon-transform">
+                    <img src="/Assets/images/homepage/treatment-decisions/education-training-leadership.svg" class=""
+                        alt="" />
+                </div>
+                <h3 class="font-semibold text-20 leading-snug">
+                    Education &amp; training<br />leadership
+                </h3>
+
+                @* <a href="#" class="themeht-btn color-btn arrow-btn">  Learn More  <img src="/Assets/images/common-images/btn-arrow-white.svg" alt="arrow icon"> </a> *@
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+@* FIND TEST SECTION *@
+<section class="relative section-pb">
+    <div class="relative overflow-hidden flex items-center justify-center min-h-[420px]">
+
+        <img src="/Assets/images/homepage/find-test-bg.webp" alt=""
+            class="absolute inset-0 w-full h-full object-cover -z-1 find-test-bg dark-grayscaleinvert0" />
+
+
+        <div class=" absolute left-0 bottom-0 floating-icon"><img src="/Assets/images/common-images/hexagon-sm.svg"
+                alt="" class="object-cover dark-grayscaleinvert0" /></div>
+    </div>
+    <div class="relative find-text-inner">
+        <div class="hexagon-img">
+            <div class="bt_bb_image bt_bb_shape_hexagon bt_bb_hover_style_zoom-in">
+                <div class="bt_bb_image_content">
+                    <img src="/Assets/images/homepage/test-img.webp" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="relative z-10 -mt-100 find-test-outer">
+            <div class="container">
+                <div class="wrapper-title-outer">
+                    <div class="wrapper-title title-heading-outer title-heading-outer-center pt-0 pb-5 sm:pb-10 filldark-title-heading-anim">
+                        <h2 class="text-h2 title-heading-anim title-heading-anim-white">
+                            Find Your Test </h2>
+                    </div>
+                </div>
+            </div>
+            <!-- ── Card ── -->
+            <div
+                class="fade-2 mx-auto w-[92vw] max-w-[min(92vw,900px)] sm:max-w-[min(85vw,900px)]           md:max-w-[min(80vw,900px)] lg:max-w-[min(75vw,900px)] xl:max-w-[min(75vw,900px)] bg-white rounded-2xl shadow-xl px-5 sm:px-8 py-10 mt-10 dark-bgblack">
+
+                <h2 class="text-24 font-noraml mb-5 dark-textwhite">Test Finder</h2>
+
+                <!-- Search bar -->
+                <div
+                    class="flex flex-col sm:flex-row items-stretch sm:items-center border border-gray-200 rounded-xl overflow-hidden focus-within:border-brand focus-within:ring-2 focus-within:ring-brand/10 transition-all">
+
+                    <!-- Input + Icon Wrapper -->
+                    <div class="flex items-center flex-1 px-3">
+
+                        <span class="pr-2 flex items-center shrink-0 text-gray-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg>
+                        </span>
+
+                        <input type="text" placeholder="Search by test name, biomarker, or cancer type…"
+                            class="w-full py-3 text-sm placeholder-[#767676] outline-none bg-transparent font-body" />
+                    </div>
+
+
+                </div>
+
+                <!-- Filters -->
+                <div class="flex flex-col sm:flex-row flex-wrap gap-3 mt-4">
+
+                    <div class="fy-select-inner relative flex-1 min-w-[140px]">
+                        <select
+                            class="w-full appearance-none border border-[#E9E9E9] rounded-xl px-4 py-2.5 pr-4 text-sm text-[#767676] bg-white focus:outline-none focus:border-brand cursor-pointer font-body transition-colors fy-select">
+                            <option value="" disabled selected>Specimen</option>
+                            <option>Specimen</option>
+                            <option>Lung</option>
+                            <option>Colorectal</option>
+                            <option>Prostate</option>
+                            <option>Ovarian</option>
+                        </select>
+                    </div>
+
+                    <div class="fy-select-inner relative flex-1 min-w-[140px]">
+                        <select
+                            class="w-full appearance-none border border-[#E9E9E9] rounded-xl px-4 py-2.5 pr-4 text-sm text-[#767676] bg-white focus:outline-none focus:border-brand cursor-pointer font-body transition-colors fy-select">
+                            <option value="" disabled selected>Type of Test</option>
+                            <option>Liquid Biopsy</option>
+                            <option>Tissue Biopsy</option>
+                            <option>Imaging</option>
+                            <option>Molecular</option>
+                        </select>
+                    </div>
+
+                    <div class="fy-select-inner relative flex-1 min-w-[140px]">
+                        <select
+                            class="w-full appearance-none border border-[#E9E9E9] rounded-xl px-4 py-2.5 pr-4 text-sm text-[#767676] bg-white focus:outline-none focus:border-brand cursor-pointer font-body transition-colors fy-select">
+                            <option value="" disabled selected>Organ</option>
+                            <option>BRCA1/2</option>
+                            <option>HER2</option>
+                            <option>EGFR</option>
+                            <option>PD-L1</option>
+                            <option>MSI</option>
+                        </select>
+                    </div>
+
+                    <div class="fy-select-inner relative flex-1 min-w-[140px]">
+                        <select
+                            class="w-full appearance-none border border-[#E9E9E9] rounded-xl px-4 py-2.5 pr-4 text-sm text-[#767676] bg-white focus:outline-none focus:border-brand cursor-pointer font-body transition-colors fy-select">
+                            <option value="" disabled selected>Deparrtment</option>
+                            <option>BRCA1/2</option>
+                            <option>HER2</option>
+                            <option>EGFR</option>
+                            <option>PD-L1</option>
+                            <option>MSI</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- Explore button -->
+                <button class="mt-5 themeht-btn color-btn darkwhite-btn"> Search </button>
+
+            </div>
+        </div>
+
+        <!-- Tagline -->
+        <div class="tagline-outer">
+            <p class="text-center tagline mt-8 dark-textwhite"> While speed matters, accuracy is paramount.</p>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="vector-section">
+
+    <div class="bg-merge-vector bg-vector-wrap"><img src="/Assets/images/vector-bg-merge.svg" alt="" /></div>
+
+    @* TEAM SECTION *@
+    <section class="section-pb team-section relative">
+        <div class="container">
+            <div class="wrapper-title-outer">
+                <div class="wrapper-title title-heading-outer title-heading-outer-center pb-5 sm:pb-10">
+                    <h2 class="text-h2 title-heading-anim">Your report is backed by <span
+                            class="highlight-span">experts,</span></br> <span class="highlight-span"> not just a
+                            lab</span>
+                    </h2>
+                </div>
+            </div>
+
+            <!-- Swiper -->
+            <div class="team-slider relative custom-arrow-slider mt-5">
+                <div class="swiper teamSwiper">
+
+                    <div class="swiper-wrapper">
+
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white dark-bgblack rounded-2xl shadow-lg px-4 pt-6 pb-6 relative max-w-sm mx-auto drop-shadow-custom team-item-inner group curser-pointer data-trigger"
+                                data-trigger="modal" data-target="#DrSumeetGujral">
+                                <div class="team-img-wrap rounded-lg overflow-hidden relative">
+                                    <img src="/Assets/images/homepage/team-dummy.svg"
+                                        class="rounded-lg w-full h-full object-cover block transition-transform duration-700 ease-out will-change-transform group-hover:scale-105"
+                                        alt="">
+                                </div>
+                                <div class="team-info text-center flex flex-col gap-y-2 pt-4">
+                                    <h3 class="font-semibold text-p team-name text-primary">Dr Sumeet Gujral</h3>
+                                    <p class="team-designation text-sm">MD Pathology, Senior Advisor</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white dark-bgblack rounded-2xl shadow-lg px-4 pt-6 pb-6 relative max-w-sm mx-auto drop-shadow-custom team-item-inner group cursor-pointer data-trigger"
+                                data-trigger="modal" data-target="#DrShilpaPrabhudesai">
+                                <div class="team-img-wrap rounded-lg overflow-hidden relative">
+                                    <img src="/Assets/images/homepage/team-dummy.svg"
+                                        class="rounded-lg w-full h-full object-cover block transition-transform duration-700 ease-out will-change-transform group-hover:scale-105"
+                                        alt="">
+                                </div>
+                                <div class="team-info text-center flex flex-col gap-y-2 pt-4">
+                                    <h3 class="font-semibold text-p team-name text-primary">Dr Shilpa Prabhudesai</h3>
+                                    <p class="team-designation text-sm">Senior Consultant Pathologist &amp; Head of
+                                        Operations</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white dark-bgblack rounded-2xl shadow-lg px-4 pt-6 pb-6 relative max-w-sm mx-auto drop-shadow-custom team-item-inner group cursor-pointer data-trigger"
+                                data-trigger="modal" data-target="#DrVinitaPant">
+                                <div class="team-img-wrap rounded-lg overflow-hidden relative">
+                                    <img src="/Assets/images/homepage/team-dummy.svg"
+                                        class="rounded-lg w-full h-full object-cover block transition-transform duration-700 ease-out will-change-transform group-hover:scale-105"
+                                        alt="">
+                                </div>
+                                <div class="team-info text-center flex flex-col gap-y-2 pt-4">
+                                    <h3 class="font-semibold text-p team-name text-primary">Dr Vinita Pant</h3>
+                                    <p class="team-designation text-sm">Senior Pathologist</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white dark-bgblack rounded-2xl shadow-lg px-4 pt-6 pb-6 relative max-w-sm mx-auto drop-shadow-custom team-item-inner group cursor-pointer data-trigger"
+                                data-trigger="modal" data-target="#DrVinitaPandey">
+                                <div class="team-img-wrap rounded-lg overflow-hidden relative">
+                                    <img src="/Assets/images/homepage/team-dummy.svg"
+                                        class="rounded-lg w-full h-full object-cover block transition-transform duration-700 ease-out will-change-transform group-hover:scale-105"
+                                        alt="">
+                                </div>
+                                <div class="team-info text-center flex flex-col gap-y-2 pt-4">
+                                    <h3 class="font-semibold text-p team-name text-primary">Dr Vinita Pandey</h3>
+                                    <p class="team-designation text-sm">Senior Pathologist</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- Arrows -->
+                <div class="swiper-button-prev custom-arrow">
+                    <img src="/Assets/images/common-images/left-arrow-swiper.svg" alt="prev">
+                </div>
+                <div class="swiper-button-next custom-arrow">
+                    <img src="/Assets/images/common-images/right-arrow-swiper.svg" alt="next">
+                </div>
+
+                <!-- Button -->
+                <div class="text-center mt-4 sm:mt-8">
+                    <a href="#" class="themeht-btn color-btn">
+                        View Full Team
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="tq-line-vector">
+            <svg viewBox="0 0 1600 200" class="line-svg">
+                <path id="linePath02" class="linePath"
+                    d="M1622.69 144.935C1554.29 136.911 1356.6 107.321 1210.29 48.1162C1159.38 27.5151 1150.64 8.39514 1096.14 1.56632C1002.98 -10.1083 809.246 77.186 721.854 111.525C550.817 178.732 258.93 237.94 -35.746 53.6113"
+                    fill="none" stroke="#DE392E" stroke-width="1.00225" />
+
+                <circle class="dot dot1" r="6" cx="0" cy="0" fill="#DE392E"></circle>
+                <circle class="dot dot2" r="6" cx="0" cy="0" fill="#DE392E"></circle>
+
+            </svg>
+        </div>
+    </section>
+
+    @* MEMORY SECTION *@
+    <section class="section-pb memory-section relative">
+        <div class="container">
+            <div class="relative memory-inner-outer">
+                <!-- MAIN BOX -->
+                <div class="relative z-10 
+                    w-full 
+                    -right-[10vw] lg:-right-[10vw] right-0 
+                    h-auto lg:h-[460px]  rounded-2xl
+                    sm:rounded-tl-2xl sm:rounded-bl-2xl 
+                    overflow-hidden lg:overflow-visible">
+
+                    <!-- BG IMAGE -->
+
+                    <img src="/Assets/images/homepage/memory-bg.webp" alt=""
+                        class="absolute inset-0 w-full h-full object-cover rounded-tl-2xl rounded-bl-2xl -z-1 dark-grayscaleinvert0" />
+
+
+                    <!-- CONTENT -->
+                    <div class="max-w-full sm:max-w-xl sm:mx-auto h-full flex justify-center items-center flex-col 
+                        memory-content-inner 
+                        px-5 py-10 lg:px-0 lg:py-0 
+                        text-center lg:text-left">
+
+                        <!-- Top text -->
+                        <span
+                            class="text-xs uppercase tracking-widest opacity-80 mb-2 flex gap-3 top-text items-center justify-center md:justify-start">
+                            <img src="/Assets/images/homepage/star-icon.svg" class="w-3 h-3" />
+                            In memory of
+                            <img src="/Assets/images/homepage/star-icon.svg" class="w-3 h-3" />
+                        </span>
+
+                        <!-- Title -->
+                        <h2> Dr. Anita Borges </h2>
+
+                        <!-- Subtitle -->
+                        <h3> Teacher. Clinician. Builder of COP. </h3>
+
+                        <!-- Description -->
+                        <p> She shaped a generation of oncopathologists with uncompromising standards and clinical
+                            clarity. Her vision of patient-first diagnostic excellence continues to guide COP’s work
+                            every day. </p>
+
+                        <!-- Buttons -->
+                        <div class="flex flex-col sm:flex-row items-center gap-4 lg:gap-6 mt-4">
+
+                            <a href="#" class="themeht-btn black-btn icon-btn">
+                                <img src="/Assets/images/homepage/explore-icon.svg" alt="icon">
+                                Explore Her Legacy
+                            </a>
+
+                            <a href="#" class="play-btn-outer flex items-center gap-2" data-video-trigger
+                                data-video-type="youtube" data-video-src="https://www.youtube.com/embed/VIDEO_ID">
+                                <div class="play-btn">
+                                    <svg viewBox="0 0 13 17">
+                                        <path d="M1 1L11.6027 8.0685L1 15.137V1Z" />
+                                    </svg>
+                                </div>
+                                <span>Watch training videos</span>
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- LEFT IMAGE -->
+                <div class="
+                    max-w-[90%] lg:max-w-140 
+                    relative lg:absolute 
+                    mx-auto lg:mx-0 
+                    mt-8 lg:mt-0 
+                    lg:-bottom-[5vw] 
+                    z-10 memory-img-left">
+
+                    <img src="/Assets/images/homepage/DrAnitaBorges-img.webp" alt=""
+                        class="object-cover rounded-2xl w-full" />
+
+                    <div class="memory-vector floating-icon">
+                        <img src="/Assets/images/common-images/hexagon-Vector-mid.svg" alt=""
+                            class="object-cover dark-grayscaleinvert" />
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    @* ACADEMY THOUGHT LEADERSHIP SECTION *@
+    <section class="section-pb academy-thought-leadership-section relative">
+        <div class="container">
+            <div class="wrapper-title-outer">
+                <div class="wrapper-title title-heading-outer title-heading-outer-center pb-5 sm:pb-10">
+                    <h2 class="text-h2 title-heading-anim"> Academy & <span class="highlight-span">Thought
+                            Leadership</span> </h2>
+                </div>
+            </div>
+
+            <div class="max-w-full mx-auto flex gap-5 mt-10 flex-col lg:flex-row reveal-group">
+
+                <!-- LEFT COLUMN -->
+                <div class="flex flex-col md:flex-row lg:flex-col gap-5 w-full lg:w-[40%]">
+
+                    <!-- Card 1 -->
+                    <div
+                        class="relative text-white rounded-2xl p-6 h-[240px] flex flex-col justify-start overflow-hidden atl-card atl-card-theme reveal-item w-full md:w-[50%] lg:w-full">
+                        <img src="/Assets/images/homepage/atl-bg.svg" alt=""
+                            class="absolute inset-0 w-full h-full object-cover rounded-2xl -z-1 dark-grayscaleinvert0" />
+
+                        <div class="flex justify-between items-start">
+                            <div class="relative">
+                                <img src="/Assets/images/homepage/featured-icon.svg"
+                                    class="w-auto h-auto object-cover dark-grayscaleinvert0" />
+                                <div class="hexagon small-hexagon"></div>
+                            </div>
+                            <span class="badge-border-wrap"> Featured Webinar </span>
+                        </div>
+                        <div class="mt-6">
+                            <h3> Advanced Molecular Testing in Lung Cancer </h3>
+                            <p class="atl-p"> February 15, 2026 · 6:00 PM IST </p>
+                        </div>
+
+                        <div class="absolute bottom-2 right-3"> <img src="/Assets/images/homepage/atl-hexagon.svg"
+                                alt="" class="object-cover" /></div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div
+                        class="relative text-white rounded-2xl p-6 h-[240px] flex flex-col justify-start overflow-hidden atl-card atl-card-theme reveal-item w-full md:w-[50%] lg:w-full">
+                        <img src="/Assets/images/homepage/atl-bg.svg" alt=""
+                            class="absolute inset-0 w-full h-full object-cover rounded-2xl -z-1 dark-grayscaleinvert0" />
+                        <div class="flex justify-between items-start">
+                            <div class="relative">
+                                <img src="/Assets/images/homepage/featured-icon.svg"
+                                    class="w-auto h-auto object-cover dark-grayscaleinvert0" />
+                                <div class="hexagon small-hexagon"></div>
+                            </div>
+                            <span class="badge-border-wrap"> Fellowship & Training </span>
+                        </div>
+
+                        <div class="mt-6">
+                            <h3> Fellowship Programs 2026 </h3>
+                            <p class="atl-p"> February 15, 2026 · 6:00 PM IST </p>
+                        </div>
+
+                        <div class="absolute bottom-2 right-3"> <img src="/Assets/images/homepage/atl-hexagon.svg"
+                                alt="" class="object-cover" /></div>
+                    </div>
+
+                </div>
+                <div class="w-full lg:w-[60%] gap-5 flex flex-col md:flex-row lg:flex-row">
+                    <!-- CENTER COLUMN -->
+                    <div class="flex gap-5 flex-col atl-card atl-card-white reveal-item">
+
+                        <!-- Image Card -->
+                        <div class="rounded-2xl overflow-hidden h-[308px] relative">
+                            <img src="/Assets/images/homepage/atl-img-1.webp" class="w-full h-full object-cover" />
+                            <span class="absolute top-4 right-4 badge-wrap">
+                                Publication
+                            </span>
+                        </div>
+
+                        <!-- Text Card -->
+                        <div
+                            class="bg-white rounded-2xl p-5 shadow-[0_0_13.8px_0_rgba(19,19,19,0.20)] card-content-wrap dark-bgblack">
+                            <h3>
+                                Novel biomarkers in breast cancer diagnosis
+                            </h3>
+                            <div>
+                                <p class="atl-p">Dr. Priya Sharma</p>
+                                <p class="atl-date">Feb 17, 2026</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT COLUMN -->
+                    <div class="flex gap-5 flex-col lg:flex-col-reverse atl-card atl-card-white reveal-item">
+
+
+                        <!-- Image Card -->
+                        <div class="rounded-2xl overflow-hidden aspect-162/308 h-[308px] relative">
+                            <img src="/Assets/images/homepage/atl-img-2.webp" class="w-full h-full object-cover" />
+                            <span class="absolute top-4 right-4 badge-wrap">
+                                Webinar
+                            </span>
+                        </div>
+
+                        <!-- Text Card -->
+                        <div
+                            class="bg-white rounded-2xl p-5 shadow-[0_0_13.8px_0_rgba(19,19,19,0.20)] card-content-wrap dark-bgblack">
+                            <h3> Novel biomarkers in breast cancer diagnosis</h3>
+                            <div>
+                                <p class="atl-p">Dr. Priya Sharma</p>
+                                <p class="atl-date">Feb 17, 2026</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+<div class="vector-section">
+
+    <div class="bg-merge-vector-two bg-vector-wrap"><img src="/Assets/images/vector-bg-02.svg" alt="" /></div>
+
+    @* TRUST AND QUALITY SECTION *@
+    <section class="section-pb trust-quality-section relative">
+        <div class="container">
+            <div class="wrapper-title-outer">
+                <div class="wrapper-title title-heading-outer title-heading-outer-center pb-5 sm:pb-10">
+                    <h2 class="text-h2 title-heading-anim"> Trust & <span class="highlight-span">Quality</span> </h2>
+                </div>
+            </div>
+
+
+            <div class="mt-10">
+                <div class="max-w-full mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-4 lg:gap-8 reveal-group">
+                    <!-- CARD 1 -->
+                    <div class="relative rounded-2xl overflow-hidden px-6 py-8 tq-item reveal-item icon-transform-item">
+
+                        <img src="/Assets/images/homepage/trust-quality/trust-quality-bg.svg" alt=""
+                            class="absolute inset-0 w-full h-full object-cover rounded-2xl dark-grayscaleinvert0" />
+
+                        <div class="relative z-1 text-white flex items-center gap-4 tq-inner h-full">
+
+                            <div class="flex-1 tq-content nabl-logo-wrap">
+                                <div class="tq-content-in ">
+                                    <img src="/Assets/images/homepage/NABL-logo.svg" alt=""
+                                        class="w-auto h-auto object-cover" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- CARD 2 -->
+                    <div class="relative rounded-2xl overflow-hidden px-6 py-8 tq-item reveal-item icon-transform-item">
+
+                        <img src="/Assets/images/homepage/trust-quality/trust-quality-bg.svg" alt=""
+                            class="absolute inset-0 w-full h-full object-cover rounded-2xl dark-grayscaleinvert0" />
+
+                        <div class="relative z-1 text-white flex flex-col items-start gap-4 tq-inner">
+                            <!-- Icon -->
+                            <div class="w-31 h-31 flex items-center justify-center tq-icon icon-transform">
+                                <img src="/Assets/images/homepage/trust-quality/data-privacy-security.svg" alt="">
+                            </div>
+
+                            <!-- Content -->
+                            <div class="flex-1 pt-8 pb-5 tq-content">
+                                <div class="tq-content-in space-y-2">
+                                    <h3 class="font-semibold text-20 text-white">Data Privacy & Security</h3>
+                                    <p class="text-white mt-1"> End-to-end encrypted reporting system </p>
+                                </div>
+                                <div>
+                                    <a class="themeht-btn black-btn arrow-btn mt-4 data-trigger" data-trigger="modal"
+                                        data-target="#dataPrivacySecurityPopup"> Learn More <img
+                                            src="/Assets/images/common-images/btn-arrow-white.svg" alt="arrow icon">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CARD 3 -->
+                    <div class="relative rounded-2xl overflow-hidden px-6 py-8 tq-item reveal-item icon-transform-item">
+
+                        <img src="/Assets/images/homepage/trust-quality/trust-quality-bg.svg" alt=""
+                            class="absolute inset-0 w-full h-full object-cover rounded-2xl dark-grayscaleinvert0" />
+
+
+                        <div class="relative z-1 text-white flex flex-col items-start gap-4 tq-inner">
+                            <!-- Icon -->
+                            <div class="w-31 h-31 flex items-center justify-center tq-icon icon-transform">
+                                <img src="/Assets/images/homepage/trust-quality/quality-assured.svg" alt="">
+                            </div>
+
+                            <!-- Content -->
+                            <div class="flex-1 pt-8 pb-5 tq-content">
+                                <div class="tq-content-in space-y-2">
+                                    <h3 class="font-semibold text-20 text-white">Quality Assured</h3>
+                                    <p class="text-white mt-1"> International quality standards compliance </p>
+                                </div>
+                                <div>
+                                    <a class="themeht-btn black-btn arrow-btn mt-4 data-trigger" data-trigger="modal"
+                                        data-target="#qualityAssuredPopup"> Learn More <img
+                                            src="/Assets/images/common-images/btn-arrow-white.svg" alt="arrow icon">
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tq-line-vector">
+            <svg viewBox="0 0 1600 200" class="line-svg">
+                <path id="linePath01" class="linePath"
+                    d="M1637.88 184.383C1569.82 174.56 1374.05 157.342 1227.73 91.8327C1172.9 67.2808 1160.21 47.2865 1108.79 16.2023C1021.1 -36.8102 828.57 57.7646 736.394 102.522C565.164 185.665 271.847 259.673 -24.2804 31.7733"
+                    fill="none" stroke="#DE392E" stroke-width="1.00225" />
+
+                <circle class="dot dot1" r="6" cx="0" cy="0" fill="#DE392E"></circle>
+                <circle class="dot dot2" r="6" cx="0" cy="0" fill="#DE392E"></circle>
+
+            </svg>
+        </div>
+
+    </section>
+
+    @* TESTIMONIALS SECTION *@
+    <section class="section-pb testimonials-section relative animate-section">
+        <div class="container">
+            <div class="wrapper-title-outer">
+                <div class="wrapper-title title-heading-outer title-heading-outer-center pb-5 sm:pb-10">
+                    <h2 class="text-h2 title-heading-anim"> <span class="highlight-span">Testimonials</span> </h2>
+                </div>
+            </div>
+            <!-- Swiper -->
+            <div class="testimonial-slider relative custom-arrow-slider mt-5">
+                <div class="swiper testimonialSwiper">
+
+                    <div class="swiper-wrapper">
+
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide">
+                            <div
+                                class="bg-white dark-bgblack rounded-2xl shadow-lg px-6 pt-12 pb-6 relative drop-shadow-custom testimonial-item-inner">
+
+                                <!-- Quote Icon -->
+                                <div class="absolute -top-10 right-4">
+                                    <img src="/Assets/images/common-images/quote-icon.svg" class="dark-grayscaleinvert0"
+                                        alt="quote icon">
+                                </div>
+
+                                <p> Very good overall interaction. The services offered were described and explained
+                                    very well. Surely refer the same with other needy people as well. </p>
+
+                                <div class="bottom-star">
+                                    <div class="font-medium text-base dark-textwhite">Umesh Kakde</div>
+                                    @* <div class="flex gap-1 text-xl text-orange-400 rating">
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                        </div> *@
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide">
+                            <div
+                                class="bg-white dark-bgblack rounded-2xl shadow-lg px-6 pt-12 pb-6 relative drop-shadow-custom testimonial-item-inner">
+
+                                <div class="absolute -top-10 right-4">
+                                    <img src="/Assets/images/common-images/quote-icon.svg" class="dark-grayscaleinvert0"
+                                        alt="quote icon">
+                                </div>
+
+                                <p>
+                                    It’s true the best histopathology lab in Mumbai. Very supportive. Also will get
+                                    report before committed time.
+                                </p>
+
+                                <div class="bottom-star">
+                                    <div class="font-medium text-base dark-textwhite">Dattatraya Sapkal</div>
+                                    @* <div class="flex gap-1 text-xl text-orange-400 rating">
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                        </div> *@
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="swiper-slide">
+                            <div
+                                class="bg-white dark-bgblack rounded-2xl shadow-lg px-6 pt-12 pb-6 relative drop-shadow-custom testimonial-item-inner">
+
+                                <div class="absolute -top-10 right-4">
+                                    <img src="/Assets/images/common-images/quote-icon.svg" class="dark-grayscaleinvert0"
+                                        alt="quote icon">
+                                </div>
+
+                                <p>
+                                    Very courteous and helpful staff at the reception. May we have many more such
+                                    individuals at other hospitals.
+                                </p>
+
+                                <div class="bottom-star">
+                                    <div class="font-medium text-base dark-textwhite">Mahiar Gandhi</div>
+                                    @* <div class="flex gap-1 text-xl text-orange-400 rating">
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                        </div> *@
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="swiper-slide">
+                            <div
+                                class="bg-white dark-bgblack rounded-2xl shadow-lg px-6 pt-12 pb-6 relative drop-shadow-custom testimonial-item-inner">
+
+                                <div class="absolute -top-10 right-4">
+                                    <img src="/Assets/images/common-images/quote-icon.svg" class="dark-grayscaleinvert0"
+                                        alt="quote icon">
+                                </div>
+
+                                <p>
+                                    It’s true the best histopathology lab in Mumbai. Very supportive. Also will get
+                                    report before committed time.
+                                </p>
+
+                                <div class="bottom-star">
+                                    <div class="font-medium text-base dark-textwhite">Dattatraya Sapkal</div>
+                                    @* <div class="flex gap-1 text-xl text-orange-400 rating">
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                        </div> *@
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Slide 5 -->
+                        <div class="swiper-slide">
+                            <div
+                                class="bg-white dark-bgblack rounded-2xl shadow-lg px-6 pt-12 pb-6 relative drop-shadow-custom testimonial-item-inner">
+
+                                <div class="absolute -top-10 right-4">
+                                    <img src="/Assets/images/common-images/quote-icon.svg" class="dark-grayscaleinvert0"
+                                        alt="quote icon">
+                                </div>
+
+                                <p>
+                                    Very courteous and helpful staff at the reception. May we have many more such
+                                    individuals at other hospitals.
+                                </p>
+
+                                <div class="bottom-star">
+                                    <div class="font-medium text-base dark-textwhite">Mahiar Gandhi</div>
+                                    @* <div class="flex gap-1 text-xl text-orange-400 ">
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                            <span class="star">★</span>
+                                        </div> *@
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Arrows -->
+                <div class="swiper-button-prev custom-arrow"> <img
+                        src="/Assets/images/common-images/left-arrow-swiper.svg" alt="prev"></div>
+                <div class="swiper-button-next custom-arrow"> <img
+                        src="/Assets/images/common-images/right-arrow-swiper.svg" alt="next"></div>
+
+
+            </div>
+        </div>
+    </section>
+
+</div>
+
+@* VALUE SECTION *@
+<section class="section-pb values-section animate-section relative">
+    <div class="hexagon-big floating-icon"><img src="/Assets/images/common-images/hexagon-vector-big.svg" class="w-auto"
+            alt=""></div>
+    <div class="container">
+        <div class="values-wrapper flex flex-col lg:flex-row items-center gap-10 relative">
+
+            <!-- IMAGE -->
+            <div class="values-image w-full lg:w-3/5 flex justify-center rounded-2xl">
+                <div class="img-box w-full lg:w-full rounded-2xl overflow-hidden">
+                    <img src="/Assets/images/homepage/our-values/OurValues-img.webp"
+                        class="w-full h-full object-cover rounded-2xl" />
+                </div>
+            </div>
+
+            <!-- TEXT -->
+            <div class="values-text w-full lg:w-2/5 lg:opacity-0 lg:translate-y-10 title-heading-outer">
+                <h2 class="text-h2 title-heading-anim">Our Values reflect our <span class="highlight-span">principles,
+                        purpose, and promise.</span>
+                </h2>
+            </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div
+            class="grid grid-cols-2 sm:grid-cols-4 items-center justify-center text-center gap-y-6 lg:gap-y-0 divide-y-0 md:divide-y-0 md:divide-x lg:divide-y-0 lg:divide-x md:divide-primary mt-12 reveal-group value-list">
+
+            <!-- ITEM 1 -->
+            <div class="px-1 sm:px-4 py-0 w-full md:w-auto reveal-item">
+                <div class="value-item flex items-center justify-center gap-3 icon-transform-item">
+                    <div class="icon-wrap icon-transform">
+                        <img src="/Assets/images/homepage/our-values/Quality-Safety-icon.svg" class="w-auto icon-draw"
+                            alt="">
+                    </div>
+                    <span class="text-20 font-semibold">Quality & Safety</span>
+                </div>
+            </div>
+
+            <!-- ITEM 2 -->
+            <div class="px-1 sm:px-4 py-0 w-full md:w-auto reveal-item">
+                <div class="value-item flex items-center justify-center icon-transform-item">
+                    <div class="icon-wrap icon-transform">
+                        <img src="/Assets/images/homepage/our-values/Innovation-icon.svg" class="w-auto icon-draw "
+                            alt="">
+                    </div>
+                    <span class="text-20 font-semibold">Innovation</span>
+                </div>
+            </div>
+
+            <!-- ITEM 3 -->
+            <div class="px-1 sm:px-4 py-0 w-full md:w-auto reveal-item">
+                <div class="value-item flex items-center justify-center gap-3 icon-transform-item">
+                    <div class="icon-wrap icon-transform">
+                        <img src="/Assets/images/homepage/our-values/Integrity-icon.svg" class="w-auto icon-draw"
+                            alt="">
+                    </div>
+                    <span class="text-20 font-semibold">Integrity</span>
+                </div>
+            </div>
+
+            <!-- ITEM 4 -->
+            <div class="px-1 sm:px-4 py-0 w-full md:w-auto reveal-item gap-3">
+                <div class="value-item flex items-center justify-center icon-transform-item">
+                    <div class="icon-wrap icon-transform">
+                        <img src="/Assets/images/homepage/our-values/Accountability-icon.svg" class="w-auto icon-draw"
+                            alt="">
+                    </div>
+                    <span class="text-20 font-semibold">Accountability</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+@* Popups and Modals *@
+<div id="videoModal" class="fixed inset-0 z-[999] hidden">
+
+    <!-- BACKDROP -->
+    <div class="modal-bg absolute inset-0 bg-black/60 backdrop-blur-md"></div>
+
+    <!-- VIDEO BOX -->
+    <div id="videoBox" class="absolute bg-black rounded-full overflow-hidden shadow-2xl">
+
+        <!-- CLOSE -->
+        <button id="closeVideo" class="absolute top-3 right-3 z-10 text-white text-xl">✕</button>
+
+        <!-- MP4 -->
+        <video id="mp4Video" class="w-full h-full hidden object-cover" controls></video>
+
+        <!-- YOUTUBE -->
+        <iframe id="youtubeVideo" class="w-full h-full hidden" frameborder="0" allow="autoplay; encrypted-media"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+</div>
+
+<div id="DrSumeetGujral"
+    class="fixed inset-0 z-[1001] flex items-center justify-center px-4 py-6 sm:py-0 opacity-0 pointer-events-none modal-popup-wrapper">
+
+    <div class="relative w-full max-w-4xl">
+
+        <!-- Close Button -->
+        <button data-close
+            class="absolute -top-2 -right-2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white shadow data-close-modal transition-colors">
+            ✕
+        </button>
+
+        <!-- Modal Card -->
+        <div class="popup-wrapper-inner bg-white rounded-xl shadow-2xl overflow-hidden max-h-[85vh] overflow-y-auto p-6 dark-bgblack team-popup-wrapper-inner"
+            data-lenis-prevent>
+
+            <div class="flex flex-col sm:flex-row items-start" data-lenis-prevent>
+
+                <!-- IMAGE -->
+                <div class="sm:w-1/3 w-full">
+                    <img src="/Assets/images/homepage/team-dummy.svg" class="w-full h-full object-cover rounded-2xl">
+                </div>
+
+                <!-- CONTENT -->
+                <div class="sm:w-2/3 w-full sm:p-8 mt-4 sm:mt-0">
+                    <div class="team-info-space mb-4">
+                        <h3 class="text-20 text-primary font-bold mb-1">
+                            Dr Sumeet Gujral
+                        </h3>
+
+                        <p class="team-designation">
+                            <span class="font-semibold"> Role at COP: </span> MD Pathology, Senior Advisor
+                        </p>
+                        <p class="team-designation">Centre for Oncopathology (COP), Tata Cancer Care Foundation</p>
+                    </div>
+                    <div class="team-info-content">
+                        <p>Dr Sumeet Gujral is a senior oncopathologist and hematopathologist with decades of academic
+                            and clinical experience across India’s premier cancer centres. Trained at AIIMS and a
+                            long-standing faculty member at Tata Memorial Centre, he is widely recognised for his
+                            expertise in both fields. </p>
+                        <p>He serves on several leading journal editorial boards and has contributed to global reference
+                            works, including the WHO Classification of Tumours (5th edition) – Hematolymphoid Tumours.
+                        </p>
+                        <p>At COP, Dr Gujral provides senior clinical guidance and helps maintain high diagnostic rigour
+                            and excellent reporting standards while strengthening academic work.</p>
+                        <p>Along with the late Dr Anita Borges, he led two highly regarded teaching initiatives: the
+                            Online Teaching Programme for Post Graduate Students in Pathology, supported by Tata Trusts
+                            (now in its fifth year), and the TMC Travelling School of Oncopathology, supported by Tata
+                            Memorial Centre, Mumbai (now in its first year). Both initiatives continue to support online
+                            learning in oncopathology.</p>
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="leadrship-accordion-wrapper" data-lenis-prevent>
+
+                <div class="accordion-item">
+
+                    <button
+                        class="accordion-toggle w-full flex justify-between items-center px-5 py-3 text-left font-bold text-lg dark-textwhite">
+                        <span>Footer section</span>
+                        <div class="icon-circle">
+                            <span class="line horizontal"></span>
+                            <span class="line vertical"></span>
+                        </div>
+                    </button>
+
+                    <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+
+                        <div class="accordion-inner px-4 py-5">
+
+                            <div class="divide-y divide-gray-200 dark:divide-gray-700">
+
+                                <!-- Training -->
+                                <div class="py-4 flex flex-col sm:flex-row gap-2 sm:gap-6">
+                                    <div class="sm:w-[180px] font-semibold text-gray-900 dark-textwhite shrink-0">
+                                        Training
+                                    </div>
+                                    <div class="text-gray-700 dark-textwhite dark-textwhite">
+                                        MD Pathology – AIIMS, New Delhi
+                                    </div>
+                                </div>
+
+                                <!-- Specialty -->
+                                <div class="py-4 flex flex-col sm:flex-row gap-2 sm:gap-6">
+                                    <div class="sm:w-[180px] font-semibold text-gray-900 dark-textwhite shrink-0 ">
+                                        Specialty Areas
+                                    </div>
+                                    <div class="text-gray-700 dark-textwhite dark-textwhite">
+                                        <ul class="list-disc pl-5 space-y-1 ">
+                                            <li>Oncopathology</li>
+                                            <li>Hematopathology</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Publications -->
+                                <div class="py-4 flex flex-col sm:flex-row gap-2 sm:gap-6">
+                                    <div class="sm:w-[180px] font-semibold text-gray-900 dark-textwhite shrink-0">
+                                        Publications
+                                    </div>
+                                    <div class="text-gray-700 dark-textwhite dark-textwhite">
+                                        WHO Classification of Tumours (5th edition) – Hematolymphoid Tumours
+                                    </div>
+                                </div>
+
+                                <!-- Location -->
+                                <div class="py-4 flex flex-col sm:flex-row gap-2 sm:gap-6">
+                                    <div class="sm:w-[180px] font-semibold text-gray-900 dark-textwhite shrink-0">
+                                        Location
+                                    </div>
+                                    <div class="text-gray-700 dark-textwhite dark-textwhite">
+                                        Mumbai
+                                    </div>
+                                </div>
+
+                                <!-- Languages -->
+                                <div class="py-4 flex flex-col sm:flex-row gap-2 sm:gap-6">
+                                    <div class="sm:w-[180px] font-semibold text-gray-900 dark-textwhite shrink-0">
+                                        Languages
+                                    </div>
+                                    <div class="text-gray-700 dark-textwhite">
+                                        To be added
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="copPartnerPopup"
+    class="fixed inset-0 z-[1001] flex items-center justify-center px-4 py-6 sm:py-0 opacity-0 pointer-events-none">
+
+    <div class="relative w-full max-w-4xl">
+
+        <!-- Close Button -->
+        <button data-close
+            class="absolute -top-2 -right-2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white shadow transition-colors">
+            ✕
+        </button>
+
+        <!-- Modal Card -->
+        <div class="popup-wrapper-inner bg-white rounded-xl shadow-2xl overflow-hidden max-h-[85vh] overflow-y-auto p-6 dark-bgblack"
+            data-lenis-prevent>
+
+            <!-- TITLE -->
+            <div class="title-heading-outer-center pb-5 sm:pb-5 w-full">
+                <h3 class="text-20 title-heading-anim ">
+                    Partner with <span class="highlight-span"> COP </span>
+                </h3>
+            </div>
+
+            <!-- CONTENT -->
+            <p class="text-sm text-gray-600 mb-4">
+                We collaborate with hospitals, diagnostic centers, and laboratories to provide advanced oncology
+                diagnostics and standardized testing services.
+            </p>
+
+            <!-- FORM -->
+            <form class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                <!-- Hospital / Lab Name -->
+                <div>
+                    <label class="block text-sm font-medium mb-1">Hospital / Lab Name <span
+                            class="text-red-500">*</span></label>
+                    <input type="text" placeholder="Enter organization name"
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                        required>
+                </div>
+
+                <!-- Contact Person -->
+                <div>
+                    <label class="block text-sm font-medium mb-1">Contact Person <span
+                            class="text-red-500">*</span></label>
+                    <input type="text" placeholder="Enter contact person name"
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                        required>
+                </div>
+
+                <!-- Contact Number -->
+                <div>
+                    <label class="block text-sm font-medium mb-1">Contact Number <span
+                            class="text-red-500">*</span></label>
+                    <input type="tel" placeholder="Enter contact number"
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                        required>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="block text-sm font-medium mb-1">Email ID <span class="text-red-500">*</span></label>
+                    <input type="email" placeholder="Enter email"
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                        required>
+                </div>
+
+                <!-- Message -->
+
+                <div class="sm:col-span-2">
+                    <label class="block text-sm font-medium mb-1">Message (Optional)</label>
+                    <textarea rows="3" placeholder="Tell us about your requirement"
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                </div>
+                <!-- File Upload -->
+                <div class="sm:col-span-2">
+                    <label class="text-sm font-medium block mb-2">Attach File <span
+                            class="text-muted">(optional)</span></label>
+
+
+                    <label
+                        class="inline-flex items-center gap-3 px-6 py-3 border border-[#E9E9E9] rounded-xl cursor-pointer text-red-500 bg-white hover:bg-gray-50 transition-all duration-300 dark-bglight">
+                        <img src="/Assets/images/common-images/choose-icon.svg" class="object-cover block " />
+                        <span class="text-base font-medium dark-textwhite">Choose File</span>
+                        <input type="file" class="hidden" />
+                    </label>
+                </div>
+
+                <!-- Checkbox -->
+                <div class="flex items-center gap-2 sm:col-span-2">
+                    <input type="checkbox" name="consent" class="checkbox mt-1">
+                    <p class="text-small"> I agree to be contacted by COP regarding this enquiry. </p>
+                </div>
+
+                <!-- Button -->
+                <div class="sm:col-span-2">
+                    <button type="submit" class="themeht-btn color-btn darkwhite-btn">
+                        Submit Your Enquiry
+                    </button>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="lg:max-w-2xl sm:col-span-2">
+                    <p class="text-muted text-small ">By submitting your information, you confirm that the details
+                        provided are accurate and consent to the use of your information by COP and to being contacted
+                        by COP for updates and relevant communications. </p>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div id="oncopathologyPopup"
+    class="fixed inset-0 z-[1001] flex items-center justify-center px-4 py-6 sm:py-0 opacity-0 pointer-events-none">
+
+    <div class="relative w-full max-w-3xl">
+
+        <!-- Close -->
+        <button data-close
+            class="absolute -top-2 -right-2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white shadow transition">
+            ✕
+        </button>
+
+        <div class="popup-wrapper-inner bg-white rounded-xl shadow-2xl overflow-hidden max-h-[85vh] overflow-y-auto p-6 dark-bgblack"
+            data-lenis-prevent>
+
+            <div class="title-heading-outer-center pb-5 sm:pb-5 w-full">
+                <h3 class="text-20 title-heading-anim ">
+                    Oncopathology <span class="highlight-span"> Expertise </span>
+                </h3>
+            </div>
+
+
+            <p class="text-sm text-gray-600 mb-3">
+                At COP, our oncopathology team combines clinical insight with advanced diagnostic precision to support
+                accurate cancer diagnosis and treatment planning.
+            </p>
+
+            <p class="text-sm text-gray-600">
+                We provide detailed histopathological evaluation, immunohistochemistry, and integrated reporting aligned
+                with global standards—ensuring clarity and confidence in every diagnosis.
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div id="biomarkerPopup"
+    class="fixed inset-0 z-[1001] flex items-center justify-center px-4 py-6 sm:py-0 opacity-0 pointer-events-none">
+
+    <div class="relative w-full max-w-3xl">
+
+        <!-- Close -->
+        <button data-close
+            class="absolute -top-2 -right-2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white shadow transition">
+            ✕
+        </button>
+
+        <div class="popup-wrapper-inner bg-white rounded-xl shadow-2xl overflow-hidden max-h-[85vh] overflow-y-auto p-6 dark-bgblack"
+            data-lenis-prevent>
+
+
+            <div class="title-heading-outer-center pb-5 sm:pb-5 w-full">
+                <h3 class="text-20 title-heading-anim ">
+                    Advanced Biomarkers & <span class="highlight-span"> Molecular Testing </span>
+                </h3>
+            </div>
+
+            <p class="text-sm text-gray-600 mb-3">
+                COP delivers comprehensive molecular diagnostics and biomarker testing to support personalized oncology
+                care.
+            </p>
+
+            <p class="text-sm text-gray-600">
+                From predictive and prognostic markers to advanced sequencing panels, our approach enables deeper
+                insights that guide targeted and effective treatment decisions.
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div id="secondOpinionDiagnosisPopup"
+    class="fixed inset-0 z-[1001] flex items-center justify-center px-4 py-6 sm:py-0 opacity-0 pointer-events-none">
+
+    <div class="relative w-full max-w-3xl">
+
+        <!-- Close -->
+        <button data-close
+            class="absolute -top-2 -right-2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white shadow transition">
+            ✕
+        </button>
+
+        <div class="popup-wrapper-inner bg-white rounded-xl shadow-2xl overflow-hidden max-h-[85vh] overflow-y-auto p-6 dark-bgblack"
+            data-lenis-prevent>
+
+
+            <div class="title-heading-outer-center pb-5 sm:pb-5 w-full">
+                <h3 class="text-20 title-heading-anim ">
+                    Advanced Biomarkers & <span class="highlight-span"> Molecular Testing </span>
+                </h3>
+            </div>
+
+            <p class="text-sm text-gray-600 mb-3">
+                COP delivers comprehensive molecular diagnostics and biomarker testing to support personalized oncology
+                care.
+            </p>
+
+            <p class="text-sm text-gray-600">
+                From predictive and prognostic markers to advanced sequencing panels, our approach enables deeper
+                insights that guide targeted and effective treatment decisions.
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div id="dataPrivacySecurityPopup"
+    class="fixed inset-0 z-[1001] flex items-center justify-center px-4 py-6 sm:py-0 opacity-0 pointer-events-none">
+
+    <div class="relative w-full max-w-3xl">
+
+        <!-- Close -->
+        <button data-close
+            class="absolute -top-2 -right-2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white shadow transition">
+            ✕
+        </button>
+
+        <div class="popup-wrapper-inner bg-white rounded-xl shadow-2xl overflow-hidden max-h-[85vh] overflow-y-auto p-6 dark-bgblack"
+            data-lenis-prevent>
+
+
+            <div class="title-heading-outer-center pb-5 sm:pb-5 w-full">
+                <h3 class="text-20 title-heading-anim ">
+                    Data <span class="highlight-span"> Privacy & Security </span>
+                </h3>
+            </div>
+
+            <p class="text-sm text-gray-600 mb-3">
+                At COP, safeguarding patient data is a fundamental priority. We follow strict data protection protocols
+                to ensure confidentiality and secure handling of all medical information.
+            </p>
+
+            <p class="text-sm text-gray-600">
+                From data submission to final reporting, our systems are designed to maintain integrity, privacy, and
+                compliance—ensuring that sensitive information remains protected at every stage.
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div id="qualityAssuredPopup"
+    class="fixed inset-0 z-[1001] flex items-center justify-center px-4 py-6 sm:py-0 opacity-0 pointer-events-none">
+
+    <div class="relative w-full max-w-3xl">
+
+        <!-- Close -->
+        <button data-close
+            class="absolute -top-2 -right-2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white shadow transition">
+            ✕
+        </button>
+
+        <div class="popup-wrapper-inner bg-white rounded-xl shadow-2xl overflow-hidden max-h-[85vh] overflow-y-auto p-6 dark-bgblack"
+            data-lenis-prevent>
+
+
+            <div class="title-heading-outer-center pb-5 sm:pb-5 w-full">
+                <h3 class="text-20 title-heading-anim ">
+                    Quality <span class="highlight-span"> Assured </span>
+                </h3>
+            </div>
+
+            <p class="text-sm text-gray-600 mb-3">
+                Quality is at the core of everything we do at COP. Our processes follow standardized protocols and
+                rigorous quality control measures to ensure accuracy and consistency.
+            </p>
+
+            <p class="text-sm text-gray-600">
+                From sample handling to final diagnosis, every step is carefully monitored to deliver reliable results
+                that clinicians and patients can trust.
+            </p>
+
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script src="~/Assets/js/swiper-bundle.min.js"></script>
+    <script src="~/Assets/js/reveal-animation.js"></script>
+    <script src="~/Assets/js/line-animation.js"></script>
+    <script src="~/Assets/js/fy-select-script.js"></script>
+    <script src="~/Assets/js/video-popup-script.js"></script>
+    <script src="~/Assets/js/homepage-script.js"></script>
+}

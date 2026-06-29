@@ -1,0 +1,469 @@
+@using Nekta_MVC.Helpers
+@model Nekta_BusinessLogic.Entity.EventsModel
+@{
+    ViewData["Title"] = "Events & CME";
+}
+
+@section head {
+    <title>@Model.Content.cont_window_title</title>
+
+    <meta content="@Model.Content.cont_metatag" name="keywords" />
+    <meta content="@Model.Content.cont_metadesc" name="description" />
+
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="" />
+    <meta name="twitter:title" content="@Model.Content.ContTitle" />
+    <meta name="twitter:description" content="@Model.Content.cont_metadesc" />
+
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Centre for Oncopathology" />
+    <meta property="og:title" content="@Model.Content.ContTitle" />
+    <meta property="og:description" content="@Model.Content.cont_metadesc" />
+    <meta property="og:url" content="https://www.oncopath.org/" />
+    <meta property="og:image" content="@Model.Content.cont_meta_image" />
+
+    <meta itemprop="name" content="Centre for Oncopathology" />
+    <meta itemprop="description" content="@Model.Content.cont_metadesc" />
+    <meta itemprop="image" content="@Model.Content.cont_meta_image" />
+
+    <!-- Facebook / Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Centre for Oncopathology" />
+    <meta property="og:title" content="@Model.Content.ContTitle" />
+    <meta property="og:description" content="@Model.Content.cont_metadesc" />
+    <meta property="og:image" content="@Model.Content.cont_meta_image" />
+    <meta property="og:url" content="https://www.oncopath.org/" />
+
+    <link rel="canonical" href="@Model.Content.CanonicalUrl" />
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/Assets/css/innerbanner-style.css" />
+    <link rel="stylesheet" href="~/Assets/css/flatpickr.min.css" />
+    <link rel="stylesheet" href="~/Assets/css/eventscme-style.css" />
+}
+
+
+
+<section class="banner-inner-section mt-[99px] lg:mt-[153px] h-full relative">
+    <picture class="bannerinner-picture relative block w-full h-full">
+        <source media="(min-width:992px)" srcset="@Model.Content.MastheadImage" />
+        <source media="(max-width:991px)" srcset="@Model.Content.MobileMastheadImage" />
+        <img alt="@Model.Content.Masthead_image_Alt_text" class="object-cover" src="@Model.Content.MastheadImage" />
+    </picture>
+    <div class="banner-inner-outer relative w-full h-full">
+
+
+        <div class="inner-banner-vector">
+            <img src="/Assets/images/inner-banner-vector.svg" alt="" class="banner-vector-img" />
+            <div class="banner-mask">
+                <img src="/Assets/images/abstract-elements-banner.webp" class="masked-img" />
+            </div>
+            <div
+                class="absolute top-[15%] md:top-[30%] left-0 w-full px-0 md:px-8 xl:px-6 2xl:px-8 inner-banner-caption">
+                <div class="container">
+                    <nav aria-label="breadcrumb" class="breadcrumb_container pb-2 lg:pb-0 mb-2">
+                        @Html.Raw(Model.Content.BreadcrumPath)
+                    </nav>
+                    <div class="w-full sm:max-w-[60vw] lg:max-w-[35vw] innerbanner-title-outer">
+                        <h1 class="text-h1 innerbanner-title-heading ">
+                            @Html.Raw(
+                            string.IsNullOrWhiteSpace(Model.Content.Cont_hmpg_intro)
+                            ? Model.Content.ContTitle
+                            : Model.Content.Cont_hmpg_intro.CleanParagraphTags())
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="relative overflow-hidden">
+
+    <div class="bg-wrapper-flat"></div>
+
+    <section class="section-spacing intro-hexagon-section relative z-2">
+        <div class="container">
+            <div class="intro-hexagon-inner">
+                <div class="flex justify-start items-center gap-8 sm:gap-15 lg:gap-10 2xl:gap-25 flex-col sm:flex-row">
+                    <div class="hexagon-img-wrapper shrink-0 mx-w-full sm:max-w-[45%] lg:max-w-[45%] 2xl:max-w-[45%]">
+                        <div
+                            class="bt_bb_image bt_bb_shape_hexagon_reverse bt_bb_shape_hexagon_reverse bt_bb_hover_style_zoom-in">
+                            <div class="bt_bb_image_content">
+                                <img src="@Model.Content.Hmpg_thumbnail" alt="@Model.Content.Hmpg_thumbnail_alt_text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sm:max-w-[55%] lg:max-w-[55%] 2xl:max-w-[55%] space-y-2 dark-textwhite">
+                        @Html.Raw(Model.Content.Cont_intro)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    @if (Model?.UpcomingEvents_List?.Any() == true)
+    {
+        <section class="relative section-pb upcomingacademicevents-section z-1" id="upcomingacademicevents-section">
+            <div class="academic-vector bg-vector-wrap w-full"><img src="/Assets/images/vector-shape-bg.svg" alt="" /></div>
+            <div class="container">
+
+                @foreach (var item in Model.UpcomingComponents_List)
+                {
+                    <div class="wrapper-title-outer max-w-4xl mx-auto wrapper-title-outer-center">
+                        <div class="wrapper-title title-heading-outer title-heading-outer-center pb-5 sm:pb-10">
+                            <h2 class="text-h2 title-heading-anim mb-3">
+                                @Html.Raw(item.DisplayTitle.CleanParagraphTags())
+                            </h2>
+                            <p>@Html.Raw(item.Intro.CleanParagraphTags()) </p>
+                        </div>
+                    </div>
+                }
+
+                <!-- Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto mt-4 reveal-group">
+
+                    @foreach (var item in Model.UpcomingEvents_List)
+                    {
+                        <div
+                            class="bg-white rounded-2xl p-6 shadow-[0_10px_25px_rgba(0,0,0,0.05)] events-box-wrapper reveal-item dark-bglight">
+                            <div class="events-box-inner-wrapper">
+                                <span class="text-xs border px-4 py-1 rounded-[10px] badge-span">@item.EventTypeName</span>
+
+                                <h3 class="mt-5 mb-6 font-semibold text-20 sm:max-w-[15vw]">
+                                    @item.Title
+                                </h3>
+
+                                <div class="flex items-start gap-2 text-sm text-muted mb-3">
+                                    <img src="/Assets/images/eventscme/calender-icon.svg" alt="calendar" class=" mt-1">
+                                    <p>@item.DisplayDate.ToString("dddd, dd-MMM-yyyy")</p>
+                                </div>
+
+                                <div class="flex items-start gap-2 text-sm text-muted mb-3">
+                                    <img src="/Assets/images/eventscme/watch-icon.svg" alt="time" class=" mt-1">
+                                    <p>@item.EventTime</p>
+                                </div>
+
+                                <div class="flex items-start gap-2 text-sm text-muted mb-3  ">
+                                    <img src="/Assets/images/eventscme/pin-icon.svg" alt="location" class=" mt-1">
+                                    <p>Mode: @item.EventModeName</p>
+                                </div>
+
+                                @* <div class="flex items-start gap-2 text-sm text-muted mb-3">
+                                    <img src="/Assets/images/eventscme/person-icon.svg" alt="speakers" class=" mt-1">
+                                    <p>Speakers: @item.Speakers</p>
+                                </div> *@
+                            </div>
+
+
+                            <div class="w-full space-y-2 dark-textwhite bottom-btns-wrapper">
+
+                                <div class="flex gap-5">
+                                    <div id="btnexpand" data-id="@item.EventId" class="themeht-btn color-btn data-trigger"
+                                        data-trigger="modal" data-target="#expandDetailsPopup">
+                                        Expand Details
+                                    </div>
+
+                                    <a href="javascript:" data-Eventid="@item.Event_encryptId"
+                                        data-target="#eventsregisterPopup" class="themeht-btn color-outline-btn data-trigger"
+                                        data-trigger="modal">
+                                        Register
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </section>
+    }
+
+</div>
+
+<!-- post academic events -->
+@if (Model?.PastEvents_List?.Any() == true)
+{
+    <section class="relative section-pb upcomingacademicevents-section" id="pastacademicevents-section">
+
+        @foreach (var item in Model.PastComponents_List)
+        {
+            <div class="container">
+                <div class="wrapper-title-outer max-w-4xl mx-auto wrapper-title-outer-center">
+                    <div class="wrapper-title title-heading-outer title-heading-outer-center pb-5 sm:pb-10">
+                        <h2 class="text-h2 title-heading-anim mb-3">
+                            @Html.Raw(item.DisplayTitle.CleanParagraphTags())
+                        </h2>
+
+                        <p>@Html.Raw(item.Intro.CleanParagraphTags()) </p>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="upcomingacademicevents-wrapper">
+
+            <div class="flex flex-wrap items-center gap-3 mb-6 testdirectory-filters mt-10 sm:max-w-5xl m-auto">
+
+
+                <div class="container">
+                    <div class="events-wrapper lg:flex gap-5">
+                        <!-- Event Type -->
+                        <div
+                            class="fy-select-inner w-full sm:w-[calc(50%-6px)] md:w-[calc(50%-6px)] lg:flex-[1_1_160px] xl:flex-[1_1_180px]  pb-3 lg:pt-0 lg:pb-0">
+
+                            <label class="text-sm font-medium">Event Type</label>
+
+                            <select id="ddlEventType"
+                                class="w-full appearance-none border border-[#E9E9E9] rounded-2xl px-4 py-2.5 bg-white focus:outline-none focus:border-brand cursor-pointer font-body transition-colors fy-select">
+
+                                <option value="0">All types</option>
+                                @foreach (var item in Model.EventType)
+                                {
+                                    <option value="@item.id">@item.title</option>
+                                }
+
+                            </select>
+
+                        </div>
+
+                        <!-- Mode -->
+                        <div
+                            class="fy-select-inner w-full sm:w-[calc(50%-6px)] md:w-[calc(50%-6px)] lg:flex-[1_1_160px] xl:flex-[1_1_180px]  pb-3 lg:pt-0 lg:pb-0">
+
+                            <label class="text-sm font-medium">Mode</label>
+
+                            <select id="ddlEventMode"
+                                class="w-full appearance-none border border-[#E9E9E9] rounded-2xl px-4 py-2.5 bg-white focus:outline-none focus:border-brand cursor-pointer font-body transition-colors fy-select">
+                                <option value="0">All modes</option>
+                                @foreach (var item in Model.EventMode)
+                                {
+                                    <option value="@item.id">@item.title</option>
+                                }
+                            </select>
+
+                        </div>
+
+                        <!-- Date -->
+                        <div
+                            class="w-full sm:w-[calc(50%-6px)] md:w-[calc(50%-6px)] lg:flex-[1_1_160px] xl:flex-[1_1_180px]  pb-3 lg:pt-0 lg:pb-0">
+
+                            <label class="text-sm font-medium">Date</label>
+
+                            <div class="relative">
+
+                                <input id="txtSearchDate" type="text" id="eventDate" placeholder="Select Date"
+                                    class="w-full border border-[#E9E9E9] rounded-2xl px-4 py-2.5 pr-12 bg-white focus:outline-none focus:border-brand font-body transition-colors">
+
+                                <img src="/Assets/images/eventscme/calender-icon.svg" alt="calendar"
+                                    class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 2 bottom cards -->
+            <!-- Grid -->
+            <div class="container">
+                <div id="DivPastEvents" class="grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto mt-10 reveal-group">
+
+                    @foreach (var item in Model.PastEvents_List)
+                    {
+                        <div
+                            class="bg-white rounded-xl p-6 shadow-[0_10px_25px_rgba(0,0,0,0.05)] events-box-wrapper reveal-item dark-bglight">
+                            <div class="events-box-inner-wrapper">
+                                <span class="text-xs border px-4 py-1 rounded-[10px] badge-span">@item.EventTypeName</span>
+
+                                <h3 class="mt-5 mb-6 font-semibold text-20 sm:max-w-[25vw]">
+                                    @item.Title
+                                </h3>
+
+                                <div class="flex items-start gap-2 text-sm text-muted mb-3">
+                                    <img src="/Assets/images/eventscme/calender-icon.svg" alt="calendar" class=" mt-1">
+                                    <p>@item.DisplayDate.ToString("dddd, dd-MMM-yyyy")</p>
+                                </div>
+
+                                <div class="flex items-start gap-2 text-sm text-muted mb-3">
+                                    <img src="/Assets/images/eventscme/watch-icon.svg" alt="time" class=" mt-1">
+                                    <p>@item.EventTime</p>
+                                </div>
+
+                                <div class="flex items-start gap-2 text-sm text-muted mb-3  ">
+                                    <img src="/Assets/images/eventscme/pin-icon.svg" alt="location" class=" mt-1">
+                                    <p>Mode: @item.EventModeName</p>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="w-full space-y-2 dark-textwhite bottom-btns-wrapper">
+
+                                <div class="flex gap-5">
+                                    @if (!string.IsNullOrWhiteSpace(item.VideoUrl))
+                                    {
+                                        <a href="#" class="themeht-btn color-btn flex items-center gap-2" data-video-trigger
+                                            data-video-type="youtube" data-video-src="@item.VideoUrl">
+                                            <img src="/Assets/images/eventscme/play-icon.svg" alt="location">
+                                            Watch Recording
+                                        </a>
+                                    }
+                                    @if (!string.IsNullOrWhiteSpace(item.FilePath))
+                                    {
+                                        <a href="@item.FilePath" target="_blank" download
+                                            class="themeht-btn color-outline-btn flex items-center gap-2">
+                                            <img src="/Assets/images/eventscme/file-icon.svg" alt="location">
+                                            Download Resources
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+    </section>
+}
+
+
+@if (Model?.Stay_Updated_List != null && Model.Stay_Updated_List.Any())
+{
+    foreach (var item in Model.Stay_Updated_List)
+    {
+        <section class="relative section-pb">
+            <div class="hexagon-left floating-icon"><img src="/Assets/images/hexagon-vector-shape.svg" class="w-auto" alt="">
+            </div>
+            <div class="container">
+                <div
+                    class="feature-item flex flex-col lg:flex-row-reverse gap-6 sm:gap-10 md:gap-10 xl:gap-10 2xl:gap-16 items-center relative mb-15 sm:mb-30 lg:mb-30 last:mb-0 animate-viewport text-secondary-wrapper">
+
+                    <!-- Image -->
+                    <div
+                        class="w-full lg:w-3/5 flex flex-col lg:flex-row-reverse justify-between items-start gap-y-2 lg:gap-y-0 lg:gap-x-6 2xl:gap-x-10">
+                        <div class="rounded-2xl overflow-hidden relative z-1 w-full">
+                            <img src="@item.ComponentThumbnail" alt="@item.ComponentThumbnailAltText"
+                                class="w-full h-full object-cover rounded-2xl">
+                        </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="w-full lg:w-2/5 lg:mt-0 2xl:mt-0 relative">
+
+                        <div class="wrapper-title-outer">
+                            <div
+                                class="wrapper-title title-heading-outer title-heading-outer-start pb-5 sm:pb-5 no-titlepadding-wrapper">
+                                <h2 class="text-h2 title-heading-anim px-0">
+                                    @Html.Raw(item.DisplayTitle.CleanParagraphTags())
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <p>@Html.Raw(item.Intro.CleanParagraphTags())</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    }
+}
+
+
+<div id="videoModal" class="fixed inset-0 z-[999] hidden">
+
+    <!-- BACKDROP -->
+    <div class="modal-bg absolute inset-0 bg-black/60 backdrop-blur-md"></div>
+
+    <!-- VIDEO BOX -->
+    <div id="videoBox" class="absolute bg-black rounded-full overflow-hidden shadow-2xl">
+
+        <!-- CLOSE -->
+        <button id="closeVideo" class="absolute top-3 right-3 z-10 text-white text-xl">✕</button>
+
+        <!-- MP4 -->
+        <video id="mp4Video" class="w-full h-full hidden object-cover" controls></video>
+
+        <!-- YOUTUBE -->
+        <iframe id="youtubeVideo" class="w-full h-full hidden" frameborder="0" allow="autoplay; encrypted-media"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+</div>
+
+<!-- Register form popup -->
+<div id="eventsregisterPopup"
+    class="fixed inset-0 z-[1100] flex items-center justify-center px-4 py-6 sm:py-0 opacity-0 pointer-events-none">
+
+    <div class="relative w-full max-w-3xl">
+
+        <!-- Close Button -->
+        <button data-close
+            class="absolute -top-2 -right-2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white shadow transition-colors">
+            ✕
+        </button>
+
+        <!-- Modal Card -->
+        <div id="div_eventsregisterPopup"
+            class="popup-wrapper-inner bg-white rounded-xl shadow-2xl overflow-hidden max-h-[92vh] overflow-y-auto p-6 dark-bgblack">
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Expand Details Popup -->
+<div id="expandDetailsPopup"
+    class="fixed inset-0 z-[1001] flex items-center justify-center px-4 py-6 sm:py-0 opacity-0 pointer-events-none">
+
+    <div class="relative w-full max-w-3xl">
+
+        <!-- Close -->
+        <button data-close
+            class="absolute -top-2 -right-2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white shadow transition">
+            ✕
+        </button>
+
+        <div class="popup-wrapper-inner bg-white rounded-xl shadow-2xl overflow-hidden max-h-[85vh] overflow-y-auto p-6 dark-bgblack"
+            data-lenis-prevent>
+
+            <p class="text-sm text-gray-600 mb-3" id="txtexpandIntro">
+
+            </p>
+
+            <p class="text-sm text-gray-600" id="txtexpandContent">
+
+            </p>
+
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script src="~/Assets/js/innerbanner-script.js"></script>
+    <script src="~/Assets/js/fy-select-script.js"></script>
+    <script src="~/Assets/js/reveal-animation.js"></script>
+    <script src="~/Assets/js/video-popup-script.js"></script>
+    <script src="~/Assets/js/flatpickr.min.js"></script>
+    <script src="~/Assets/js/eventscme-script.js"></script>
+    <script src="~/Assets/js/modal-popup-script.js"></script>
+    <script src="~/scripts/Events/Events.js"></script>
+}

@@ -1,0 +1,66 @@
+@using Nekta_BusinessLogic.Entity
+@using Nekta_MVC.Helpers
+@model List<AboutCommonModel>
+
+
+@{
+    var Component = Model
+    .Where(x => x.IsBlock == 0)
+    .OrderBy(x => x.Sequence)
+    .FirstOrDefault();
+}
+
+<section class="section-pb pt-10 common-info-grid-section relative">
+    <div class="container">
+        <div class="wrapper-title-outer wrapper-title-outer-center">
+            <div class="wrapper-title title-heading-outer title-heading-outer-center pb-5 sm:pb-10">
+                <h2 class="text-h2 title-heading-anim">
+                    @Html.Raw(Component.DisplayTitle.CleanParagraphTags())
+                </h2>
+            </div>
+        </div>
+
+        <div class="common-card-slider relative custom-arrow-slider mt-10">
+            <div class="swiper commonSwiperslider">
+                <div class="swiper-wrapper">
+
+                    @foreach (var item in Model
+                                        .Where(x => x.IsBlock == 1)
+                                        .OrderBy(x => x.Sequence))
+                    {
+                        <div class="swiper-slide">
+                            <div class="common-block-card icon-transform-item drop-shadow-custom">
+                                <div class="c-icon icon-transform">
+                                    <img src="@item.Icon_Image" alt="@item.Title" />
+                                </div>
+                                <p class="c-label">@item.Title</p>
+                                <p class="c-sub">
+                                    @Html.Raw(item.Intro.CleanParagraphTags())
+                                </p>
+
+                            </div>
+                        </div>
+                    }
+
+
+
+                </div>
+            </div>
+
+            <!-- Arrows -->
+            <div class="swiper-button-prev custom-arrow">
+                <img src="/Assets/images/common-images/left-arrow-swiper.svg" />
+            </div>
+            <div class="swiper-button-next custom-arrow">
+                <img src="/Assets/images/common-images/right-arrow-swiper.svg" />
+            </div>
+
+        </div>
+        @* <div class="text-center mt-8 sm:mt-8">
+                    <a href="#" class="themeht-btn color-btn darkwhite-btn">
+                        Join Us in Advancing Cancer Care
+                    </a>
+                </div> *@
+    </div>
+
+</section>

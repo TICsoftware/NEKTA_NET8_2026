@@ -1,0 +1,78 @@
+
+@using Nekta_BusinessLogic.Entity
+@using Nekta_MVC.Helpers
+@model List<ContentCommonModel>
+
+
+@{
+    var Component = Model
+    .Where(x => x.IsBlock == 0)
+    .OrderBy(x => x.Sequence)
+    .FirstOrDefault();
+}
+
+
+<section class="relative pb-15 pt-15 sm:pt-20 sm:pb-20 lg:pt-0 lg:pb-0 lg:h-[950px] scheduleservice-section">
+    <div class="contact-bg bg-parallax overflow-hidden">
+        <img src="/Assets/images/forpatients/scheduleservice-bg.webp" alt="" class="w-full object-cover dark-grayscaleinvert0"/>
+    </div>
+    <div class="container">
+        <div class="wrapper-title-outer wrapper-title-outer-center">
+            <div class="wrapper-title title-heading-outer title-heading-outer-center pb-5 sm:pb-10 filldark-title-heading-anim">
+                <h2 class="text-h2 title-heading-anim title-heading-anim-white ">
+                      @Html.Raw(Component.DisplayTitle.CleanParagraphTags())
+                </h2>
+            </div>
+        </div>
+
+         <div class="scheduleservice-slider relative custom-arrow-slider">
+            <div class="swiper scheduleserviceSwiper"> 
+                 <div class="swiper-wrapper">
+
+
+                     @foreach (var item in Model
+                                        .Where(x => x.IsBlock == 1)
+                                        .OrderBy(x => x.Sequence))
+                    {
+                        if (!string.IsNullOrEmpty(item.Title))
+                {
+                    <div class="swiper-slide">
+                        <div class="hexagon-block-card rounded-bl-2xl rounded-br-2xl">
+                            <div class="inner-block-wrap">
+                                <div class="hexagon-img">
+                                    <div class="bt_bb_image bt_bb_shape_hexagon bt_bb_hover_style_zoom-in">
+                                        <div class="bt_bb_image_content">
+                                               <img src="@item.ThumbnailImage" alt="@item.ThumbnailAltText" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="inner-block-content">
+                                    <h3>@item.Title</h3>
+                                    <div class="sm:max-w-[25vw] inner-block-text">
+                                          @Html.Raw(item.Intro.CleanParagraphTags())
+                           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                    }
+                                             
+                          
+                        </div>
+                    </div>
+
+                       <div class="swiper-button-prev custom-arrow">
+                <img src="/Assets/images/common-images/left-arrow-swiper.svg" />
+            </div>
+            <div class="swiper-button-next custom-arrow">
+                <img src="/Assets/images/common-images/right-arrow-swiper.svg" />
+            </div>
+                </div>
+             <!-- Arrows -->
+         
+     
+
+    </div>
+</section>

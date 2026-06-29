@@ -1,0 +1,59 @@
+@using Nekta_BusinessLogic.Entity
+@using Nekta_MVC.Helpers
+@model List<HomeCommonModel>
+
+
+@{
+    var Component = Model
+    .Where(x => x.IsBlock == 0)
+    .OrderBy(x => x.Sequence)
+    .FirstOrDefault();
+}
+
+<section class="section-pb testimonials-section relative animate-section">
+    <div class="container">
+        <div class="wrapper-title-outer wrapper-title-outer-center">
+            <div class="wrapper-title title-heading-outer title-heading-outer-center pb-5 sm:pb-10">
+                <h2 class="text-h2 title-heading-anim">
+                    @Html.Raw(Component.DisplayTitle.CleanParagraphTags())
+                </h2>
+            </div>
+        </div>
+        <!-- Swiper -->
+        <div class="testimonial-slider relative custom-arrow-slider mt-5">
+            <div class="swiper testimonialSwiper">
+                <div class="swiper-wrapper">
+                    @foreach (var item in Model.Where(x => x.IsBlock == 1)
+                                        .OrderBy(x => x.Sequence))
+                    {
+                        <div class="swiper-slide">
+                            <div
+                                class="bg-white dark-bgblack rounded-2xl shadow-lg px-6 pt-12 pb-6 relative drop-shadow-custom testimonial-item-inner">
+
+                                <!-- Quote Icon -->
+                                <div class="absolute -top-10 right-4">
+                                    <img src="@item.Icon_Image" class="dark-grayscaleinvert0" alt="quote icon">
+                                </div>
+
+                                <p>@Html.Raw(item.Intro.CleanParagraphTags()) </p>
+
+                                <div class="bottom-star">
+                                    <div class="font-medium text-base dark-textwhite">@item.Title</div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Arrows -->
+            <div class="swiper-button-prev custom-arrow"> <img src="/Assets/images/common-images/left-arrow-swiper.svg"
+                    alt="prev"></div>
+            <div class="swiper-button-next custom-arrow"> <img src="/Assets/images/common-images/right-arrow-swiper.svg"
+                    alt="next"></div>
+
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,182 @@
+ 
+ @model Job_application
+ <!-- FORM -->
+ @using (Html.BeginForm("ApplyJob", "Careers", FormMethod.Post, new
+    {
+        id = "frmapplyjob",
+        enctype = "multipart/form-data",
+        @class = "grid grid-cols-1 sm:grid-cols-2 gap-4"
+    }))
+    {
+                  @Html.AntiForgeryToken()
+                  <div id="successMessage_apply" tabindex="-1"
+                    class="hidden mt-6 p-3 rounded-xl bg-green-50 border border-green-200 flex items-start gap-3 sm:col-span-2">
+                    @if(ViewBag.SuccessMessage != null && !string.IsNullOrWhiteSpace(ViewBag.SuccessMessage))
+                    { 
+                    <!-- Icon -->
+                    <div class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-green-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+
+                    <!-- Text -->
+                    <div id="divthankyoumsg" >
+                        <p class="text-sm! font-medium text-green-800">
+                            @Html.Raw(ViewBag.SuccessMessage)
+                        </p>
+                    </div>
+                    }                 
+                
+                </div> 
+                <div  id="divvalidation"  class="sm:col-span-2">
+                    @Html.ValidationSummary(excludePropertyErrors: true, "", new { @class = "text-danger" })
+                </div>
+                <!-- Contact Person -->
+                <div>
+                    <label class="block text-sm font-medium mb-1">Full Name <span class="text-red-500">*</span></label>
+                    @Html.TextBoxFor(model => model.Name, new { id = "FullName", @class = "w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary",
+                    @placeholder="Enter Name",  maxlength = "100" })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div> 
+              
+                <div>
+                    <label class="block text-sm font-medium mb-1">Age (in years) <span class="text-red-500">*</span></label>
+                    @Html.TextBoxFor(model => model.Age, new { id = "Age", @class = "w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary",
+                    @placeholder="Enter Age",  maxlength = "100" })
+                    @Html.ValidationMessageFor(model => model.Age)                     
+                </div>
+
+                 
+                <div class="fy-select-inner relative">
+                    <label class="block text-sm font-medium mb-1">Gender <span class="text-red-500">*</span></label>
+                     @Html.DropDownListFor(model => model.Gender,
+                        new List<SelectListItem>
+                        {
+                            new SelectListItem { Text = "Select", Value = "" },
+                            new SelectListItem { Text = "Male", Value = "Male" },
+                            new SelectListItem { Text = "Female", Value = "Female" },
+                            new SelectListItem { Text = "Other", Value = "Other" },                                                     
+                        },
+                        new { @class = "w-full appearance-none border border-[#E9E9E9] rounded-xl px-4 py-2.5 pr-4 text-sm text-[#767676] bg-white focus:outline-none focus:border-brand cursor-pointer font-body transition-colors fy-select", id = "ddGender" })   
+                        @Html.ValidationMessageFor(model => model.Gender) 
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="block text-sm font-medium mb-1">Email <span class="text-red-500">*</span></label>
+                    @Html.TextBoxFor(model => model.Email, new { id="Email" , @class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary",
+                            @placeholder = "Enter your email",  maxlength = "250"})
+                    @Html.ValidationMessageFor(model => model.Email)                     
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-1">Contact Number <span
+                            class="text-red-500">*</span></label>
+                    @Html.TextBoxFor(model => model.Contact, new { id = "Contact", @class = "w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary",
+                    @placeholder = "Enter your contact no" ,  maxlength = "100"})
+                    @Html.ValidationMessageFor(model => model.Contact)
+                 
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-1">Current Salary (in LPA) <span
+                            class="text-red-500">*</span></label>
+                    @Html.TextBoxFor(model => model.Current_Salary, new { id = "Current_Salary", @class = "w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary",
+                    @placeholder = "Enter amount" ,  maxlength = "500"})
+                    @Html.ValidationMessageFor(model => model.Current_Salary) 
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-1">Notice Period (in days/months)<span
+                            class="text-red-500">*</span></label>
+                    @Html.TextBoxFor(model => model.Notice_Period, new { id = "Notice_Period", @class = "w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary",
+                    @placeholder = "Enter notice period" ,  maxlength = "500" })
+                    @Html.ValidationMessageFor(model => model.Notice_Period)                    
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-1">Current Location <span
+                            class="text-red-500">*</span></label>
+                    @Html.TextBoxFor(model => model.Location, new { id = "Location", @class = "w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary",
+                    @placeholder = "Enter current location"  ,  maxlength = "500"})
+                    @Html.ValidationMessageFor(model => model.Location)    
+                </div>
+
+                <div class="sm:col-span-2">
+                    <label class="block text-sm font-medium mb-1">
+                        Willingness to relocate to job location?
+                    </label>
+
+                    <div class="flex items-center gap-6">
+                        <!-- Yes -->
+                        <label class="flex items-center cursor-pointer">
+                        @Html.RadioButtonFor(m => m.Relocate_job, "Yes",
+                        new { @class = "w-4 h-4 accent-[#DE392E] border-gray-300 focus:ring-[#DE392E]", @id = "rdoYes" }) 
+                            <span class="ml-2 ">Yes</span>
+                        </label>
+
+                        <!-- No -->
+                        <label class="flex items-center cursor-pointer">
+                        @Html.RadioButtonFor(m => m.Relocate_job, "No",
+                        new { @class = "w-4 h-4 accent-[#DE392E] border-gray-300 focus:ring-[#DE392E]", @id = "rdoNo" })
+                            <span class="ml-2">No</span>
+                        </label>
+                        @Html.ValidationMessageFor(model => model.Relocate_job)
+                    </div>
+                </div>
+
+
+                <!-- Message -->
+                <div class="sm:col-span-2">
+                    <label class="block text-sm font-medium mb-1">Message (Optional)</label>
+                    @Html.TextAreaFor(model => model.Message, new { @class = "w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary", @rows = "3",
+                    @placeholder = "Please share your query or message here..."  ,  maxlength = "5000"})
+                    @Html.ValidationMessageFor(model => model.Message)                  
+                </div>
+
+                <!-- File Upload -->
+                <div class="sm:col-span-2">
+                    <label class="text-sm font-medium block mb-2">Attach File <span
+                            class="text-muted">(optional)</span></label>
+
+                    <label
+                        class="inline-flex items-center gap-3 px-6 py-3 border border-[#E9E9E9] rounded-xl cursor-pointer text-red-500 bg-white hover:bg-gray-50 transition-all duration-300 dark-bglight">
+                        <img src="/Assets/images/common-images/choose-icon.svg" class="object-cover block" />
+                        <input type="file" id="Attachment" name="Attachment" class="text-xs text-[#8f8f8f] font-[300] dark-textwhite" />                
+                        @if (!string.IsNullOrEmpty(Model?.TempFileName))
+                        {
+                            <span class="text-green-600 ml-2">File already selected ✔</span>
+                        } 
+                    </label>
+                     @Html.ValidationMessageFor(model => model.attachment)
+                </div>
+                <div class="sm:col-span-2">
+                    <div class="input-field col s12 p-0 mr-3.75 flex flex-col sm:flex-row items-start sm:items-center gap-2">
+                        <div class="g-recaptcha" data-sitekey="@ViewBag.captchapublickey" ></div>
+                        <div class="text-[#716868] font-light italic dark-textwhite text-sm">
+                            (Cannot view the captcha? Please make sure Google <br />
+                            and its services are enabled on your system.)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="lg:max-w-2xl sm:col-span-2">
+                    <p class="text-muted text-small "> 
+                    By submitting this form, you expressly consent to the Centre for Oncopathology collecting, storing, 
+                    and processing the information provided by you, and to contacting you in connection with your enquiry. 
+                    </p>
+                </div> 
+                <!-- Button -->
+                <div class="sm:col-span-2">
+                    <button type="submit" id="submitapplyjob" name="submitapplyjob" class="themeht-btn color-btn darkwhite-btn">
+                        Submit
+                    </button>
+                </div> 
+                 @Html.HiddenFor(model => model.Job_id)
+                 <input type="hidden" id="strstatus_applyjob" name="strstatus_applyjob" value="@(ViewBag.SuccessMessage == null ? "false" :"true")" />
+                 <span class="btn-loader"></span>   
+        }
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>  

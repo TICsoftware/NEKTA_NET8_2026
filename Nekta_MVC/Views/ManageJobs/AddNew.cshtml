@@ -1,0 +1,121 @@
+@model Career
+
+@{
+    Layout = "~/Views/Shared/Manage/_Layout_Dashboard.cshtml";
+    ViewData["Title"] = "Add new job";
+    string returnUrl = Context.Request.Query["ReturnUrl"].ToString();
+}
+
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a asp-controller="Manage" asp-action="Drafts">Careers</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Add New Job
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="section content-main">
+    <h2>Add New Job</h2>
+    @using (Html.BeginForm("AddNew", "ManageJobs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(excludePropertyErrors: true, "", new { @class = "text-danger" })
+            <div class="col-12">
+                <div class="card-body-intro-content col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-12">
+                                    <label for="Role" class="form-label">Role <sup>*</sup></label>
+                                    @Html.TextBoxFor(model => model.Role, new { id = "Role", @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group col-md-12">
+                                    <label for="Role" class="form-label">Education <sup>*</sup></label>
+                                    @Html.TextBoxFor(model => model.Education, new { id = "Education", @class =
+                                    "form-control" })
+                                @Html.ValidationMessageFor(model => model.Education, "", new { @class = "text-danger" })
+                            </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group col-md-12">
+                                    <label for="Role" class="form-label">Experience </label>
+                                    @Html.TextBoxFor(model => model.Experience, new { id = "Experience", @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Experience, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Role" class="form-label">Salary range </label>
+                                        @Html.TextBoxFor(model => model.Salary_range, new { id="Salary_range" , @class = "form-control"})
+                                        @Html.ValidationMessageFor(model => model.Salary_range, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Expiry_date" class="form-label">Expiry date</label>
+                                        @Html.TextBoxFor(model => model.Expiry_date, new { id="Expiry_date" ,
+                                                                            @class = "form-control flatpickr-base-config", @placeholder = "Select date.."})
+                                        @Html.ValidationMessageFor(model => model.Expiry_date, "", new { @class =  "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Role" class="form-label">Work mode </label>
+                                        @Html.TextBoxFor(model => model.Workmode, new { id="Workmode" ,
+                                                                            @class = "form-control"})
+                                        @Html.ValidationMessageFor(model => model.Workmode, "", new { @class =
+                                                                            "text-danger" })
+
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Role" class="form-label">Location </label>
+                                        @Html.TextBoxFor(model => model.Location, new { id = "Location", @class =
+                                                                            "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Location, "", new { @class =
+                                                                            "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group col-md-12">
+                                    <label for="Role" class="form-label">About the Role</label>
+                                    @Html.TextAreaFor(model => model.About_the_Role, new { @class = "form-control       editor-full" })
+                                    @Html.ValidationMessageFor(model => model.About_the_Role, "", new { @class =
+                                                                    "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group col-md-12">
+                                    <label for="Role" class="form-label">Job Description</label>
+                                    @Html.TextAreaFor(model => model.Job_Description, new { @class = "form-control                  editor-full" })
+                                    @Html.ValidationMessageFor(model => model.Job_Description, "", new { @class =
+                                                                    "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-outline-primary me-1 mb-1" name="action" id="btnSave"
+                        class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    }
+</section>

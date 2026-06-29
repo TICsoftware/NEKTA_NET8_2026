@@ -1,0 +1,161 @@
+@model ContactUs
+
+<div class="shadow-lg bg-white dark-bglight mx-auto rounded-2xl px-5 py-5 sm:px-8 lg:px-10 lg:py-10 mt-10">
+
+    @using (Html.BeginForm("Enquiry", "Connect", FormMethod.Post, new
+    {
+        id = "contactForm",
+        enctype = "multipart/form-data",
+        @class = "space-y-6"
+    }))
+    {
+        <div id="divvalidation" tabindex="0" style="display: @(!ViewData.ModelState.IsValid? "block" : "none");" >
+       @Html.ValidationSummary(excludePropertyErrors: true, "", new { @class = "text-danger" })
+       </div>
+         @Html.AntiForgeryToken()     
+       
+        
+        <!-- Row 1 -->
+        <div class="grid md:grid-cols-2 gap-4">
+            <div>
+                <label class="text-sm font-medium">Full Name <span class="text-red-500">*</span></label>
+                @Html.TextBoxFor(model => model.FullName, new { id = "FullName", @class = "mt-1 w-full rounded-xl border  border-[#E9E9E9] px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-400",
+                @placeholder = "Enter your full name" })
+                @Html.ValidationMessageFor(model => model.FullName)
+            </div>
+            <div>
+                <label class="text-sm font-medium">Email Address <span class="text-red-500">*</span></label>
+                @Html.TextBoxFor(model => model.Email, new { id="Email" , @class="mt-1 w-full rounded-xl border border-[#E9E9E9] px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-400",
+                            @placeholder = "youremail@example.com"})
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="grid md:grid-cols-2 gap-4">
+            <div>
+                <label class="text-sm font-medium">Mobile Number <span class="text-red-500">*</span></label>
+                @Html.TextBoxFor(model => model.Contact, new { id = "Contact", @class = "mt-1 w-full rounded-xl border border-[#E9E9E9] px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-400",
+                            @placeholder = "+91 XXXXXXXXXX" })
+                @Html.ValidationMessageFor(model => model.Contact)
+            </div>
+
+            <div>
+                <label class="text-sm font-medium">City <span class="text-red-500">*</span></label>
+                @Html.TextBoxFor(model => model.City, new { id = "City", @class = "mt-1 w-full rounded-xl border border-[#E9E9E9] px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-400",
+                            @placeholder = "Your city" })
+                @Html.ValidationMessageFor(model => model.City)
+            </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="grid md:grid-cols-1 gap-4">
+            <div>
+                <label class="text-sm font-medium">Organisation/Hospital/Lab <span
+                        class="text-gray-400">(optional)</span></label>
+                @Html.TextBoxFor(model => model.Labname, new { id = "Labname", @class = "mt-1 w-full rounded-xl border border-[#E9E9E9] px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-400",
+                            @placeholder = "Your organisation name" })
+                @Html.ValidationMessageFor(model => model.Labname)
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+            <div>
+                <label class="text-sm font-medium">Enquiry type <span class="text-red-500">*</span></label>
+                <div class="fy-select-inner relative">
+                    @Html.DropDownListFor(model => model.Enquiry_Type,
+                        new List<SelectListItem>
+                        {
+                            new SelectListItem { Text = "Select", Value = "" },
+                            new SelectListItem { Text = "Patient / Family Member", Value = "Patient / Family Member" },
+                            new SelectListItem { Text = "Doctor / Clinician", Value = "Doctor / Clinician" },
+                            new SelectListItem { Text = "Hospital / Cancer Centre", Value = "Hospital / Cancer Centre" },
+                            new SelectListItem { Text = "Diagnostic Lab / Pathology Centre", Value = "Diagnostic Lab / Pathology Centre" },
+                            new SelectListItem { Text = "Research / Academic Institution", Value = "Research / Academic Institution" },
+                            new SelectListItem { Text = "Fellowship / Training Applicant", Value = "Fellowship / Training Applicant" },
+                            new SelectListItem { Text = "Corporate / Institutional Enquiry", Value = "Corporate / Institutional Enquiry" },
+                            new SelectListItem { Text = "Media / Partnership Enquiry", Value = "Media / Partnership Enquiry" },
+                            new SelectListItem { Text = "Other", Value = "Other" },                            
+                        },
+                        new { @class = "w-full appearance-none border border-[#E9E9E9] rounded-2xl px-4 py-2.5 pr-4 text-sm text-[#767676] bg-white focus:outline-none focus:border-brand cursor-pointer font-body transition-colors fy-select", id = "ddEnquiry_Type" })   
+                        @Html.ValidationMessageFor(model => model.Enquiry_Type)
+                </div>
+                
+            </div>
+
+            <div>
+            <label class="text-sm font-medium block mb-1">Document <span class="text-muted">(optional)</span></label>
+            <label for="attachment"
+                class="flex items-center gap-3 px-6 py-2 border border-gray-300 rounded-xl cursor-pointer bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-400 transition-all duration-300 dark-bglight upload-doc-btn">
+                <img src="Assets/images/common-images/choose-icon.svg" class="object-cover block " />               
+                <input type="file" id="attachment" name="attachment" class="text-xs text-[#8f8f8f] font-[300] dark-textwhite" />                
+                @if (!string.IsNullOrEmpty(Model?.TempFileName))
+                {
+                     <span class="text-green-600 ml-2">File already selected ✔</span>
+                }
+
+            </label>
+            @Html.ValidationMessageFor(model => model.attachment)
+            </div>
+             
+        </div>
+        <!-- Message -->
+        <div>
+            <label class="text-sm font-medium">Message <span class="text-red-500">*</span></label>
+            @Html.TextAreaFor(model => model.Message, new { @class = "mt-1 w-full rounded-xl border border-[#E9E9E9] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-400", @rows = "4",
+                    @placeholder = "Please share your query or message here..." })
+            @Html.ValidationMessageFor(model => model.Message)
+        </div>
+        <div class="grid md:grid-cols-1 gap-4">
+            <div class="input-field col s12 p-0 mr-3.75 flex flex-col sm:flex-row items-start sm:items-center gap-2">
+                <div class="g-recaptcha" data-sitekey="@ViewBag.captchapublickey" ></div>
+                <div class="text-[#716868] font-light italic dark-textwhite text-sm">
+                    (Cannot view the captcha? Please make sure Google <br />
+                    and its services are enabled on your system.)
+                </div>
+            </div>
+        </div>
+
+        
+        <p class="text-muted text-small lg:max-w-3xl">
+            <span class="btn-loader"></span> By submitting this form, you expressly consent to the Centre for Oncopathology collecting, storing, 
+            and processing the information provided by you, and to contacting you in connection with your enquiry.
+        </p>
+        <!-- Button -->
+        <div class="mb-0">
+            <button id="submitBtn" type="submit" class="themeht-btn color-btn darkwhite-btn">
+                Submit Your Enquiry&nbsp; 
+            </button>
+             
+        </div><span class="btn-loader"></span>
+        <div id="successMessage" tabindex="-1"
+            class="hidden mt-6 p-3 rounded-xl bg-green-50 border border-green-200 flex items-start gap-3">
+            @if(ViewBag.SuccessMessage != null && !string.IsNullOrWhiteSpace(ViewBag.SuccessMessage))
+            { 
+            <!-- Icon -->
+            <div class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-green-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+
+            <!-- Text -->
+            <div id="divthankyoumsg" >
+                <p class="text-sm! font-medium text-green-800">
+                    @Html.Raw(ViewBag.SuccessMessage)
+                </p>
+            </div>
+            }                 
+           
+        </div> 
+        
+    
+        @Html.HiddenFor(model => model.form_type)
+        <input type="hidden" id="strstatus" name="strstatus" value="@(ViewBag.SuccessMessage == null ? "false" :"true")" />
+    }
+
+ 
+</div>
+
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>  

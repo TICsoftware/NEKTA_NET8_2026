@@ -1,0 +1,57 @@
+@model List<Nekta_BusinessLogic.Entity.PastEvent_List>
+
+
+@foreach (var item in Model)
+{
+    <div class="bg-white rounded-xl p-6 shadow-[0_10px_25px_rgba(0,0,0,0.05)] events-box-wrapper reveal-item dark-bglight">
+        <div class="events-box-inner-wrapper">
+            <span class="text-xs border px-4 py-1 rounded-[10px] badge-span">@item.EventTypeName</span>
+
+            <h3 class="mt-5 mb-6 font-semibold text-20 sm:max-w-[25vw]">
+                @item.Title
+            </h3>
+
+            <div class="flex items-start gap-2 text-sm text-muted mb-3">
+                <img src="/Assets/images/eventscme/calender-icon.svg" alt="calendar" class=" mt-1">
+                @* <p>@item.EventDate.ToString("dddd, dd-MMM-yyyy")</p> *@
+              <p> @item.DisplayDate.ToString("dddd, dd-MMM-yyyy")</p>
+            </div>
+
+            <div class="flex items-start gap-2 text-sm text-muted mb-3">
+                <img src="/Assets/images/eventscme/watch-icon.svg" alt="time" class=" mt-1">
+                <p>@item.EventTime</p>
+            </div>
+
+            <div class="flex items-start gap-2 text-sm text-muted mb-3  ">
+                <img src="/Assets/images/eventscme/pin-icon.svg" alt="location" class=" mt-1">
+                <p>Mode: @item.EventModeName</p>
+            </div>
+
+        </div>
+
+
+
+        <div class="w-full space-y-2 dark-textwhite bottom-btns-wrapper">
+
+            <div class="flex gap-5">
+                @if (!string.IsNullOrWhiteSpace(item.VideoUrl))
+                {
+                    <a href="#" class="themeht-btn color-btn flex items-center gap-2" data-video-trigger
+                        data-video-type="youtube" data-video-src="@item.VideoUrl">
+                        <img src="/Assets/images/eventscme/play-icon.svg" alt="location">
+                        Watch Recording
+                    </a>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(item.FilePath))
+                {
+                    <a href="@item.FilePath" target="_blank" download
+                        class="themeht-btn color-outline-btn flex items-center gap-2">
+                        <img src="/Assets/images/eventscme/file-icon.svg" alt="location">
+                        Download Resources
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+}

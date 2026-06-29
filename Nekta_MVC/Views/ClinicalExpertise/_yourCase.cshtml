@@ -1,0 +1,86 @@
+@using Nekta_BusinessLogic.Entity
+@using Nekta_MVC.Helpers
+@model List<ClinicalExpertiseCommonModel>
+
+
+@{
+    var Component = Model
+    .Where(x => x.IsBlock == 0)
+    .OrderBy(x => x.Sequence)
+    .FirstOrDefault();
+}
+
+<section class="relative section-pt">
+    <div class="consult-vector bg-vector-wrap"><img src="/Assets/images/vector-shape-bg.svg" alt="" /></div>
+
+    <div class="container">
+        <div class="flex flex-col lg:flex-row relative justify-end">
+            <!-- LEFT CONTENT -->
+            <div class="lg:w-2/5">
+                <div class="wrapper-title-outer">
+                    <div
+                        class="wrapper-title title-heading-outer title-heading-outer-start pb-5 sm:pb-5 no-titlepadding-wrapper">
+                        <h2 class="text-h2 title-heading-anim">
+                            @Html.Raw(Component.DisplayTitle.CleanParagraphTags())
+                        </h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT GRID -->
+
+            <div class="lg:max-w-full reveal-group">
+
+                <!-- ROW 1 (2 ITEMS) -->
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center lg:justify-end ">
+
+                    @foreach (var item in Model
+                                        .Where(x => x.IsBlock == 1)
+                                        .OrderBy(x => x.Sequence)
+                                        .Take(2))
+                    {
+                        <div
+                            class="bg-white dark-bgblack grid-item-box grid-item-box-2 px-6 pt-6 pb-10 text-secondary-wrapper icon-transform-item sm:max-w-[280px] shrink-0 reveal-item">
+                            <div class="card-icon mb-2 icon-transform">
+                                <img src="@item.Icon_Image" class="object-cover" alt="@item.Title">
+                            </div>
+                            <h3>@item.Title</h3>
+                            <p>
+                                @Html.Raw(item.Intro.CleanParagraphTags())
+                            </p>
+                        </div>
+                    }
+                </div>
+
+                <div
+                    class="flex flex-col sm:flex-row md:flex-wrap lg:flex-nowrap gap-3 sm:gap-5 justify-center lg:justify-end mt-5">
+
+
+                   @foreach (var item in Model
+                        .Where(x => x.IsBlock == 1)
+                        .OrderBy(x => x.Sequence)
+                        .Skip(2))
+                    {
+                        <div
+                            class="bg-white dark-bgblack grid-item-box grid-item-box-2 px-6 pt-6 pb-10 text-secondary-wrapper icon-transform-item sm:max-w-[280px] shrink-0 reveal-item md:w-[calc(50%-10px)] lg:w-auto">
+                            <div class="card-icon mb-2 icon-transform">
+                                <img src="@item.Icon_Image" class="object-cover" alt="@item.Title">
+                            </div>
+                            <h3>@item.Title</h3>
+                            <p>
+                                @Html.Raw(item.Intro.CleanParagraphTags())
+                            </p>
+                        </div>
+                    }
+
+
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

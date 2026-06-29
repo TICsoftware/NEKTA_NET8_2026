@@ -1,0 +1,57 @@
+
+
+
+@using Nekta_BusinessLogic.Entity
+@using Nekta_MVC.Helpers
+@model List<ContentCommonModel>
+
+
+@{
+    var Component = Model
+    .Where(x => x.IsBlock == 0)
+    .OrderBy(x => x.Sequence)
+    .FirstOrDefault();
+}
+
+<div class="relative outer-section section-pb bg-light-primary">
+    <section class="visitlab-section relative overflow-hidden h-[515px]">
+        <div class="contact-bg bg-parallax overflow-hidden">
+            <img src="Assets/images/forpatients/visit-lab-bg.webp" alt="" class="w-full object-cover dark-grayscaleinvert0"/>
+        </div>
+    </section>
+    <section class="-mt-100 relative z-2 visitlab-content-section">
+        <div class="container">
+            <div class="sm:max-w-[85vw] lg:max-w-[70vw] mx-auto location-wrapper">
+                <div class="wrapper-title-outer wrapper-title-outer-center">
+                    <div class="wrapper-title title-heading-outer title-heading-outer-center pt-0 pb-5 sm:pb-10 filldark-title-heading-anim">
+                        <h2 class="text-h2 title-heading-anim title-heading-anim-white ">   @Html.Raw(Component.Title) </h2>
+                    </div>
+                </div>
+                <div class="shadow-lg bg-white dark-bglight mx-auto rounded-2xl px-5 py-5 sm:px-8 lg:px-10 lg:py-10 mt-10 location-map-wrapper">
+
+                    <div class="flex flex-col md:flex-row gap-6">
+
+                        <!-- LEFT CONTENT -->
+                        <div class="flex-1">
+
+                        <!-- Location -->
+                      @Html.Raw(Component.HmpgIntro)
+
+                        <!-- Lab Timings -->
+                        
+
+                        </div>
+
+                        <!-- RIGHT MAP -->
+                        <div class="flex-1">
+                           @Html.Raw(Component.Intro)
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>

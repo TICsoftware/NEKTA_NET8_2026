@@ -1,0 +1,65 @@
+@model IEnumerable<Core_project_BusinessLogic.Entity.Manage.MainSpotTemplateReference>
+@{
+    Layout = "~/Views/Shared/Manage/_Layout_RHS.cshtml";
+}
+
+<h2>Components Reference List</h2>
+
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-info">@TempData["msg"]</div>
+}
+
+<a class="btn btn-primary mb-3" asp-action="Add">Add New</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+
+            <th>Language</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Created Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @using Core_project_BusinessLogic
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.Language_Master_ID</td>
+                <td>@item.Reference_Title</td>
+
+                <td>
+                    @if (item.Status == 1)
+                    {
+                        <span class="badge bg-success">Active</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">Inactive</span>
+                    }
+                </td>
+
+                <td>@item.Created_Date?.ToString("dd-MMM-yyyy")</td>
+
+                <td>
+                    <a class="btn btn-outline-secondary btn-sm" asp-action="Edit"
+                        asp-route-Id="@CryptoEngine.Encrypt(item.Reference_ID.ToString())">Edit</a>
+
+                    @if (item.Status == 1)
+                    {
+                        <a class="btn btn-outline-danger btn-sm" asp-action="Deactivate"
+                            asp-route-Id="@CryptoEngine.Encrypt(item.Reference_ID.ToString())"
+                            onclick="return confirm('Deactivate this template?');">
+                            Deactivate
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,127 @@
+@using Nekta_MVC.Helpers
+@model CMS_job_list
+
+@if (Model.joblists != null && Model.joblists.Count > 0)
+{
+    int incr = 1;
+    <section class="relative section-spacing currentopportunities-section" id="currentopportunities-section">
+        <div class="container">
+            <div class="wrapper-title-outer max-w-4xl mx-auto wrapper-title-outer-center">
+                <div class="wrapper-title title-heading-outer title-heading-outer-center pb-5 sm:pb-10">
+                    <h2 class="text-h2 title-heading-anim mb-3">
+                        @Html.Raw(Model.DisplayTitle.CleanParagraphTags())
+                    </h2>
+                    <p>@Html.Raw(Model.Intro.CleanParagraphTags())</p>
+                </div>
+            </div>
+
+            <div class="currentopportunities-outer">
+                <div
+                    class="relative rounded-2xl overflow-hidden currentopportunities-img-wrapper mt-5 sm:mt-10 bg-parallax">
+                    <img src="@Model.Masthead_image" alt="@Model.Image_alt_text" class="w-full object-cover rounded-2xl" />
+                </div>
+
+                <div
+                    class="max-w-[95%] lg:max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 bg-white rounded-2xl shadow-lg mt-10 relative z-10 currentopportunities-table" id="currentopportunities-table">
+
+                    <!-- Header -->
+                    <div
+                        class="hidden md:flex text-20 font-semibold border-b border-[#D1D5DB] pb-3 currentopportunities-table-header md:gap-4">
+                        <div class="flex-1.2 w-40">Education</div>
+                        <div class="flex-2">Role</div>
+                        <div class="flex-3">Experience</div>
+                        <div class="flex-2">Job description</div>
+                        <div class="flex-2">Location</div>
+                        <div class="flex-1">Apply</div>
+                    </div>
+                    @foreach (var item in Model.joblists)
+                    {
+                        <div
+                            class="flex flex-col md:flex-row md:items-start gap-y-3 md:gap-4 text-sm py-4 border-b last:border-0 border-[#D1D5DB] currentopportunities-table-row">
+                            <div class="md:flex-1.2 w-40" data-label="Education">@Html.Raw(item.Education)</div>
+
+                            <div class="md:flex-2" data-label="Role">
+                                <div class="data-trigger hover:text-primary" data-trigger="modal" data-target="#applyrolePopup@(incr)">
+                                    @Html.Raw(item.Role)
+                                </div>
+                            </div>
+
+                           
+                            <div class="md:flex-3" data-label="Experience">
+                            @if(!string.IsNullOrWhiteSpace(item.Experience))
+                            { 
+                                @Html.Raw(item.Experience)
+                            }
+                            </div>
+
+                            <div class="data-trigger hover:text-primary md:flex-2" data-trigger="modal"
+                                data-target="#applyrolePopup@(incr)" data-label="Job description">
+                                <div class="themeht-btn color-btn inline-block w-auto md:w-auto">View more</div>
+                            </div>
+
+                            <div class="md:flex-2" data-label="Location"> @Html.Raw(item.Location)</div>
+
+                            <div class="md:flex-1 text-center md:text-start">
+                                <div class="themeht-btn color-btn inline-block w-full md:w-auto text-center data-trigger"
+                                    data-trigger="modal" data-target="#applynowPopup" data-jobvalue="@item.Encrypt_job_Id">
+                                    Apply Now
+                                </div>
+                            </div>
+
+                        </div>
+                        incr = incr +1;
+                    }
+                    <!-- Row -->
+
+                </div>
+
+            </div>
+        </div> 
+    </section>
+     
+    incr=1 ;
+     
+    @foreach (var item in Model.joblists)
+    {
+        <div id="applyrolePopup@(incr)"
+            class="fixed inset-0 z-[1001] flex items-center justify-center px-4 py-6 sm:py-0 opacity-0 pointer-events-none applyrole-popup">
+
+            <div class="relative w-full max-w-4xl">
+
+                <!-- Close -->
+                <button data-close
+                    class="absolute -top-2 -right-2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white shadow transition">
+                    ✕
+                </button>
+
+                 <div class="popup-wrapper-inner bg-white rounded-xl shadow-2xl overflow-hidden max-h-[82vh] overflow-y-auto p-6 dark-bgblack"
+                    data-lenis-prevent>
+
+                    <h2>  @Html.Raw(item.Role)</h2>
+                    @if(!string.IsNullOrWhiteSpace(item.Experience))
+                    {
+                    <p class="experience-text"><strong>Experience:</strong> @Html.Raw(item.Experience)</p>
+                    }
+                    @if(!string.IsNullOrWhiteSpace(item.Location))
+                    {
+                        <p><strong>Location:</strong>  @Html.Raw(item.Location) @(string.IsNullOrWhiteSpace(item.Workmode) ? "" : " - " + Html.Raw(item.Workmode))</p>
+                    }
+                     @if(!string.IsNullOrWhiteSpace(item.Salary_range))
+                    {
+                    <p><strong>Salary range:</strong>  @Html.Raw(item.Salary_range) </p>
+                    }
+                    @if(!string.IsNullOrWhiteSpace(item.About_the_Role))
+                    {
+                    <h4>About the Role</h4>
+                    <p>@Html.Raw(item.About_the_Role.CleanParagraphTags())</p>
+                    }
+                    @if(!string.IsNullOrWhiteSpace(item.Job_Description))
+                    {
+                        @Html.Raw(item.Job_Description)
+                    }
+                </div>
+            </div>
+        </div>
+        incr = incr +1;
+    }
+}

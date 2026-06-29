@@ -1,0 +1,226 @@
+@using Nekta_MVC.Helpers
+@model Nekta_BusinessLogic.Entity.AboutModel
+@{
+    ViewData["Title"] = "Careers";
+}
+
+@section head {
+    <title>@Model.Content.cont_window_title</title>
+
+    <meta content="@Model.Content.cont_metatag" name="keywords" />
+    <meta content="@Model.Content.cont_metadesc" name="description" />
+
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="" />
+    <meta name="twitter:title" content="@Model.Content.ContTitle" />
+    <meta name="twitter:description" content="@Model.Content.cont_metadesc" />
+
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Centre for Oncopathology" />
+    <meta property="og:title" content="@Model.Content.ContTitle" />
+    <meta property="og:description" content="@Model.Content.cont_metadesc" />
+    <meta property="og:url" content="https://www.oncopath.org/" />
+    <meta property="og:image" content="@Model.Content.cont_meta_image" />
+
+    <meta itemprop="name" content="Centre for Oncopathology" />
+    <meta itemprop="description" content="@Model.Content.cont_metadesc" />
+    <meta itemprop="image" content="@Model.Content.cont_meta_image" />
+
+    <!-- Facebook / Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Centre for Oncopathology" />
+    <meta property="og:title" content="@Model.Content.ContTitle" />
+    <meta property="og:description" content="@Model.Content.cont_metadesc" />
+    <meta property="og:image" content="@Model.Content.cont_meta_image" />
+    <meta property="og:url" content="https://www.oncopath.org/" />
+
+    <link rel="canonical" href="@Model.Content.CanonicalUrl" />
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/Assets/css/innerbanner-style.css" />
+    <link rel="stylesheet" href="~/Assets/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="~/Assets/css/swiper-custom.css" />
+    <link rel="stylesheet" href="~/Assets/css/careers-style.css" />
+}
+
+
+
+
+<section class="banner-inner-section mt-[99px] lg:mt-[153px] h-full relative">
+    <picture class="bannerinner-picture relative block w-full h-full">
+        <source media="(min-width:992px)" srcset="@Model.Content.MastheadImage" />
+        <source media="(max-width:991px)" srcset="@Model.Content.MobileMastheadImage" />
+        <img alt="@Model.Content.Masthead_image_Alt_text" class="object-cover" src="@Model.Content.MastheadImage" />
+    </picture>
+    <div class="banner-inner-outer relative w-full h-full">
+
+
+        <div class="inner-banner-vector">
+            <img src="/Assets/images/inner-banner-vector.svg" alt="" class="banner-vector-img" />
+            <div class="banner-mask">
+                <img src="/Assets/images/abstract-elements-banner.webp" class="masked-img" />
+            </div>
+            <div
+                class="absolute top-[15%] md:top-[30%] left-0 w-full px-0 md:px-8 xl:px-6 2xl:px-8 inner-banner-caption">
+                <div class="container">
+                    <nav aria-label="breadcrumb" class="breadcrumb_container pb-2 lg:pb-0 mb-2">
+                        @Html.Raw(Model.Content.BreadcrumPath)
+                    </nav>
+                    <div class="w-full sm:max-w-[60vw] lg:max-w-[35vw] innerbanner-title-outer">
+                        <h1 class="text-h1 innerbanner-title-heading ">
+                            @Html.Raw(Model.Content.Cont_hmpg_intro.CleanParagraphTags())
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</section>
+
+@foreach (var item in Model.OpenRoles_List)
+{
+    <section class="section-spacing intro-hexagon-section relative">
+        <div class="container">
+            <div class="intro-hexagon-inner">
+                <div class="flex justify-start items-center gap-8 sm:gap-25 lg:gap-6 flex-col sm:flex-row">
+                    <div class="hexagon-img-wrapper shrink-0 mx-w-full sm:max-w-[50%] lg:max-w-[55%]">
+                        <div
+                            class="bt_bb_image bt_bb_shape_hexagon_reverse bt_bb_shape_hexagon_reverse bt_bb_hover_style_zoom-in">
+                            <div class="bt_bb_image_content">
+                                <img src="@item.ComponentThumbnail" alt="@item.ComponentThumbnailAltText">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sm:max-w-[50%] lg:max-w-[45%] 2xl:max-w-[45%] space-y-2 dark-textwhite">
+                        @Html.Raw(item.Content)
+
+                        @if (!string.IsNullOrWhiteSpace(item.Url))
+                        {
+                            <div class="flex">
+                                <a href="@item.Url" class="themeht-btn color-btn cursor-pointer">
+                                    @item.Url_Text
+                                </a>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+
+@if (Model?.WorkingWithUs_List != null && Model.WorkingWithUs_List.Any())
+{
+    @await Html.PartialAsync("_workingWithUs", Model.WorkingWithUs_List)
+}
+
+
+@foreach (var item in Model.CurrentOpportunities_List)
+{
+    TempData["Career_title"]=item.DisplayTitle.CleanParagraphTags();
+    TempData["Career_Intro"]=item.Intro.CleanParagraphTags();
+    TempData["Career_image"]=item.ComponentThumbnail;
+    TempData["alt_image"]=item.ComponentThumbnailAltText;
+    @await Component.InvokeAsync("Careers")
+    
+}
+
+@foreach (var item in Model.ShareYourProfile_List)
+{
+ <section class="relative section-pb shareprofile-section">
+        <div class="container">
+            <div
+                class="shareprofile-wrapper flex-col-reverse flex sm:flex-col lg:flex-row gap-6 sm:gap-10 md:gap-10 xl:gap-10 2xl:gap-14 items-center relative mb-15 sm:mb-30 lg:mb-30 last:mb-0">
+
+                <!-- IMAGE -->
+                <div
+                    class="shareprofile-image w-full lg:w-[62%] 2xl:w-[57%] flex flex-col lg:flex-row items-end gap-y-4 lg:gap-y-0 lg:gap-x-4 2xl:gap-x-4">
+                    <div class="flex flex-col gap-6 text-secondary-wrapper shareprofile-twocol">
+                        <div class="flex flex-col shrink-0 rounded-2xl px-8 py-6 items-start gap-0 box-itm dark-bglight">
+                            <img src="@item.Component_Icon_Image" alt="@item.Title" class="w-auto object-cover" />
+
+                            @Html.Raw(item.Intro)
+                        </div>
+                        <div class="sp-imgwrap">
+                            <img src="@item.ComponentThumbnail" alt="@item.ComponentThumbnailAltText"
+                                class="w-full object-cover rounded-2xl" />
+                        </div>
+                    </div>
+                    <div class="sp-imgwrap big-sp-imgwrap">
+                        <img src="@item.Component_right_image" alt="@item.Component_Right_image_alt"
+                            class="w-full object-cover" />
+                    </div>
+                </div>
+
+                <!-- TEXT -->
+                <div
+                    class="w-full lg:w-[38%] 2xl:w-[33%] lg:mt-0 2xl:mt-0 title-heading-outer text-secondary-wrapper shareprofile-heading">
+                    <div class="wrapper-title-outer">
+                        <div
+                            class="wrapper-title title-heading-outer title-heading-outer-start pb-5 sm:pb-5 no-titlepadding-wrapper">
+                            <h2 class="text-h2 title-heading-anim px-0">
+                                @Html.Raw(item.DisplayTitle.CleanParagraphTags())
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <p>@Html.Raw(item.Content.CleanParagraphTags())</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+}
+
+
+
+
+
+
+
+<div id="applynowPopup"
+    class="fixed inset-0 z-[1001] flex items-center justify-center px-4 py-6 sm:py-0 opacity-0 pointer-events-none">
+
+    <div class="relative w-full max-w-4xl">
+
+        <!-- Close Button -->
+        <button data-close
+            class="absolute -top-2 -right-2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white shadow transition-colors">
+            ✕
+        </button>
+
+        <!-- Modal Card -->
+        <div class="popup-wrapper-inner bg-white rounded-xl shadow-2xl overflow-hidden max-h-[82vh] overflow-y-auto p-6 dark-bgblack"
+            data-lenis-prevent>
+
+            <!-- TITLE -->
+            <div class="title-heading-outer-center pb-5 sm:pb-5 w-full">
+                <h3 class="text-20 title-heading-anim ">
+                    Apply <span class="highlight-span"> Now </span>
+                </h3>
+            </div>
+            <div id="applynowPopup_form">
+            </div> 
+        </div>
+    </div>
+</div>
+
+ 
+
+
+@section Scripts {
+    <script src="~/Assets/js/innerbanner-script.js"></script>
+    <script src="~/Assets/js/swiper-bundle.min.js"></script>
+    <script src="~/Assets/js/fy-select-script.js"></script>
+    <script src="~/Assets/js/careers-script.js"></script>
+    
+}

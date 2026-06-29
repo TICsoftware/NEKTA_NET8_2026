@@ -1,0 +1,80 @@
+
+
+@using Nekta_BusinessLogic.Entity
+@using Nekta_MVC.Helpers
+@model List<ContentCommonModel>
+
+
+@{
+    var Component = Model
+    .Where(x => x.IsBlock == 0)
+    .OrderBy(x => x.Sequence)
+    .FirstOrDefault();
+}
+
+<section class="section-spacing animation-area relative overflow-hidden" id="faqs">
+    <div class="container-full">
+        <div class="flex flex-col lg:flex-row">
+            <!-- LEFT: Image Panel -->
+            <div class="relative w-full lg:w-[42%] shrink-0 overflow-hidden rounded-2xl sm:rounded-l-none extreme-left-imgwrap">
+                <img src="/Assets/images/forpatients/faq-img.webp" alt="" class="w-full h-full object-cover object-center rounded-2xl lg:rounded-l-none" />
+            </div>
+
+            <div class="container">
+                <!-- RIGHT: FAQ Content -->
+                <div class="flex-1 flex flex-col justify-center lg:pl-16 2xl:pl-20 lg:pr-20 2xl:pr-34 relative">
+                    <div class="wrapper-title-outer lg:max-w-[35vw]">
+                        <div class="wrapper-title title-heading-outer title-heading-outer-center pb-5 sm:pb-10">
+                            <h2 class="text-h2 title-heading-anim">  @Html.Raw(Component.DisplayTitle.CleanParagraphTags())
+                            </h2>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Items -->
+                    <div class="space-y-0 faq-container">
+
+                    @foreach (var item in Model
+                                        .Where(x => x.IsBlock == 1)
+                                        .OrderBy(x => x.Sequence))
+                    {
+                        if (!string.IsNullOrEmpty(item.Title))
+{
+      var isFirst = item.Sequence == 1;
+                        <!-- ITEM 1 -->
+                        <div class="faq-item @(isFirst ? "open" : "")">
+                            <button class="faq-toggle w-full flex items-center justify-between gap-4 text-left">
+                            <span>
+                               @Html.Raw(item.Title.CleanParagraphTags())
+                            </span>
+
+                            <div class="icon-circle">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path class="line-vertical" d="M6 1V11" stroke="#DE392E" stroke-width="1.8" stroke-linecap="round"/>
+                                <path d="M1 6H11" stroke="#DE392E" stroke-width="1.8" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            </button>
+
+                            <div class="faq-answer">
+                                @Html.Raw(item.Intro)
+                            </div>
+                        </div>
+
+}
+}
+
+
+
+                    </div>
+
+
+                </div>
+
+             </div>
+
+        </div>
+    </div>
+
+    <div class="bg-faq bg-vector-wrap"><img src="/Assets/images/vector-bg-01.svg" alt=""></div>
+    
+</section>
