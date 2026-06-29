@@ -25,9 +25,9 @@ public class HomeController : Controller
     public IActionResult Index()
     {
           //string connstr = "user id=sa;data source=192.168.2.25;persist security info=True;initial catalog=cop_live_backup_13_5;password=TicWorks@2026!A;Encrypt=True;TrustServerCertificate=True";
-          string connstr = "user id=sa;data source=192.168.2.6;persist security info=True;initial catalog=OncoPath;password=26%TiC@SqL20;Encrypt=True;TrustServerCertificate=True";
+          //string connstr = "user id=sa;data source=192.168.2.6;persist security info=True;initial catalog=OncoPath;password=26%TiC@SqL20;Encrypt=True;TrustServerCertificate=True";
          
-          string connstr1 = "user id=sa;data source=TIC_DBNET;persist security info=True;initial catalog=Oncopath_Live_2026_new;password=DB#SqL2023TiC;Encrypt=True;TrustServerCertificate=True";
+          string connstr = "user id=sa;data source=TIC_DBNET;persist security info=True;initial catalog=Nekta_2026;password=DB#SqL2023TiC;Encrypt=True;TrustServerCertificate=True";
          
            //ViewBag.encryptstr = Core_project_BusinessLogic.CryptoEngine.Encrypt(connstr);
          //  string connstr = "user id=sa;data source=49.50.111.21;persist security info=True;initial catalog=Oncopath_2026;password=D#$%%6QWe@@#4;Encrypt=True;TrustServerCertificate=True";
