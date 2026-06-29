@@ -493,11 +493,11 @@ bin/
 
 Core_project_BusinessLogic/CryptoValues.cs
 Core_project_BusinessLogic/obj
-Oncopathology_BusinessLogic/obj
-Oncopathology_MVC/obj
-Oncopathology_BusinessLogic/CryptoValues.cs
-Oncopathology_MVC/appsettings.json
-Oncopathology_BusinessLogic/appsettings.json
-Oncopathology_MVC/publish_linux
+Nekta_BusinessLogic/obj
+Nekta_MVC/obj
+Nekta_BusinessLogic/CryptoValues.cs
+Nekta_MVC/appsettings.json
+Nekta_BusinessLogic/appsettings.json
+Nekta_MVC/publish_linux
 
 

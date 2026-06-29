@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
  <ItemGroup>
     <ProjectReference Include="..\Core_project_BusinessLogic\Core_project_BusinessLogic.csproj" />
-    <ProjectReference Include="..\Nekta_BusinessLogic\Oncopathology_BusinessLogic.csproj" />
+    <ProjectReference Include="..\Nekta_BusinessLogic\Nekta_BusinessLogic.csproj" />
   </ItemGroup>
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>

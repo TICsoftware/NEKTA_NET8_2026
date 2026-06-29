@@ -5,7 +5,7 @@
       "name": "Launch ASP.NET Core",
       "type": "dotnet",
       "request": "launch",  
-      "projectPath": "${workspaceFolder}/Oncopathology_MVC/bin/Debug/net8.0/Oncopathology_MVC.dll",
+      "projectPath": "${workspaceFolder}/Nekta_MVC/bin/Debug/net8.0/Nekta_MVC.dll",
        
     }
   ]
