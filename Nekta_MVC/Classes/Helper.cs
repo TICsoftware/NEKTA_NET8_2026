@@ -185,7 +185,7 @@ namespace Nekta_MVC.Classes
                     "password"
                 );
 
-                message.From = new MailAddress("ticworks2022@gmail.com", "Oncopath");
+                message.From = new MailAddress("ticworks2022@gmail.com", "Nekta");
                 message.To.Add("ashabbir72@gmail.com");
 
                 message.Subject = strSubject;
