@@ -12,7 +12,6 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly Homepage_BAL _bal;
-    private readonly Test_Directory_BAL _Testbal;
 
     public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
     {
