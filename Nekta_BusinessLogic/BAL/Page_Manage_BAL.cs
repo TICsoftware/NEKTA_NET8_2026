@@ -4,10 +4,10 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-using Nekta_BusinessLogic_BusinessLogic.DAL;
-using Nekta_BusinessLogic_BusinessLogic.Entity;
+using Nekta_BusinessLogic.DAL;
+using Nekta_BusinessLogic.Entity;
 
-namespace Nekta_BusinessLogic_BusinessLogic.BAL
+namespace Nekta_BusinessLogic.BAL
 {
     public class Page_Manage_BAL : Page_Manage_DAL
     {
@@ -71,7 +71,7 @@ namespace Nekta_BusinessLogic_BusinessLogic.BAL
 
 
               
-                model.Visitlab_List = MapComponentCommon(groupedData, 1);
+               
              
             }
             // if (model.Content.Template_Master_ID == 1)

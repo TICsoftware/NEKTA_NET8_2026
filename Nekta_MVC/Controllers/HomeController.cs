@@ -17,7 +17,7 @@ public class HomeController : Controller
     {
         _logger = logger;
         _bal = new Homepage_BAL(configuration);
-        _Testbal = new Test_Directory_BAL(configuration);
+       
     }
 
 
@@ -32,7 +32,7 @@ public class HomeController : Controller
          //  string connstr = "user id=sa;data source=49.50.111.21;persist security info=True;initial catalog=Oncopath_2026;password=D#$%%6QWe@@#4;Encrypt=True;TrustServerCertificate=True";
           string encryptstr = Core_project_BusinessLogic.CryptoEngine.Encrypt(connstr);
         var data = _bal.GetHomepage_BAL(1, 1);
-        ViewBag.TestFinder = _Testbal.Fetch_Tests_Details_BAL();
+      //  ViewBag.TestFinder = _Testbal.Fetch_Tests_Details_BAL();
         return View(data);
     }
 
