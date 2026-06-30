@@ -10,7 +10,7 @@ namespace Nekta_BusinessLogic.Entity
         public ContentViewModel Content { get; set; }
         public List<ComponentGroup> Components { get; set; } = new List<ComponentGroup>();
 
-       public List<ContentCommonModel> Visitlab_List { get; set; } = new();
+
 
 
     }

@@ -557,7 +557,7 @@ namespace Nekta_MVC.Controllers.Manage
 
         string GenerateQr(string username, string secret)
         {
-            var url = $"otpauth://totp/MyApp:{username}?secret={secret}&issuer=Oncopathology";
+            var url = $"otpauth://totp/MyApp:{username}?secret={secret}&issuer=Nekta";
 
             using QRCodeGenerator qr = new QRCodeGenerator();
             var data = qr.CreateQrCode(url, QRCodeGenerator.ECCLevel.Q);
