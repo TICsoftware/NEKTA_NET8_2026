@@ -22,7 +22,7 @@
     <meta property="og:site_name" content="Nekta" />
     <meta property="og:title" content="@Model.Home_Content.ContTitle" />
     <meta property="og:description" content="@Model.Home_Content.cont_metadesc" />
-    <meta property="og:url" content="https://www.oncopath.org/" />
+    <meta property="og:url" content="https://www.nekta.com/" />
     <meta property="og:image" content="@Model.Home_Content.cont_meta_image" />
 
     <meta itemprop="name" content="Nekta" />
@@ -35,9 +35,9 @@
     <meta property="og:title" content="@Model.Home_Content.ContTitle" />
     <meta property="og:description" content="@Model.Home_Content.cont_metadesc" />
     <meta property="og:image" content="@Model.Home_Content.cont_meta_image" />
-    <meta property="og:url" content="https://www.oncopath.org/" />
+    <meta property="og:url" content="https://www.nekta.com/" />
 
-    <link rel="canonical" href="https://www.oncopath.org/" />
+    <link rel="canonical" href="https://www.nekta.com/" />
 }
 
 @section Styles {
@@ -52,115 +52,7 @@
     <link rel="stylesheet" href="~/Assets/css/swiper-custom.css" />
 }
 
-
-@if (Model?.Banners != null && Model.Banners.Any())
-{
-    @await Html.PartialAsync("_banner", Model.Banners)
-}
-
-
-@if (Model?.ChooseYourJourney_List != null && Model.ChooseYourJourney_List.Any())
-{
-    @await Html.PartialAsync("_yourJourney", Model.ChooseYourJourney_List)
-}
-
-
-@if (Model?.CancerDiagnosis_List != null && Model.CancerDiagnosis_List.Any())
-{
-    @await Html.PartialAsync("_cancerDiagnosis", Model.CancerDiagnosis_List)
-}
-
-
-@if (Model?.FindTest_List != null && Model.FindTest_List.Any())
-{
-    @await Html.PartialAsync("_findTest", Model.FindTest_List)
-}
-
-
-
-
-
-<div class="vector-section">
-
-    <div class="bg-merge-vector bg-vector-wrap"><img src="/Assets/images/vector-bg-merge.svg" alt="" /></div>
-
-
-    @if (Model?.OurTeam_List != null && Model.OurTeam_List.Any())
-    {
-        @await Html.PartialAsync("_ourTeam", Model.OurTeam_List)
-    }
-
-
-    @if (Model?.AnitaBorges_List != null && Model.AnitaBorges_List.Any())
-    {
-        @await Html.PartialAsync("_drAnitaBorges", Model.AnitaBorges_List)
-    }
-
-
-
-    @* @if (Model?.Academy_List != null && Model.Academy_List.Any())
-    {
-        @await Html.PartialAsync("_academy", Model.Academy_List)
-    } *@
-
-
-</div>
-
-
-<div class="vector-section">
-    <div class="bg-merge-vector-two bg-vector-wrap"><img src="/Assets/images/vector-bg-02.svg" alt="" /></div>
-
-    @if (Model?.TrustQuality_List != null && Model.TrustQuality_List.Any())
-    {
-        @await Html.PartialAsync("_trustQuality", Model.TrustQuality_List)
-    }
-
-    @if (Model?.Testimonials_List != null && Model.Testimonials_List.Any())
-    {
-        @await Html.PartialAsync("_testimonials", Model.Testimonials_List)
-    }
-</div>
-
-@if (Model?.OurValues_List != null && Model.OurValues_List.Any())
-{
-    @await Html.PartialAsync("_ourValues", Model.OurValues_List)
-}
-
-
-
-
-
-
-<div id="cancerdiagnosis-pop"
-    class="fixed inset-0 z-[1001] flex items-center justify-center px-4 py-6 sm:py-0 opacity-0 pointer-events-none">
-
-    <div class="relative w-full max-w-3xl">
-
-        <!-- Close -->
-        <button data-close
-            class="absolute -top-2 -right-2 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white shadow transition">
-            ✕
-        </button>
-
-        <div class="popup-wrapper-inner bg-white rounded-xl shadow-2xl overflow-hidden max-h-[85vh] overflow-y-auto p-6 dark-bgblack"
-            data-lenis-prevent>
-
-            <div class="title-heading-outer-center pb-5 sm:pb-5 w-full">
-                <h3 class="text-20 title-heading-anim " id="cancerdiagnosistitle">
-
-                </h3>
-            </div>
-
-
-            <div id="cancerdiagnosisContent">
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
-
+<div>Home</div>
 
 
 <input id="hdncontent" type="hidden" value="@Model.Home_Content.ContId" />

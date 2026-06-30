@@ -20,20 +20,20 @@
     <meta property="og:site_name" content="Nekta" />
     <meta property="og:title" content="@Model.Content.ContTitle" />
     <meta property="og:description" content="@Model.Content.cont_metadesc" />
-    <meta property="og:url" content="https://www.oncopath.org/" />
-    <meta property="og:image" content="https://www.oncopath.org@(Model.Content.MastheadImage)" />
+    <meta property="og:url" content="https://www.nekta.com/" />
+    <meta property="og:image" content="https://www.nekta.com@(Model.Content.MastheadImage)" />
 
     <meta itemprop="name" content="Nekta" />
     <meta itemprop="description" content="@Model.Content.cont_metadesc" />
-    <meta itemprop="image" content="https://www.oncopath.org@(Model.Content.MastheadImage)" />
+    <meta itemprop="image" content="https://www.nekta.com@(Model.Content.MastheadImage)" />
 
     <!-- Facebook / Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Nekta" />
     <meta property="og:title" content="@Model.Content.ContTitle" />
     <meta property="og:description" content="@Model.Content.cont_metadesc" />
-    <meta property="og:image" content="https://www.oncopath.org@(Model.Content.MastheadImage)" />
-    <meta property="og:url" content="https://www.oncopath.org/" />
+    <meta property="og:image" content="https://www.nekta.com@(Model.Content.MastheadImage)" />
+    <meta property="og:url" content="https://www.nekta.com/" />
 }
 
 @section Styles {
@@ -89,58 +89,9 @@
                 </h2>
             </div>
         </div>
-         @if (Model.Content.PageName == "contact")
-        {
-            <div id="load_contact_form" class="sm:max-w-[85vw] lg:max-w-[65vw] mx-auto contact-form-wrapper">
-            </div>
-        }
+      
     </div>
-    @if (Model.Content.PageName == "contact")
-    {
-
-        @foreach (var item in Model.Visitlab_List)
-{
-        <div class="contact-bg bg-parallax overflow-hidden">
-            <img src="/Assets/images/contact-bg.webp" alt="" class="w-full object-cover dark-grayscaleinvert0"/>
-        </div>
-
-        <div class="container">
-
-        <div class="sm:max-w-[85vw] lg:max-w-[65vw] mx-auto location-wrapper">
-            <div class="wrapper-title-outer section-pt wrapper-title-outer-center">
-                <div class="wrapper-title title-heading-outer title-heading-outer-center pt-0 pb-5 sm:pb-10 filldark-title-heading-anim">
-                    <h2 class="text-h2 title-heading-anim title-heading-anim-white ">  @Html.Raw(item.Title) </h2>
-                </div>
-            </div>
-            <div class="shadow-lg bg-white dark-bglight mx-auto rounded-2xl px-5 py-5 sm:px-8 lg:px-10 lg:py-10 mt-10 location-map-wrapper">
-
-                <div class="flex flex-col md:flex-row gap-6">
-
-                        <!-- LEFT CONTENT -->
-                        <div class="flex-1">
-
-                        <!-- Location -->
-                      @Html.Raw(item.HmpgIntro)
-
-                        <!-- Lab Timings -->
-                        
-
-                        </div>
-
-                        <!-- RIGHT MAP -->
-                        <div class="flex-1">
-                           @Html.Raw(item.Intro)
-                        </div>
-
-                    </div>
-
-            </div>
-        </div>
-
-    </div>
-    }
-    }
-</section>
+    </section>
 
 
 
