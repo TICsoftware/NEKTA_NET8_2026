@@ -24,5 +24,21 @@
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
- 
+
+  <!--
+    Tailwind CSS integration.
+    Dev workflow stays manual (npm run dev:css in watch mode, in its own terminal,
+    alongside dotnet watch run) so hot reload isn't slowed by rebuilding CSS on every save.
+    For Release builds / publish, compile Tailwind automatically so wwwroot/dist/site.css
+    is never stale or missing in a deployed build.
+  -->
+  <Target Name="TailwindRestoreNpm" BeforeTargets="TailwindBuildCss" Condition="!Exists('$(MSBuildProjectDirectory)/node_modules') AND '$(SkipTailwindBuild)' != 'true'">
+    <Exec Command="npm ci" Condition="Exists('$(MSBuildProjectDirectory)/package-lock.json')" WorkingDirectory="$(MSBuildProjectDirectory)" />
+    <Exec Command="npm install" Condition="!Exists('$(MSBuildProjectDirectory)/package-lock.json')" WorkingDirectory="$(MSBuildProjectDirectory)" />
+  </Target>
+
+  <Target Name="TailwindBuildCss" BeforeTargets="Publish" Condition="'$(Configuration)'=='Release' AND '$(SkipTailwindBuild)' != 'true'">
+    <Exec Command="npm run build:css" WorkingDirectory="$(MSBuildProjectDirectory)" />
+  </Target>
+
 </Project>

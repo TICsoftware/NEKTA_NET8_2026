@@ -1,0 +1,57 @@
+@import url("./typography.css");
+@import url("./utilities.css");
+@import url("./components.css");
+@import url("./animations.css");
+
+@font-face {
+    font-family: "Balkist";
+    src: url("../font/Balkist-Medium.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Balkist-Bolditalic";
+    src: url("../font/Balkist-Bolditalic.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --color-primary: #fc713c;
+    --color-cream: #f6f4e6;
+    --color-darkcream: #f2ecdb;
+    --color-green: #748d6e;
+    --color-ink: #0a0a0a;
+    --color-copy: #454545;
+    --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+    --motion-fast: 260ms;
+    --motion-base: 420ms;
+    --motion-slow: 720ms;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: auto;
+}
+
+body {
+    margin: 0;
+    overflow-x: clip;
+}
+
+img,
+svg,
+video {
+    max-width: 100%;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
