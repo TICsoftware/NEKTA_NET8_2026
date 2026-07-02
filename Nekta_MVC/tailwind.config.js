@@ -4,7 +4,7 @@ export default {
   content: [
     "./Views/**/*.cshtml",
     "./Pages/**/*.cshtml",
-    "./wwwroot/**/*.{html,js}"
+    "./wwwroot/**/*.{html,js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {},

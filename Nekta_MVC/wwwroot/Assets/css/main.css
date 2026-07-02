@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
-@source "../../Views/**/*.cshtml";
-@source "../../Pages/**/*.cshtml";
+@source "../../../Views/**/*.cshtml";
+@source "../../../Pages/**/*.cshtml";
+@source "../../../wwwroot/**/*.{html,js,ts,jsx,tsx}";
+
 
 
 @theme {

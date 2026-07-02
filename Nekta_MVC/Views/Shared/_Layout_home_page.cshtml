@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 @{
     var nonce = Context.Items["CSPNonce"]?.ToString();
 }
@@ -24,26 +23,34 @@
   <link nonce="@nonce" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
   @RenderSection("head", required: false)
+  
   <link rel="preload" href="~/dist/site.css" as="style"  onload="this.onload=null;this.rel='stylesheet'" asp-append-version="true">
   <link rel="stylesheet" href="~/dist/site.css" asp-append-version="true" />
+
+  
 
   <link rel="preload" href="~/Assets/css/header-footer.css" as="style">
   <link rel="stylesheet" href="~/Assets/css/header-footer.css">
 
-  <link rel="preload" href="~/Assets/css/common-style.css" as="style">
-  <link rel="stylesheet" href="~/Assets/css/common-style.css">
+  <link rel="preload" href="~/Assets/css/style.css" as="style">
+  <link rel="stylesheet" href="~/Assets/css/style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="~/Assets/css/style.css" />
+
 
   @RenderSection("Styles", required: false)
+
 
 </head>
 
 <body>
-
    <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KKXV4K9H" height="0" width="0"
       style="display:none;visibility:hidden"></iframe>
   </noscript> 
-
   
   @{
     var isHomePage =
@@ -64,26 +71,989 @@
   }
 
 
-  <!-- Custom Cursor -->
-  <div id="cursor-dot" class="cursor-dot"></div>
-  <div id="cursor-ring" class="cursor-ring"></div>
-
   <!-- Header -->
-  @Html.Partial("~/Views/Shared/_Header.cshtml")
+  <!-- @Html.Partial("~/Views/Shared/_Header.cshtml") -->
 
-  <main id="main-wrapper">
-
-    <a href="https://api.whatsapp.com/send?phone=918828036476&text=Hi" target="_blank"
-      class="whatsapp-icon-wrap"><img src="/Assets/images/common-images/whatsapp-float-icon.svg"
-        class="w-auto h-auto object-cover whatsapp-icon" alt="" /></a>
-
-    @RenderBody()
-
-    @Html.Partial("~/Views/Shared/_Footer.cshtml")
-
-  </main>
-
-
+   <main id="main-content">
+         <!-- HERO SECTION -->
+         <section class="hero-section relative md:h-screen flex items-center justify-center overflow-hidden">
+            <div class="hero-assistant fixed bottom-15 right-0 z-50">
+               <button type="button" class="assistant-trigger" data-modal-open="contactModal"
+                  aria-label="Open assistant enquiry form">
+               <img loading="lazy" src="assets/images/assistant.png" alt="" class="hero-section-ass-img" aria-hidden="true"
+                  />
+               </button>
+            </div>
+            <video autoplay muted loop playsinline class="hero-video absolute inset-0 w-full h-full object-cover">
+               <source src="assets/video/Bubble.mp4" type="video/mp4" />
+            </video>
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
+            <!-- Floating Particles -->
+            <div class="absolute inset-0 pointer-events-none">
+               <div
+                  class="particle absolute w-1.5 h-1.5 md:w-2 md:h-2 bg-green-400 rounded-full top-1/4 left-5 md:left-10 opacity-30">
+               </div>
+               <div class="particle absolute w-1 h-1 bg-green-400 rounded-full top-1/3 left-1/4 md:left-1/3 opacity-40"
+                  style="animation-delay: 3s"></div>
+               <div class="particle absolute w-2 h-2 md:w-3 md:h-3 bg-green-400 rounded-full top-2/3 left-3/4 md:left-2/3 opacity-20"
+                  style="animation-delay: 7s"></div>
+            </div>
+         </section>
+         <div class="bg-darkcream py-12 md:py-20 px-4 text-center">
+            <h1 class="hero-title">
+               Seeking an Elevated
+               <span class="section-title__accent text-reveal">
+               Dining Experience
+               </span>
+            </h1>
+            <button class="btn-primary mt-8 md:mt-12 btn-slide-fill" type="button" data-modal-open="contactModal">
+            <span>Get in Touch</span>
+            <img loading="lazy" src="assets/images/arrows/creamarrow-long-right.png" alt="rightArrow" />
+            </button>
+         </div>
+         <!-- ==================== ABOUT SECTION ==================== -->
+         <section class="about-section py-24 md:py-24 bg-center bg-no-repeat bg-cover" style="
+            background-image: url(&quot;assets/images/about/about-bg.jpg&quot;);
+            ">
+            <div class="container-custom">
+               <div class="about-grid grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                  <!-- Left Text -->
+                  <div class="space-y-6 md:space-y-8">
+                     <h2 class="section-title">
+                        From the house trusted on air to delighting on
+                        ground;<br />
+                        Serving up a beautiful world of
+                        <span class="section-title__accent text-reveal">
+                        food inbetween
+                        </span>
+                     </h2>
+                     <div class="about-copy space-y-6 px-0 md:px-8 relative">
+                        <p class="copy-tight" >
+                           A hallmark of catering excellence, trusted
+                           by institutions, driven by innovation, Nekta
+                           Food Solutions Limited is an organization
+                           built to elevate the experience of everyday
+                           dining into an art.
+                        </p>
+                        <p class="copy-tight" >
+                           Backed by the legacy of TajSATS, India’s
+                           market leader in aviation hospitality Nekta
+                           brings the agility of youthful innovation
+                           and the lived wisdom of experience to
+                           everyday institutional dining.
+                        </p>
+                        <a href="#" class="link-md link-primary" >
+                        <span>About us</span>
+                        <img loading="lazy" src="assets/images/arrows/orangearrow-long-right.png" alt="rightArrow" />
+                        </a>
+                        <div class="leafimg leaf-field pointer-events-none absolute z-20 overflow-visible">
+                           <img loading="lazy" src="assets/images/leafimg.png" alt="leafImg"
+                              class="leaf-motion leaf-image absolute top-0 left-0 opacity-0 transform-gpu will-change-transform select-none" />
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Right Image Collage -->
+                  <div class="image-collage-sway collage-stage relative w-full mx-auto lg:ml-auto overflow-visible">
+                     <!-- First image - no animation -->
+                     <img loading="lazy" src="assets/images/turnImg.png" alt="Decorative"
+                        class="collage-turn absolute z-20 select-none" />
+                     <!-- Top Right Image -->
+                     <div data-range="30" data-hover="20" data-idle="12" data-scale="1.03" data-dir="rtl"
+                        class="sync-pan-item collage-item-top absolute right-0 z-20 cursor-pointer">
+                        <div class="media-frame lefttop relative overflow-hidden bg-transparent">
+                           <img loading="lazy" src="assets/images/about/image1.png" alt="" aria-hidden="true"
+                              class="block w-full h-auto opacity-0 pointer-events-none select-none" />
+                           <img loading="lazy" src="assets/images/about/image1.png" alt="Buffet Service"
+                              class="sync-pan-inner pan-image-top absolute inset-0 h-full max-w-none object-cover transform-gpu will-change-transform pointer-events-none select-none" />
+                           <div
+                              class="overlay-base overlay-rounded absolute inset-0 bg-black/20 opacity-0 pointer-events-none">
+                           </div>
+                           <div
+                              class="overlay-sweep overlay-sweep-right overlay-rounded absolute inset-y-0 bg-gradient-to-l from-black/30 via-black/15 to-transparent opacity-0 pointer-events-none">
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Bottom Left Image -->
+                     <div data-range="30" data-hover="20" data-idle="12" data-scale="1.03" data-dir="ltr"
+                        class="sync-pan-item collage-item-bottom absolute z-10 cursor-pointer">
+                        <div class="media-frame leftbottom relative overflow-hidden bg-transparent">
+                           <img loading="lazy" src="assets/images/about/image2.png" alt="" aria-hidden="true"
+                              class="block w-full h-auto opacity-0 pointer-events-none select-none" />
+                           <img loading="lazy" src="assets/images/about/image2.png" alt="Plated Fine Dining"
+                              class="sync-pan-inner pan-image-bottom absolute inset-0 h-full max-w-none object-cover transform-gpu will-change-transform pointer-events-none select-none" />
+                           <div
+                              class="overlay-base overlay-rounded absolute inset-0 bg-black/20 opacity-0 pointer-events-none">
+                           </div>
+                           <div
+                              class="overlay-sweep overlay-sweep-left overlay-rounded absolute inset-y-0 bg-gradient-to-r from-black/30 via-black/15 to-transparent opacity-0 pointer-events-none">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- ==================== SLIDER SECTION (With Premium Hover Effects) ==================== -->
+         <!-- ==================== DIVERSE PLAYGROUNDS SECTION ==================== -->
+         <section id="playgrounds-section" class="bg-darkcream pt-12 md:pt-16 pb-6 overflow-hidden">
+            <div class="container-custom">
+               <!-- Section Heading -->
+               <div class="text-center mb-10 md:mb-6">
+                  <h2 class="section-title" data-leaf-target>
+                     Diverse Playgrounds.
+                     <span class="section-title__accent text-reveal">Singular Spirit</span>
+                  </h2>
+               </div>
+               <!-- Swiper Slider Container -->
+               <div class="swiper mySwiper px-0 md:px-4 pt-10">
+                  <div class="swiper-wrapper">
+                     <!-- Slide 1 -->
+                     <div class="swiper-slide group cursor-pointer">
+                        <div class="feature-card">
+                           <div class="playground-media w-full overflow-hidden rounded-t-full mb-6 relative">
+                              <img loading="lazy" src="assets/images/playgrounds/Business.jpg" alt="Business"
+                                 class="playground-image w-full h-full object-cover transition-transform duration-700" />
+                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent">
+                                 <h3 class="slide-title">Business & Corporates</h3>
+                              </div>
+                           </div>
+                           <a href="#" class="link-md link-dark">
+                           <span class="underline">Learn More</span>
+                           <img loading="lazy" src="assets/images/arrows/blackarrow-long-right.png" alt="→" />
+                           </a>
+                        </div>
+                     </div>
+                     <!-- Slide 2 -->
+                     <div class="swiper-slide group cursor-pointer">
+                        <div class="feature-card">
+                           <div class="playground-media w-full overflow-hidden rounded-t-full mb-6 relative">
+                              <img loading="lazy" src="assets/images/playgrounds/Education.jpg" alt="Education"
+                                 class="playground-image w-full h-full object-cover transition-transform duration-700" />
+                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent">
+                                 <h3 class="slide-title">Education</h3>
+                              </div>
+                           </div>
+                           <a href="#" class="link-md link-dark">
+                           <span class="underline">Learn More</span>
+                           <img loading="lazy" src="assets/images/arrows/blackarrow-long-right.png" alt="→" />
+                           </a>
+                        </div>
+                     </div>
+                     <!-- Slide 3 -->
+                     <div class="swiper-slide group cursor-pointer">
+                        <div class="feature-card">
+                           <div class="playground-media w-full overflow-hidden rounded-t-full mb-6 relative">
+                              <img loading="lazy" src="assets/images/playgrounds/Healthcare.jpg" alt="Healthcare"
+                                 class="playground-image w-full h-full object-cover transition-transform duration-700" />
+                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent">
+                                 <h3 class="slide-title">Healthcare</h3>
+                              </div>
+                           </div>
+                           <a href="#" class="link-md link-dark">
+                           <span class="underline">Learn More</span>
+                           <img loading="lazy" src="assets/images/arrows/blackarrow-long-right.png" alt="→" />
+                           </a>
+                        </div>
+                     </div>
+                     <!-- Slide 4, 5, 6 (same as before - kept short for space) -->
+                     <div class="swiper-slide group cursor-pointer">
+                        <div class="feature-card">
+                           <div class="playground-media w-full overflow-hidden rounded-t-full mb-6 relative">
+                              <img loading="lazy" src="assets/images/playgrounds/Business.jpg" alt="Business"
+                                 class="playground-image w-full h-full object-cover transition-transform duration-700" />
+                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent">
+                                 <h3 class="slide-title">Business & Corporates</h3>
+                              </div>
+                           </div>
+                           <a href="#" class="link-md link-dark">
+                           <span class="underline">Learn More</span>
+                           <img loading="lazy" src="assets/images/arrows/blackarrow-long-right.png" alt="→" />
+                           </a>
+                        </div>
+                     </div>
+                     <div class="swiper-slide group cursor-pointer">
+                        <div class="feature-card">
+                           <div class="playground-media w-full overflow-hidden rounded-t-full mb-6 relative">
+                              <img loading="lazy" src="assets/images/playgrounds/Education.jpg" alt="Education"
+                                 class="playground-image w-full h-full object-cover transition-transform duration-700" />
+                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent">
+                                 <h3 class="slide-title">Education</h3>
+                              </div>
+                           </div>
+                           <a href="#" class="link-md link-dark">
+                           <span class="underline">Learn More</span>
+                           <img loading="lazy" src="assets/images/arrows/blackarrow-long-right.png" alt="→" />
+                           </a>
+                        </div>
+                     </div>
+                     <div class="swiper-slide group cursor-pointer">
+                        <div class="feature-card">
+                           <div class="playground-media w-full overflow-hidden rounded-t-full mb-6 relative">
+                              <img loading="lazy" src="assets/images/playgrounds/Healthcare.jpg" alt="Healthcare"
+                                 class="playground-image w-full h-full object-cover transition-transform duration-700" />
+                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent">
+                                 <h3 class="slide-title">Healthcare</h3>
+                              </div>
+                           </div>
+                           <a href="#" class="link-md link-dark">
+                           <span class="underline">Learn More</span>
+                           <img loading="lazy" src="assets/images/arrows/blackarrow-long-right.png" alt="→" />
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Slider Navigation -->
+                  <div class="flex justify-center items-center gap-4 md:gap-6 mt-8 md:mt-12 pb-8 md:pb-12">
+                     <div class="swiper-button-prev-custom cursor-pointer w-10 h-10 md:w-12 md:h-12 rounded-full bg-green flex items-center justify-center text-cream transition-all hover:scale-110">
+                        <img loading="lazy" src="assets/images/arrows/swiperLeft.png" alt="swiperLeft" />
+                     </div>
+                     <div class="swiper-pagination-custom flex items-center justify-center gap-3 md:gap-4"></div>
+                     <div class="swiper-button-next-custom cursor-pointer w-10 h-10 md:w-12 md:h-12 rounded-full bg-green flex items-center justify-center text-cream transition-all hover:scale-110">
+                        <img loading="lazy" src="assets/images/arrows/swiperRight.png" alt="swiperRight" />
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- ==================== SIGNATURE CREATIONS SECTION ==================== -->
+         <section class="signature-section py-12 md:py-20 relative overflow-hidden group">
+            <div
+               class="newbox signature-bg absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 ease-out z-0">
+            </div>
+            <div class="container-custom container-custom--relative signature-content">
+               <!-- Section Heading - Initially Hidden, Slides from Left on Hover (desktop) / Always visible on mobile -->
+               <div
+                  class="signature-heading text-center mb-6 md:mb-8 transition-all duration-700 ease-out opacity-100">
+                  <h2 class="section-title" data-leaf-target>
+                     Built on Culinary Precision. <br />
+                     Delivered With
+                     <span class="section-title__accent text-reveal">
+                     Hospitality Excellence.
+                     </span>
+                  </h2>
+               </div>
+               <!-- Main Plate Image Container -->
+               <div class="signature-plate relative mx-auto transition-all duration-700">
+                  <img loading="lazy" src="assets/images/signature-plate.png" alt="Signature Dish"
+                     class="signature-plate-image w-full h-auto mx-auto transition-all duration-700 ease-out" />
+                  <!-- Subtle shine effect on hover -->
+                  <div
+                     class="signature-shine absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 transition-opacity duration-700 pointer-events-none">
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- ==================== BUBBLE FOOD'S EDGE SLIDER SECTION ==================== -->
+         <section
+            class="bg-green relative pt-12 md:pt-20 pb-12 overflow-hidden"
+            >
+            <div class="">
+               <div class="text-center mb-6 px-6">
+                  <h2 class="section-title section-title--light" data-leaf-target>
+                     Bubble food's
+                     <span
+                        class="section-title__accent text-reveal section-title__accent--dark text-reveal--dark"
+                        >Edge</span
+                        >
+                  </h2>
+               </div>
+               <!-- Swiper Slider -->
+               <div class="swiper edgeSwiper px-4 py-6">
+                  <div class="swiper-wrapper py-4 pb-2">
+                     <!-- Slide 1 -->
+                     <div
+                        class="swiper-slide"
+                        >
+                        <div
+                           class="edge-card group backdrop-blur-sm opacity-50 transition-all duration-700"
+                           >
+                           <img loading="lazy"
+                              src="assets/images/edge/chefs.jpg"
+                              alt="Chefs Team"
+                              class="edge-card-image border-8 w-full aspect-video object-cover transition-all duration-700"
+                              />
+                           <div
+                              class="edge-arrow-bar absolute w-full -translate-y-1/4 flex justify-between items-center gap-8 mt-0 edgeArrow hidden"
+                              >
+                              <div
+                                 class="edge-swiper-prev edge-prev cursor-pointer w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 relative rounded-full bg-cream border border-green flex items-center justify-center text-white transition-all"
+                                 >
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/GreenLeft.png"
+                                    alt="GreenLeft"
+                                    />
+                              </div>
+                              <div
+                                 class="edge-swiper-next edge-next cursor-pointer w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 relative rounded-full bg-cream border border-green flex items-center justify-center text-white transition-all"
+                                 >
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/GreenRight.png"
+                                    alt="GreenRight"
+                                    />
+                              </div>
+                           </div>
+                           <div
+                              class="edge-details p-0 pt-1 flex flex-col md:flex-row items-start justify-between opacity-0 invisible transition-all duration-500"
+                              >
+                              <div>
+                                 <h3 class="edge-card-title">
+                                    Food Solutioning
+                                 </h3>
+                                 <p class="edge-card-text">
+                                    Your Vision, our expertise,
+                                    brought to life
+                                 </p>
+                              </div>
+                              <div>
+                                 <a
+                                    href="#"
+                                    class="link-md link-light"
+                                    >
+                                 <span class="underline"
+                                    >Learn More
+                                 </span>
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/creamarrow-long-right.png"
+                                    alt="rightArrow"
+                                    class="w-5"
+                                    />
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Slide 2 -->
+                     <div
+                        class="swiper-slide transition-all duration-700"
+                        >
+                        <div
+                           class="edge-card group relative backdrop-blur-sm opacity-50 transition-all duration-700"
+                           >
+                           <img loading="lazy"
+                              src="assets/images/edge/plating.jpg"
+                              alt="Chef Plating"
+                              class="edge-card-image border-8 w-full aspect-video object-cover transition-all duration-700"
+                              />
+                           <div
+                              class="edge-arrow-bar absolute w-full -translate-y-1/4 flex justify-between items-center gap-8 mt-0 edgeArrow hidden"
+                              >
+                              <div
+                                 class="edge-swiper-prev edge-prev cursor-pointer w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 relative rounded-full bg-cream border border-green flex items-center justify-center text-white transition-all"
+                                 >
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/GreenLeft.png"
+                                    alt="GreenLeft"
+                                    />
+                              </div>
+                              <div
+                                 class="edge-swiper-next edge-next cursor-pointer w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 relative rounded-full bg-cream border border-green flex items-center justify-center text-white transition-all"
+                                 >
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/GreenRight.png"
+                                    alt="GreenRight"
+                                    />
+                              </div>
+                           </div>
+                           <div
+                              class="edge-details p-0 pt-1 flex flex-col md:flex-row items-start justify-between opacity-0 invisible transition-all duration-500"
+                              >
+                              <div>
+                                 <h3 class="edge-card-title">
+                                    Food Solutioning
+                                 </h3>
+                                 <p class="edge-card-text">
+                                    Your Vision, our expertise,
+                                    brought to life
+                                 </p>
+                              </div>
+                              <div>
+                                 <a
+                                    href="#"
+                                    class="link-md link-light"
+                                    >
+                                 <span class="underline"
+                                    >Learn More
+                                 </span>
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/creamarrow-long-right.png"
+                                    alt="rightArrow"
+                                    class="w-5"
+                                    />
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Slide 3 -->
+                     <div
+                        class="swiper-slide transition-all duration-700"
+                        >
+                        <div
+                           class="edge-card group relative backdrop-blur-sm opacity-50 transition-all duration-700"
+                           >
+                           <img loading="lazy"
+                              src="assets/images/edge/cooking.jpg"
+                              alt="Cooking Scene"
+                              class="edge-card-image border-8 w-full aspect-video object-cover transition-all duration-700"
+                              />
+                           <div
+                              class="edge-arrow-bar absolute w-full -translate-y-1/4 flex justify-between items-center gap-8 mt-0 edgeArrow hidden"
+                              >
+                              <div
+                                 class="edge-swiper-prev edge-prev cursor-pointer w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 relative rounded-full bg-cream border border-green flex items-center justify-center text-white transition-all"
+                                 >
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/GreenLeft.png"
+                                    alt="GreenLeft"
+                                    />
+                              </div>
+                              <div
+                                 class="edge-swiper-next edge-next cursor-pointer w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 relative rounded-full bg-cream border border-green flex items-center justify-center text-white transition-all"
+                                 >
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/GreenRight.png"
+                                    alt="GreenRight"
+                                    />
+                              </div>
+                           </div>
+                           <div
+                              class="edge-details p-0 pt-1 flex flex-col md:flex-row items-start justify-between opacity-0 invisible transition-all duration-500"
+                              >
+                              <div>
+                                 <h3 class="edge-card-title">
+                                    Food Solutioning
+                                 </h3>
+                                 <p class="edge-card-text">
+                                    Your Vision, our expertise,
+                                    brought to life
+                                 </p>
+                              </div>
+                              <div>
+                                 <a
+                                    href="#"
+                                    class="link-md link-light"
+                                    >
+                                 <span class="underline"
+                                    >Learn More
+                                 </span>
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/creamarrow-long-right.png"
+                                    alt="rightArrow"
+                                    class="w-5"
+                                    />
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Slide 4-->
+                     <div
+                        class="swiper-slide transition-all duration-700"
+                        >
+                        <div
+                           class="edge-card group relative backdrop-blur-sm opacity-50 transition-all duration-700"
+                           >
+                           <img loading="lazy"
+                              src="assets/images/edge/chefs.jpg"
+                              alt="Chefs Team"
+                              class="edge-card-image border-8 w-full aspect-video object-cover transition-all duration-700"
+                              />
+                           <div
+                              class="edge-arrow-bar absolute w-full -translate-y-1/4 flex justify-between items-center gap-8 mt-0 edgeArrow hidden"
+                              >
+                              <div
+                                 class="edge-swiper-prev edge-prev cursor-pointer w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 relative rounded-full bg-cream border border-green flex items-center justify-center text-white transition-all"
+                                 >
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/GreenLeft.png"
+                                    alt="GreenLeft"
+                                    />
+                              </div>
+                              <div
+                                 class="edge-swiper-next edge-next cursor-pointer w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 relative rounded-full bg-cream border border-green flex items-center justify-center text-white transition-all"
+                                 >
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/GreenRight.png"
+                                    alt="GreenRight"
+                                    />
+                              </div>
+                           </div>
+                           <div
+                              class="edge-details p-0 pt-1 flex flex-col md:flex-row items-start justify-between opacity-0 invisible transition-all duration-500"
+                              >
+                              <div>
+                                 <h3 class="edge-card-title">
+                                    Food Solutioning
+                                 </h3>
+                                 <p class="edge-card-text">
+                                    Your Vision, our expertise,
+                                    brought to life
+                                 </p>
+                              </div>
+                              <div>
+                                 <a
+                                    href="#"
+                                    class="link-md link-light"
+                                    >
+                                 <span class="underline"
+                                    >Learn More
+                                 </span>
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/creamarrow-long-right.png"
+                                    alt="rightArrow"
+                                    class="w-5"
+                                    />
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Slide 5 -->
+                     <div
+                        class="swiper-slide transition-all duration-700"
+                        >
+                        <div
+                           class="edge-card group relative backdrop-blur-sm opacity-50 transition-all duration-700"
+                           >
+                           <img loading="lazy"
+                              src="assets/images/edge/plating.jpg"
+                              alt="Chef Plating"
+                              class="edge-card-image border-8 w-full aspect-video object-cover transition-all duration-700"
+                              />
+                           <div
+                              class="edge-arrow-bar absolute w-full -translate-y-1/4 flex justify-between items-center gap-8 mt-0 edgeArrow hidden"
+                              >
+                              <div
+                                 class="edge-swiper-prev edge-prev cursor-pointer w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 relative rounded-full bg-cream border border-green flex items-center justify-center text-white transition-all"
+                                 >
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/GreenLeft.png"
+                                    alt="GreenLeft"
+                                    />
+                              </div>
+                              <div
+                                 class="edge-swiper-next edge-next cursor-pointer w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-cream border border-green flex items-center justify-center relative text-white transition-all"
+                                 >
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/GreenRight.png"
+                                    alt="GreenRight"
+                                    />
+                              </div>
+                           </div>
+                           <div
+                              class="edge-details p-0 pt-1 flex flex-col md:flex-row items-start justify-between opacity-0 invisible transition-all duration-500"
+                              >
+                              <div>
+                                 <h3 class="edge-card-title">
+                                    Food Solutioning
+                                 </h3>
+                                 <p class="edge-card-text">
+                                    Your Vision, our expertise,
+                                    brought to life
+                                 </p>
+                              </div>
+                              <div>
+                                 <a
+                                    href="#"
+                                    class="link-md link-light"
+                                    >
+                                 <span class="underline"
+                                    >Learn More
+                                 </span>
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/creamarrow-long-right.png"
+                                    alt="rightArrow"
+                                    class="w-5"
+                                    />
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Slide 6 -->
+                     <div
+                        class="swiper-slide transition-all duration-700"
+                        >
+                        <div
+                           class="edge-card group relative backdrop-blur-sm opacity-50 transition-all duration-700"
+                           >
+                           <img loading="lazy"
+                              src="assets/images/edge/cooking.jpg"
+                              alt="Cooking Scene"
+                              class="edge-card-image border-8 w-full aspect-video object-cover transition-all duration-700"
+                              />
+                           <div
+                              class="edge-arrow-bar absolute w-full -translate-y-1/4 flex justify-between items-center gap-8 mt-0 edgeArrow hidden"
+                              >
+                              <div
+                                 class="edge-swiper-prev edge-prev cursor-pointer w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 relative rounded-full bg-cream border border-green flex items-center justify-center text-white transition-all"
+                                 >
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/GreenLeft.png"
+                                    alt="GreenLeft"
+                                    />
+                              </div>
+                              <div
+                                 class="edge-swiper-next edge-next cursor-pointer w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 relative rounded-full bg-cream border border-green flex items-center justify-center text-white transition-all"
+                                 >
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/GreenRight.png"
+                                    alt="GreenRight"
+                                    />
+                              </div>
+                           </div>
+                           <div
+                              class="edge-details p-0 pt-1 flex flex-col md:flex-row items-start justify-between opacity-0 invisible transition-all duration-500"
+                              >
+                              <div>
+                                 <h3 class="edge-card-title">
+                                    Food Solutioning
+                                 </h3>
+                                 <p class="edge-card-text">
+                                    Your Vision, our expertise,
+                                    brought to life
+                                 </p>
+                              </div>
+                              <div>
+                                 <a
+                                    href="#"
+                                    class="link-md link-light"
+                                    >
+                                 <span class="underline"
+                                    >Learn More
+                                 </span>
+                                 <img loading="lazy"
+                                    src="assets/images/arrows/creamarrow-long-right.png"
+                                    alt="rightArrow"
+                                    class="w-5"
+                                    />
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- ==================== TESTIMONIALS SECTION ==================== -->
+         <section class="bg-darkcream pt-12 md:pt-20 overflow-hidden">
+            <div class="container-custom">
+               <!-- Heading -->
+               <div class="text-center mb-6 md:mb-8">
+                  <h2 class="section-title" data-leaf-target>
+                     Experiences That Speak
+                     <span class="section-title__accent text-reveal">for Themselves</span>
+                  </h2>
+               </div>
+               <!-- Swiper Slider -->
+               <div class="swiper testimonialSwiper py-6 px-2 md:px-6 overflow-visible">
+                  <div class="swiper-wrapper items-center overflow-visible">
+                     <!-- Testimonial 1 -->
+                     <div class="swiper-slide h-auto">
+                        <div class="testimonial-card group">
+                           <div class="mt-4 md:mt-6 mb-6 md:mb-8 flex justify-center">
+                              <img loading="lazy" src="assets/images/arrows/comma.png" alt="comma" class="quote-icon" />
+                           </div>
+                           <p class="testimonial-text">
+                              Bubble food has consistently delivered
+                              high-quality food services with
+                              exceptional hygiene standards and
+                              operational reliability. Their team
+                              understands large-scale food management
+                              better than most providers we've worked
+                              with.
+                           </p>
+                           <div>
+                              <p class="testimonial-name">
+                                 Rohit Mehra
+                              </p>
+                              <p class="testimonial-role">
+                                 Administration Head
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Testimonial 2 -->
+                     <div class="swiper-slide h-auto">
+                        <div class="testimonial-card group">
+                           <div class="mt-4 md:mt-6 mb-6 md:mb-8 flex justify-center">
+                              <img loading="lazy" src="assets/images/arrows/comma.png" alt="comma" class="quote-icon" />
+                           </div>
+                           <p class="testimonial-text">
+                              What impressed us most was their ability
+                              to maintain taste, consistency, and
+                              timely delivery across multiple
+                              locations. The professionalism of the
+                              bubble food team stands out.
+                           </p>
+                           <div>
+                              <p class="testimonial-name">
+                                 Ananya Deshpande
+                              </p>
+                              <p class="testimonial-role">
+                                 Administration Head
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Testimonial 3 -->
+                     <div class="swiper-slide h-auto">
+                        <div class="testimonial-card group">
+                           <div class="mt-4 md:mt-6 mb-6 md:mb-8 flex justify-center">
+                              <img loading="lazy" src="assets/images/arrows/comma.png" alt="comma" class="quote-icon" />
+                           </div>
+                           <p class="testimonial-text">
+                              Bubble food has consistently delivered
+                              high-quality food services with
+                              exceptional hygiene standards and
+                              operational reliability. Their team
+                              understands large-scale food management
+                              better than most providers we've worked
+                              with.
+                           </p>
+                           <div>
+                              <p class="testimonial-name">
+                                 Rohit Mehra
+                              </p>
+                              <p class="testimonial-role">
+                                 Administration Head
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Testimonial 4 -->
+                     <div class="swiper-slide h-auto">
+                        <div class="testimonial-card group">
+                           <div class="mt-4 md:mt-6 mb-6 md:mb-8 flex justify-center">
+                              <img loading="lazy" src="assets/images/arrows/comma.png" alt="comma" class="quote-icon" />
+                           </div>
+                           <p class="testimonial-text">
+                              From menu planning to execution, bubble
+                              food handled every aspect seamlessly.
+                              Their structured kitchen operations and
+                              attention to detail gave us complete
+                              confidence.
+                           </p>
+                           <div>
+                              <p class="testimonial-name">
+                                 Rohit Mehra
+                              </p>
+                              <p class="testimonial-role">
+                                 Administration Head
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Slider Navigation (Dots & Arrows) -->
+                  <div class="flex justify-center items-center gap-4 md:gap-6 mt-8 md:mt-12 pb-8 md:pb-12">
+                     <div
+                        class="testimonial-prev cursor-pointer w-10 h-10 md:w-12 md:h-12 rounded-full bg-green flex items-center justify-center text-cream transition-all hover:scale-110">
+                        <img loading="lazy" src="assets/images/arrows/swiperLeft.png" alt="swiperLeft" />
+                     </div>
+                     <div class="testimonial-pagination flex items-center justify-center gap-3 md:gap-4"></div>
+                     <div
+                        class="testimonial-next cursor-pointer w-10 h-10 md:w-12 md:h-12 rounded-full bg-green flex items-center justify-center text-cream transition-all hover:scale-110">
+                        <img loading="lazy" src="assets/images/arrows/swiperRight.png" alt="swiperRight" />
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- ==================== CLIENTS WE SERVE SECTION ==================== -->
+         <section class="bg-cream py-12 md:py-20">
+            <div class="container-custom">
+               <div class="text-center mb-10 md:mb-16">
+                  <h2 class="section-title" data-leaf-target>
+                     Clients
+                     <span class="section-title__accent text-reveal">We Serve</span>
+                  </h2>
+               </div>
+               <div class="marquee-wrapper" id="marqueeWrapper" style="overflow:hidden; width:100%;">
+                  <div class="marquee-track" id="marqueeTrack" style="display:flex; width:max-content;">
+                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/USHA.png" alt="USHA"></div>
+                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/Schneider.png"
+                        alt="Schneider Electric"></div>
+                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/Schneider-1.png" alt="Castrol"></div>
+                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/Standard Chartered.png"
+                        alt="Standard Chartered"></div>
+                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/Toyota.png" alt="Toyota"></div>
+                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/EY.png" alt="EY"></div>
+                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/AXA.png" alt="AXA"></div>
+                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/Browser Stack.png" alt="BrowserStack">
+                     </div>
+                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/Kenvue.png" alt="Kenvue"></div>
+                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/Jio Hotstar.png" alt="Jio Hotstar">
+                     </div>
+                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/BOEING.png" alt="Boeing"></div>
+                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/BOEING-1.png" alt="Boeing"></div>
+                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/BOEING-2.png" alt="Boeing"></div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- ==================== LATEST TRENDS & INSIGHTS SECTION ==================== -->
+         <section class="bg-darkcream py-12 md:py-20">
+            <div class="container-custom">
+               <!-- Heading -->
+               <div class="text-center mb-8 md:mb-10">
+                  <h2 class="section-title" data-leaf-target>
+                     Latest Trends, Stories &
+                     <span class="section-title__accent text-reveal">Culinary Insights</span>
+                  </h2>
+               </div>
+               <!-- Swiper Slider -->
+               <div class="swiper insightsSwiper px-2 md:px-4">
+                  <div class="swiper-wrapper">
+                     <!-- Card 1 -->
+                     <div class="swiper-slide h-auto">
+                        <div class="insight-card group">
+                           <div class="media-frame overflow-hidden">
+                              <img loading="lazy" src="assets/images/insights/trend1.png" alt="Catering Trends"
+                                 class="w-full h-52 md:h-64 object-cover" />
+                           </div>
+                           <div class="py-6">
+                              <span class="pill inline-block bg-green text-cream text-xs font-medium">Case
+                              Study</span>
+                              <h3
+                                 class="insight-title line-clamp-2"
+                                 >
+                                 Top Catering Trends Transforming
+                              </h3>
+                              <a
+                                 href="#"
+                                 class="link-md link-primary mt-4"
+                                 >
+                              <span class="underline">Read More
+                              </span>
+                              <img loading="lazy" src="assets/images/arrows/orangearrow-long-right.png" alt="rightArrow" />
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Card 2 -->
+                     <div class="swiper-slide h-auto">
+                        <div class="insight-card group">
+                           <div class="media-frame overflow-hidden">
+                              <img loading="lazy" src="assets/images/insights/chef-creativity.png" alt="Chef Creativity"
+                                 class="w-full h-52 md:h-64 object-cover" />
+                           </div>
+                           <div class="py-6">
+                              <span class="pill inline-block bg-green text-cream text-xs font-medium">Blogs</span>
+                              <h3
+                                 class="insight-title line-clamp-2"
+                                 >
+                                 How Our Chefs Craft Authentic
+                              </h3>
+                              <a
+                                 href="#"
+                                 class="link-md link-primary mt-4"
+                                 >
+                              <span class="underline">Read More
+                              </span>
+                              <img loading="lazy" src="assets/images/arrows/orangearrow-long-right.png" alt="rightArrow" />
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Card 3 -->
+                     <div class="swiper-slide h-auto">
+                        <div class="insight-card group">
+                           <div class="media-frame overflow-hidden">
+                              <img loading="lazy" src="assets/images/insights/premium-catering.png" alt="Premium Catering"
+                                 class="w-full h-52 md:h-64 object-cover" />
+                           </div>
+                           <div class="py-6">
+                              <span class="pill inline-block bg-green text-cream text-xs font-medium">Blogs</span>
+                              <h3
+                                 class="insight-title line-clamp-2"
+                                 >
+                                 Featured for Excellence in Premium
+                              </h3>
+                              <a
+                                 href="#"
+                                 class="link-md link-primary mt-4"
+                                 >
+                              <span class="underline">Read More
+                              </span>
+                              <img loading="lazy" src="assets/images/arrows/orangearrow-long-right.png" alt="rightArrow" />
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- View All Button -->
+               <div class="flex justify-center mt-6">
+                  <button class="btn-primary flex items-center gap-2 btn-slide-fill">
+                  <span>View All Blogs</span>
+                  <img loading="lazy" src="assets/images/arrows/creamarrow-long-right.png" alt="rightArrow" />
+                  </button>
+               </div>
+            </div>
+         </section>
+      </main>
+      <div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle" hidden>
+         <div class="modal-backdrop" data-modal-close></div>
+         <div class="modal-panel" tabindex="-1">
+            <button type="button" class="modal-close" data-modal-close aria-label="Close enquiry form">
+               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                     d="m6.23 4.93 5.77 5.77 5.77-5.77 1.3 1.3L13.3 12l5.77 5.77-1.3 1.3L12 13.3l-5.77 5.77-1.3-1.3L10.7 12 4.93 6.23z" />
+               </svg>
+            </button>
+            <div class="modal-scroll">
+               <h2 id="contactModalTitle" class="modal-title">
+                  For Sales inquiries/RFIs/RFPs, please connect with us at
+                  <a href="mailto:sales@bubblefood.com">sales@bubblefood.com</a>
+                  or Fill in the <span>form below.</span>
+               </h2>
+               <p class="modal-intro">
+                  Please share your requirements.<br />
+                  An associate will connect with you shortly.
+               </p>
+               <form class="enquiry-form" action="#" method="post">
+                  <div class="form-field">
+                     <label for="fullName">Full Name Organisation</label>
+                     <input id="fullName" name="fullName" type="text" placeholder="Enter Full Name Organisation"
+                        autocomplete="organization" />
+                  </div>
+                  <div class="form-field">
+                     <label for="interest">Area of Interest</label>
+                     <select id="interest" name="interest">
+                        <option value="">Select</option>
+                        <option value="corporate">
+                           Business and Corporate
+                        </option>
+                        <option value="education">Education</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="events">Outdoor Events</option>
+                     </select>
+                  </div>
+                  <div class="form-field">
+                     <label for="email">Email Address</label>
+                     <input id="email" name="email" type="email" placeholder="Enter Email Address"
+                        autocomplete="email" />
+                  </div>
+                  <div class="form-field">
+                     <label for="phone">Contact Number</label>
+                     <input id="phone" name="phone" type="tel" placeholder="Enter Contact Number"
+                        autocomplete="tel" />
+                  </div>
+                  <div class="form-field">
+                     <label for="message">Message</label>
+                     <textarea id="message" name="message" placeholder="Enter your message"></textarea>
+                  </div>
+                  <button type="submit" class="btn-primary modal-submit btn-slide-fill">
+                  <span>Send Enquiry</span>
+                  <span aria-hidden="true">&rarr;</span>
+                  </button>
+               </form>
+            </div>
+         </div>
+      </div>
   <div class="back-to-top fixed bottom-3 right-5 w-8 h-8 sm:w-10 sm:h-10 rounded-full
                 bg-black/70 text-white flex items-center justify-center
                 cursor-pointer z-50 opacity-0 pointer-events-none
@@ -119,16 +1089,16 @@
     <!-- COOKIE POLICY -->
 
 
-  <script src="~/Assets/js/jquery.min.js"></script>
+  
+  <script src="~/Assets/js/swiper-bundle.min.js"></script>
   <script src="~/Assets/js/gsap.min.js"></script>
   <script src="~/Assets/js/ScrollTrigger.min.js"></script>
   <script src="~/Assets/js/lenis.min.js"></script>
-  <script src="~/Assets/js/modal-popup-script.js"></script>
-  <script src="~/Assets/js/common-script.js"></script>
- 
-  <script src="~/Assets/js/forms-script.js"></script>
-  <script defer type="text/javascript" src="~/Assets/js/cookie-script.js"></script>
-  <script src="~/scripts/Search/Search_Home.js"></script>
+  <script src="~/Assets/js/common-script.js"></script> 
+
+
+
+  <!-- <script defer type="text/javascript" src="~/Assets/js/cookie-script.js"></script> -->
   @await RenderSectionAsync("Scripts", required: false)
 </body>
 
