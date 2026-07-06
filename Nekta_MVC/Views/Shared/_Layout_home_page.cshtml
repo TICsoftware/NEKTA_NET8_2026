@@ -28,15 +28,18 @@
   <link rel="stylesheet" href="~/dist/site.css" asp-append-version="true" />
 
   
-
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="preload" href="~/Assets/css/header-footer.css" as="style">
   <link rel="stylesheet" href="~/Assets/css/header-footer.css">
 
   <link rel="preload" href="~/Assets/css/style.css" as="style">
   <link rel="stylesheet" href="~/Assets/css/style.css">
+
+  <link rel="stylesheet" href="~/Assets/css/common-style.css">
+  <link rel="stylesheet" href="~/Assets/css/three-box-slider.css">
   
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-   <link rel="stylesheet" href="~/Assets/css/style.css" />
+
+
   @RenderSection("Styles", required: false)
 </head>
 
@@ -725,7 +728,7 @@
 
          <!-- ==================== TESTIMONIALS SECTION ==================== -->
          <section class="bg-darkcream pt-12 md:pt-20 overflow-hidden">
-            <div class="container">
+            <div class="container-fluid px-0!">
                <!-- Heading -->
                <div class="text-center mb-6 md:mb-8">
                   <h2 class="section-title" data-leaf-target>

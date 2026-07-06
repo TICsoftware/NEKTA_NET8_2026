@@ -1,0 +1,34 @@
+
+#playgrounds-section .playground-media::after {
+    content: '';
+    position: absolute;
+
+    left: 0;
+    top: 100%;
+
+    width: 100%;
+    height: 35%;
+
+    background: linear-gradient(
+        to top,
+        transparent,
+        rgba(255,255,255,0.22),
+        transparent
+    );
+
+    opacity: 0;
+    transition:
+        top 1.2s ease,
+        opacity 0.4s ease;
+}
+
+#playgrounds-section .swiper-slide:hover .playground-media::after {
+    opacity: 1;
+    top: -35%;
+}
+
+#playgrounds-section .swiper-slide{
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
