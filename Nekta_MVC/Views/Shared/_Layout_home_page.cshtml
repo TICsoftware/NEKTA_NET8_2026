@@ -34,16 +34,10 @@
 
   <link rel="preload" href="~/Assets/css/style.css" as="style">
   <link rel="stylesheet" href="~/Assets/css/style.css">
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="~/Assets/css/style.css" />
-
-
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+   <link rel="stylesheet" href="~/Assets/css/style.css" />
   @RenderSection("Styles", required: false)
-
-
 </head>
 
 <body>
@@ -58,23 +52,8 @@
     ViewContext.RouteData.Values["action"]?.ToString() == "Index";
   }
 
-  @if (isHomePage)
-  {
-    <div id="loader">
-      <div id="loader-bg"></div>
 
-      <div class="loader-hero">
-        <img src="Assets/images/logo/cop-white-logo.svg" class="loader-logo" />
-        <p class="loader-tagline">A unit of Tata Cancer Care Foundation</p>
-      </div>
-    </div>
-  }
-
-
-  <!-- Header -->
-  <!-- @Html.Partial("~/Views/Shared/_Header.cshtml") -->
-
-   <main id="main-content">
+      <main id="main-content">
          <!-- HERO SECTION -->
          <section class="hero-section relative md:h-screen flex items-center justify-center overflow-hidden">
             <div class="hero-assistant fixed bottom-15 right-0 z-50">
@@ -100,6 +79,8 @@
                   style="animation-delay: 7s"></div>
             </div>
          </section>
+
+
          <div class="bg-darkcream py-12 md:py-20 px-4 text-center">
             <h1 class="hero-title">
                Seeking an Elevated
@@ -112,11 +93,12 @@
             <img loading="lazy" src="assets/images/arrows/creamarrow-long-right.png" alt="rightArrow" />
             </button>
          </div>
+
          <!-- ==================== ABOUT SECTION ==================== -->
          <section class="about-section py-24 md:py-24 bg-center bg-no-repeat bg-cover" style="
             background-image: url(&quot;assets/images/about/about-bg.jpg&quot;);
             ">
-            <div class="container-custom">
+            <div class="container">
                <div class="about-grid grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                   <!-- Left Text -->
                   <div class="space-y-6 md:space-y-8">
@@ -194,10 +176,11 @@
                </div>
             </div>
          </section>
+
          <!-- ==================== SLIDER SECTION (With Premium Hover Effects) ==================== -->
          <!-- ==================== DIVERSE PLAYGROUNDS SECTION ==================== -->
          <section id="playgrounds-section" class="bg-darkcream pt-12 md:pt-16 pb-6 overflow-hidden">
-            <div class="container-custom">
+            <div class="container">
                <!-- Section Heading -->
                <div class="text-center mb-10 md:mb-6">
                   <h2 class="section-title" data-leaf-target>
@@ -316,12 +299,13 @@
                </div>
             </div>
          </section>
+
          <!-- ==================== SIGNATURE CREATIONS SECTION ==================== -->
          <section class="signature-section py-12 md:py-20 relative overflow-hidden group">
             <div
                class="newbox signature-bg absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 ease-out z-0">
             </div>
-            <div class="container-custom container-custom--relative signature-content">
+            <div class="container container--relative signature-content">
                <!-- Section Heading - Initially Hidden, Slides from Left on Hover (desktop) / Always visible on mobile -->
                <div
                   class="signature-heading text-center mb-6 md:mb-8 transition-all duration-700 ease-out opacity-100">
@@ -344,6 +328,7 @@
                </div>
             </div>
          </section>
+
          <!-- ==================== BUBBLE FOOD'S EDGE SLIDER SECTION ==================== -->
          <section
             class="bg-green relative pt-12 md:pt-20 pb-12 overflow-hidden"
@@ -737,9 +722,10 @@
                </div>
             </div>
          </section>
+
          <!-- ==================== TESTIMONIALS SECTION ==================== -->
          <section class="bg-darkcream pt-12 md:pt-20 overflow-hidden">
-            <div class="container-custom">
+            <div class="container">
                <!-- Heading -->
                <div class="text-center mb-6 md:mb-8">
                   <h2 class="section-title" data-leaf-target>
@@ -862,9 +848,10 @@
                </div>
             </div>
          </section>
+
          <!-- ==================== CLIENTS WE SERVE SECTION ==================== -->
          <section class="bg-cream py-12 md:py-20">
-            <div class="container-custom">
+            <div class="container">
                <div class="text-center mb-10 md:mb-16">
                   <h2 class="section-title" data-leaf-target>
                      Clients
@@ -894,9 +881,10 @@
                </div>
             </div>
          </section>
+         
          <!-- ==================== LATEST TRENDS & INSIGHTS SECTION ==================== -->
          <section class="bg-darkcream py-12 md:py-20">
-            <div class="container-custom">
+            <div class="container">
                <!-- Heading -->
                <div class="text-center mb-8 md:mb-10">
                   <h2 class="section-title" data-leaf-target>
@@ -995,6 +983,7 @@
             </div>
          </section>
       </main>
+
       <div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle" hidden>
          <div class="modal-backdrop" data-modal-close></div>
          <div class="modal-panel" tabindex="-1">
@@ -1054,28 +1043,30 @@
             </div>
          </div>
       </div>
-  <div class="back-to-top fixed bottom-3 right-5 w-8 h-8 sm:w-10 sm:h-10 rounded-full
-                bg-black/70 text-white flex items-center justify-center
-                cursor-pointer z-50 opacity-0 pointer-events-none
-                transition-all duration-300">
 
-    <svg class="progress-ring absolute inset-0 w-full h-full -rotate-90 pointer-events-none" viewBox="0 0 100 100"
-      preserveAspectRatio="xMidYMid meet">
-      <circle class="progress-ring-circle" cx="50" cy="50" r="45" stroke="#DE392E" stroke-width="6" fill="transparent"
-        stroke-linecap="round" />
-    </svg>
+      <!--back to top-->
+      <div class="back-to-top fixed bottom-3 right-5 w-8 h-8 sm:w-10 sm:h-10 rounded-full
+                     bg-black/70 text-white flex items-center justify-center
+                     cursor-pointer z-50 opacity-0 pointer-events-none
+                     transition-all duration-300">
 
-    <span class="relative z-10 flex items-center justify-center">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <path d="M12 19V5M12 5L6 11M12 5L18 11" stroke="white" stroke-width="2" stroke-linecap="round" />
-      </svg>
-    </span>
-  </div>
+         <svg class="progress-ring absolute inset-0 w-full h-full -rotate-90 pointer-events-none" viewBox="0 0 100 100"
+            preserveAspectRatio="xMidYMid meet">
+            <circle class="progress-ring-circle" cx="50" cy="50" r="45" stroke="#DE392E" stroke-width="6" fill="transparent"
+            stroke-linecap="round" />
+         </svg>
+
+         <span class="relative z-10 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 19V5M12 5L6 11M12 5L18 11" stroke="white" stroke-width="2" stroke-linecap="round" />
+            </svg>
+         </span>
+      </div>
 
 
 
    <!-- COOKIE POLICY -->
-       <div class="privacy_policy_botm" id="popup-privacypolicy">
+       <!-- <div class="privacy_policy_botm" id="popup-privacypolicy">
         <div class="container">
             <div class="privacy_policy_bg">
                 <p>We use cookies on cop.com to enhance your browsing experience. By continuing to browse this site you are consenting to the use of cookies on this website.</p>
@@ -1085,7 +1076,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- COOKIE POLICY -->
 
 
