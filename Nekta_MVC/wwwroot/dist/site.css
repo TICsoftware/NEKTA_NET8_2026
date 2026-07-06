@@ -1528,9 +1528,6 @@
   .p-6 {
     padding: calc(var(--spacing) * 6);
   }
-  .p-8 {
-    padding: calc(var(--spacing) * 8);
-  }
   .px-0 {
     padding-inline: 0;
   }
@@ -2497,6 +2494,42 @@ body {
   .btn-secondary:focus-visible, .btn-primary:focus-visible {
     outline: 2px solid var(--color-green);
     outline-offset: 4px;
+  }
+  .btn-slide-fill {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform .45s ease, color .45s ease;
+  }
+  .btn-slide-fill::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient( 90deg, #f7e9d5 0%, #fff4e5 45%, #f7e9d5 100% );
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .7s cubic-bezier(.22,1,.36,1);
+    z-index: 0;
+  }
+  .btn-slide-fill span, .btn-slide-fill img {
+    position: relative;
+    z-index: 2;
+    transition: all .5s ease;
+  }
+  .btn-slide-fill:hover {
+    transform: translateY(-2px);
+  }
+  .btn-slide-fill:hover::before {
+    transform: scaleX(1);
+  }
+  .btn-slide-fill:hover span {
+    color: #1b1b1b;
+  }
+  .btn-slide-fill:hover img {
+    transform: translateX(8px);
+  }
+  .btn-slide-fill:active {
+    transform: scale(.98);
   }
 }
 @property --tw-translate-x {
