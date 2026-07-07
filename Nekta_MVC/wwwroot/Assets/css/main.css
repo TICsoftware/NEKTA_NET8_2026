@@ -19,7 +19,7 @@
   --text-20:     clamp(1.125rem, 1.073rem + 0.22vw, 1.25rem); /* 18px → 20px */
   --text-12: clamp(0.7rem, 0.65rem + 0.2vw, 0.75rem);
   --text-intro: clamp(1.125rem, 1.021rem + 0.44vw, 1.375rem); /* 18px → 22px */
-  
+ 
 
 
 
@@ -33,6 +33,8 @@
   --color-text:  #454545;  /**TEXT GRAY**/
   --color-text-heading: #1C1918; /**DARK BLACK**/
   --color-text-dark: #384634; /**dark green**/
+
+   --line: rgba(28,25,24,0.1);
 
  
 }
