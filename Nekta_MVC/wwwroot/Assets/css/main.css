@@ -24,9 +24,9 @@
 
 
   /* ── Brand Colors ── */
-  --color-primary: #EBE3C8;   /**CREAM**/
+  --color-primary: #F6F4E6;   /**CREAM**/
   --color-secondary: #748D6E; /**Green**/
-  --color-third: #FC713C;     /**Orange**/  
+  --color-third: #EBE3C8;     /**Orange**/  
 
 
   /* ── Base Colors / Backgrounds ── */
@@ -86,11 +86,11 @@ html {
 body {
  font-family: var(--font-body); 
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.25;
   color: var(--color-text);
    transition:background-color 0.35s ease,color 0.35s ease;
    font-weight: 400;
-   background-color: var(--color-surface);
+   background-color: var(--color-primary);
   }
 
 
