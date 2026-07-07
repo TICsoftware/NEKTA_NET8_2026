@@ -1,182 +1,347 @@
+const headerWrap = document.getElementById('headerWrap');
+  const navBar = document.getElementById('navBar');
+  const navViewport = document.getElementById('navViewport');
+  const dropdownAnchor = document.getElementById('dropdownAnchor');
+  const desktopNav = document.getElementById('desktopNav');
+  let menuItems = [];
+  const panels = [...document.querySelectorAll('.nav-panel')];
+  const drawerBody = document.getElementById('drawerBody');
 
- 
-const menuToggle = document.getElementById("menuToggle");
-const mainNav = document.getElementById("mainNav");
-const dropdowns = document.querySelectorAll(".nav-dropdown");
+  let activeMenu = null;
+  let prevIndex = null;
+  let closeTimer = null;
 
-const isDesktop = () => window.innerWidth >= 1024;
+  const NAV_DATA = {
+    home: { label: 'Home', href: '#', icon: 'ic-home' },
+    careers: { label: 'Careers', href: '#', icon: 'ic-briefcase' },
+    menus: {
+      about: {
+        label: 'About us',
+        icon: 'ic-users',
+        callout: { tone: 'about', title: 'Our Heritage', text: "From airline kitchens to India's leading food services company — discover the story behind TajSATS.", href: '#' },
+        viewAll: { label: 'View all about us', href: '#' },
+        items: [
+          { label: 'Who we are', desc: 'Our story and mission', href: '#', icon: 'ic-info' },
+          { label: 'TajSATS', desc: 'Our airline catering arm', href: '#', icon: 'ic-info' },
+          { label: 'Leadership', desc: 'Meet the team', href: '#', icon: 'ic-info' },
+          { label: 'Company information', desc: 'Corporate details', href: '#', icon: 'ic-info' },
+          { label: 'CSR — Paathya', desc: 'Our social responsibility program', href: '#', icon: 'ic-info' }
+        ]
+      },
+      segments: {
+        label: 'Segments',
+        icon: 'ic-store',
+        callout: { tone: 'segments', title: 'Every Segment Covered', text: 'Tailored food solutions for corporate, healthcare, sports, and more.', href: '#' },
+        viewAll: { label: 'View all segments', href: '#' },
+        items: [
+          { label: 'Business & corporates', desc: 'Workplace dining', href: '#', icon: 'ic-briefcase-sm' },
+          { label: 'Horeca', desc: 'Hotels, restaurants, cafes', href: '#', icon: 'ic-briefcase-sm' },
+          { label: 'Education', desc: 'Campus catering', href: '#', icon: 'ic-briefcase-sm' },
+          { label: 'Healthcare', desc: 'Patient nutrition', href: '#', icon: 'ic-briefcase-sm' },
+          { label: 'Sports', desc: 'Stadiums & events', href: '#', icon: 'ic-briefcase-sm' },
+          { label: 'Outdoor events', desc: 'Large-scale catering', href: '#', icon: 'ic-briefcase-sm' },
+          { label: 'The Daily Pour', desc: 'Our beverage brand', href: '#', icon: 'ic-briefcase-sm' }
+        ]
+      },
+      solutions: {
+        label: 'Solutions',
+        icon: 'ic-shield',
+        callout: { tone: 'solutions', title: 'End-to-End Solutions', text: 'Culinary craft, food safety, and people-first operations for exceptional dining.', href: '#' },
+        viewAll: { label: 'View all solutions', href: '#' },
+        items: [
+          { label: 'Culinary excellence', desc: 'Our kitchen standards', href: '#', icon: 'ic-bulb' },
+          { label: 'Food solutioning', desc: 'Custom menu design', href: '#', icon: 'ic-bulb' },
+          { label: 'Food programs', desc: 'Nutrition planning', href: '#', icon: 'ic-bulb' },
+          { label: 'People', desc: 'Our workforce', href: '#', icon: 'ic-bulb' },
+          { label: 'Food safety & hygiene', desc: 'Compliance standards', href: '#', icon: 'ic-bulb' }
+        ]
+      }
+    }
+  };
 
-// Mobile menu toggle
-// Guarded: some pages (e.g. the home layout) render without the
-// site header, so #menuToggle/#mainNav won't exist there. Without
-// this check the script threw on load and every later block below
-// (sliders, modal, marquee, animations) silently never ran.
-if (menuToggle && mainNav) {
-    menuToggle.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const isOpen = mainNav.classList.toggle("is-open");
-        menuToggle.setAttribute("aria-expanded", isOpen);
-        menuToggle
-            .querySelector(".menu-icon-open")
-            ?.classList.toggle("hidden", isOpen);
-        menuToggle
-            .querySelector(".menu-icon-close")
-            ?.classList.toggle("hidden", !isOpen);
-        if (!isOpen) closeAllDropdowns();
+  function escapeHtml(s){
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function renderDesktopPanels(){
+    Object.entries(NAV_DATA.menus).forEach(([key, menu]) => {
+      const panel = document.getElementById('panel-' + key);
+      if (!panel) return;
+
+      const wide = key === 'segments' ? ' wide' : '';
+      const grid2 = key === 'segments' ? ' grid-2' : '';
+      const items = menu.items.map(it => {
+        const href = it.href || '#';
+        return `<li><a class="dropdown-link" href="${href}"><strong>${escapeHtml(it.label)}</strong><span>${escapeHtml(it.desc)}</span></a></li>`;
+      }).join('');
+
+      panel.innerHTML = `
+        <div class="dropdown-layout${wide}">
+          <a class="dropdown-callout ${menu.callout.tone}" href="${menu.callout.href || '#'}">
+            <h3>${escapeHtml(menu.callout.title)}</h3>
+            <p>${escapeHtml(menu.callout.text)}</p>
+          </a>
+          <div class="dropdown-body">
+            <ul class="dropdown-list${grid2}">${items}</ul>
+            <a class="dropdown-view-all" href="${menu.viewAll.href || '#'}">${escapeHtml(menu.viewAll.label)} <svg><use href="#ic-chevron-down"/></svg></a>
+          </div>
+        </div>
+      `.trim();
     });
-}
+  }
 
-dropdowns.forEach((dropdown) => {
-    const trigger = dropdown.querySelector(".dropdown-trigger");
-    if (!trigger) return;
-    let closeTimer = null;
+  function renderDesktopNav(){
+    const menuKeys = Object.keys(NAV_DATA.menus);
+    const dropdownItems = menuKeys.map((key, idx) => {
+      const menu = NAV_DATA.menus[key];
+      return `
+        <div class="nav-item" data-menu="${key}" data-index="${idx + 1}">
+          <button type="button" aria-haspopup="true" aria-expanded="false">${escapeHtml(menu.label)} <svg class="chev" width="12" height="8"><use href="#ic-chevron-down"/></svg></button>
+        </div>
+      `.trim();
+    }).join('');
 
-    // MOBILE: click to open/close accordion
-    trigger.addEventListener("click", (e) => {
-        if (isDesktop()) return; 
-        e.stopPropagation();
-        const isOpen = dropdown.classList.contains("is-open");
-        closeAllDropdowns();
+    desktopNav.innerHTML = `
+      <div class="nav-item plain"><a href="${NAV_DATA.home.href}" class="nav-plain active">${escapeHtml(NAV_DATA.home.label)}</a></div>
+      ${dropdownItems}
+      <div class="nav-item plain"><a href="${NAV_DATA.careers.href}" class="nav-plain">${escapeHtml(NAV_DATA.careers.label)}</a></div>
+    `.trim();
+
+    menuItems = [...desktopNav.querySelectorAll('.nav-item[data-menu]')];
+  }
+
+  function bindDesktopMenuEvents(){
+    menuItems.forEach(item => {
+      item.addEventListener('mouseenter', () => openMenu(item));
+      item.addEventListener('focusin', () => openMenu(item));
+      const btn = item.querySelector('button');
+      if (!btn) return;
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        activeMenu === item.dataset.menu ? closeMenu() : openMenu(item);
+      });
+    });
+  }
+
+  function renderMobileDrawer(){
+    if (!drawerBody) return;
+
+    const home = NAV_DATA.home;
+    const careers = NAV_DATA.careers;
+
+    const accordions = Object.entries(NAV_DATA.menus).map(([key, menu]) => {
+      const links = menu.items.map(it => {
+        const href = it.href || '#';
+        return `<a href="${href}">${escapeHtml(it.label)}</a>`;
+      }).join('');
+
+      return `
+        <div class="accordion-row" data-accordion data-menu="${key}">
+          <button type="button" class="accordion-trigger" aria-expanded="false">
+            <span class="label">
+              <span class="ic"><svg width="16" height="16"><use href="#${menu.icon}"/></svg></span>
+              ${escapeHtml(menu.label)}
+            </span>
+            <svg class="chev" width="8" height="12"><use href="#ic-chevron-right"/></svg>
+          </button>
+          <div class="accordion-panel">
+            <div class="accordion-panel-inner">
+              <div class="mobile-callout ${menu.callout.tone}"><strong>${escapeHtml(menu.callout.title)}</strong> ${escapeHtml(menu.callout.text)}</div>
+              ${links}
+            </div>
+          </div>
+        </div>
+      `.trim();
+    }).join('');
+
+    drawerBody.innerHTML = `
+      <a href="${home.href}" class="drawer-link">
+        <span class="ic"><svg width="16" height="16"><use href="#${home.icon}"/></svg></span>
+        ${escapeHtml(home.label)}
+      </a>
+
+      ${accordions}
+
+      <a href="${careers.href}" class="drawer-link">
+        <span class="ic"><svg width="16" height="16"><use href="#${careers.icon}"/></svg></span>
+        ${escapeHtml(careers.label)}
+      </a>
+    `.trim();
+  }
+
+  function wireMobileAccordions(){
+    document.querySelectorAll('[data-accordion]').forEach(row => {
+      const trigger = row.querySelector('.accordion-trigger');
+      const panel = row.querySelector('.accordion-panel');
+      const inner = row.querySelector('.accordion-panel-inner');
+      if (!trigger || !panel || !inner) return;
+
+      trigger.addEventListener('click', () => {
+        const isOpen = row.classList.contains('open');
+
+        document.querySelectorAll('[data-accordion]').forEach(r => {
+          r.classList.remove('open');
+          const p = r.querySelector('.accordion-panel');
+          const t = r.querySelector('.accordion-trigger');
+          if (p) p.style.maxHeight = '0';
+          if (t) t.setAttribute('aria-expanded', 'false');
+        });
+
         if (!isOpen) {
-            dropdown.classList.add("is-open");
-            trigger.setAttribute("aria-expanded", "true");
+          row.classList.add('open');
+          panel.style.maxHeight = inner.scrollHeight + 'px';
+          trigger.setAttribute('aria-expanded', 'true');
         }
+      });
     });
- 
-    // DESKTOP: hover to open/close, with a small delay so moving
-    // from trigger -> panel across the gap doesn't close it
-    dropdown.addEventListener("mouseenter", () => {
-        if (!isDesktop()) return;
-        clearTimeout(closeTimer);
-        closeAllDropdowns();
-        dropdown.classList.add("is-open");
-        trigger.setAttribute("aria-expanded", "true");
-    });
- 
-    dropdown.addEventListener("mouseleave", () => {
-        if (!isDesktop()) return;
-        closeTimer = setTimeout(() => {
-            dropdown.classList.remove("is-open");
-            trigger.setAttribute("aria-expanded", "false");
-        }, 150); // small buffer so it doesn't feel twitchy
-    });
-});
- 
-function closeAllDropdowns() {
-    dropdowns.forEach((dropdown) => {
-        dropdown.classList.remove("is-open");
-        dropdown
-            .querySelector(".dropdown-trigger")
-            ?.setAttribute("aria-expanded", "false");
-    });
-}
+  }
 
-function closeMobileMenu() {
-    if (!menuToggle || !mainNav) return;
-    mainNav.classList.remove("is-open");
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.querySelector(".menu-icon-open")?.classList.remove("hidden");
-    menuToggle.querySelector(".menu-icon-close")?.classList.add("hidden");
-}
- 
-document.addEventListener("click", (e) => {
-    const clickedInsideHeader = e.target.closest(".site-header");
-    if (!clickedInsideHeader) {
-        closeAllDropdowns();
-        closeMobileMenu();
-    } else if (!e.target.closest(".nav-dropdown") && !isDesktop()) {
-        closeAllDropdowns();
+  function measurePanel(panel){
+    const clone = panel.cloneNode(true);
+    clone.classList.add('is-active');
+    clone.style.cssText = 'position:fixed;left:-9999px;top:0;display:block;visibility:hidden;pointer-events:none;';
+    document.body.appendChild(clone);
+    const w = clone.offsetWidth;
+    const h = clone.offsetHeight;
+    document.body.removeChild(clone);
+    return { w, h };
+  }
+
+  function applySize(panel){
+    const { w, h } = measurePanel(panel);
+    navViewport.style.width = w + 'px';
+    navViewport.style.minHeight = h + 'px';
+  }
+
+  function showPanel(panel, direction){
+    panels.forEach(p => p.classList.remove('is-active','from-start','from-end'));
+    panel.classList.add('is-active');
+    if (direction) panel.classList.add(direction);
+    applySize(panel);
+  }
+
+  function positionViewportToItem(item){
+    const btn = item.querySelector('button');
+    if (!btn) return;
+    const btnRect = btn.getBoundingClientRect();
+    const anchorRect = dropdownAnchor.getBoundingClientRect();
+    const centerX = btnRect.left + (btnRect.width / 2) - anchorRect.left;
+    navViewport.style.left = centerX + 'px';
+  }
+
+  function openMenu(item){
+    clearTimeout(closeTimer);
+    const menu = item.dataset.menu;
+    const index = Number(item.dataset.index);
+    const panel = document.getElementById('panel-' + menu);
+    if (!panel) return;
+
+    const direction = activeMenu && prevIndex !== null
+      ? (index > prevIndex ? 'from-end' : 'from-start') : '';
+
+    menuItems.forEach(i => {
+      i.classList.toggle('open', i === item);
+      const btn = i.querySelector('button');
+      if (btn) btn.setAttribute('aria-expanded', i === item ? 'true' : 'false');
+    });
+
+    positionViewportToItem(item);
+    showPanel(panel, direction);
+    navViewport.classList.add('open');
+    navViewport.setAttribute('aria-hidden', 'false');
+    activeMenu = menu;
+    prevIndex = index;
+  }
+
+  function closeMenu(){
+    clearTimeout(closeTimer);
+    menuItems.forEach(i => {
+      i.classList.remove('open');
+      const btn = i.querySelector('button');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+    navViewport.classList.remove('open');
+    navViewport.setAttribute('aria-hidden', 'true');
+    activeMenu = null;
+    prevIndex = null;
+    closeTimer = setTimeout(() => {
+      panels.forEach(p => p.classList.remove('is-active','from-start','from-end'));
+      navViewport.style.width = '';
+      navViewport.style.minHeight = '';
+    }, 160);
+  }
+
+  function scheduleClose(){
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(closeMenu, 220);
+  }
+
+  headerWrap.addEventListener('mouseleave', scheduleClose);
+  headerWrap.addEventListener('focusout', e => {
+    if (!headerWrap.contains(e.relatedTarget)) scheduleClose();
+  });
+  dropdownAnchor.addEventListener('mouseenter', () => clearTimeout(closeTimer));
+
+  // One source of truth for both desktop + mobile
+  renderDesktopNav();
+  renderDesktopPanels();
+  bindDesktopMenuEvents();
+  renderMobileDrawer();
+  wireMobileAccordions();
+
+  window.addEventListener('scroll', () => {
+    navBar.classList.toggle('elevated', window.scrollY > 8);
+  });
+
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const drawer = document.getElementById('drawer');
+  const overlay = document.getElementById('overlay');
+  const drawerClose = document.getElementById('drawerClose');
+
+  function openDrawer(){
+    drawer.classList.add('active');
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    hamburgerBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer(){
+    drawer.classList.remove('active');
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  hamburgerBtn.addEventListener('click', openDrawer);
+  drawerClose.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (drawer.classList.contains('active')) closeDrawer();
+    else closeMenu();
+  });
+
+  window.addEventListener('resize', () => {
+    const p = panels.find(x => x.classList.contains('is-active'));
+    if (p && navViewport.classList.contains('open')) applySize(p);
+    if (activeMenu) {
+      const activeItem = menuItems.find(i => i.dataset.menu === activeMenu);
+      if (activeItem) positionViewportToItem(activeItem);
     }
-});
- 
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-        closeAllDropdowns();
-        closeMobileMenu();
-    }
-});
- 
- 
-
-
-
-
-
-// Header animation
-window.addEventListener("load",()=>{
-
-const tl = gsap.timeline();
-
-
-/* LOGO */
-
-tl.fromTo(
-".header-logo",
-
-{
-opacity:0,
-y:-20,
-scale:.96
-},
-
-{
-opacity:1,
-y:0,
-scale:1,
-duration:.45,
-ease:"power3.out"
-}
-);
-
-
-
-/* MENU */
-
-tl.fromTo(
-".header-menu > *",
-
-{
-opacity:0,
-y:-15
-},
-
-{
-opacity:1,
-y:0,
-duration:.35,
-stagger:.05,
-ease:"power2.out"
-},
-
-"-=.25"
-);
-
-
-
-/* BUTTON */
-
-tl.fromTo(
-".header-btn",
-
-{
-opacity:0,
-y:-10,
-scale:.96
-},
-
-{
-opacity:1,
-y:0,
-scale:1,
-duration:.35,
-ease:"back.out(1.4)"
-},
-
-"-=.15"
-);
-
-});
-
+    document.querySelectorAll('[data-accordion].open').forEach(row => {
+      const panel = row.querySelector('.accordion-panel');
+      const inner = row.querySelector('.accordion-panel-inner');
+      if (!panel || !inner) return;
+      panel.style.maxHeight = inner.scrollHeight + 'px';
+    });
+  });
 
 
 (function () {

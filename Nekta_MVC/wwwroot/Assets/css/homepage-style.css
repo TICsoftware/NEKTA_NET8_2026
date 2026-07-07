@@ -157,7 +157,6 @@
 /* ══════════════════════════════
   HERO BANNER
 ══════════════════════════════ */
-.hero-section {margin-top: 153px;}
 
 /* Hero media slider (image + video slides) */
 .hero-media-swiper {z-index: 0;}
@@ -295,4 +294,4 @@
  .memory-inner-outer {display: flex; flex-direction: column-reverse; gap: 40px;}
  .memory-img-left {margin-top: 0;}
  .memory-section {margin-bottom: 0;}
-  .hexagon-img
+}
