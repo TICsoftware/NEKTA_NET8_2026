@@ -16,22 +16,88 @@
 </svg>
 
 <header class="header-wrap" id="headerWrap">
-  <div class="bar" id="navBar">
-    <a href="#" class="logo"></a>
+    <div class="container">
+    <div class="bar" id="navBar">
+        <a href="#" class="logo"> <img src="/Assets/images/logo/Nekta-color.svg" class="max-w-max" alt="logo " /> </a>
 
-    <nav class="desktop-nav" id="desktopNav" aria-label="Main"></nav>
+        <nav class="desktop-nav" id="desktopNav" aria-label="Main">
+          <div class="nav-item plain"><a href="#" class="nav-plain active">Home</a></div>
+          <div class="nav-item" data-menu="about" data-index="1">
+            <button type="button" aria-haspopup="true" aria-expanded="false">About us <svg class="chev" width="12" height="8"><use href="#ic-chevron-down"/></svg></button>
+          </div>
+          <div class="nav-item" data-menu="segments" data-index="2">
+            <button type="button" aria-haspopup="true" aria-expanded="false">Segments <svg class="chev" width="12" height="8"><use href="#ic-chevron-down"/></svg></button>
+          </div>
+          <div class="nav-item" data-menu="solutions" data-index="3">
+            <button type="button" aria-haspopup="true" aria-expanded="false">Solutions <svg class="chev" width="12" height="8"><use href="#ic-chevron-down"/></svg></button>
+          </div>
+          <div class="nav-item plain"><a href="#" class="nav-plain">Careers</a></div>
+        </nav>
 
-    <button class="cta" type="button">Contact us <svg width="14" height="14"><use href="#ic-arrow"/></svg></button>
-    <button class="hamburger" id="hamburgerBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg width="22" height="22"><use href="#ic-menu"/></svg></button>
-  </div>
+        <button class="cta" type="button">Contact us <svg width="14" height="14"><use href="#ic-arrow"/></svg></button>
+        <button class="hamburger" id="hamburgerBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg width="22" height="22"><use href="#ic-menu"/></svg></button>
+    </div>
 
-  <div class="dropdown-anchor" id="dropdownAnchor">
-    <div class="nav-viewport" id="navViewport" aria-hidden="true">
-      <!-- Desktop dropdown panels rendered from ONE shared data object in JS -->
-      <div class="nav-panel" id="panel-about" data-menu="about"></div>
-      <div class="nav-panel" id="panel-segments" data-menu="segments"></div>
-      <div class="nav-panel" id="panel-solutions" data-menu="solutions"></div>
+    <div class="dropdown-anchor" id="dropdownAnchor">
+        <div class="nav-viewport" id="navViewport" aria-hidden="true">
+        <div class="nav-panel" id="panel-about" data-menu="about">
+          <div class="dropdown-layout">
+            <a class="dropdown-callout about" href="#">
+              <h3>Our Heritage</h3>
+              <p>From airline kitchens to India&#39;s leading food services company — discover the story behind TajSATS.</p>
+            </a>
+            <div class="dropdown-body">
+              <ul class="dropdown-list">
+                <li><a class="dropdown-link" href="#"><strong>Who we are</strong><span>Our story and mission</span></a></li>
+                <li><a class="dropdown-link" href="#"><strong>TajSATS</strong><span>Our airline catering arm</span></a></li>
+                <li><a class="dropdown-link" href="#"><strong>Leadership</strong><span>Meet the team</span></a></li>
+                <li><a class="dropdown-link" href="#"><strong>Company information</strong><span>Corporate details</span></a></li>
+                <li><a class="dropdown-link" href="#"><strong>CSR — Paathya</strong><span>Our social responsibility program</span></a></li>
+              </ul>
+              
+            </div>
+          </div>
+        </div>
+        <div class="nav-panel" id="panel-segments" data-menu="segments">
+          <div class="dropdown-layout wide">
+            <a class="dropdown-callout segments" href="#">
+              <h3>Every Segment Covered</h3>
+              <p>Tailored food solutions for corporate, healthcare, sports, and more.</p>
+            </a>
+            <div class="dropdown-body">
+              <ul class="dropdown-list grid-2">
+                <li><a class="dropdown-link" href="#"><strong>Business &amp; corporates</strong><span>Workplace dining</span></a></li>
+                <li><a class="dropdown-link" href="#"><strong>Horeca</strong><span>Hotels, restaurants, cafes</span></a></li>
+                <li><a class="dropdown-link" href="#"><strong>Education</strong><span>Campus catering</span></a></li>
+                <li><a class="dropdown-link" href="#"><strong>Healthcare</strong><span>Patient nutrition</span></a></li>
+                <li><a class="dropdown-link" href="#"><strong>Sports</strong><span>Stadiums &amp; events</span></a></li>
+                <li><a class="dropdown-link" href="#"><strong>Outdoor events</strong><span>Large-scale catering</span></a></li>
+                <li><a class="dropdown-link" href="#"><strong>The Daily Pour</strong><span>Our beverage brand</span></a></li>
+              </ul>
+             
+            </div>
+          </div>
+        </div>
+        <div class="nav-panel" id="panel-solutions" data-menu="solutions">
+          <div class="dropdown-layout">
+            <a class="dropdown-callout solutions" href="#">
+              <h3>End-to-End Solutions</h3>
+              <p>Culinary craft, food safety, and people-first operations for exceptional dining.</p>
+            </a>
+            <div class="dropdown-body">
+              <ul class="dropdown-list">
+                <li><a class="dropdown-link" href="#"><strong>Culinary excellence</strong><span>Our kitchen standards</span></a></li>
+                <li><a class="dropdown-link" href="#"><strong>Food solutioning</strong><span>Custom menu design</span></a></li>
+                <li><a class="dropdown-link" href="#"><strong>Food programs</strong><span>Nutrition planning</span></a></li>
+                <li><a class="dropdown-link" href="#"><strong>People</strong><span>Our workforce</span></a></li>
+                <li><a class="dropdown-link" href="#"><strong>Food safety &amp; hygiene</strong><span>Compliance standards</span></a></li>
+              </ul>
+             
+            </div>
+          </div>
+        </div>
 
+        </div>
     </div>
   </div>
 </header>
@@ -39,11 +105,82 @@
 <div class="overlay" id="overlay" aria-hidden="true"></div>
 <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <div class="drawer-head">
-    <div class="logo"><span class="logo-dot"></span>taj<span>sats</span></div>
+    <div class="logo"></div>
     <button class="drawer-close" id="drawerClose" type="button" aria-label="Close menu"><svg width="20" height="20"><use href="#ic-close"/></svg></button>
   </div>
-  <!-- Mobile drawer items rendered from ONE shared data object in JS -->
-  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-body" id="drawerBody">
+    <a href="#" class="drawer-link">
+      <span class="ic"><svg width="16" height="16"><use href="#ic-home"/></svg></span>
+      Home
+    </a>
+
+    <div class="accordion-row" data-accordion data-menu="about">
+      <button type="button" class="accordion-trigger" aria-expanded="false">
+        <span class="label">
+          <span class="ic"><svg width="16" height="16"><use href="#ic-users"/></svg></span>
+          About us
+        </span>
+        <svg class="chev" width="8" height="12"><use href="#ic-chevron-right"/></svg>
+      </button>
+      <div class="accordion-panel">
+        <div class="accordion-panel-inner">
+          <div class="mobile-callout about"><strong>Our Heritage</strong> From airline kitchens to India&#39;s leading food services company — discover the story behind TajSATS.</div>
+          <a href="#">Who we are</a>
+          <a href="#">TajSATS</a>
+          <a href="#">Leadership</a>
+          <a href="#">Company information</a>
+          <a href="#">CSR — Paathya</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-row" data-accordion data-menu="segments">
+      <button type="button" class="accordion-trigger" aria-expanded="false">
+        <span class="label">
+          <span class="ic"><svg width="16" height="16"><use href="#ic-store"/></svg></span>
+          Segments
+        </span>
+        <svg class="chev" width="8" height="12"><use href="#ic-chevron-right"/></svg>
+      </button>
+      <div class="accordion-panel">
+        <div class="accordion-panel-inner">
+          <div class="mobile-callout segments"><strong>Every Segment Covered</strong> Tailored food solutions for corporate, healthcare, sports, and more.</div>
+          <a href="#">Business &amp; corporates</a>
+          <a href="#">Horeca</a>
+          <a href="#">Education</a>
+          <a href="#">Healthcare</a>
+          <a href="#">Sports</a>
+          <a href="#">Outdoor events</a>
+          <a href="#">The Daily Pour</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-row" data-accordion data-menu="solutions">
+      <button type="button" class="accordion-trigger" aria-expanded="false">
+        <span class="label">
+          <span class="ic"><svg width="16" height="16"><use href="#ic-shield"/></svg></span>
+          Solutions
+        </span>
+        <svg class="chev" width="8" height="12"><use href="#ic-chevron-right"/></svg>
+      </button>
+      <div class="accordion-panel">
+        <div class="accordion-panel-inner">
+          <div class="mobile-callout solutions"><strong>End-to-End Solutions</strong> Culinary craft, food safety, and people-first operations for exceptional dining.</div>
+          <a href="#">Culinary excellence</a>
+          <a href="#">Food solutioning</a>
+          <a href="#">Food programs</a>
+          <a href="#">People</a>
+          <a href="#">Food safety &amp; hygiene</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="#" class="drawer-link">
+      <span class="ic"><svg width="16" height="16"><use href="#ic-briefcase"/></svg></span>
+      Careers
+    </a>
+  </div>
   <div class="drawer-footer">
     <button class="cta" type="button">Contact us <svg width="14" height="14"><use href="#ic-arrow"/></svg></button>
   </div>
