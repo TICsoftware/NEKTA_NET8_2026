@@ -20,7 +20,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link nonce="@nonce" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
 
   @RenderSection("head", required: false)
   
@@ -37,8 +40,6 @@
 
   <link rel="stylesheet" href="~/Assets/css/common-style.css">
   <link rel="stylesheet" href="~/Assets/css/three-box-slider.css">
-  
-
 
   @RenderSection("Styles", required: false)
 </head>
@@ -57,40 +58,67 @@
 
  @Html.Partial("~/Views/Shared/_Header.cshtml")
 
-      <main id="main-content">
-         <!-- HERO SECTION -->
-         <section class="hero-section relative md:h-screen flex items-center justify-center overflow-hidden">
-            <div class="hero-assistant fixed bottom-15 right-0 z-50">
+  <div class="hero-assistant fixed bottom-15 right-0 z-50">
                <button type="button" class="assistant-trigger" data-modal-open="contactModal"
                   aria-label="Open assistant enquiry form">
                <img loading="lazy" src="assets/images/assistant.png" alt="" class="hero-section-ass-img" aria-hidden="true"
                   />
                </button>
             </div>
+
+      <main id="main-content">
+         <!--============================================
+         1: HERO SECTION 
+         =============================================-->
+         <section class="hero-section relative md:h-screen flex items-center justify-center overflow-hidden">
+           
             <!-- HERO MEDIA SLIDER (image + video slides) -->
             <div class="hero-media-swiper swiper absolute inset-0 w-full h-full">
                <div class="swiper-wrapper">
-
                   <!-- Slide 1: video -->
-                  <div class="swiper-slide hero-slide" data-caption="Where Diagnostics Meets Compassion">
+                  <div class="swiper-slide hero-slide" >
                      <video class="hero-media" muted playsinline preload="auto">
                         <source src="assets/video/Bubble.mp4" type="video/mp4" />
                      </video>
+
+                        <!-- Caption: stays centered and syncs with the active slide -->
+                        <div class="hero-caption-overlay absolute inset-0 flex items-center justify-center text-center px-4 pointer-events-none z-30">                        
+                           <div class="hero-caption-inner section-title-outer ">
+                              <h1 class="hero-caption-title title-section text-reveal">Where Diagnostics <span class="balkist-bolditalic ">Meets Compassion</span></h1>
+                              <p class="hero-caption-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>                
+
+                              <a href="#" class="common-btn mt-8 md:mt-12 btn-slide-fill" type="button">
+                                 <span>Learn More</span>
+                                 <img loading="lazy" src="assets/images/arrows/creamarrow-long-right.png" alt="rightArrow" />
+                              </a>
+                           </div>
+                        </div>
                   </div>
 
                   <!-- Slide 2: image (add/remove slides as needed) -->
-                  <div class="swiper-slide hero-slide" data-caption="Precision You Can Trust">
+                  <div class="swiper-slide hero-slide" data-caption="">
                      <img loading="lazy" src="~/Assets/images/homepage/banner/banner-img1.webp" alt=""
                         class="hero-media" />
-                  </div>
 
+                        <!-- Caption: stays centered and syncs with the active slide -->
+                     <div class="hero-caption-overlay absolute inset-0 flex items-center justify-center text-center px-4 pointer-events-none z-30">
+                        <div class="hero-caption-inner">
+                            <h1 class="hero-caption-title title-section">Precision You Can  <span class="balkist-bolditalic text-reveal">Trust</span></h1>
+                           <p class="hero-caption-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>                
+
+                           <a href="#" class="common-btn mt-8 md:mt-12 btn-slide-fill" type="button">
+                              <span>Learn More</span>
+                              <img loading="lazy" src="assets/images/arrows/creamarrow-long-right.png" alt="rightArrow" />
+                           </a>
+                        </div>
+                     </div>
+                  </div>
                </div>
             </div>
 
-            <!-- Caption: stays centered and syncs with the active slide -->
-            <div class="hero-caption-overlay absolute inset-0 flex items-center justify-center text-center px-4 pointer-events-none">
-               <p class="hero-caption-text"></p>
-            </div>
+            <!-- Slide break: solid panel that wipes left-to-right on load and on every slide change -->
+            <div class="hero-slide-break" aria-hidden="true"></div>        
+
 
             <!-- Slider controls: shown by JS only when there is more than one slide -->
             <div class="hero-swiper-controls">
@@ -101,6 +129,7 @@
 
             <!-- Overlay -->
             <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-10 pointer-events-none"></div>
+
             <!-- Floating Particles -->
             <div class="absolute inset-0 pointer-events-none z-10">
                <div
@@ -114,54 +143,50 @@
          </section>
 
 
-         <div class="bg-darkcream py-12 md:py-20 px-4 text-center">
-            <h1 class="hero-title">
-               Seeking an Elevated
-               <span class="section-title__accent text-reveal">
-               Dining Experience
-               </span>
-            </h1>
-            <button class="btn-primary mt-8 md:mt-12 btn-slide-fill" type="button" data-modal-open="contactModal">
-            <span>Get in Touch</span>
-            <img loading="lazy" src="assets/images/arrows/creamarrow-long-right.png" alt="rightArrow" />
-            </button>
-         </div>
 
-         <!-- ==================== ABOUT SECTION ==================== -->
-         <section class="about-section py-24 md:py-24 bg-center bg-no-repeat bg-cover" style="
-            background-image: url(&quot;assets/images/about/about-bg.jpg&quot;);
-            ">
+
+         <!--========================================
+         2: Seeking an Elevated Dining Experience
+         ========================================-->
+         <section class="bg-darkcream section-spacing  text-center">
+            <div class="container mx-auto max-w-5xl">
+               <div class="section-title-outer">
+                  <h2 class="title-section text-h2 " data-leaf-target>
+                     Seeking an Elevated <span class="text-reveal"> Dining Experience</span>
+                  </h2>
+               </div>
+
+               <a href="#" class="common-btn mt-8 md:mt-12 btn-slide-fill" type="button" data-modal-open="contactModal">
+                  <span>Get in Touch</span>
+                  <img loading="lazy" src="assets/images/arrows/creamarrow-long-right.png" alt="rightArrow" />
+               </a>
+            </div>   
+         </section>
+
+
+         <!-- ==================== ===========
+         3: From the house trusted on air to delighting on ground Serving up a beautiful world of  food inbetween
+         =================================== -->
+         <section class="about-section section-spacing">
             <div class="container">
                <div class="about-grid grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                   <!-- Left Text -->
-                  <div class="space-y-6 md:space-y-8">
-                     <h2 class="section-title">
-                        From the house trusted on air to delighting on
-                        ground;<br />
-                        Serving up a beautiful world of
-                        <span class="section-title__accent text-reveal">
-                        food inbetween
-                        </span>
-                     </h2>
+                  <div class="space-y-6 md:space-y-8">                  
+                     <div class="section-title-outer">
+                        <h2 class="title-section  text-h2 " data-leaf-target>From the house trusted on air to delighting on ground;<br />Serving up a beautiful world of  <span class="text-reveal">  food inbetween</span></h2>
+                     </div>
+                   
                      <div class="about-copy space-y-6 px-0 md:px-8 relative">
-                        <p class="copy-tight" >
-                           A hallmark of catering excellence, trusted
-                           by institutions, driven by innovation, Nekta
-                           Food Solutions Limited is an organization
-                           built to elevate the experience of everyday
-                           dining into an art.
-                        </p>
-                        <p class="copy-tight" >
-                           Backed by the legacy of TajSATS, India’s
-                           market leader in aviation hospitality Nekta
-                           brings the agility of youthful innovation
-                           and the lived wisdom of experience to
-                           everyday institutional dining.
-                        </p>
-                        <a href="#" class="link-md link-primary" >
-                        <span>About us</span>
-                        <img loading="lazy" src="assets/images/arrows/orangearrow-long-right.png" alt="rightArrow" />
-                        </a>
+                        <p>A hallmark of catering excellence, trusted by institutions, driven by innovation, Nekta Food Solutions Limited is an organization built to elevate the experience of everyday
+                           dining into an art.</p>
+                        <p>Backed by the legacy of TajSATS, India’s market leader in aviation hospitality Nekta brings the agility of youthful innovation and the lived wisdom of experience to
+                           everyday institutional dining.</p>
+
+                        <a href="#" class="common-btn mt-8 md:mt-12 btn-slide-link" type="button" data-modal-open="contactModal">
+                           <span>About us</span>
+                           <img loading="lazy" src="assets/images/arrows/orangearrow-long-right.png" alt="rightArrow" />
+                        </a>       
+
                         <div class="leafimg leaf-field pointer-events-none absolute z-20 overflow-visible">
                            <img loading="lazy" src="assets/images/leafimg.png" alt="leafImg"
                               class="leaf-motion leaf-image absolute top-0 left-0 opacity-0 transform-gpu will-change-transform select-none" />
@@ -176,7 +201,7 @@
                      <!-- Top Right Image -->
                      <div data-range="30" data-hover="20" data-idle="12" data-scale="1.03" data-dir="rtl"
                         class="sync-pan-item collage-item-top absolute right-0 z-20 cursor-pointer">
-                        <div class="media-frame lefttop relative overflow-hidden bg-transparent">
+                        <div class="media-frame lefttop relative overflow-hidden bg-transparent rounded-lg border-8 border-(--color-darkcream)">
                            <img loading="lazy" src="assets/images/about/image1.png" alt="" aria-hidden="true"
                               class="block w-full h-auto opacity-0 pointer-events-none select-none" />
                            <img loading="lazy" src="assets/images/about/image1.png" alt="Buffet Service"
@@ -192,7 +217,7 @@
                      <!-- Bottom Left Image -->
                      <div data-range="30" data-hover="20" data-idle="12" data-scale="1.03" data-dir="ltr"
                         class="sync-pan-item collage-item-bottom absolute z-10 cursor-pointer">
-                        <div class="media-frame leftbottom relative overflow-hidden bg-transparent">
+                        <div class="media-frame leftbottom relative overflow-hidden bg-transparent rounded-lg border-8 border-(--color-darkcream)">
                            <img loading="lazy" src="assets/images/about/image2.png" alt="" aria-hidden="true"
                               class="block w-full h-auto opacity-0 pointer-events-none select-none" />
                            <img loading="lazy" src="assets/images/about/image2.png" alt="Plated Fine Dining"
@@ -210,16 +235,18 @@
             </div>
          </section>
 
-         <!-- ==================== DIVERSE PLAYGROUNDS SECTION ==================== -->
-         <section id="playgrounds-section" class="bg-darkcream pt-12 md:pt-16 pb-6 overflow-hidden">
+         <!-- ==================================
+         4: Diverse Playgrounds. Singular Spirit
+         =================================== -->
+         <section id="playgrounds-section" class="bg-darkcream section-spacing  overflow-hidden">
             <div class="container">
                <!-- Section Heading -->
-               <div class="text-center mb-10 md:mb-6">
-                  <h2 class="section-title" data-leaf-target>
-                     Diverse Playgrounds.
-                     <span class="section-title__accent text-reveal">Singular Spirit</span>
+               <div class="section-title-outer text-center">
+                  <h2 class="title-section text-h2 " data-leaf-target>
+                    Diverse Playgrounds.  <span class="text-reveal"> Singular Spirit</span>
                   </h2>
                </div>
+
                <!-- Swiper Slider Container -->
                <div class="swiper mySwiper px-0 md:px-4 pt-10">
                   <div class="swiper-wrapper">
@@ -227,15 +254,15 @@
                      <div class="swiper-slide group cursor-pointer">
                         <div class="feature-card">
                            <div class="playground-media w-full overflow-hidden rounded-t-full mb-6 relative">
-                              <img loading="lazy" src="assets/images/playgrounds/Business.jpg" alt="Business"
-                                 class="playground-image w-full h-full object-cover transition-transform duration-700" />
-                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent">
-                                 <h3 class="slide-title">Business & Corporates</h3>
+                              <img loading="lazy" src="assets/images/playgrounds/Business.jpg" alt="Business" class="playground-image w-full h-full object-cover transition-transform duration-700" />
+                              <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent  text-center">
+                                 <h3 class="text-white">Business & Corporates</h3>
                               </div>
                            </div>
+
                            <a href="#" class="link-md link-dark">
-                           <span class="underline">Learn More</span>
-                           <img loading="lazy" src="assets/images/arrows/blackarrow-long-right.png" alt="→" />
+                              <span class="underline">Learn More</span>
+                              <img loading="lazy" src="assets/images/arrows/blackarrow-long-right.png" alt="→" />
                            </a>
                         </div>
                      </div>
@@ -245,8 +272,8 @@
                            <div class="playground-media w-full overflow-hidden rounded-t-full mb-6 relative">
                               <img loading="lazy" src="assets/images/playgrounds/Education.jpg" alt="Education"
                                  class="playground-image w-full h-full object-cover transition-transform duration-700" />
-                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent">
-                                 <h3 class="slide-title">Education</h3>
+                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent text-center">
+                                 <h3  class="text-white">Education</h3>
                               </div>
                            </div>
                            <a href="#" class="link-md link-dark">
@@ -261,8 +288,8 @@
                            <div class="playground-media w-full overflow-hidden rounded-t-full mb-6 relative">
                               <img loading="lazy" src="assets/images/playgrounds/Healthcare.jpg" alt="Healthcare"
                                  class="playground-image w-full h-full object-cover transition-transform duration-700" />
-                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent">
-                                 <h3 class="slide-title">Healthcare</h3>
+                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent text-center">
+                                 <h3 class="text-white">Healthcare</h3>
                               </div>
                            </div>
                            <a href="#" class="link-md link-dark">
@@ -278,7 +305,7 @@
                               <img loading="lazy" src="assets/images/playgrounds/Business.jpg" alt="Business"
                                  class="playground-image w-full h-full object-cover transition-transform duration-700" />
                               <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent">
-                                 <h3 class="slide-title">Business & Corporates</h3>
+                                 <h3 class="text-white">Business & Corporates</h3>
                               </div>
                            </div>
                            <a href="#" class="link-md link-dark">
@@ -292,8 +319,8 @@
                            <div class="playground-media w-full overflow-hidden rounded-t-full mb-6 relative">
                               <img loading="lazy" src="assets/images/playgrounds/Education.jpg" alt="Education"
                                  class="playground-image w-full h-full object-cover transition-transform duration-700" />
-                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent">
-                                 <h3 class="slide-title">Education</h3>
+                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent  text-center">
+                                 <h3 class="text-white">Education</h3>
                               </div>
                            </div>
                            <a href="#" class="link-md link-dark">
@@ -308,7 +335,7 @@
                               <img loading="lazy" src="assets/images/playgrounds/Healthcare.jpg" alt="Healthcare"
                                  class="playground-image w-full h-full object-cover transition-transform duration-700" />
                               <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent">
-                                 <h3 class="slide-title">Healthcare</h3>
+                                 <h3 class="text-white">Healthcare</h3>
                               </div>
                            </div>
                            <a href="#" class="link-md link-dark">
@@ -319,7 +346,7 @@
                      </div>
                   </div>
                   <!-- Slider Navigation -->
-                  <div class="flex justify-center items-center gap-4 md:gap-6 mt-8 md:mt-12 pb-8 md:pb-12">
+                  <div class="flex justify-center items-center gap-4 md:gap-6 mt-8 md:mt-12  w-auto!">
                      <div class="swiper-button-prev-custom cursor-pointer w-10 h-10 md:w-12 md:h-12 rounded-full bg-green flex items-center justify-center text-cream transition-all hover:scale-110">
                         <img loading="lazy" src="assets/images/arrows/swiperLeft.png" alt="swiperLeft" />
                      </div>
@@ -332,23 +359,21 @@
             </div>
          </section>
 
-         <!-- ==================== SIGNATURE CREATIONS SECTION ==================== -->
-         <section class="signature-section py-12 md:py-20 relative overflow-hidden group">
-            <div
-               class="newbox signature-bg absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 ease-out z-0">
+         <!-- ==================== 
+         5: Built on Culinary Precision. Delivered With Hospitality Excellence.
+         ==================== -->
+         <section class="signature-section section-spacing relative overflow-hidden group h-full md:h-[100vh]">
+            <div class="newbox signature-bg absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 ease-out z-0">
+                <img src="assets/images/signatueBackgroundImg.png" alt="Signature Background" />
             </div>
-            <div class="container container--relative signature-content">
-               <!-- Section Heading - Initially Hidden, Slides from Left on Hover (desktop) / Always visible on mobile -->
-               <div
-                  class="signature-heading text-center mb-6 md:mb-8 transition-all duration-700 ease-out opacity-100">
-                  <h2 class="section-title" data-leaf-target>
-                     Built on Culinary Precision. <br />
-                     Delivered With
-                     <span class="section-title__accent text-reveal">
-                     Hospitality Excellence.
-                     </span>
+
+            <div class="container signature-content z-10 relative">    
+               <!-- Section Heading -->
+               <div class="section-title-outer text-center max-w-6xl mx-auto">
+                  <h2 class="title-section text text-h2" data-leaf-target>Built on Culinary Precision. Delivered With <span class="text-reveal">Hospitality Excellence.</span>
                   </h2>
                </div>
+
                <!-- Main Plate Image Container -->
                <div class="signature-plate relative mx-auto transition-all duration-700">
                   <img loading="lazy" src="assets/images/signature-plate.png" alt="Signature Dish"
@@ -360,6 +385,9 @@
                </div>
             </div>
          </section>
+
+         
+
 
          <!-- ==================== BUBBLE FOOD'S EDGE SLIDER SECTION ==================== -->
          <section
@@ -1007,7 +1035,7 @@
                </div>
                <!-- View All Button -->
                <div class="flex justify-center mt-6">
-                  <button class="btn-primary flex items-center gap-2 btn-slide-fill">
+                  <button class="common-btn flex items-center gap-2 btn-slide-fill">
                   <span>View All Blogs</span>
                   <img loading="lazy" src="assets/images/arrows/creamarrow-long-right.png" alt="rightArrow" />
                   </button>
@@ -1071,7 +1099,7 @@
                      <label for="message">Message</label>
                      <textarea id="message" name="message" placeholder="Enter your message"></textarea>
                   </div>
-                  <button type="submit" class="btn-primary modal-submit btn-slide-fill">
+                  <button type="submit" class="common-btn modal-submit btn-slide-fill">
                   <span>Send Enquiry</span>
                   <span aria-hidden="true">&rarr;</span>
                   </button>
@@ -1122,7 +1150,12 @@
   <script src="~/Assets/js/ScrollTrigger.min.js"></script>
   <script src="~/Assets/js/lenis.min.js"></script>
   <script src="~/Assets/js/common-script.js"></script>
+  <script src="~/Assets/js/title-animation.js"></script>
+
   <script src="~/Assets/js/hero-media-slider.js"></script>
+  <script src="~/Assets/js/plate-animation.js"></script>
+
+
 
 
 

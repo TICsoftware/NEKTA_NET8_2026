@@ -154,70 +154,7 @@
 .journey-slider .swiper{padding-left: 15px;padding-right: 15px;padding-bottom: 15px; padding-top: 15px;}
 
 
-/* ══════════════════════════════
-  HERO BANNER
-══════════════════════════════ */
-.hero-section {margin-top: 153px;}
 
-/* Hero media slider (image + video slides) */
-.hero-media-swiper {z-index: 0;}
-.hero-media-swiper, .hero-media-swiper .swiper-wrapper, .hero-media-swiper .swiper-slide {width: 100%; height: 100%;}
-.hero-media-swiper .swiper-slide {position: relative; overflow: hidden;}
-.hero-media {width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1) translate3d(0, 0, 0); transition: transform 6500ms cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform;}
-.hero-media.is-zooming {transform: scale(1.12) translate3d(-1.5%, -1%, 0);}
-
-/* Swiper's built-in "creative" effect drives the slide change: the
-   outgoing slide eases back and fades (parallax depth) while the
-   incoming slide glides in from the right. Soften its default shadow
-   overlay so it reads as depth, not a black flash. */
-.hero-media-swiper .swiper-slide-shadow,
-.hero-media-swiper .swiper-slide-shadow-left,
-.hero-media-swiper .swiper-slide-shadow-right {background: rgba(0, 0, 0, 0.35);}
-
-.hero-caption-overlay {z-index: 20;}
-.hero-caption-inner {display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; max-width: 46rem; pointer-events: none;}
-.hero-caption-inner a {pointer-events: auto;}
-.hero-caption-title {color: #fff; font-size: clamp(1.6rem, 3.2vw, 3.25rem); font-weight: 600; line-height: 1.15; margin: 0; text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);}
-.hero-caption-text {color: #fff; font-size: clamp(1rem, 1.4vw, 1.25rem); font-weight: 400; max-width: 38rem; line-height: 1.5; margin: 0; text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);}
-.hero-caption-inner .link-md, .hero-caption-inner .btn-primary {display: inline-flex; align-items: center; gap: 8px;}
-
-/* Caption entrance: plays on page load and again on every slide change.
-   Keyed off Swiper's own .swiper-slide-active class (added/removed by
-   Swiper itself), so no extra JS bookkeeping is needed — it just re-fires
-   naturally every time a slide becomes active. Title, text and link are
-   hidden until then, and stagger in one after another. */
-.hero-caption-title, .hero-caption-text, .hero-caption-inner a {opacity: 0;}
-@keyframes heroCaptionIn {
-  from {opacity: 0; transform: translateY(26px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-.swiper-slide-active .hero-caption-title {animation: heroCaptionIn 750ms cubic-bezier(0.16, 1, 0.3, 1) 150ms both;}
-.swiper-slide-active .hero-caption-text {animation: heroCaptionIn 750ms cubic-bezier(0.16, 1, 0.3, 1) 320ms both;}
-.swiper-slide-active .hero-caption-inner a {animation: heroCaptionIn 750ms cubic-bezier(0.16, 1, 0.3, 1) 480ms both;}
-
-.hero-swiper-controls {position: absolute; top: 50%; right: 28px; left: auto; bottom: auto; transform: translateY(-50%); z-index: 30; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 14px;}
-.hero-swiper-controls.is-active {display: flex;}
-
-.hero-swiper-pagination {display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;}
-.hero-swiper-pagination .swiper-pagination-bullet {width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, 0.45); opacity: 1; margin: 0 !important; cursor: pointer; transition: background 0.3s ease, transform 0.3s ease;}
-.hero-swiper-pagination .swiper-pagination-bullet-active {background: #fff; transform: scale(1.2);}
-
-.hero-swiper-prev, .hero-swiper-next {width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.5); background: rgba(0, 0, 0, 0.25); position: relative; cursor: pointer; flex-shrink: 0; padding: 0; transition: background 0.3s ease, transform 0.3s ease;}
-.hero-swiper-prev:hover, .hero-swiper-next:hover {background: rgba(0, 0, 0, 0.5); transform: scale(1.05);}
-.hero-swiper-prev::after, .hero-swiper-next::after {content: ""; position: absolute; top: 50%; left: 50%; width: 9px; height: 9px; border-top: 2px solid #fff; border-right: 2px solid #fff;}
-.hero-swiper-prev::after {transform: translate(-30%, -50%) rotate(-135deg);}
-.hero-swiper-next::after {transform: translate(-70%, -50%) rotate(45deg);}
-
-@media (max-width: 767px) {
-  .hero-caption-text {font-size: 1.15rem;}
-  .hero-swiper-controls {right: 14px; gap: 10px;}
-  .hero-swiper-prev, .hero-swiper-next {width: 34px; height: 34px;}
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-media, .hero-media.is-zooming {transition: none; transform: none;}
-  .hero-caption-title, .hero-caption-text, .hero-caption-inner a {animation: none; opacity: 1; transform: none;}
-}
 .hex-wrap { width: 180px; height: 160px; position: relative;}
 .hex-svg { width: 100%;height: 100%;fill: #FFF;filter: drop-shadow(0 0 13px rgba(0, 0, 0, 0.13)); }
 .hex-content {position: absolute; inset: 0; display: flex; flex-direction: column;align-items: center;justify-content: center;text-align: center;padding: 16px; }
@@ -326,60 +263,76 @@
  .memory-inner-outer {display: flex; flex-direction: column-reverse; gap: 40px;}
  .memory-img-left {margin-top: 0;}
  .memory-section {margin-bottom: 0;}
-  .hexagon-img {display: none;}
-  .photo-block {width: 100%; border-radius: 16px;}
-  .section-wrapper {flex-direction: column-reverse;}
-.journey-slider { position: relative;left: 0;top: 0; width: 100%;}
-.journey-vector {display: none;}
-.photo-block img {width: 90%; margin: 0 auto; border-radius: 16px;}
-.photo-block {margin-top: 20px;}
- .herosection-hex-outer {justify-content: center;gap: 0;}
-  .hex-wrap { width: 165px; height: 155px;}
-  .herosection-hex-outer .hex-wrap:nth-child(even) {top: 0;}
-.hex-content p {font-size: 0.875;line-height: 1.2 }
-.herosection-hex-outer .hex-wrap:nth-child(2), .herosection-hex-outer .hex-wrap:nth-child(3), .herosection-hex-outer .hex-wrap:nth-child(4) {margin-left: 0;}
-.hero-vid-wrap {display: none;}
-.bg-vector-journey {bottom: 100vw;left: 0;}
-.journey-section {margin-bottom: 0;}
-.treatmentdecisions-section .tq-line-vector {top: auto;bottom: 30vw;}
-.bg-merge-vector { top: 120vw;}
-.team-section .tq-line-vector { bottom: auto;top: 52vw;}
-.bg-merge-vector-two {bottom: 180vw;top: auto;}
-.trust-quality-section .tq-line-vector {bottom: 12vw;}
-.icon-wrap img {max-width: 55px;}
-.journey-photo-vector {display: none;}
-  .journey-slider .swiper { padding-left: 0;padding-right: 0;}
-.journey-slider {margin-left: 0;margin-right: 0;}
-.nabl-logo-wrap .tq-content-in {width: 100%;padding: 25px 25px;}
 }
 
 
-/* =========================
-   SMALL MOBILE (≤480px)
-========================= */
-@media (max-width: 480px) {
- 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ══════════════════════════════
+  HERO BANNER
+══════════════════════════════ */
+/* Hero media slider (image + video slides) */
+.hero-media-swiper {z-index: 0;}
+.hero-media-swiper, .hero-media-swiper .swiper-wrapper, .hero-media-swiper .swiper-slide {width: 100%; height: 100%;}
+.hero-media-swiper .swiper-slide {position: relative; overflow: hidden;}
+.hero-media {width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transform: translate3d(-6%, 0, 0) scale(1.04); transition: transform 950ms cubic-bezier(0.16, 1, 0.3, 1), opacity 550ms ease;}
+.hero-media.is-revealed {opacity: 1; transform: translate3d(0, 0, 0) scale(1);}
+
+/* "Slide break" wipe: a solid panel sweeps left-to-right across the hero,
+   hides the outgoing slide, then carries on off-screen to uncover the
+   next one — fired once on load and again on every slide change. */
+.hero-slide-break {position: absolute; inset: 0; z-index: 21; background: var(--color-primary, #DE392E); transform: translateX(-100%); pointer-events: none; will-change: transform;}
+.hero-slide-break.is-sweeping {animation: heroSlideBreakSweep 1050ms cubic-bezier(0.76, 0, 0.24, 1);}
+@keyframes heroSlideBreakSweep {
+  0% {transform: translateX(-100%);}
+  55% {transform: translateX(0%);}
+  100% {transform: translateX(100%);}
 }
 
-@media screen and (min-width: 1025px) and (-webkit-min-device-pixel-ratio:1.5),screen and (min-width:1025px) and (min-resolution:144dpi) { 
-  .photo-block {width: 620px;}
-  .journey-slider {left: -85%;top: 25vw;width: 180%;}
-.journey-vector {bottom: -20vw;left: 15vw;}
-.bg-vector-journey {bottom: -30vw;}
-.treatmentdecisions-section .tq-line-vector {top: 1vw;}
-.journey-section {margin-bottom: 5rem;}
-.hexagon-img {bottom: 20vw;}
-.bg-merge-vector {top: 30vw;}
-.memory-img-left {max-width: 480px;}
-.hero-section {margin-top: 152px !important;}
-.bg-merge-vector-two {top: 45vw;}
-.hexagon-big {left: 2%;}
-.title-heading-anim {padding: 0 25px;}
-.values-image {width: 58%;}
-.values-text {width: 42%;}
-footer .cta-image img {height: 170px;}
-.whatsapp-icon-wrap {top: 32vw;right: 15px;}
-.testimonial-item-inner {padding-bottom: 190px;}
+.hero-caption-overlay {z-index: 20;}
+.hero-caption-text {color: #fff; font-size: clamp(1.35rem, 2.6vw, 2.75rem); font-weight: 500; max-width: 46rem; line-height: 1.3; text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45); opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease;}
+.hero-caption-text.is-visible {opacity: 1; transform: translateY(0);}
 
+.hero-swiper-controls {position: absolute; top: 50%; right: 28px; left: auto; bottom: auto; transform: translateY(-50%); z-index: 30; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 14px;}
+.hero-swiper-controls.is-active {display: flex;}
+
+.hero-swiper-pagination {display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;}
+.hero-swiper-pagination .swiper-pagination-bullet {width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, 0.45); opacity: 1; margin: 0 !important; cursor: pointer; transition: background 0.3s ease, transform 0.3s ease;}
+.hero-swiper-pagination .swiper-pagination-bullet-active {background: #fff; transform: scale(1.2);}
+
+.hero-swiper-prev, .hero-swiper-next {width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.5); background: rgba(0, 0, 0, 0.25); position: relative; cursor: pointer; flex-shrink: 0; padding: 0; transition: background 0.3s ease, transform 0.3s ease;}
+.hero-swiper-prev:hover, .hero-swiper-next:hover {background: rgba(0, 0, 0, 0.5); transform: scale(1.05);}
+.hero-swiper-prev::after, .hero-swiper-next::after {content: ""; position: absolute; top: 50%; left: 50%; width: 9px; height: 9px; border-top: 2px solid #fff; border-right: 2px solid #fff;}
+.hero-swiper-prev::after {transform: translate(-30%, -50%) rotate(-135deg);}
+.hero-swiper-next::after {transform: translate(-70%, -50%) rotate(45deg);}
+
+.hero-section-ass-img {
+    width: 30px;
+}
+
+.hero-assistant {
+    bottom: 10%;
+}
+
+@media (max-width: 767px) {
+  .hero-caption-text {font-size: 1.15rem;}
+  .hero-swiper-controls {right: 14px; gap: 10px;}
+  .hero-swiper-prev, .hero-swiper-next {width: 34px; height: 34px;}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-media, .hero-media.is-parallax-active {transition: none; transform: none;}
 }

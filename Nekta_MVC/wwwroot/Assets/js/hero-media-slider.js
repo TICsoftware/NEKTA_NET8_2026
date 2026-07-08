@@ -1,16 +1,14 @@
 /* ==========================================================
    HERO MEDIA SLIDER (image + video slides)
-   - Each slide carries its own caption markup, so it just moves
-     with the slide automatically — no JS text-swapping needed.
    - Controls (arrows + pagination) only show when there is
      more than one slide.
    - A video slide always plays to the end before the
      slider auto-advances to the next slide.
-   - Slide changes use Swiper's built-in "creative" effect:
-     the outgoing slide eases back and fades (parallax depth)
-     while the incoming slide glides in from the right. The
-     active slide's media also gets a slow continuous zoom/pan
-     ("Ken Burns") for a smooth, alive parallax feel at rest.
+   - Slide changes (and the initial page load) use a "slide
+     break": two panels meet in the centre to hide the swap,
+     then part ways (left/right) to reveal the slide beneath.
+     The panels are closed by default in CSS, so there's never
+     a blank flash before this script even runs.
    ========================================================== */
 document.addEventListener("DOMContentLoaded", function () {
   var heroEl = document.querySelector(".hero-media-swiper");
@@ -18,18 +16,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var slides = heroEl.querySelectorAll(".hero-slide");
   var controls = document.querySelector(".hero-swiper-controls");
+  var captionEl = document.querySelector(".hero-caption-text");
+  var breakEl = document.querySelector(".hero-slide-break");
   var IMAGE_DELAY = 5000; // ms an image slide stays before advancing
+  var DOOR_DURATION = 380; // ms — must match the CSS transition on .hero-slide-break
+  var SWAP_BUFFER = 70; // ms pause once the panels meet, before they part again
 
-  // Slow continuous zoom/pan on the active slide's media — restarted every
-  // time a slide becomes active so the motion never looks static.
-  function triggerZoom(slide) {
+  function setCaption(slide) {
+    if (!captionEl) return;
+    captionEl.classList.remove("is-visible");
+    window.setTimeout(function () {
+      var text = (slide && slide.dataset.caption) || "";
+      captionEl.textContent = text;
+      captionEl.classList.toggle("is-visible", !!text);
+    }, 120);
+  }
+
+  // Reveal the active slide's media with a quick left-to-right ease-in,
+  // restarted every time a slide becomes active. This finishes while the
+  // panels are still shut, so it's never visible mid-motion.
+  function revealMedia(slide) {
     heroEl.querySelectorAll(".hero-media").forEach(function (media) {
-      media.classList.remove("is-zooming");
+      media.classList.remove("is-revealed");
     });
     var media = slide && slide.querySelector(".hero-media");
     if (!media) return;
     void media.offsetWidth; // force reflow so the transition restarts cleanly
-    media.classList.add("is-zooming");
+    media.classList.add("is-revealed");
+  }
+
+  // Runs `applyChanges` while the two panels are together, then parts them
+  // again. `alreadyClosed` skips the initial "close" step — used only for
+  // the very first call, since the panels start closed by default in CSS.
+  function runSlideBreak(applyChanges, alreadyClosed) {
+    if (!breakEl) {
+      applyChanges();
+      return;
+    }
+
+    function swapThenOpen() {
+      applyChanges();
+      window.setTimeout(function () {
+        breakEl.classList.add("is-open");
+      }, SWAP_BUFFER);
+    }
+
+    if (alreadyClosed) {
+      swapThenOpen();
+    } else {
+      breakEl.classList.remove("is-open");
+      window.setTimeout(swapThenOpen, DOOR_DURATION);
+    }
   }
 
   // Only one slide: skip Swiper entirely, no controls, just loop the media.
@@ -39,22 +76,18 @@ document.addEventListener("DOMContentLoaded", function () {
       soloVideo.loop = true;
       soloVideo.play().catch(function () {});
     }
-    // No Swiper instance means nothing adds "swiper-slide-active" — the
-    // caption's CSS entrance animation is keyed off that class, so add it
-    // by hand for the single-slide case.
-    if (slides[0]) slides[0].classList.add("swiper-slide-active");
-    triggerZoom(slides[0]);
+    runSlideBreak(function () {
+      setCaption(slides[0]);
+      revealMedia(slides[0]);
+    }, true);
     return;
   }
 
   var heroSwiper = new Swiper(heroEl, {
     loop: true,
-    speed: 1100,
-    effect: "creative",
-    creativeEffect: {
-      prev: { shadow: true, translate: ["-20%", 0, -300], opacity: 0.55 },
-      next: { translate: ["100%", 0, 0] },
-    },
+    speed: 60, // near-instant swap: the "slide break" panels carry the transition
+    effect: "fade",
+    fadeEffect: { crossFade: false },
     autoplay: { delay: IMAGE_DELAY, disableOnInteraction: false },
     pagination: { el: ".hero-swiper-pagination", clickable: true },
     navigation: { nextEl: ".hero-swiper-next", prevEl: ".hero-swiper-prev" },
@@ -62,9 +95,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (controls) controls.classList.add("is-active");
 
+  var isFirstSync = true;
+
   function syncActiveSlide() {
     var activeSlide = heroSwiper.slides[heroSwiper.activeIndex];
-    triggerZoom(activeSlide);
+
+    runSlideBreak(function () {
+      setCaption(activeSlide);
+      revealMedia(activeSlide);
+    }, isFirstSync);
+    isFirstSync = false;
 
     var activeVideo = activeSlide && activeSlide.querySelector("video");
 
