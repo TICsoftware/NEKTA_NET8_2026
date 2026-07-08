@@ -1,1 +1,7 @@
+/**=====================================
+TITLE ANIMATION
+=====================================**/
+.title-section{font-weight:400; color: var(--color-heading); margin-bottom: 40px;} 
+.title-section .text-letters-slide{ color: var(--color-secondary) !important;  font-family: var(--font-heading) !important;  font-style: italic;  font-weight: 600;  letter-spacing: -0.02em;}
+.word {overflow: hidden;padding-bottom: 0.1em;margin-bottom: -0.1em;transform-origin: bottom;}
 
