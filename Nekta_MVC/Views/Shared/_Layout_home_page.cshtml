@@ -40,6 +40,7 @@
 
   <link rel="stylesheet" href="~/Assets/css/common-style.css">
   <link rel="stylesheet" href="~/Assets/css/three-box-slider.css">
+    <link rel="stylesheet" href="~/Assets/css/blogs-cards-slider.css">
 
   @RenderSection("Styles", required: false)
 </head>
@@ -908,62 +909,28 @@
                </div>
             </div>
          </section>
-
-         <!-- ==================== CLIENTS WE SERVE SECTION ==================== -->
-         <section class="bg-cream py-12 md:py-20">
-            <div class="container">
-               <div class="text-center mb-10 md:mb-16">
-                  <h2 class="section-title" data-leaf-target>
-                     Clients
-                     <span class="section-title__accent text-reveal">We Serve</span>
-                  </h2>
-               </div>
-               <div class="marquee-wrapper" id="marqueeWrapper" style="overflow:hidden; width:100%;">
-                  <div class="marquee-track" id="marqueeTrack" style="display:flex; width:max-content;">
-                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/USHA.png" alt="USHA"></div>
-                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/Schneider.png"
-                        alt="Schneider Electric"></div>
-                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/Schneider-1.png" alt="Castrol"></div>
-                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/Standard Chartered.png"
-                        alt="Standard Chartered"></div>
-                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/Toyota.png" alt="Toyota"></div>
-                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/EY.png" alt="EY"></div>
-                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/AXA.png" alt="AXA"></div>
-                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/Browser Stack.png" alt="BrowserStack">
-                     </div>
-                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/Kenvue.png" alt="Kenvue"></div>
-                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/Jio Hotstar.png" alt="Jio Hotstar">
-                     </div>
-                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/BOEING.png" alt="Boeing"></div>
-                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/BOEING-1.png" alt="Boeing"></div>
-                     <div class="marquee-item"><img loading="lazy" src="assets/images/Clients/BOEING-2.png" alt="Boeing"></div>
-                  </div>
-               </div>
-            </div>
-         </section>
          
          <!-- ==================== LATEST TRENDS & INSIGHTS SECTION ==================== -->
-         <section class="bg-darkcream py-12 md:py-20">
+         <section class="bg-[#F6F4E6] section-spacing">
             <div class="container">
-               <!-- Heading -->
-               <div class="text-center mb-8 md:mb-10">
-                  <h2 class="section-title" data-leaf-target>
-                     Latest Trends, Stories &
-                     <span class="section-title__accent text-reveal">Culinary Insights</span>
+                 <!-- Section Heading -->
+               <div class="section-title-outer text-center max-w-6xl mx-auto">
+                  <h2 class="title-section text text-h2" data-leaf-target>Latest Trends, Stories & <span class="text-reveal">Culinary Insights</span>
                   </h2>
                </div>
+
                <!-- Swiper Slider -->
-               <div class="swiper insightsSwiper px-2 md:px-4">
+               <div class="swiper insightsSwiper px-2 md:px-4 blogs-cards-slider">
                   <div class="swiper-wrapper">
                      <!-- Card 1 -->
                      <div class="swiper-slide h-auto">
-                        <div class="insight-card group">
-                           <div class="media-frame overflow-hidden">
+                        <div class="insight-card group blogs-cards-wrapper">
+                           <div class="media-frame overflow-hidden rounded-lg ratio-[531/315] blogs-cards-image">
                               <img loading="lazy" src="assets/images/insights/trend1.png" alt="Catering Trends"
-                                 class="w-full h-52 md:h-64 object-cover" />
+                                 class="w-full object-cover" />
                            </div>
-                           <div class="py-6">
-                              <span class="pill inline-block bg-green text-cream text-xs font-medium">Case
+                           <div class="py-6 blogs-cards-content"> 
+                              <span class="pill inline-block bg-green text-cream text-xs font-medium px-2.5 py-1 rounded-lg">Case
                               Study</span>
                               <h3
                                  class="insight-title line-clamp-2"
@@ -984,12 +951,12 @@
                      <!-- Card 2 -->
                      <div class="swiper-slide h-auto">
                         <div class="insight-card group">
-                           <div class="media-frame overflow-hidden">
+                           <div class="media-frame overflow-hidden rounded-lg ratio-[531/315]">
                               <img loading="lazy" src="assets/images/insights/chef-creativity.png" alt="Chef Creativity"
-                                 class="w-full h-52 md:h-64 object-cover" />
+                                 class="w-full object-cover" />
                            </div>
                            <div class="py-6">
-                              <span class="pill inline-block bg-green text-cream text-xs font-medium">Blogs</span>
+                              <span class="pill inline-block bg-green text-cream text-xs font-medium px-2.5 py-1 rounded-lg">Blogs</span>
                               <h3
                                  class="insight-title line-clamp-2"
                                  >
@@ -1009,15 +976,13 @@
                      <!-- Card 3 -->
                      <div class="swiper-slide h-auto">
                         <div class="insight-card group">
-                           <div class="media-frame overflow-hidden">
+                           <div class="media-frame overflow-hidden rounded-lg ratio-[531/315]">
                               <img loading="lazy" src="assets/images/insights/premium-catering.png" alt="Premium Catering"
-                                 class="w-full h-52 md:h-64 object-cover" />
+                                 class="w-full object-cover" />
                            </div>
                            <div class="py-6">
-                              <span class="pill inline-block bg-green text-cream text-xs font-medium">Blogs</span>
-                              <h3
-                                 class="insight-title line-clamp-2"
-                                 >
+                              <span class="pill inline-block bg-green text-cream text-xs font-medium px-2.5 py-1 rounded-lg">Blogs</span>
+                              <h3 class="insight-title line-clamp-2">
                                  Featured for Excellence in Premium
                               </h3>
                               <a
@@ -1032,6 +997,17 @@
                         </div>
                      </div>
                   </div>
+              
+                  <div class="blogs-slider-nav">
+                        <button class="blogs-prev" aria-label="Previous">
+                            <img src="assets/images/arrows/swiperLeft.png" alt="swiperLeft" class="max-w-full">
+                        </button>
+
+                        <button class="blogs-next" aria-label="Next">
+                            <img src="assets/images/arrows/swiperRight.png" alt="swiperRight" class="max-w-full">
+                        </button>
+                  </div>
+                  
                </div>
                <!-- View All Button -->
                <div class="flex justify-center mt-6">
@@ -1154,6 +1130,7 @@
 
   <script src="~/Assets/js/hero-media-slider.js"></script>
   <script src="~/Assets/js/plate-animation.js"></script>
+    <script src="~/Assets/js/blogs-cards-slider.js"></script>
 
 
 

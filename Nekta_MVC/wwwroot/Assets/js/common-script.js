@@ -447,27 +447,13 @@ document.getElementById("year-foot").innerHTML = (new Date().getFullYear());
             );
         }
 
-        new Swiper(".insightsSwiper", {
-            slidesPerView: 1.1,
-            spaceBetween: 20,
-            centeredSlides: true,
-            loop: true,
-            breakpoints: {
-                768: { slidesPerView: 2.2, centeredSlides: false },
-                1024: {
-                    slidesPerView: 3,
-                    centeredSlides: false,
-                    spaceBetween: 30,
-                },
-            },
-        });
+       
     }
 
     document.addEventListener("DOMContentLoaded", () => {
         initImages();
         initLenis();
         initContactModal();
-        initSliders();
         window.ScrollTrigger?.refresh();
     });
 })();
@@ -1216,66 +1202,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-/* ======================
-   INSIGHT SECTION
-====================== */
-document.addEventListener("DOMContentLoaded", () => {
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const section = document.querySelector(".insightsSwiper");
-
-    if (!section) return;
-
-    const cards = gsap.utils.toArray(".insightsSwiper .swiper-slide");
-
-    // Initial state
-    gsap.set(cards, {
-        opacity: 0,
-        y: 120,
-        scale: 0.9,
-        rotateX: 8,
-        transformPerspective: 1000,
-        transformOrigin: "center bottom"
-    });
-
-    const tl = gsap.timeline({
-
-        scrollTrigger: {
-
-            trigger: section,
-
-            start: "top 78%",
-
-            once: true
-
-        }
-
-    });
-
-    tl.to(cards, {
-
-        opacity: 1,
-
-        y: 0,
-
-        scale: 1,
-
-        rotateX: 0,
-
-        duration: 1.15,
-
-        ease: "power4.out",
-
-        stagger: {
-
-            each: 0.22
-
-        }
-
-    });
-
-});
 
 
 
