@@ -21,7 +21,7 @@
         <a href="#" class="logo"> <img src="/Assets/images/logo/Nekta-color.svg" class="max-w-max" alt="logo " /> </a>
 
         <nav class="desktop-nav" id="desktopNav" aria-label="Main">
-          <div class="nav-item plain"><a href="#" class="nav-plain active">Home</a></div>
+          <div class="nav-item plain"><a href="#" class="nav-plain">Home</a></div>
           <div class="nav-item" data-menu="about" data-index="1">
             <button type="button" aria-haspopup="true" aria-expanded="false">About us <svg class="chev" width="12" height="8"><use href="#ic-chevron-down"/></svg></button>
           </div>
@@ -34,7 +34,7 @@
           <div class="nav-item plain"><a href="#" class="nav-plain">Careers</a></div>
         </nav>
 
-        <button class="cta" type="button">Contact us <svg width="14" height="14"><use href="#ic-arrow"/></svg></button>
+        <a href="#" class="cta" type="button">Contact us <svg width="14" height="14"><use href="#ic-arrow"/></svg></a>
         <button class="hamburger" id="hamburgerBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg width="22" height="22"><use href="#ic-menu"/></svg></button>
     </div>
 
@@ -42,10 +42,7 @@
         <div class="nav-viewport" id="navViewport" aria-hidden="true">
         <div class="nav-panel" id="panel-about" data-menu="about">
           <div class="dropdown-layout">
-            <a class="dropdown-callout about" href="#">
-              <h3>Our Heritage</h3>
-              <p>From airline kitchens to India&#39;s leading food services company — discover the story behind TajSATS.</p>
-            </a>
+          
             <div class="dropdown-body">
               <ul class="dropdown-list">
                 <li><a class="dropdown-link" href="#"><strong>Who we are</strong><span>Our story and mission</span></a></li>
@@ -56,14 +53,20 @@
               </ul>
               
             </div>
+
+              <a class="dropdown-callout about" href="#">
+              <img src="assets/images/playgrounds/Business.jpg" alt="" class="nav-header-image">
+              <div class="nav-header-text">
+                <h3>Our Heritage</h3>
+                <p>From airline kitchens to India&#39;s leading food services company — discover the story behind TajSATS.</p>
+              </div>
+            </a>
+            
           </div>
         </div>
         <div class="nav-panel" id="panel-segments" data-menu="segments">
           <div class="dropdown-layout wide">
-            <a class="dropdown-callout segments" href="#">
-              <h3>Every Segment Covered</h3>
-              <p>Tailored food solutions for corporate, healthcare, sports, and more.</p>
-            </a>
+           
             <div class="dropdown-body">
               <ul class="dropdown-list grid-2">
                 <li><a class="dropdown-link" href="#"><strong>Business &amp; corporates</strong><span>Workplace dining</span></a></li>
@@ -76,14 +79,20 @@
               </ul>
              
             </div>
+
+             <a class="dropdown-callout segments" href="#">
+                <img src="assets/images/playgrounds/Business.jpg" alt="" class="nav-header-image">
+                <div class="nav-header-text">
+                    <h3>Every Segment Covered</h3>
+                    <p>Tailored food solutions for corporate, healthcare, sports, and more.</p>
+                </div>
+            </a>
+
           </div>
         </div>
         <div class="nav-panel" id="panel-solutions" data-menu="solutions">
           <div class="dropdown-layout">
-            <a class="dropdown-callout solutions" href="#">
-              <h3>End-to-End Solutions</h3>
-              <p>Culinary craft, food safety, and people-first operations for exceptional dining.</p>
-            </a>
+          
             <div class="dropdown-body">
               <ul class="dropdown-list">
                 <li><a class="dropdown-link" href="#"><strong>Culinary excellence</strong><span>Our kitchen standards</span></a></li>
@@ -94,6 +103,14 @@
               </ul>
              
             </div>
+
+              <a class="dropdown-callout solutions" href="#">
+                 <img src="assets/images/playgrounds/Business.jpg" alt="" class="nav-header-image">
+                <div class="nav-header-text">
+                    <h3>End-to-End Solutions</h3>
+                    <p>Culinary craft, food safety, and people-first operations for exceptional dining.</p>
+                </div>
+            </a>
           </div>
         </div>
 
@@ -105,7 +122,7 @@
 <div class="overlay" id="overlay" aria-hidden="true"></div>
 <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <div class="drawer-head">
-    <div class="logo"></div>
+    <div class="logo"><img src="/Assets/images/logo/Nekta-color.svg" class="max-w-max" alt="logo " /></div>
     <button class="drawer-close" id="drawerClose" type="button" aria-label="Close menu"><svg width="20" height="20"><use href="#ic-close"/></svg></button>
   </div>
   <div class="drawer-body" id="drawerBody">

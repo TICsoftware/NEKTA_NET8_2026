@@ -292,5 +292,9 @@ img, picture, video, canvas {
 
 
 
+
 }
 
+@media (max-width: 992px) {
+  .container { width: 100%;}
+}

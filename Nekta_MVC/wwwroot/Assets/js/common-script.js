@@ -196,6 +196,13 @@ function updateScrolledState(){
   });
 
 
+// --------------------------------------------
+// FOOTER YEAR
+// --------------------------------------------
+document.getElementById("year-foot").innerHTML = (new Date().getFullYear());
+
+
+
 (function () {
     "use strict";
 
@@ -1279,12 +1286,73 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-gsap.registerPlugin(ScrollTrigger);
-
 const footer =
 document.querySelector("footer");
 
 if(!footer) return;
+
+function initFooterAccordions(){
+  const sections = [...footer.querySelectorAll('.footer-quick-link-click')];
+  if (!sections.length) return;
+
+  const desktopMq = window.matchMedia('(min-width: 768px)');
+
+  function closeAll(){
+    sections.forEach(section => {
+      section.classList.remove('open');
+      const list = section.querySelector('.footer-nav-list');
+      const heading = section.querySelector('h4');
+      if (list) list.style.maxHeight = '0';
+      if (heading) heading.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function resetForDesktop(){
+    if (!desktopMq.matches) return;
+    sections.forEach(section => {
+      section.classList.remove('open');
+      const list = section.querySelector('.footer-nav-list');
+      if (list) list.style.maxHeight = '';
+    });
+  }
+
+  sections.forEach(section => {
+    const heading = section.querySelector('h4');
+    const list = section.querySelector('.footer-nav-list');
+    if (!heading || !list) return;
+
+    heading.setAttribute('role', 'button');
+    heading.setAttribute('tabindex', '0');
+    heading.setAttribute('aria-expanded', 'false');
+
+    const toggle = () => {
+      if (desktopMq.matches) return;
+
+      const isOpen = section.classList.contains('open');
+      closeAll();
+
+      if (!isOpen) {
+        section.classList.add('open');
+        list.style.maxHeight = list.scrollHeight + 'px';
+        heading.setAttribute('aria-expanded', 'true');
+      }
+    };
+
+    heading.addEventListener('click', toggle);
+    heading.addEventListener('keydown', e => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      toggle();
+    });
+  });
+
+  desktopMq.addEventListener('change', resetForDesktop);
+  resetForDesktop();
+}
+
+initFooterAccordions();
+
+gsap.registerPlugin(ScrollTrigger);
 
 
 /* reset */
