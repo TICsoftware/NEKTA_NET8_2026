@@ -4,7 +4,7 @@
     border-color: var(--color-cream);
     box-shadow: 0 12px 24px rgb(0 0 0 / 0.16);
 }
-
+.swiper.edgeSwiper {padding-top: 25px;}
 /* Image aur text ke beech zero gap */
 .edgeSwiper .swiper-slide-active .p-8,
 .edgeSwiper .swiper-slide-active .edge-details {

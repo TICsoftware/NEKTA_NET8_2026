@@ -80,6 +80,7 @@
     --text-button: clamp(1rem,  0.948rem + 0.22vw, 1.125rem);
     --text-22: clamp(1.125rem, 1.021rem + 0.44vw, 1.375rem);
     --text-12: clamp(0.7rem, 0.65rem + 0.2vw, 0.75rem);
+    --text-intro: clamp(1.125rem, 1.021rem + 0.44vw, 1.375rem);
     --color-primary: #F6F4E6;
     --color-secondary: #748D6E;
     --color-third: #FC713C;
@@ -1079,6 +1080,12 @@
   }
   .h-100 {
     height: calc(var(--spacing) * 100);
+  }
+  .h-\[75svh\] {
+    height: 75svh;
+  }
+  .h-\[100svh\] {
+    height: 100svh;
   }
   .h-\[100vh\] {
     height: 100vh;
