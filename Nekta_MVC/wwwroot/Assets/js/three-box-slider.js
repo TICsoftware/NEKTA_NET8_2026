@@ -3,53 +3,44 @@
 ====================== */
 document.addEventListener("DOMContentLoaded", () => {
 
-    gsap.registerPlugin(ScrollTrigger);
+    
+// ANIMATION
+const section = document.querySelector(".three-box-slider");
 
-    const section = document.querySelector("#playgrounds-section");
+if (!section) return;
 
-    if (!section) return;
+const cards = gsap.utils.toArray(".three-box-slider .swiper-slide");
 
-    // Sirf original slides
-    const cards = gsap.utils.toArray(
-        "#playgrounds-section .swiper-slide:not(.swiper-slide-duplicate)"
-    );
+gsap.set(cards, {
+  opacity: 0,
+  y: 120,
+  scale: 0.9,
+  rotateX: 8,
+  transformPerspective: 1000,
+  transformOrigin: "center bottom",
+});
 
-    gsap.from(cards, {
+const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: section,
+    start: "top 78%",
+    toggleActions: "play none none reverse",
+    // markers: true,
+  },
+});
 
-        opacity: 0,
+tl.to(cards, {
+  opacity: 1,
+  y: 0,
+  scale: 1,
+  rotateX: 0,
+  duration: 1.15,
+  ease: "power4.out",
+  stagger: {
+    each: 0.22,
+  },
+});
 
-        y: 120,
-
-        scale: 0.96,
-
-        rotationX: 8,
-
-        force3D: true,
-
-        transformOrigin: "center bottom",
-
-        duration: 1.15,
-
-        ease: "power4.out",
-
-        stagger: {
-            each: 0.18,
-            from: "start"
-        },
-
-        scrollTrigger: {
-
-            trigger: section,
-
-            start: "top 65%",
-
-            once: true,
-
-            invalidateOnRefresh: true
-
-        }
-
-    });
 
 });
 

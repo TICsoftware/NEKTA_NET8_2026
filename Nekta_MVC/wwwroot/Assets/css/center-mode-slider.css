@@ -22,8 +22,10 @@
     filter: blur(0);
     position: relative;
     z-index: 10;
+    padding-bottom: 20px;
 }
-
+.edge-card-title, .edge-card-text {color: var(--color-cream);}
+.edge-card-title{font-size: var(--text-h4);margin-bottom: 0.5rem;}
 /* Image ka border kam karo */
 .edge-card-image {
     border-width: 4px !important; 

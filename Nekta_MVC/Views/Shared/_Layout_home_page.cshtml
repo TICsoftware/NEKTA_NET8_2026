@@ -33,14 +33,13 @@
   <link rel="stylesheet" href="~/Assets/css/swiper-bundle.min.css" />
   <link rel="preload" href="~/Assets/css/header-footer.css" as="style">
   <link rel="stylesheet" href="~/Assets/css/header-footer.css">
-
-  <link rel="preload" href="~/Assets/css/style.css" as="style">
-  <link rel="stylesheet" href="~/Assets/css/style.css">
-
+  <link rel="preload" href="~/Assets/css/common-style.css" as="style">
   <link rel="stylesheet" href="~/Assets/css/common-style.css">
+
   <link rel="stylesheet" href="~/Assets/css/three-box-slider.css">
   <link rel="stylesheet" href="~/Assets/css/center-mode-slider.css">
-    <link rel="stylesheet" href="~/Assets/css/blogs-cards-slider.css">
+  <link rel="stylesheet" href="~/Assets/css/blogs-cards-slider.css">
+<link rel="stylesheet" href="~/Assets/css/assistant-popup.css">
 
   @RenderSection("Styles", required: false)
 </head>
@@ -59,7 +58,7 @@
 
  @Html.Partial("~/Views/Shared/_Header.cshtml")
 
-  <div class="hero-assistant fixed bottom-15 right-0 z-50">
+  <div class="hero-assistant fixed top-1/2 right-0 z-50">
                <button type="button" class="assistant-trigger" data-modal-open="contactModal"
                   aria-label="Open assistant enquiry form">
                <img loading="lazy" src="assets/images/assistant.png" alt="" class="hero-section-ass-img" aria-hidden="true"
@@ -85,7 +84,7 @@
                         <!-- Caption: stays centered and syncs with the active slide -->
                         <div class="hero-caption-overlay absolute inset-0 flex items-center justify-center text-center px-4 pointer-events-none z-30">                        
                            <div class="hero-caption-inner section-title-outer ">
-                              <h1 class="hero-caption-title title-section text-reveal">Where Diagnostics <span class="balkist-bolditalic ">Meets Compassion</span></h1>
+                              <h1 class="hero-caption-title title-section text-letters-slide">Where Diagnostics <span class="balkist-bolditalic ">Meets Compassion</span></h1>
                               <p class="hero-caption-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>                
 
                               <a href="#" class="common-btn mt-8 md:mt-12 btn-slide-fill" type="button">
@@ -104,7 +103,7 @@
                         <!-- Caption: stays centered and syncs with the active slide -->
                      <div class="hero-caption-overlay absolute inset-0 flex items-center justify-center text-center px-4 pointer-events-none z-30">
                         <div class="hero-caption-inner">
-                            <h1 class="hero-caption-title title-section">Precision You Can  <span class="balkist-bolditalic text-reveal">Trust</span></h1>
+                            <h1 class="hero-caption-title title-section">Precision You Can  <span class="balkist-bolditalic text-letters-slide">Trust</span></h1>
                            <p class="hero-caption-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>                
 
                            <a href="#" class="common-btn mt-8 md:mt-12 btn-slide-fill" type="button">
@@ -152,8 +151,8 @@
          <section class="bg-darkcream section-spacing  text-center">
             <div class="container mx-auto max-w-5xl">
                <div class="section-title-outer">
-                  <h2 class="title-section text-h2 " data-leaf-target>
-                     Seeking an Elevated <span class="text-reveal"> Dining Experience</span>
+                  <h2 class="title-section text-h2 " data-leaf-target letters-slide-down text-split>
+                     Seeking an Elevated <span class="text-letters-slide"> Dining Experience</span>
                   </h2>
                </div>
 
@@ -174,7 +173,7 @@
                   <!-- Left Text -->
                   <div class="space-y-6 md:space-y-8">                  
                      <div class="section-title-outer">
-                        <h2 class="title-section  text-h2 " data-leaf-target>From the house trusted on air to delighting on ground;<br />Serving up a beautiful world of  <span class="text-reveal">  food inbetween</span></h2>
+                        <h2 class="title-section  text-h2 " data-leaf-target letters-slide-down text-split>From the house trusted on air to delighting on ground;<br />Serving up a beautiful world of  <span class="text-letters-slide">  food inbetween</span></h2>
                      </div>
                    
                      <div class="about-copy space-y-6 px-0 md:px-8 relative">
@@ -183,10 +182,15 @@
                         <p>Backed by the legacy of TajSATS, India’s market leader in aviation hospitality Nekta brings the agility of youthful innovation and the lived wisdom of experience to
                            everyday institutional dining.</p>
 
-                        <a href="#" class="common-btn mt-8 md:mt-12 btn-slide-link" type="button" data-modal-open="contactModal">
-                           <span>About us</span>
-                           <img loading="lazy" src="assets/images/arrows/orangearrow-long-right.png" alt="rightArrow" />
-                        </a>       
+                    
+
+
+                         <div class="flex justify-start mt-6">
+                              <a href="#" class="common-btn flex items-center gap-2 btn-slide-fill">
+                              <span>About us</span>
+                              <img loading="lazy" src="assets/images/arrows/creamarrow-long-right.png" alt="rightArrow" />
+                              </a>
+                           </div> 
 
                         <div class="leafimg leaf-field pointer-events-none absolute z-20 overflow-visible">
                            <img loading="lazy" src="assets/images/leafimg.png" alt="leafImg"
@@ -243,13 +247,13 @@
             <div class="container">
                <!-- Section Heading -->
                <div class="section-title-outer text-center">
-                  <h2 class="title-section text-h2 " data-leaf-target>
-                    Diverse Playgrounds.  <span class="text-reveal"> Singular Spirit</span>
+                  <h2 class="title-section text-h2 " data-leaf-target letters-slide-down text-split>
+                    Diverse Playgrounds.  <span class="text-letters-slide"> Singular Spirit</span>
                   </h2>
                </div>
 
                <!-- Swiper Slider Container -->
-               <div class="swiper mySwiper px-0 md:px-4 pt-10">
+               <div class="swiper mySwiper three-box-slider px-0 md:px-4 pt-10">
                   <div class="swiper-wrapper">
                      <!-- Slide 1 -->
                      <div class="swiper-slide group cursor-pointer">
@@ -363,17 +367,17 @@
          <!-- ==================== 
          5: Built on Culinary Precision. Delivered With Hospitality Excellence.
          ==================== -->
-         <section class="signature-section section-spacing relative overflow-hidden group h-full md:h-[100vh]"> 
+         <section class="signature-section section-spacing relative overflow-hidden group h-[100vh] md:h-[100vh]"> 
             <div class="container signature-content ">    
                <!-- Section Heading -->
                <div class="section-title-outer text-center max-w-6xl mx-auto relative z-10">
-                  <h2 class="title-section text text-h2" data-leaf-target>Built on Culinary Precision. Delivered With <span class="text-reveal">Hospitality Excellence.</span>
+                  <h2 class="title-section text text-h2" data-leaf-target letters-slide-down text-split>Built on Culinary Precision. Delivered With <span class="text-letters-slide">Hospitality Excellence.</span>
                   </h2>
                </div>
 
                <!-- Main Plate Image Container -->
 
- <div class="plate-outer">
+               <div class="plate-outer">
                <div class="newbox signature-bg bg-cream absolute left-1/2 transform -translate-x-1/2 top-[5vw] bg-cover bg-center bg-no-repeat transition-transform duration-1000 ease-out ">
                      <img src="assets/images/plate-bg.svg" alt="Signature Background" class="signature-img" />                    
                </div>
@@ -386,31 +390,19 @@
                 </div>
 
 
-               <div class="signature-plate relative mx-auto transition-all duration-700">
-                 
-
-
-
-                 
-                  
-                  <!-- Subtle shine effect on hover -->
-                  <div
-                     class="signature-shine absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 transition-opacity duration-700 pointer-events-none">
-                  </div>
-               </div>
             </div>
          </section>
        
          <!-- ==================== 
-         6: BUBBLE FOOD'S EDGE SLIDER SECTION
+         6: Nekta’s EDGE SLIDER SECTION
          ==================== -->
          <section class="bg-green center-slider relative section-spacing overflow-hidden">
             <div class="">
                <div class="text-center mb-6 px-6">
-                  <h2 class="section-title section-title--light" data-leaf-target>
-                     Bubble food's
+                  <h2 class="section-title section-title--light" data-leaf-target letters-slide-down text-split>
+                     Nekta’s
                      <span
-                        class="section-title__accent text-reveal section-title__accent--dark text-reveal--dark"
+                        class="section-title--dark text-letters-slide"
                         >Edge</span
                         >
                   </h2>
@@ -817,7 +809,7 @@
             <div class="container px-0!">
                <!-- Section Heading -->
                <div class="section-title-outer text-center max-w-6xl mx-auto">
-                  <h2 class="title-section text text-h2" data-leaf-target>Experiences That Speak <span class="text-reveal">for Themselves</span>
+                  <h2 class="title-section text text-h2" data-leaf-target letters-slide-down text-split>Experiences That Speak <span class="text-letters-slide">for Themselves</span>
                   </h2>
                </div>
             </div>
@@ -1024,10 +1016,10 @@
                </div>
                <!-- View All Button -->
                <div class="flex justify-center mt-6">
-                  <button class="common-btn flex items-center gap-2 btn-slide-fill">
+                  <a href="#" class="common-btn flex items-center gap-2 btn-slide-fill">
                   <span>View All Blogs</span>
                   <img loading="lazy" src="assets/images/arrows/creamarrow-long-right.png" alt="rightArrow" />
-                  </button>
+                  </a>
                </div>
             </div>
          </section>
@@ -1036,6 +1028,7 @@
          @Html.Partial("~/Views/Shared/_Footer.cshtml")
 
       </main>
+
 
       <div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle" hidden>
          <div class="modal-backdrop" data-modal-close></div>
@@ -1133,20 +1126,24 @@
     <!-- COOKIE POLICY -->
 
 
-  
+  @* COMMON SCRIPT  *@
   <script src="~/Assets/js/swiper-bundle.min.js"></script>
   <script src="~/Assets/js/gsap.min.js"></script>
   <script src="~/Assets/js/ScrollTrigger.min.js"></script>
   <script src="~/Assets/js/lenis.min.js"></script>
   <script src="~/Assets/js/common-script.js"></script>
   <script src="~/Assets/js/title-animation.js"></script>
-  <script src="~/Assets/js/three-box-slider.js"></script>
 
+
+    @* ADDED SCRIPT  *@
+   <script src="~/Assets/js/homepage-script.js"></script>
+  <script src="~/Assets/js/three-box-slider.js"></script>
   <script src="~/Assets/js/hero-media-slider.js"></script>
   <script src="~/Assets/js/plate-animation.js"></script>
    <script src="~/Assets/js/testimonial-slider-script.js"></script>
    <script src="~/Assets/js/center-mode-slider.js"></script>
   <script src="~/Assets/js/blogs-cards-slider.js"></script>
+    <script src="~/Assets/js/assistant-popup-script.js"></script>
 
 
 
