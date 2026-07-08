@@ -411,42 +411,6 @@ document.getElementById("year-foot").innerHTML = (new Date().getFullYear());
             );
         }
 
-        const testimonialSwiper = new Swiper(".testimonialSwiper", {
-            slidesPerView: 1,
-            spaceBetween: 32,
-            centeredSlides: true,
-            loop: true,
-            pagination: {
-                el: ".testimonial-pagination",
-                clickable: true,
-                renderBullet: (index, className) =>
-                    index < 2 ? `<span class="${className}"></span>` : "",
-            },
-            navigation: {
-                nextEl: ".testimonial-next",
-                prevEl: ".testimonial-prev",
-            },
-            breakpoints: {
-                640: { slidesPerView: 2, centeredSlides: false },
-                1024: { slidesPerView: 3.2, centeredSlides: false },
-                1280: { slidesPerView: 3.8, centeredSlides: false },
-            },
-            on: {
-                init: updateTestimonialDepth,
-                slideChange: updateTestimonialDepth,
-            },
-        });
-
-        function updateTestimonialDepth(swiper = testimonialSwiper) {
-            qsa(".group", swiper.el).forEach((card) => {
-                card.classList.remove("is-muted");
-            });
-
-            qs(".group", swiper.slides[swiper.activeIndex])?.classList.add(
-                "is-muted",
-            );
-        }
-
         new Swiper(".insightsSwiper", {
             slidesPerView: 1.1,
             spaceBetween: 20,

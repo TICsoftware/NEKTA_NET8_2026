@@ -374,6 +374,13 @@ transform:translateY(0);
     border-radius: 24px;
     padding: 1.5rem;
     text-align: center;
+    transition:
+        opacity 0.45s var(--ease-premium),
+        transform 0.45s var(--ease-premium),
+        filter 0.45s var(--ease-premium),
+        background-color var(--motion-base) var(--ease-premium),
+        box-shadow var(--motion-base) var(--ease-premium),
+        color var(--motion-base) var(--ease-premium);
 }
 
 .testimonial-card.is-muted {
