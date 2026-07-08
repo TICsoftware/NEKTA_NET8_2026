@@ -73,7 +73,6 @@
     --text-h1: clamp(5rem, 3rem + 2.5vw, 5.25rem);
     --text-h2: clamp(4.25rem, 3.25rem + 1.25vw, 4.5rem);
     --text-h3: clamp(2rem, 1.75rem + 0.31vw, 2.125rem);
-    --text-h4: clamp(1.625rem, 1.5rem + 0.16vw, 1.75rem);
     --text-p: clamp(1rem, 0.948rem + 0.22vw, 1.125rem);
     --text-small: clamp(0.875rem, 0.35vw + 0.7rem,  0.875rem);
     --text-button: clamp(1rem,  0.948rem + 0.22vw, 1.125rem);
@@ -82,14 +81,6 @@
     --color-primary: #F6F4E6;
     --color-secondary: #748D6E;
     --color-third: #FC713C;
-    --color-accent: #FC713C;
-    --color-cream: #F6F4E6;
-    --color-green: #748D6E;
-    --color-orange: #fc713c;
-    --color-darkcream: #E6DBBD;
-    --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
-    --motion-fast: 260ms;
-    --motion-base: 420ms;
     --color-text: #454545;
     --color-text-heading: #1C1918;
     --color-text-dark: #384634;
@@ -1061,9 +1052,6 @@
   .h-2 {
     height: calc(var(--spacing) * 2);
   }
-  .h-5 {
-    height: calc(var(--spacing) * 5);
-  }
   .h-8 {
     height: calc(var(--spacing) * 8);
   }
@@ -1156,6 +1144,9 @@
   }
   .max-w-full {
     max-width: 100%;
+  }
+  .max-w-max {
+    max-width: max-content;
   }
   .max-w-none {
     max-width: none;
@@ -1294,6 +1285,13 @@
   .gap-10 {
     gap: calc(var(--spacing) * 10);
   }
+  .space-y-1 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(var(--spacing) * var(--tw-space-y-reverse));
+      margin-block-end: calc(var(--spacing) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
   .space-y-6 {
     :where(& > :not(:last-child)) {
       --tw-space-y-reverse: 0;
@@ -1398,26 +1396,17 @@
   .border-\[\#E9E9E9\] {
     border-color: #E9E9E9;
   }
+  .border-\[\#F6F4E6\]\/35 {
+    border-color: color-mix(in oklab, #F6F4E6 35%, transparent);
+  }
   .border-black\/25 {
     border-color: color-mix(in srgb, #000 25%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--color-black) 25%, transparent);
     }
   }
-  .border-cream {
-    border-color: var(--color-cream);
-  }
-  .border-cream\/35 {
-    border-color: color-mix(in srgb, #F6F4E6 35%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      border-color: color-mix(in oklab, var(--color-cream) 35%, transparent);
-    }
-  }
   .border-gray-300 {
     border-color: var(--color-gray-300);
-  }
-  .border-green {
-    border-color: var(--color-green);
   }
   .border-primary {
     border-color: var(--color-primary);
@@ -1428,11 +1417,8 @@
   .border-white {
     border-color: var(--color-white);
   }
-  .border-b-cream\/35 {
-    border-bottom-color: color-mix(in srgb, #F6F4E6 35%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      border-bottom-color: color-mix(in oklab, var(--color-cream) 35%, transparent);
-    }
+  .border-b-\[\#F6F4E6\]\/35 {
+    border-bottom-color: color-mix(in oklab, #F6F4E6 35%, transparent);
   }
   .bg-black {
     background-color: var(--color-black);
@@ -1460,15 +1446,6 @@
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-black) 70%, transparent);
     }
-  }
-  .bg-cream {
-    background-color: var(--color-cream);
-  }
-  .bg-darkcream {
-    background-color: var(--color-darkcream);
-  }
-  .bg-green {
-    background-color: var(--color-green);
   }
   .bg-green-400 {
     background-color: var(--color-green-400);
@@ -1569,9 +1546,6 @@
   }
   .bg-no-repeat {
     background-repeat: no-repeat;
-  }
-  .fill-current {
-    fill: currentcolor;
   }
   .object-cover {
     object-fit: cover;
@@ -1814,6 +1788,9 @@
   .text-h2 {
     font-size: var(--text-h2);
   }
+  .text-h3 {
+    font-size: var(--text-h3);
+  }
   .text-small {
     font-size: var(--text-small);
   }
@@ -1863,9 +1840,6 @@
   }
   .text-black {
     color: var(--color-black);
-  }
-  .text-cream {
-    color: var(--color-cream);
   }
   .text-gray-400 {
     color: var(--color-gray-400);
@@ -2094,13 +2068,6 @@
       }
     }
   }
-  .hover\:text-green {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-green);
-      }
-    }
-  }
   .hover\:text-white {
     &:hover {
       @media (hover: hover) {
@@ -2157,9 +2124,23 @@
       flex-direction: row;
     }
   }
+  .sm\:space-y-3 {
+    @media (width >= 40rem) {
+      :where(& > :not(:last-child)) {
+        --tw-space-y-reverse: 0;
+        margin-block-start: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));
+        margin-block-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));
+      }
+    }
+  }
   .sm\:px-8 {
     @media (width >= 40rem) {
       padding-inline: calc(var(--spacing) * 8);
+    }
+  }
+  .sm\:pr-2 {
+    @media (width >= 40rem) {
+      padding-right: calc(var(--spacing) * 2);
     }
   }
   .sm\:pb-10 {
@@ -2345,12 +2326,9 @@
       border-right-width: 1px;
     }
   }
-  .md\:border-r-cream\/35 {
+  .md\:border-r-\[\#F6F4E6\]\/35 {
     @media (width >= 48rem) {
-      border-right-color: color-mix(in srgb, #F6F4E6 35%, transparent);
-      @supports (color: color-mix(in lab, red, red)) {
-        border-right-color: color-mix(in oklab, var(--color-cream) 35%, transparent);
-      }
+      border-right-color: color-mix(in oklab, #F6F4E6 35%, transparent);
     }
   }
   .md\:px-4 {
@@ -2467,6 +2445,20 @@
   .lg\:gap-16 {
     @media (width >= 64rem) {
       gap: calc(var(--spacing) * 16);
+    }
+  }
+  .lg\:space-y-5 {
+    @media (width >= 64rem) {
+      :where(& > :not(:last-child)) {
+        --tw-space-y-reverse: 0;
+        margin-block-start: calc(calc(var(--spacing) * 5) * var(--tw-space-y-reverse));
+        margin-block-end: calc(calc(var(--spacing) * 5) * calc(1 - var(--tw-space-y-reverse)));
+      }
+    }
+  }
+  .lg\:pr-0 {
+    @media (width >= 64rem) {
+      padding-right: 0;
     }
   }
   .lg\:pb-0 {
@@ -2730,6 +2722,11 @@ body {
   }
   .btn-slide-fill:active {
     transform: scale(.98);
+  }
+}
+@media (max-width: 992px) {
+  .container {
+    width: 100%;
   }
 }
 @property --tw-translate-x {

@@ -3,117 +3,12 @@ const headerWrap = document.getElementById('headerWrap');
   const navViewport = document.getElementById('navViewport');
   const dropdownAnchor = document.getElementById('dropdownAnchor');
   const desktopNav = document.getElementById('desktopNav');
-  let menuItems = [];
+  let menuItems = [...desktopNav.querySelectorAll('.nav-item[data-menu]')];
   const panels = [...document.querySelectorAll('.nav-panel')];
-  const drawerBody = document.getElementById('drawerBody');
 
   let activeMenu = null;
   let prevIndex = null;
   let closeTimer = null;
-
-  const NAV_DATA = {
-    home: { label: 'Home', href: '#', icon: 'ic-home' },
-    careers: { label: 'Careers', href: '#', icon: 'ic-briefcase' },
-    menus: {
-      about: {
-        label: 'About us',
-        icon: 'ic-users',
-        callout: { tone: 'about', title: 'Our Heritage', text: "From airline kitchens to India's leading food services company — discover the story behind TajSATS.", href: '#' },
-        viewAll: { label: 'View all about us', href: '#' },
-        items: [
-          { label: 'Who we are', desc: 'Our story and mission', href: '#', icon: 'ic-info' },
-          { label: 'TajSATS', desc: 'Our airline catering arm', href: '#', icon: 'ic-info' },
-          { label: 'Leadership', desc: 'Meet the team', href: '#', icon: 'ic-info' },
-          { label: 'Company information', desc: 'Corporate details', href: '#', icon: 'ic-info' },
-          { label: 'CSR — Paathya', desc: 'Our social responsibility program', href: '#', icon: 'ic-info' }
-        ]
-      },
-      segments: {
-        label: 'Segments',
-        icon: 'ic-store',
-        callout: { tone: 'segments', title: 'Every Segment Covered', text: 'Tailored food solutions for corporate, healthcare, sports, and more.', href: '#' },
-        viewAll: { label: 'View all segments', href: '#' },
-        items: [
-          { label: 'Business & corporates', desc: 'Workplace dining', href: '#', icon: 'ic-briefcase-sm' },
-          { label: 'Horeca', desc: 'Hotels, restaurants, cafes', href: '#', icon: 'ic-briefcase-sm' },
-          { label: 'Education', desc: 'Campus catering', href: '#', icon: 'ic-briefcase-sm' },
-          { label: 'Healthcare', desc: 'Patient nutrition', href: '#', icon: 'ic-briefcase-sm' },
-          { label: 'Sports', desc: 'Stadiums & events', href: '#', icon: 'ic-briefcase-sm' },
-          { label: 'Outdoor events', desc: 'Large-scale catering', href: '#', icon: 'ic-briefcase-sm' },
-          { label: 'The Daily Pour', desc: 'Our beverage brand', href: '#', icon: 'ic-briefcase-sm' }
-        ]
-      },
-      solutions: {
-        label: 'Solutions',
-        icon: 'ic-shield',
-        callout: { tone: 'solutions', title: 'End-to-End Solutions', text: 'Culinary craft, food safety, and people-first operations for exceptional dining.', href: '#' },
-        viewAll: { label: 'View all solutions', href: '#' },
-        items: [
-          { label: 'Culinary excellence', desc: 'Our kitchen standards', href: '#', icon: 'ic-bulb' },
-          { label: 'Food solutioning', desc: 'Custom menu design', href: '#', icon: 'ic-bulb' },
-          { label: 'Food programs', desc: 'Nutrition planning', href: '#', icon: 'ic-bulb' },
-          { label: 'People', desc: 'Our workforce', href: '#', icon: 'ic-bulb' },
-          { label: 'Food safety & hygiene', desc: 'Compliance standards', href: '#', icon: 'ic-bulb' }
-        ]
-      }
-    }
-  };
-
-  function escapeHtml(s){
-    return String(s)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
-  }
-
-  function renderDesktopPanels(){
-    Object.entries(NAV_DATA.menus).forEach(([key, menu]) => {
-      const panel = document.getElementById('panel-' + key);
-      if (!panel) return;
-
-      const wide = key === 'segments' ? ' wide' : '';
-      const grid2 = key === 'segments' ? ' grid-2' : '';
-      const items = menu.items.map(it => {
-        const href = it.href || '#';
-        return `<li><a class="dropdown-link" href="${href}"><strong>${escapeHtml(it.label)}</strong><span>${escapeHtml(it.desc)}</span></a></li>`;
-      }).join('');
-
-      panel.innerHTML = `
-        <div class="dropdown-layout${wide}">
-          <a class="dropdown-callout ${menu.callout.tone}" href="${menu.callout.href || '#'}">
-            <h3>${escapeHtml(menu.callout.title)}</h3>
-            <p>${escapeHtml(menu.callout.text)}</p>
-          </a>
-          <div class="dropdown-body">
-            <ul class="dropdown-list${grid2}">${items}</ul>
-            <a class="dropdown-view-all" href="${menu.viewAll.href || '#'}">${escapeHtml(menu.viewAll.label)} <svg><use href="#ic-chevron-down"/></svg></a>
-          </div>
-        </div>
-      `.trim();
-    });
-  }
-
-  function renderDesktopNav(){
-    const menuKeys = Object.keys(NAV_DATA.menus);
-    const dropdownItems = menuKeys.map((key, idx) => {
-      const menu = NAV_DATA.menus[key];
-      return `
-        <div class="nav-item" data-menu="${key}" data-index="${idx + 1}">
-          <button type="button" aria-haspopup="true" aria-expanded="false">${escapeHtml(menu.label)} <svg class="chev" width="12" height="8"><use href="#ic-chevron-down"/></svg></button>
-        </div>
-      `.trim();
-    }).join('');
-
-    desktopNav.innerHTML = `
-      <div class="nav-item plain"><a href="${NAV_DATA.home.href}" class="nav-plain active">${escapeHtml(NAV_DATA.home.label)}</a></div>
-      ${dropdownItems}
-      <div class="nav-item plain"><a href="${NAV_DATA.careers.href}" class="nav-plain">${escapeHtml(NAV_DATA.careers.label)}</a></div>
-    `.trim();
-
-    menuItems = [...desktopNav.querySelectorAll('.nav-item[data-menu]')];
-  }
 
   function bindDesktopMenuEvents(){
     menuItems.forEach(item => {
@@ -126,52 +21,6 @@ const headerWrap = document.getElementById('headerWrap');
         activeMenu === item.dataset.menu ? closeMenu() : openMenu(item);
       });
     });
-  }
-
-  function renderMobileDrawer(){
-    if (!drawerBody) return;
-
-    const home = NAV_DATA.home;
-    const careers = NAV_DATA.careers;
-
-    const accordions = Object.entries(NAV_DATA.menus).map(([key, menu]) => {
-      const links = menu.items.map(it => {
-        const href = it.href || '#';
-        return `<a href="${href}">${escapeHtml(it.label)}</a>`;
-      }).join('');
-
-      return `
-        <div class="accordion-row" data-accordion data-menu="${key}">
-          <button type="button" class="accordion-trigger" aria-expanded="false">
-            <span class="label">
-              <span class="ic"><svg width="16" height="16"><use href="#${menu.icon}"/></svg></span>
-              ${escapeHtml(menu.label)}
-            </span>
-            <svg class="chev" width="8" height="12"><use href="#ic-chevron-right"/></svg>
-          </button>
-          <div class="accordion-panel">
-            <div class="accordion-panel-inner">
-              <div class="mobile-callout ${menu.callout.tone}"><strong>${escapeHtml(menu.callout.title)}</strong> ${escapeHtml(menu.callout.text)}</div>
-              ${links}
-            </div>
-          </div>
-        </div>
-      `.trim();
-    }).join('');
-
-    drawerBody.innerHTML = `
-      <a href="${home.href}" class="drawer-link">
-        <span class="ic"><svg width="16" height="16"><use href="#${home.icon}"/></svg></span>
-        ${escapeHtml(home.label)}
-      </a>
-
-      ${accordions}
-
-      <a href="${careers.href}" class="drawer-link">
-        <span class="ic"><svg width="16" height="16"><use href="#${careers.icon}"/></svg></span>
-        ${escapeHtml(careers.label)}
-      </a>
-    `.trim();
   }
 
   function wireMobileAccordions(){
@@ -287,16 +136,19 @@ const headerWrap = document.getElementById('headerWrap');
   });
   dropdownAnchor.addEventListener('mouseenter', () => clearTimeout(closeTimer));
 
-  // One source of truth for both desktop + mobile
-  renderDesktopNav();
-  renderDesktopPanels();
+  // Header content is now static in _Header.cshtml; JS handles behavior only.
+  menuItems = [...desktopNav.querySelectorAll('.nav-item[data-menu]')];
   bindDesktopMenuEvents();
-  renderMobileDrawer();
   wireMobileAccordions();
 
-  window.addEventListener('scroll', () => {
-    navBar.classList.toggle('elevated', window.scrollY > 8);
-  });
+function updateScrolledState(){
+    const isScrolled = window.scrollY > 8;
+    navBar.classList.toggle('elevated', isScrolled);
+    headerWrap.classList.toggle('scrolled', isScrolled);
+  }
+
+  window.addEventListener('scroll', updateScrolledState);
+  updateScrolledState(); // set correct state immediately on page load
 
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const drawer = document.getElementById('drawer');
@@ -342,6 +194,13 @@ const headerWrap = document.getElementById('headerWrap');
       panel.style.maxHeight = inner.scrollHeight + 'px';
     });
   });
+
+
+// --------------------------------------------
+// FOOTER YEAR
+// --------------------------------------------
+document.getElementById("year-foot").innerHTML = (new Date().getFullYear());
+
 
 
 (function () {
@@ -1427,12 +1286,73 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-gsap.registerPlugin(ScrollTrigger);
-
 const footer =
 document.querySelector("footer");
 
 if(!footer) return;
+
+function initFooterAccordions(){
+  const sections = [...footer.querySelectorAll('.footer-quick-link-click')];
+  if (!sections.length) return;
+
+  const desktopMq = window.matchMedia('(min-width: 768px)');
+
+  function closeAll(){
+    sections.forEach(section => {
+      section.classList.remove('open');
+      const list = section.querySelector('.footer-nav-list');
+      const heading = section.querySelector('h4');
+      if (list) list.style.maxHeight = '0';
+      if (heading) heading.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function resetForDesktop(){
+    if (!desktopMq.matches) return;
+    sections.forEach(section => {
+      section.classList.remove('open');
+      const list = section.querySelector('.footer-nav-list');
+      if (list) list.style.maxHeight = '';
+    });
+  }
+
+  sections.forEach(section => {
+    const heading = section.querySelector('h4');
+    const list = section.querySelector('.footer-nav-list');
+    if (!heading || !list) return;
+
+    heading.setAttribute('role', 'button');
+    heading.setAttribute('tabindex', '0');
+    heading.setAttribute('aria-expanded', 'false');
+
+    const toggle = () => {
+      if (desktopMq.matches) return;
+
+      const isOpen = section.classList.contains('open');
+      closeAll();
+
+      if (!isOpen) {
+        section.classList.add('open');
+        list.style.maxHeight = list.scrollHeight + 'px';
+        heading.setAttribute('aria-expanded', 'true');
+      }
+    };
+
+    heading.addEventListener('click', toggle);
+    heading.addEventListener('keydown', e => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      toggle();
+    });
+  });
+
+  desktopMq.addEventListener('change', resetForDesktop);
+  resetForDesktop();
+}
+
+initFooterAccordions();
+
+gsap.registerPlugin(ScrollTrigger);
 
 
 /* reset */

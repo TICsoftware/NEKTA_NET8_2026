@@ -29,21 +29,7 @@
   /* ── Brand Colors ── */
   --color-primary: #F6F4E6;   /**CREAM**/
   --color-secondary: #748D6E; /**Green**/
-  --color-third: #FC713C;     /**Orange**/
-  --color-accent: #FC713C;    /**Orange accent — CTA / link-primary**/
-
-  /* Aliases so existing rules (.btn-primary etc.) that reference these
-     names resolve correctly instead of silently falling back to nothing. */
-  --color-cream: #F6F4E6;
-  --color-green: #748D6E;
-  --color-orange: #fc713c;
-  --color-darkcream: #E6DBBD;
-
-  /* ── Motion ── */
-  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
-  --motion-fast: 260ms;
-  --motion-base: 420ms;
-  --motion-slow: 720ms;
+  --color-third: #FC713C;     /**Orange**/  
 
 
   /* ── Base Colors / Backgrounds ── */
@@ -372,5 +358,9 @@ img, picture, video, canvas {
 
 
 
+
 }
 
+@media (max-width: 992px) {
+  .container { width: 100%;}
+}
