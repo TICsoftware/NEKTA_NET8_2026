@@ -214,33 +214,7 @@ document.getElementById("year-foot").innerHTML = (new Date().getFullYear());
     const qsa = (selector, scope = document) => [...scope.querySelectorAll(selector)];
     const hasGSAP = () => window.gsap && window.ScrollTrigger;
 
-    function initImages() {
-        qsa("img").forEach((img, index) => {
-            if (index > 2 && !img.hasAttribute("loading")) {
-                img.loading = "lazy";
-            }
-            img.decoding = "async";
-        });
-
-        const decorativeSources = [
-            "/arrows/",
-            "/Clients/",
-            "logo.png",
-            "footerLogo.png",
-            "assistant.png",
-            "leafimg.png",
-            "turnImg.png",
-        ];
-
-        qsa(".feature-card img, .edgeSwiper img, .insight-card img")
-            .filter((img) => {
-                const source = img.getAttribute("src") || "";
-                return !decorativeSources.some((part) => source.includes(part));
-            })
-            .forEach((img) => {
-                img.classList.add("js-image-parallax");
-            });
-    }
+    
 
     function setExpanded(button, expanded) {
         button?.setAttribute("aria-expanded", String(expanded));
@@ -364,163 +338,24 @@ document.getElementById("year-foot").innerHTML = (new Date().getFullYear());
     function initSliders() {
         if (!window.Swiper) return;
 
-        new Swiper(".mySwiper", {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            pagination: {
-                el: ".swiper-pagination-custom",
-                clickable: true,
-                renderBullet: (index, className) =>
-                    index < 3 ? `<span class="${className}"></span>` : "",
-            },
-            navigation: {
-                nextEl: ".swiper-button-next-custom",
-                prevEl: ".swiper-button-prev-custom",
-            },
-            breakpoints: {
-                640: { slidesPerView: 1 },
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
-            },
-        });
+      
 
-        const edgeSwiper = new Swiper(".edgeSwiper", {
-            slidesPerView: 1,
-            spaceBetween: 0,
-            loop: true,
-            centeredSlides: true,
-            navigation: {
-                nextEl: ".edge-swiper-next",
-                prevEl: ".edge-swiper-prev",
-            },
-            breakpoints: {
-                290: { slidesPerView: 1.1, centeredSlides: true, spaceBetween: 2 },
-                768: { slidesPerView: 2.6, centeredSlides: true, spaceBetween: 30 },
-            },
-            on: {
-                init: updateEdgeArrows,
-                slideChange: updateEdgeArrows,
-            },
-        });
+       
 
-        function updateEdgeArrows(swiper = edgeSwiper) {
-            qsa(".edgeArrow").forEach((item) => item.classList.add("hidden"));
-            qs(".edgeArrow", swiper.slides[swiper.activeIndex])?.classList.remove(
-                "hidden",
-            );
-        }
+      
 
-        new Swiper(".insightsSwiper", {
-            slidesPerView: 1.1,
-            spaceBetween: 20,
-            centeredSlides: true,
-            loop: true,
-            breakpoints: {
-                768: { slidesPerView: 2.2, centeredSlides: false },
-                1024: {
-                    slidesPerView: 3,
-                    centeredSlides: false,
-                    spaceBetween: 30,
-                },
-            },
-        });
+       
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-        initImages();
         initLenis();
         initContactModal();
-        initSliders();
         window.ScrollTrigger?.refresh();
     });
 })();
 
 
-// Client Slider
-document.addEventListener("DOMContentLoaded", () => {
-    const wrapper = document.getElementById("marqueeWrapper");
-    const track = document.getElementById("marqueeTrack");
- 
-    // Duplicate the items once so the loop has no visible seam
-    track.innerHTML += track.innerHTML;
- 
-    // Style items based on screen size (4 / 3 / 2 visible)
-    function setItemWidths() {
-        let widthPercent;
-        if (window.innerWidth >= 1024) widthPercent = 25;       // 4 visible
-        else if (window.innerWidth >= 768) widthPercent = 33.333; // 3 visible
-        else widthPercent = 50;                                  // 2 visible
- 
-        document.querySelectorAll(".marquee-item").forEach(item => {
-            item.style.flex = "0 0 auto";
-            item.style.width = `${(wrapper.offsetWidth * widthPercent) / 100}px`;
-            item.style.display = "flex";
-            item.style.alignItems = "center";
-            item.style.justifyContent = "center";
-            item.style.padding = "0 2rem";
-        });
- 
-        document.querySelectorAll(".marquee-item img").forEach(img => {
-            img.style.height = "3rem";
-            img.style.filter = "grayscale(100%)";
-            img.style.transition = "filter 0.3s ease";
-        });
-    }
- 
-    setItemWidths();
-    window.addEventListener("resize", setItemWidths);
- 
-    let position = 0;
-    let speed = 2;          // pixels per frame — increase for faster scroll
-    let isPaused = false;
-    let halfWidth = 0;
-    let inView = true; // performance fix: don't animate when marquee is off-screen
- 
-    function calcHalfWidth() {
-        halfWidth = track.scrollWidth / 2; // since content is duplicated
-    }
-    calcHalfWidth();
-    window.addEventListener("resize", calcHalfWidth);
- 
-    // Pause the marquee while it's scrolled out of view or the tab is
-    // in the background — no point moving pixels nobody can see, and
-    // this stops the loop from silently burning CPU/battery forever.
-    const marqueeObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            inView = entry.isIntersecting;
-        });
-    });
-    marqueeObserver.observe(wrapper);
- 
-    function animate() {
-        if (!isPaused && inView && !document.hidden) {
-            position -= speed;
-            if (Math.abs(position) >= halfWidth) {
-                position = 0; // seamless reset right at the duplicate point
-            }
-            track.style.transform = `translateX(${position}px)`;
-        }
-        requestAnimationFrame(animate);
-    }
-    requestAnimationFrame(animate);
- 
-    wrapper.addEventListener("mouseenter", () => {
-        isPaused = true;
-    });
-    wrapper.addEventListener("mouseleave", () => {
-        isPaused = false;
-    });
- 
-    // grayscale hover-to-color effect on individual logos
-    track.addEventListener("mouseover", (e) => {
-        if (e.target.tagName === "IMG") e.target.style.filter = "grayscale(0%)";
-    });
-    track.addEventListener("mouseout", (e) => {
-        if (e.target.tagName === "IMG") e.target.style.filter = "grayscale(100%)";
-    });
-});
- 
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -970,71 +805,9 @@ animate();
 
 
 
-//All H2 Animation
-
-document.querySelectorAll(".text-reveal").forEach((el)=>{
-
-const text = el.textContent.trim();
-
-el.innerHTML = "";
-
-text.split("").forEach((letter,index)=>{
-
-const span=document.createElement("span");
-
-span.classList.add("char");
-
-span.innerHTML=
-letter===" "
-? "&nbsp;"
-: letter;
-
-span.style.animationDelay=
-`${index*0.05}s`;
-
-el.appendChild(span);
-
-});
-
-
-const observer =
-new IntersectionObserver((entries)=>{
-
-entries.forEach((entry)=>{
-
-if(entry.isIntersecting){
-
-entry.target.classList.remove("active");
-
-/* restart animation */
-setTimeout(()=>{
-entry.target.classList.add("active");
-},50);
-
-}
-
-/* scroll up → reset */
-else{
-
-entry.target.classList.remove("active");
-
-}
-
-});
-
-},{
-threshold:0.5
-});
-
-observer.observe(el);
-
-});
-
-
 /* ==========================
    ABOUT IMAGE REVEAL
 ========================== */
-
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -1124,122 +897,7 @@ ease: "expo.out"
 
 );
 
-/* ======================
-   PREMIUM PLAYGROUND
-====================== */
-document.addEventListener("DOMContentLoaded", () => {
 
-    gsap.registerPlugin(ScrollTrigger);
-
-    const section = document.querySelector("#playgrounds-section");
-
-    if (!section) return;
-
-    // Sirf original slides
-    const cards = gsap.utils.toArray(
-        "#playgrounds-section .swiper-slide:not(.swiper-slide-duplicate)"
-    );
-
-    gsap.from(cards, {
-
-        opacity: 0,
-
-        y: 120,
-
-        scale: 0.96,
-
-        rotationX: 8,
-
-        force3D: true,
-
-        transformOrigin: "center bottom",
-
-        duration: 1.15,
-
-        ease: "power4.out",
-
-        stagger: {
-            each: 0.18,
-            from: "start"
-        },
-
-        scrollTrigger: {
-
-            trigger: section,
-
-            start: "top 65%",
-
-            once: true,
-
-            invalidateOnRefresh: true
-
-        }
-
-    });
-
-});
-
-
-/* ======================
-   INSIGHT SECTION
-====================== */
-document.addEventListener("DOMContentLoaded", () => {
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const section = document.querySelector(".insightsSwiper");
-
-    if (!section) return;
-
-    const cards = gsap.utils.toArray(".insightsSwiper .swiper-slide");
-
-    // Initial state
-    gsap.set(cards, {
-        opacity: 0,
-        y: 120,
-        scale: 0.9,
-        rotateX: 8,
-        transformPerspective: 1000,
-        transformOrigin: "center bottom"
-    });
-
-    const tl = gsap.timeline({
-
-        scrollTrigger: {
-
-            trigger: section,
-
-            start: "top 78%",
-
-            once: true
-
-        }
-
-    });
-
-    tl.to(cards, {
-
-        opacity: 1,
-
-        y: 0,
-
-        scale: 1,
-
-        rotateX: 0,
-
-        duration: 1.15,
-
-        ease: "power4.out",
-
-        stagger: {
-
-            each: 0.22
-
-        }
-
-    });
-
-});
 
 
 
@@ -1247,7 +905,6 @@ document.addEventListener("DOMContentLoaded", () => {
 /* ======================
    FOOTER SECTION
 ====================== */
-
 document.addEventListener("DOMContentLoaded", () => {
 
 const footer =

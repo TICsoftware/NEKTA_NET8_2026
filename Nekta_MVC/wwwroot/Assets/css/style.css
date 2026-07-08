@@ -1,26 +1,3 @@
-/**=====================================
-TITLE ANIMATION
-=====================================**/
-.title-section{font-weight:400; color: var(--color-text-heading); margin-bottom: 40px;} 
-.title-section span{ color: var(--color-secondary) !important;  font-family: var(--font-heading) !important;  font-style: italic;  font-weight: 600;  letter-spacing: -0.02em;}
-
-/**TITLE ANIMATION**/
-.text-reveal .char{display:inline-block; opacity:0; transform:translateY(-80px);}
-.text-reveal.active .char{ animation:letterReveal .8s cubic-bezier(.22,1,.36,1) forwards;}
-
-@keyframes letterReveal{
-from{
-opacity:0;
-transform:translateY(-80px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-
 /*========================================
 3: Seeking an Elevated Dining Experience
 ========================================*/

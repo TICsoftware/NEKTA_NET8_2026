@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,7 +30,7 @@
   <link rel="stylesheet" href="~/dist/site.css" asp-append-version="true" />
 
   
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="~/Assets/css/swiper-bundle.min.css" />
   <link rel="preload" href="~/Assets/css/header-footer.css" as="style">
   <link rel="stylesheet" href="~/Assets/css/header-footer.css">
 
@@ -40,6 +39,8 @@
 
   <link rel="stylesheet" href="~/Assets/css/common-style.css">
   <link rel="stylesheet" href="~/Assets/css/three-box-slider.css">
+  <link rel="stylesheet" href="~/Assets/css/center-mode-slider.css">
+    <link rel="stylesheet" href="~/Assets/css/blogs-cards-slider.css">
 
   @RenderSection("Styles", required: false)
 </head>
@@ -362,22 +363,36 @@
          <!-- ==================== 
          5: Built on Culinary Precision. Delivered With Hospitality Excellence.
          ==================== -->
-         <section class="signature-section section-spacing relative overflow-hidden group h-full md:h-[100vh]">
-            <div class="newbox signature-bg absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 ease-out z-0">
-                <img src="assets/images/plate-bg.svg" alt="Signature Background" />
-            </div>
-
-            <div class="container signature-content z-10 relative">    
+         <section class="signature-section section-spacing relative overflow-hidden group h-full md:h-[100vh]"> 
+            <div class="container signature-content ">    
                <!-- Section Heading -->
-               <div class="section-title-outer text-center max-w-6xl mx-auto">
+               <div class="section-title-outer text-center max-w-6xl mx-auto relative z-10">
                   <h2 class="title-section text text-h2" data-leaf-target>Built on Culinary Precision. Delivered With <span class="text-reveal">Hospitality Excellence.</span>
                   </h2>
                </div>
 
                <!-- Main Plate Image Container -->
+
+ <div class="plate-outer">
+               <div class="newbox signature-bg bg-cream absolute left-1/2 transform -translate-x-1/2 top-[5vw] bg-cover bg-center bg-no-repeat transition-transform duration-1000 ease-out ">
+                     <img src="assets/images/plate-bg.svg" alt="Signature Background" class="signature-img" />                    
+               </div>
+
+               <img src="assets/images/garlic.svg" alt="Signature Background" class="signature-garlic-img" />
+               <img src="assets/images/leaf.svg" alt="Signature Background" class="signature-leaf-img" />
+
+                <img loading="lazy" src="assets/images/signature-plate.png" alt="Signature Dish" class="signature-plate-image w-full h-auto mx-auto transition-all duration-700 ease-out " />
+
+                </div>
+
+
                <div class="signature-plate relative mx-auto transition-all duration-700">
-                  <img loading="lazy" src="assets/images/signature-plate.png" alt="Signature Dish"
-                     class="signature-plate-image w-full h-auto mx-auto transition-all duration-700 ease-out" />
+                 
+
+
+
+                 
+                  
                   <!-- Subtle shine effect on hover -->
                   <div
                      class="signature-shine absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 transition-opacity duration-700 pointer-events-none">
@@ -776,6 +791,21 @@
                         </div>
                      </div>
                   </div>
+
+                  <div class="edge-nav-arrows">
+                     <div class="edge-swiper-prev cursor-pointer w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-cream border border-green flex items-center justify-center transition-all">
+                        <img loading="lazy"
+                              src="assets/images/arrows/GreenLeft.png"
+                              alt="GreenLeft"
+                        />
+                     </div>
+                     <div class="edge-swiper-next cursor-pointer w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-cream border border-green flex items-center justify-center transition-all">
+                        <img loading="lazy"
+                              src="assets/images/arrows/GreenRight.png"
+                              alt="GreenRight"
+                        />
+                     </div>
+                   </div>
                </div>
             </div>
          </section>
@@ -892,32 +922,28 @@
                </div>
             </div>
          </section>
-        
          
-         <!-- ==================== 
-         8: LATEST TRENDS & INSIGHTS SECTION 
-         ==================== -->
-         <section class="bg-darkcream section-spacing">
+         <!-- ==================== LATEST TRENDS & INSIGHTS SECTION ==================== -->
+         <section class="bg-[#F6F4E6] section-spacing">
             <div class="container">
-               <!-- Heading -->
-               <div class="text-center mb-8 md:mb-10">
-                  <h2 class="section-title" data-leaf-target>
-                     Latest Trends, Stories &
-                     <span class="text-reveal">Culinary Insights</span>
+                 <!-- Section Heading -->
+               <div class="section-title-outer text-center max-w-6xl mx-auto">
+                  <h2 class="title-section text text-h2" data-leaf-target letters-slide-down text-split>Latest Trends, Stories & <span class="text-letters-slide">Culinary Insights</span>
                   </h2>
                </div>
+
                <!-- Swiper Slider -->
-               <div class="swiper insightsSwiper px-2 md:px-4">
+               <div class="swiper insightsSwiper px-2 md:px-4 blogs-cards-slider">
                   <div class="swiper-wrapper">
                      <!-- Card 1 -->
                      <div class="swiper-slide h-auto">
-                        <div class="insight-card group">
-                           <div class="media-frame overflow-hidden">
+                        <div class="insight-card group blogs-cards-wrapper">
+                           <div class="media-frame overflow-hidden rounded-lg ratio-[531/315] blogs-cards-image">
                               <img loading="lazy" src="assets/images/insights/trend1.png" alt="Catering Trends"
-                                 class="w-full h-52 md:h-64 object-cover" />
+                                 class="w-full object-cover" />
                            </div>
-                           <div class="py-6">
-                              <span class="pill inline-block bg-green text-cream text-xs font-medium">Case
+                           <div class="py-6 blogs-cards-content"> 
+                              <span class="pill inline-block bg-green text-cream text-xs font-medium px-2.5 py-1 rounded-lg">Case
                               Study</span>
                               <h3
                                  class="insight-title line-clamp-2"
@@ -938,12 +964,12 @@
                      <!-- Card 2 -->
                      <div class="swiper-slide h-auto">
                         <div class="insight-card group">
-                           <div class="media-frame overflow-hidden">
+                           <div class="media-frame overflow-hidden rounded-lg ratio-[531/315]">
                               <img loading="lazy" src="assets/images/insights/chef-creativity.png" alt="Chef Creativity"
-                                 class="w-full h-52 md:h-64 object-cover" />
+                                 class="w-full object-cover" />
                            </div>
                            <div class="py-6">
-                              <span class="pill inline-block bg-green text-cream text-xs font-medium">Blogs</span>
+                              <span class="pill inline-block bg-green text-cream text-xs font-medium px-2.5 py-1 rounded-lg">Blogs</span>
                               <h3
                                  class="insight-title line-clamp-2"
                                  >
@@ -963,15 +989,13 @@
                      <!-- Card 3 -->
                      <div class="swiper-slide h-auto">
                         <div class="insight-card group">
-                           <div class="media-frame overflow-hidden">
+                           <div class="media-frame overflow-hidden rounded-lg ratio-[531/315]">
                               <img loading="lazy" src="assets/images/insights/premium-catering.png" alt="Premium Catering"
-                                 class="w-full h-52 md:h-64 object-cover" />
+                                 class="w-full object-cover" />
                            </div>
                            <div class="py-6">
-                              <span class="pill inline-block bg-green text-cream text-xs font-medium">Blogs</span>
-                              <h3
-                                 class="insight-title line-clamp-2"
-                                 >
+                              <span class="pill inline-block bg-green text-cream text-xs font-medium px-2.5 py-1 rounded-lg">Blogs</span>
+                              <h3 class="insight-title line-clamp-2">
                                  Featured for Excellence in Premium
                               </h3>
                               <a
@@ -986,6 +1010,17 @@
                         </div>
                      </div>
                   </div>
+              
+                  <div class="blogs-slider-nav">
+                        <button class="blogs-prev" aria-label="Previous">
+                            <img src="assets/images/arrows/swiperLeft.png" alt="swiperLeft" class="max-w-full">
+                        </button>
+
+                        <button class="blogs-next" aria-label="Next">
+                            <img src="assets/images/arrows/swiperRight.png" alt="swiperRight" class="max-w-full">
+                        </button>
+                  </div>
+                  
                </div>
                <!-- View All Button -->
                <div class="flex justify-center mt-6">
@@ -1105,10 +1140,13 @@
   <script src="~/Assets/js/lenis.min.js"></script>
   <script src="~/Assets/js/common-script.js"></script>
   <script src="~/Assets/js/title-animation.js"></script>
+  <script src="~/Assets/js/three-box-slider.js"></script>
 
   <script src="~/Assets/js/hero-media-slider.js"></script>
   <script src="~/Assets/js/plate-animation.js"></script>
-  <script src="~/Assets/js/testimonial-slider-script.js"></script>
+   <script src="~/Assets/js/testimonial-slider-script.js"></script>
+   <script src="~/Assets/js/center-mode-slider.js"></script>
+  <script src="~/Assets/js/blogs-cards-slider.js"></script>
 
 
 

@@ -3,105 +3,112 @@
 ====================== */
 
 (function () {
-    const root = document.querySelector(".testimonialSwiper");
-    if (!root || typeof Swiper === "undefined") return;
+    if (typeof Swiper === "undefined") return;
 
-    const wrapper = root.querySelector(".swiper-wrapper");
-    if (!wrapper) return;
+    const root = document.querySelector(".testimonialSwiper");
+    const wrapper = root?.querySelector(".swiper-wrapper");
+    const paginationEl = document.querySelector(".testimonial-pagination");
+    if (!root || !wrapper) return;
 
     const DESKTOP_SLIDES_PER_VIEW = 3.5;
-
     const originalSlides = [
-        ...wrapper.querySelectorAll(":scope > .swiper-slide:not([data-testimonial-clone])"),
+        ...wrapper.querySelectorAll(":scope > .swiper-slide"),
     ];
-    const ORIGINAL_SLIDE_COUNT = originalSlides.length;
-    if (!ORIGINAL_SLIDE_COUNT) return;
+    const originalCount = originalSlides.length;
+    if (!originalCount) return;
 
-    const getMinSlidesForLoop = (perView) => Math.ceil(perView) + 2;
-    const minSlidesForLoop = getMinSlidesForLoop(DESKTOP_SLIDES_PER_VIEW);
-    const targetSlideCount = Math.max(
-        ORIGINAL_SLIDE_COUNT * 2,
-        minSlidesForLoop,
+    // Remove minSlidesForLoop and force loop to work by cloning enough slides
+    // for centeredSlides at the desktop slidesPerView.
+    const requiredTotalSlides = Math.max(
+        originalCount * 2,
+        Math.ceil(DESKTOP_SLIDES_PER_VIEW) * 2 + 2,
     );
-
     let cloneIndex = 0;
-    while (wrapper.querySelectorAll(":scope > .swiper-slide").length < targetSlideCount) {
-        const clone = originalSlides[cloneIndex % ORIGINAL_SLIDE_COUNT].cloneNode(true);
+    while (
+        wrapper.querySelectorAll(":scope > .swiper-slide").length <
+        requiredTotalSlides
+    ) {
+        const clone = originalSlides[cloneIndex % originalCount].cloneNode(
+            true,
+        );
         clone.setAttribute("data-testimonial-clone", "true");
         clone.setAttribute("aria-hidden", "true");
         wrapper.appendChild(clone);
         cloneIndex += 1;
     }
 
-    const totalSlides = wrapper.querySelectorAll(":scope > .swiper-slide").length;
-    const canLoop = totalSlides >= minSlidesForLoop;
-    const START_LOGICAL_INDEX = 0;
+    const totalCount = wrapper.querySelectorAll(":scope > .swiper-slide").length;
 
-    const getSlidesPerView = (desired) =>
-        Math.min(desired, Math.max(ORIGINAL_SLIDE_COUNT - 0.5, 1.1));
-
-    let testimonialSwiper = null;
-    let hasStarted = false;
-
-    function getCenteredIndexForLogicalSlide(swiper, logicalIndex) {
-        const target = String(logicalIndex);
-        const middle = Math.floor(swiper.slides.length / 2);
-        let bestIndex = middle;
-        let bestDistance = Number.POSITIVE_INFINITY;
-
-        swiper.slides.forEach((slide, index) => {
-            if (slide.getAttribute("data-swiper-slide-index") !== target) return;
-            const distance = Math.abs(index - middle);
-            if (distance < bestDistance) {
-                bestDistance = distance;
-                bestIndex = index;
-            }
-        });
-
-        return bestIndex;
-    }
-
-    function syncLoopLayout(swiper, index, options = {}) {
-        if (!swiper || swiper.destroyed) return;
-
-        const targetIndex = index ?? swiper.realIndex ?? 0;
-        const preferCenteredClone = Boolean(options.preferCenteredClone);
-
-        swiper.update();
-
-        if (swiper.params.loop) {
-            if (preferCenteredClone) {
-                const centeredIndex = getCenteredIndexForLogicalSlide(
-                    swiper,
-                    targetIndex % ORIGINAL_SLIDE_COUNT,
-                );
-                swiper.slideTo(centeredIndex, 0, false);
-            } else {
-                swiper.slideToLoop(targetIndex, 0, false);
-            }
-            swiper.loopFix?.();
-        } else {
-            swiper.slideTo(targetIndex, 0);
-        }
-
-        updateTestimonialDepth(swiper);
-    }
-
-    function keepCurrentSlide(swiper) {
-        if (!swiper || swiper.destroyed) return;
-        const activeSlide = swiper.slides[swiper.activeIndex];
-        const logicalIndex = Number(
-            activeSlide?.getAttribute("data-swiper-slide-index") ??
-                swiper.realIndex ??
-                0,
-        );
-
-        syncLoopLayout(swiper, logicalIndex, { preferCenteredClone: true });
-    }
+    const testimonialSwiper = new Swiper(root, {
+        initialSlide: 0,
+        slidesPerView: 1.15,
+        spaceBetween: 24,
+        centeredSlides: true,
+        // With requiredTotalSlides cloning, loop should always be safe.
+        loop: originalCount > 1,
+        loopedSlides: totalCount,
+        loopAdditionalSlides: Math.ceil(DESKTOP_SLIDES_PER_VIEW),
+        speed: 850,
+        grabCursor: true,
+        watchSlidesProgress: true,
+        slideToClickedSlide: true,
+        navigation: {
+            nextEl: ".testimonial-next",
+            prevEl: ".testimonial-prev",
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: Math.min(1.8, Math.max(originalCount - 0.4, 1.1)),
+                spaceBetween: 28,
+                centeredSlides: true,
+            },
+            1024: {
+                slidesPerView: DESKTOP_SLIDES_PER_VIEW,
+                spaceBetween: 32,
+                centeredSlides: true,
+            },
+            1280: {
+                slidesPerView: DESKTOP_SLIDES_PER_VIEW,
+                spaceBetween: 32,
+                centeredSlides: true,
+            },
+        },
+        on: {
+            init(swiper) {
+                // Keep first logical slide in center at startup.
+                if (swiper.params.loop) swiper.slideToLoop(0, 0, false);
+                buildAndSyncPagination(swiper);
+                updateTestimonialDepth(swiper);
+                requestAnimationFrame(() => syncPagination(swiper));
+            },
+            touchStart() {
+                root.classList.add("is-dragging");
+            },
+            touchEnd() {
+                root.classList.remove("is-dragging");
+            },
+            setTranslate(swiper) {
+                updateTestimonialDepth(swiper);
+            },
+            slideChange(swiper) {
+                syncPagination(swiper);
+                updateTestimonialDepth(swiper);
+            },
+            realIndexChange(swiper) {
+                syncPagination(swiper);
+            },
+            transitionEnd(swiper) {
+                syncPagination(swiper);
+            },
+            resize(swiper) {
+                if (swiper.params.loop) swiper.slideToLoop(swiper.realIndex, 0, false);
+                syncPagination(swiper);
+                updateTestimonialDepth(swiper);
+            },
+        },
+    });
 
     function updateTestimonialDepth(swiper = testimonialSwiper) {
-        if (!swiper || swiper.destroyed) return;
-
         swiper.slides.forEach((slide) => {
             const card = slide.querySelector(".testimonial-card");
             if (!card) return;
@@ -118,135 +125,47 @@
         });
     }
 
-    function createSwiper() {
-        if (testimonialSwiper) return testimonialSwiper;
+    function buildAndSyncPagination(swiper) {
+        if (!paginationEl) return;
 
-        testimonialSwiper = new Swiper(root, {
-            initialSlide: 0,
-            slidesPerView: getSlidesPerView(1.15),
-            spaceBetween: 24,
-            centeredSlides: true,
-            centerInsufficientSlides: !canLoop,
-            loop: canLoop,
-            rewind: !canLoop,
-            loopAdditionalSlides: Math.ceil(DESKTOP_SLIDES_PER_VIEW),
-            loopedSlides: totalSlides,
-            speed: 850,
-            grabCursor: true,
-            watchSlidesProgress: true,
-            slideToClickedSlide: true,
-            observer: true,
-            observeParents: true,
-            observeSlideChildren: true,
-            pagination: {
-                el: ".testimonial-pagination",
-                clickable: true,
-                renderBullet: (index, className) =>
-                    index < ORIGINAL_SLIDE_COUNT
-                        ? `<span class="${className}"></span>`
-                        : "",
-            },
-            navigation: {
-                nextEl: ".testimonial-next",
-                prevEl: ".testimonial-prev",
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: getSlidesPerView(1.8),
-                    spaceBetween: 28,
-                    centeredSlides: true,
-                    centerInsufficientSlides: !canLoop,
-                },
-                1024: {
-                    slidesPerView: DESKTOP_SLIDES_PER_VIEW,
-                    spaceBetween: 32,
-                    centeredSlides: true,
-                    centerInsufficientSlides: false,
-                },
-                1280: {
-                    slidesPerView: DESKTOP_SLIDES_PER_VIEW,
-                    spaceBetween: 32,
-                    centeredSlides: true,
-                    centerInsufficientSlides: false,
-                },
-            },
-            on: {
-                touchStart() {
-                    root.classList.add("is-dragging");
-                },
-                touchEnd() {
-                    root.classList.remove("is-dragging");
-                },
-                init(swiper) {
-                    requestAnimationFrame(() => {
-                        syncLoopLayout(swiper, START_LOGICAL_INDEX, {
-                            preferCenteredClone: true,
-                        });
-                    });
-                },
-                resize(swiper) {
-                    keepCurrentSlide(swiper);
-                },
-                setTranslate(swiper) {
-                    updateTestimonialDepth(swiper);
-                },
-                slideChange(swiper) {
-                    updateTestimonialDepth(swiper);
-                },
-                transitionEnd(swiper) {
-                    if (swiper.params.loop) {
-                        swiper.loopFix?.();
-                    }
-                    updateTestimonialDepth(swiper);
-                },
-            },
-        });
-
-        return testimonialSwiper;
-    }
-
-    function startSwiper() {
-        if (hasStarted) return;
-        hasStarted = true;
-
-        createSwiper();
-
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                syncLoopLayout(testimonialSwiper, START_LOGICAL_INDEX, {
-                    preferCenteredClone: true,
-                });
+        paginationEl.innerHTML = "";
+        for (let i = 0; i < originalCount; i += 1) {
+            const bullet = document.createElement("span");
+            bullet.className = "swiper-pagination-bullet";
+            bullet.setAttribute("role", "button");
+            bullet.setAttribute("aria-label", `Go to slide ${i + 1}`);
+            bullet.addEventListener("click", () => {
+                if (swiper.params.loop) {
+                    swiper.slideToLoop(i);
+                } else {
+                    swiper.slideTo(i);
+                }
+                syncPagination(swiper);
             });
-        });
-    }
-
-    function isInViewport() {
-        const rect = root.getBoundingClientRect();
-        return rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
-    }
-
-    function boot() {
-        if (isInViewport()) {
-            startSwiper();
-            return;
+            paginationEl.appendChild(bullet);
         }
 
-        const viewportObserver = new IntersectionObserver(
-            (entries) => {
-                if (entries.some((entry) => entry.isIntersecting)) {
-                    startSwiper();
-                    viewportObserver.disconnect();
-                }
-            },
-            { threshold: 0.05, rootMargin: "120px 0px" },
-        );
-
-        viewportObserver.observe(root);
+        syncPagination(swiper);
     }
 
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", boot, { once: true });
-    } else {
-        boot();
+    function syncPagination(swiper) {
+        if (!paginationEl) return;
+
+        const activeSlide = swiper.slides?.[swiper.activeIndex];
+        const slideIndexAttr = Number(
+            activeSlide?.getAttribute("data-swiper-slide-index"),
+        );
+
+        const logicalIndex = Number.isFinite(slideIndexAttr)
+            ? (slideIndexAttr % originalCount + originalCount) % originalCount
+            : (swiper.realIndex % originalCount + originalCount) % originalCount;
+
+        const bullets = paginationEl.querySelectorAll(".swiper-pagination-bullet");
+        bullets.forEach((bullet, index) => {
+            bullet.classList.toggle(
+                "swiper-pagination-bullet-active",
+                index === logicalIndex,
+            );
+        });
     }
 })();
