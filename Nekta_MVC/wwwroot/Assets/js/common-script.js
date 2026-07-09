@@ -201,33 +201,74 @@ function updateScrolledState(){
 // --------------------------------------------
 document.getElementById("year-foot").innerHTML = (new Date().getFullYear());
 
-// --------------------------------------------
-// Lenis
-// --------------------------------------------
-function initLenis() {
-    const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (!window.Lenis || prefersReducedMotion) return;
-
-    const lenis = new Lenis({
-        duration: 1.1,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
+  // --------------------------------------------
+  // GSAP + ScrollTrigger + Lenis Setup
+  // --------------------------------------------
+  gsap.registerPlugin(ScrollTrigger);
+  
+  const isMobile = window.matchMedia("(max-width: 992px)").matches;
+  
+  /** Same scroll root as Lenis default (wrapper: window Ã¢â€ â€™ classes + scroll on documentElement). */
+  const scrollRootEl = document.documentElement;
+  
+  let lenis;
+  
+  if (!isMobile) {
+  
+    lenis = new Lenis({
+      smoothWheel: true,
+      smoothTouch: false,
+  
+      // PERFECT NO-LAG SETTINGS
+      lerp: 0.05,              // fast response, no delay
+      wheelMultiplier: 1.02,   // mouse feels natural
+      normalizeWheel: true,
+      syncTouch: false,
+        prevent: (node) => {
+        return node.closest('.testimonial-content');
+      }
     });
-
-    lenis.on("scroll", () => {
-        window.ScrollTrigger?.update();
-    });
-
+  
     function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
+      lenis.raf(time);
+      requestAnimationFrame(raf);
     }
-
     requestAnimationFrame(raf);
-}
+  
+    window.lenis = lenis;
+  
+    // ---- GSAP SYNC ----
+    ScrollTrigger.scrollerProxy(scrollRootEl, {
+      scrollTop(value) {
+        return arguments.length
+          ? lenis.scrollTo(value, { immediate: true })
+          : lenis.scroll;
+      },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: scrollRootEl.clientWidth,
+          height: scrollRootEl.clientHeight
+        };
+      }
+    });
+  
+    // ScrollTriggers must use the same element Lenis proxies Ã¢â‚¬â€ otherwise scrub/toggle use native scroll and wonÃ¢â‚¬â„¢t match smooth scroll.
+    ScrollTrigger.defaults({ scroller: scrollRootEl });
+  
+    lenis.on("scroll", ScrollTrigger.update);
+    ScrollTrigger.addEventListener("refresh", () => lenis.resize());
+    ScrollTrigger.refresh();
+  
+  } else {
+    document.body.classList.add("native-scroll");
+    // Mobile: keep true native window/document scroll (no scrollerProxy).
+    // Proxying documentElement can interfere with touch scrolling on some mobile browsers.
+    ScrollTrigger.defaults({ scroller: window });
+    ScrollTrigger.refresh();
+  }
+  
 
 /* ======================
    FOOTER SECTION

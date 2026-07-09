@@ -9,6 +9,7 @@ TITLE ANIMATION
 .section-title--dark {color: var(--color-text-dark);}
 .section-title-outer p {font-size: var(--text-intro);}
 .section-title--light-outer p {color: #fff;}
+.section-title-outer-center {text-align: center;}
 
 .card,
 .feature-card,
@@ -91,3 +92,11 @@ TITLE ANIMATION
 .hero-assistant {
     bottom: 10%;
 }
+
+/**=====================================
+INNER BANNER CSS
+=====================================**/
+.innerbanner-title-span {font-style: italic; font-weight: 700; color: #fff;}
+.into-section-center-wrapper {display: flex; justify-content: center;}
+.into-section-center-wrapper p {font-size: var(--text-intro); color: var(--color-text);}
+

@@ -18,7 +18,7 @@
 --text-h1: clamp(3.75rem, 2rem + 5vw, 5.25rem);     /* 60px → 84px */
 --text-h2: clamp(3.125rem, 1.8rem + 4vw, 4.5rem);      /* 50px → 72px */
 --text-h3: clamp(1.625rem, 1rem + 2vw, 2.125rem);    /* 26px → 34px */
---text-h4: clamp(1.125rem, 0.9rem + 1vw, 1.75rem); /* 18px → 28px */
+--text-h4: clamp(1.25rem, 0.9rem + 1vw, 1.75rem); /* 18px → 28px */
   --text-h5:  clamp(1.125rem, 1.073rem + 0.22vw, 1.25rem); /* 18px → 20px */
   --text-p:      clamp(1rem, 0.948rem + 0.22vw, 1.125rem);     /* 16px → 18px */
   --text-small:   clamp(0.875rem, 0.35vw + 0.7rem,  0.875rem); /**14px - 14px**/
@@ -125,7 +125,7 @@ h1{font-weight: 500;}
 h2, h3, h4, h5 {font-weight: 600;}
 h1, h2, h3, h4, h5 {
   font-family: var(--font-heading) !important;
-  color: var(--color-secondary);
+  color: var(--color-text-heading);
   line-height: 1.15;
 }
 
