@@ -169,7 +169,6 @@
 
 .ld-quote {
     position: relative;
-
     margin-inline: auto;
     font-family: var(--font-heading);
     font-style: italic;
@@ -177,6 +176,7 @@
     text-align: center;
     color: var(--color-text-heading);
     font-weight: 500;
+     line-height: 1.15;
 }
 
 .ld-quote-mark {

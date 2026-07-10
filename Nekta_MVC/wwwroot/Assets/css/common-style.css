@@ -100,3 +100,15 @@ INNER BANNER CSS
 .into-section-center-wrapper {display: flex; justify-content: center;}
 .into-section-center-wrapper p {font-size: var(--text-intro); color: var(--color-text);}
 
+/**=====================================
+Leaf travel CSS
+=====================================**/
+.ld-leaf-wrapper {position: relative; overflow: hidden;}
+.leaf-travel-anim{
+    position:absolute;
+    top:10vw;
+    right:10vw;
+    pointer-events:none;
+    z-index:100;
+    will-change:transform;
+}

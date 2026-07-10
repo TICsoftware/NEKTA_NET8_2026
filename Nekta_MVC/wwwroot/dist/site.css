@@ -328,7 +328,7 @@
     top: 0;
   }
   .top-1 {
-    top: calc(var(--spacing) * 1);
+    top: var(--spacing);
   }
   .top-1\/2 {
     top: calc(1 / 2 * 100%);
@@ -388,7 +388,7 @@
     left: 0;
   }
   .left-1 {
-    left: calc(var(--spacing) * 1);
+    left: var(--spacing);
   }
   .left-1\/2 {
     left: calc(1 / 2 * 100%);
@@ -1117,17 +1117,11 @@
   .h-170 {
     height: calc(var(--spacing) * 170);
   }
-  .h-\[45rem\] {
-    height: 45rem;
-  }
   .h-\[75svh\] {
     height: 75svh;
   }
   .h-\[100vh\] {
     height: 100vh;
-  }
-  .h-\[110\%\] {
-    height: 110%;
   }
   .h-\[520px\] {
     height: 520px;
@@ -1430,14 +1424,8 @@
     border-top-left-radius: calc(infinity * 1px);
     border-top-right-radius: calc(infinity * 1px);
   }
-  .rounded-br-\[50px\] {
-    border-bottom-right-radius: 50px;
-  }
   .rounded-br-xl {
     border-bottom-right-radius: var(--radius-xl);
-  }
-  .rounded-bl-\[50px\] {
-    border-bottom-left-radius: 50px;
   }
   .rounded-bl-xl {
     border-bottom-left-radius: var(--radius-xl);
@@ -1911,6 +1899,10 @@
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
   }
+  .text-base {
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
+  }
   .text-lg {
     font-size: var(--text-lg);
     line-height: var(--tw-leading, var(--text-lg--line-height));
@@ -1999,9 +1991,6 @@
   }
   .text-\[\#999\] {
     color: #999;
-  }
-  .text-\[\#444444\] {
-    color: #444444;
   }
   .text-\[\#767676\] {
     color: #767676;
@@ -2410,11 +2399,6 @@
       margin-top: calc(var(--spacing) * 12);
     }
   }
-  .md\:mb-6 {
-    @media (width >= 48rem) {
-      margin-bottom: calc(var(--spacing) * 6);
-    }
-  }
   .md\:mb-8 {
     @media (width >= 48rem) {
       margin-bottom: calc(var(--spacing) * 8);
@@ -2583,11 +2567,6 @@
   .md\:pb-16 {
     @media (width >= 48rem) {
       padding-bottom: calc(var(--spacing) * 16);
-    }
-  }
-  .md\:pb-20 {
-    @media (width >= 48rem) {
-      padding-bottom: calc(var(--spacing) * 20);
     }
   }
   .md\:pl-0 {
