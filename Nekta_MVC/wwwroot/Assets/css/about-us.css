@@ -52,16 +52,16 @@
 /* Mobile */
 
 @media(max-width:767px){
-
+.counter-section {margin-top: -25vw;}
 .counter-wrapper{
 
-    flex-direction:column;
-    gap:2rem;
+flex-wrap:wrap;
+    gap:0.5rem;
 
 }
 
 .counter-divider{
-
+display: none;
     width:60px;
     height:1px;
 
@@ -132,7 +132,9 @@
 /* Tablet */
 
 @media(max-width:991px){
-
+.left-copy {
+    margin-left: 0;
+}
 .copy-tight{
 
     font-size:17px;
@@ -141,7 +143,7 @@
 
 .footprint-decor{
 
-    width:90px;
+    width:120px;
     left:0;
     top:-30px;
 
@@ -168,13 +170,12 @@
 
 .footprint-decor{
 
-    position:relative;
+    position:absolute;
     inset:auto;
 
-    margin:0 auto 2rem;
-
     display:block;
-
+top: -25vw;
+        left: -12vw;
 }
 
 .footprint-map{
@@ -182,11 +183,22 @@
     margin-top:1rem;
 
 }
+.story-gallery-left {display: none;}
+.story-gallery-right {display: none;}
+
 
 }
 
+.footprint-decor {
+  opacity: 0;
+  transform: translateY(40px) rotate(-10deg);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
 
-
+.footprint-section.in-view .footprint-decor {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
 /* ============================
    BASE / RESET
 ============================ */
@@ -197,7 +209,7 @@
 .map-inside-wrapper {
   position: relative;
 }
-.map-inside-wrapper svg {width: 100%;}
+.map-inside-wrapper svg {width: 100%; height: auto;}
 
 /* ============================
    STATE / REGION SHAPES
