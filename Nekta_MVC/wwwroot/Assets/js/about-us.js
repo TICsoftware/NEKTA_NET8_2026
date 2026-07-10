@@ -229,19 +229,21 @@ items.forEach((item) => {
   const lx = parseFloat(item.getAttribute('data-lx')) || cx;
   const ly = parseFloat(item.getAttribute('data-ly')) || cy - 40;
 
-  // Measure the ACTUAL rendered text width instead of trusting a fixed attribute
   const textLength = labelText.getComputedTextLength();
-  const paddingX = 16; // ~8px breathing room on each side
-  const minWidth = 40; // floor so short labels ("Goa") don't look cramped
-
+  const paddingX = 16;
+  const minWidth = 40;
   const labelHeight = parseFloat(labelBg.getAttribute('height')) || 25;
   const labelWidth = Math.max(textLength + paddingX, minWidth);
 
   line.setAttribute('d', `M${cx},${cy} L${lx},${ly}`);
 
+  // NEW: decide which side the label falls on, and anchor the box accordingly
+  const isRightSide = lx >= cx;
+  const boxX = isRightSide ? lx : lx - labelWidth;
+
   labelGroup.setAttribute(
     'transform',
-    `translate(${lx - labelWidth / 2}, ${ly - labelHeight / 2})`
+    `translate(${boxX}, ${ly - labelHeight / 2})`
   );
   labelBg.setAttribute('x', 0);
   labelBg.setAttribute('y', 0);
