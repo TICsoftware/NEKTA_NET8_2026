@@ -13,7 +13,7 @@
 
 .gallery-card{
 
-    position:absolute;
+    position:relative;
 
     width:380px;
     height:330px;
@@ -45,7 +45,7 @@ aspect-ratio: 380 / 330;
 
 .gallery-left{
 
-    left:18%;
+    left:1%;
     transform:rotate(-6deg);
     z-index:1;
 
@@ -59,7 +59,7 @@ aspect-ratio: 380 / 330;
 
 .gallery-right{
 
-    right:18%;
+    right:1%;
     transform:rotate(6deg);
     z-index:20;
 
