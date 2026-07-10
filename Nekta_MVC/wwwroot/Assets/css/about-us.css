@@ -230,3 +230,74 @@ right:0;
 }
 
 
+
+/* ============================
+   BASE / RESET
+============================ */
+.map-outer-warapper {
+  position: relative;
+}
+
+.map-inside-wrapper {
+  position: relative;
+}
+
+/* ============================
+   STATE / REGION SHAPES
+============================ */
+.map-state {
+  stroke: #646C81;
+  stroke-width: 1.44564;
+  cursor: pointer;
+  transition: fill 0.25s ease, opacity 0.25s ease;
+}
+
+.map-state:hover {
+  fill: #FC713C !important;
+}
+
+.map-state.active {
+  fill: #FC713C !important;
+}
+
+.map-state.active:hover {
+  fill: #FC713C !important;
+}
+.map-state.hover-linked {
+      fill: #FC713C !important;
+}
+
+/* Dim other states once one is active */
+.map-outer-warapper.has-active .map-state:not(.active) {
+  opacity: 0.55;
+}
+
+/* ============================
+   PIN + LINE + LABEL (map-item)
+============================ */
+.map-item .map-hover {fill: #FC713C;cursor: pointer;transition: fill 0.25s ease, r 0.2s ease; stroke: #fc713c80; stroke-width: 14;
+   animation: mapPulse 1.8s ease-out infinite;}
+.map-hover::after { content: "";}
+@keyframes mapPulse {
+  0% {stroke-width: 0; stroke-opacity: 0.8;}
+  70% { stroke-width: 14;stroke-opacity: 0.25;}
+  100% {stroke-width: 20;stroke-opacity: 0;}
+}
+.map-item .map-hover:hover {fill: #E85A2A !important;r: 6.5;}
+.map-item.linked-hover .map-hover {fill: #E85A2A !important;r: 6.5;}
+.map-item.active .map-hover, .map-item.linked-active .map-hover {fill: #E85A2A !important;r: 6.5;}
+.map-item .map-line {opacity: 0;stroke: #000015;stroke-width: 1;fill: none;stroke-dasharray: 4 2;pointer-events: none;transition: opacity 0.2s ease;}
+.map-item .map-label-group {opacity: 0;pointer-events: none;transition: opacity 0.2s ease;}
+.map-item .map-label-bg {fill: #748D6E;}
+.map-item .map-label {fill: #ffffff;font-size: 0.75rem;font-family: sans-serif;}
+.map-item:hover .map-line, .map-item:hover .map-label-group { opacity: 1;}
+.map-item.linked-hover .map-line,
+.map-item.linked-hover .map-label-group,
+.map-item.linked-active .map-line,
+.map-item.linked-active .map-label-group,
+.map-item.active .map-line,
+.map-item.active .map-label-group {
+  opacity: 1;
+}
+
+

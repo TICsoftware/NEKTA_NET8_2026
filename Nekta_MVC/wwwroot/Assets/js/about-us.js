@@ -178,3 +178,140 @@ if (counters.length) {
 });
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  const wrapper = document.querySelector('.map-outer-warapper');
+  const states = document.querySelectorAll('.map-state');
+  const items = document.querySelectorAll('.map-item');
+
+  // ---------- Helpers ----------
+  function getItemByLocation(location) {
+    return Array.from(items).find(
+      (item) => item.querySelector('.map-hover')?.getAttribute('data-location') === location
+    );
+  }
+
+  function getStateByLocation(location) {
+    return Array.from(states).find(
+      (state) => state.getAttribute('data-location') === location
+    );
+  }
+
+  function clearAllActive() {
+    states.forEach((s) => s.classList.remove('active'));
+    items.forEach((i) => i.classList.remove('active', 'linked-active'));
+    wrapper.classList.remove('has-active');
+  }
+
+  function activateLocation(location) {
+    clearAllActive();
+
+    const state = getStateByLocation(location);
+    const item = getItemByLocation(location);
+
+    if (state) state.classList.add('active');   // <-- map-state gets "active" class here
+    if (item) item.classList.add('linked-active');
+
+    wrapper.classList.add('has-active');
+  }
+
+  // ---------- 1. Position line + label for every map-item ----------
+items.forEach((item) => {
+  const circle = item.querySelector('.map-hover');
+  const line = item.querySelector('.map-line');
+  const labelGroup = item.querySelector('.map-label-group');
+  const labelBg = item.querySelector('.map-label-bg');
+  const labelText = item.querySelector('.map-label');
+
+  if (!circle || !line || !labelGroup || !labelBg || !labelText) return;
+
+  const cx = parseFloat(circle.getAttribute('cx'));
+  const cy = parseFloat(circle.getAttribute('cy'));
+  const lx = parseFloat(item.getAttribute('data-lx')) || cx;
+  const ly = parseFloat(item.getAttribute('data-ly')) || cy - 40;
+
+  // Measure the ACTUAL rendered text width instead of trusting a fixed attribute
+  const textLength = labelText.getComputedTextLength();
+  const paddingX = 16; // ~8px breathing room on each side
+  const minWidth = 40; // floor so short labels ("Goa") don't look cramped
+
+  const labelHeight = parseFloat(labelBg.getAttribute('height')) || 25;
+  const labelWidth = Math.max(textLength + paddingX, minWidth);
+
+  line.setAttribute('d', `M${cx},${cy} L${lx},${ly}`);
+
+  labelGroup.setAttribute(
+    'transform',
+    `translate(${lx - labelWidth / 2}, ${ly - labelHeight / 2})`
+  );
+  labelBg.setAttribute('x', 0);
+  labelBg.setAttribute('y', 0);
+  labelBg.setAttribute('width', labelWidth);
+  labelBg.setAttribute('height', labelHeight);
+  labelText.setAttribute('x', labelWidth / 2);
+  labelText.setAttribute('y', labelHeight / 2);
+});
+
+  // ---------- 2. Pin hover -> highlight linked state ----------
+  items.forEach((item) => {
+    const circle = item.querySelector('.map-hover');
+    const location = circle?.getAttribute('data-location');
+    if (!location) return;
+
+    item.addEventListener('mouseenter', () => {
+      const state = getStateByLocation(location);
+      if (state) state.classList.add('hover-linked');
+    });
+
+    item.addEventListener('mouseleave', () => {
+      const state = getStateByLocation(location);
+      if (state) state.classList.remove('hover-linked');
+    });
+  });
+
+  // ---------- 3. State hover -> highlight linked pin/line/label ----------
+  states.forEach((state) => {
+    const location = state.getAttribute('data-location');
+
+    state.addEventListener('mouseenter', () => {
+      const item = getItemByLocation(location);
+      if (item) item.classList.add('linked-hover');
+    });
+
+    state.addEventListener('mouseleave', () => {
+      const item = getItemByLocation(location);
+      if (item) item.classList.remove('linked-hover');
+    });
+  });
+
+  // ---------- 4. Click on state OR pin -> toggle active class for both ----------
+  states.forEach((state) => {
+    state.addEventListener('click', () => {
+      const location = state.getAttribute('data-location');
+      const isAlreadyActive = state.classList.contains('active');
+
+      if (isAlreadyActive) {
+        clearAllActive();
+      } else {
+        activateLocation(location);
+        console.log('Selected:', location);
+      }
+    });
+  });
+
+  items.forEach((item) => {
+    const circle = item.querySelector('.map-hover');
+    if (!circle) return;
+
+    circle.addEventListener('click', () => {
+      const location = circle.getAttribute('data-location');
+      const isAlreadyActive = item.classList.contains('linked-active');
+
+      if (isAlreadyActive) {
+        clearAllActive();
+      } else {
+        activateLocation(location);
+        console.log('Selected:', location);
+      }
+    });
+  });
+});
