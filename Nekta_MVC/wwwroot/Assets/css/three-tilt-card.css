@@ -15,14 +15,14 @@
 
     position:absolute;
 
-    width:340px;
-    height:430px;
-
+    width:380px;
+    height:330px;
+aspect-ratio: 380 / 330;
     border-radius:22px;
 
     overflow:hidden;
 
-    background:#fff;
+    background: var(--color-primary);
 
     padding:8px;
 
@@ -38,5 +38,51 @@
     object-fit:cover;
 
     border-radius:18px;
+
+}
+
+/* Final Positions */
+
+.gallery-left{
+
+    left:18%;
+    transform:rotate(-6deg);
+    z-index:1;
+
+}
+
+.gallery-center{
+
+    z-index:21;
+
+}
+
+.gallery-right{
+
+    right:18%;
+    transform:rotate(6deg);
+    z-index:20;
+
+}
+@media(max-width:991px){
+
+.gallery-card{
+
+width:180px;
+height:200px;
+
+}
+
+.gallery-left{
+
+left:0;
+
+}
+
+.gallery-right{
+
+right:0;
+
+}
 
 }

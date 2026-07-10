@@ -10,52 +10,6 @@
     font-weight:700;
 }
 
-/* Final Positions */
-
-.gallery-left{
-
-    left:18%;
-    transform:rotate(-6deg);
-    z-index:1;
-
-}
-
-.gallery-center{
-
-    z-index:3;
-
-}
-
-.gallery-right{
-
-    right:18%;
-    transform:rotate(6deg);
-    z-index:20;
-
-}
-
-@media(max-width:991px){
-
-.gallery-card{
-
-width:230px;
-height:320px;
-
-}
-
-.gallery-left{
-
-left:0;
-
-}
-
-.gallery-right{
-
-right:0;
-
-}
-
-}
 
 
 
@@ -241,6 +195,7 @@ right:0;
 .map-inside-wrapper {
   position: relative;
 }
+.map-inside-wrapper svg {width: 100%;}
 
 /* ============================
    STATE / REGION SHAPES

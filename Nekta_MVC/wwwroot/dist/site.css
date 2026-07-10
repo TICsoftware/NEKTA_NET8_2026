@@ -1521,6 +1521,9 @@
   .border-b-\[\#F6F4E6\]\/35 {
     border-bottom-color: color-mix(in oklab, #F6F4E6 35%, transparent);
   }
+  .bg-\[\#F2ECDC\] {
+    background-color: #F2ECDC;
+  }
   .bg-\[\#F6F4E6\] {
     background-color: #F6F4E6;
   }
