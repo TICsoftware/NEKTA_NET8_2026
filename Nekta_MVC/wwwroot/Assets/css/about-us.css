@@ -1,17 +1,5 @@
-.intro-section-wrap p {
-    font-size: var(--text-22);
-}
-
-
-.cta-section h2{
-    font-family:var(  --font-heading);
-    font-size:var(--text-h3);
-    font-style:italic;
-    font-weight:700;
-}
-
-
-
+.intro-section-wrap p {font-size: var(--text-22);}
+.cta-section h2{ font-family:var(  --font-heading); font-size:var(--text-h3); font-style:italic; font-weight:700;}
 
 .counter-odometer {display: inline-flex;align-items: baseline;gap: 0ch;font-variant-numeric: tabular-nums;line-height: 1;overflow: hidden;}
 .odometer-digit {overflow: hidden;display: inline-block;vertical-align: bottom;height: 1em;width: 1ch;text-align: center;font-family: inherit;font-weight: inherit;font-size: inherit;}
@@ -29,34 +17,20 @@
 
 @media(max-width:991px){
 
-.counter-wrapper{
-
-    gap:2rem;
-
-}
-
-.counter-title{
-
-    font-size:1.25rem;
-
-}
-
-.counter-divider{
-
-    height:55px;
-
-}
-
+.counter-wrapper{ gap:2rem;}
+.counter-title{ font-size:1.25rem;}
+.counter-divider{ height:55px;}
 }
 
 /* Mobile */
 
 @media(max-width:767px){
-.counter-section {margin-top: -25vw;}
+.counter-section {margin-top: -15vw;}
+.counter-item {    padding-top: 0; padding-bottom: 0;}
 .counter-wrapper{
 
 flex-wrap:wrap;
-    gap:0.5rem;
+    gap:1rem;
 
 }
 
@@ -82,53 +56,18 @@ display: none;
 }
 
 /* CTA SECTIOM */
-.cta-heading{
+.cta-heading{max-width:900px; margin-inline:auto; font-family:"Balkist-Bolditalic", serif;  font-size:clamp(2rem,4vw,3.5rem);  line-height:1.15;  color:#1f1f1f;}
+.cta-section{ background-color: #F2ECDC;}
 
-    max-width:900px;
-    margin-inline:auto;
-
-    font-family:"Balkist-Bolditalic", serif;
-    font-size:clamp(2rem,4vw,3.5rem);
-    line-height:1.15;
-    color:#1f1f1f;
-
-}
-
-.cta-section{
-    background-color: #F2ECDC;
-}
 
 /* Footprint section */
 /* ================= FOOTPRINT ================= */
 
-.footprint-section{
-
-    position:relative;
-
-}
-
-.footprint-decor{
-
-    z-index:2;
-
-}
-
-.footprint-map{
-
-    display:block;
-
-}
-
-.copy-tight{
-
-    font-size:18px;
-    line-height:1.8;
-    color:#4b4b4b;
-
-}
-.left-copy{
-    margin-left: 10rem;
-}
+.footprint-section{ position:relative;}
+.footprint-decor{  z-index:2;}
+.footprint-map{  display:block;}
+.copy-tight{ font-size:18px; line-height:1.8; color:#4b4b4b;}
+.left-copy{  margin-left: 10rem;}
 /* Tablet */
 
 @media(max-width:991px){
@@ -155,11 +94,9 @@ display: none;
 
 @media(max-width:767px){
 
-.footprint-section{
+.footprint-section{ text-align:center;}
 
-    text-align:center;
 
-}
 
 .copy-tight{
 
