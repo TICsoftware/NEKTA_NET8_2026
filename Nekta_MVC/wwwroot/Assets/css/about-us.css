@@ -126,7 +126,9 @@
     color:#4b4b4b;
 
 }
-
+.left-copy{
+    margin-left: 10rem;
+}
 /* Tablet */
 
 @media(max-width:991px){
