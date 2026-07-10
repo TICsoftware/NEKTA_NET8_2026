@@ -1,0 +1,560 @@
+/* ==========================================================================
+   CONTACT US PAGE (Figma: Contact Us)
+   ========================================================================== */
+
+/* ---------- HERO BANNER ---------- */
+.cu-hero {
+    height: 70vh;
+    min-height: 420px;
+}
+
+@media (min-width: 1024px) {
+    .cu-hero {
+        height: 100vh;
+        max-height: 680px;
+    }
+}
+
+.cu-hero-title {
+    font-family: "Balkist", sans-serif;
+    font-weight: 400;
+    font-size: clamp(30px, 2.7vw, 52px);
+    letter-spacing: -0.02em;
+    line-height: 1.52;
+    color: #f6f6f6;
+}
+
+/* ---------- ENQUIRY FORM SECTION ---------- */
+.cu-form-section {
+    position: relative;
+    background-color: var(--color-green);
+    overflow: hidden;
+}
+
+.cu-form-section .section-title--light .section-title__accent--dark {
+    color: #384634;
+}
+
+.cu-form-intro {
+    color: #f6f6f6;
+    font-size: clamp(16px, 1.2vw, 22px);
+    letter-spacing: 0.02em;
+}
+
+.cu-form-card {
+    background: #738b6b;
+    border-radius: 32px;
+    box-shadow:
+        0 114px 114px rgba(29, 35, 27, 0.17),
+        0 29px 63px rgba(29, 35, 27, 0.09);
+    max-width: 1170px;
+    margin-inline: auto;
+    padding: clamp(24px, 4vw, 64px) clamp(20px, 4.6vw, 89px);
+}
+
+.cu-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px 32px;
+}
+
+@media (min-width: 768px) {
+    .cu-form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cu-field--full {
+        grid-column: 1 / -1;
+    }
+}
+
+.cu-field label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #f6f6f6;
+    margin-bottom: 8px;
+}
+
+.cu-field label .req {
+    color: var(--color-primary);
+}
+
+.cu-field input,
+.cu-field select,
+.cu-field textarea {
+    width: 100%;
+    background: #566850;
+    border: 0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    color: #f6f6f6;
+    outline: none;
+    transition: box-shadow var(--motion-fast) var(--ease-premium);
+}
+
+.cu-field input::placeholder,
+.cu-field textarea::placeholder {
+    color: rgba(246, 246, 246, 0.81);
+}
+
+.cu-field input:focus,
+.cu-field select:focus,
+.cu-field textarea:focus {
+    box-shadow: 0 0 0 2px rgba(246, 244, 230, 0.35);
+}
+
+.cu-field select {
+    appearance: none;
+    -webkit-appearance: none;
+    color: rgba(246, 246, 246, 0.81);
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23f6f6f6' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 36px;
+}
+
+.cu-field textarea {
+    min-height: 92px;
+    resize: vertical;
+}
+
+.cu-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: #f6f6f6;
+    font-size: 14px;
+}
+
+.cu-consent input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    margin-top: 3px;
+    flex-shrink: 0;
+    background: #52634c;
+    border: 1px solid #a9c0a0;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cu-consent input[type="checkbox"]:checked {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.cu-consent input[type="checkbox"]:checked::after {
+    content: "";
+    width: 4px;
+    height: 8px;
+    border: solid #f6f4e6;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) translateY(-1px);
+}
+
+.cu-leaf-deco {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    width: clamp(140px, 20vw, 400px);
+    opacity: 0.9;
+}
+
+/* ---------- HOW TO REACH US ---------- */
+.cu-reach-section {
+    position: relative;
+    background-color: #f8f4e4;
+    overflow: hidden;
+}
+
+.cu-reach-card {
+    position: relative;
+    background: #fdfcf6;
+    border-radius: 12px;
+    box-shadow: 0 18px 34px rgba(67, 60, 40, 0.12);
+    padding: clamp(24px, 2.2vw, 38px) clamp(24px, 2.5vw, 44px);
+}
+
+.cu-reach-leaf {
+    position: absolute;
+    right: 22%;
+    bottom: -22px;
+    width: clamp(38px, 3.2vw, 56px);
+    transform: rotate(-12deg);
+    pointer-events: none;
+    user-select: none;
+}
+
+.cu-reach-card h3 {
+    font-family: "Balkist", sans-serif;
+    font-weight: 400;
+    font-size: clamp(18px, 1.2vw, 22px);
+    color: #1c1918;
+    margin-bottom: 12px;
+}
+
+.cu-reach-card p {
+    color: var(--color-copy);
+    font-size: clamp(15px, 0.95vw, 18px);
+    letter-spacing: 0.02em;
+}
+
+.cu-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    font-size: clamp(15px, 0.95vw, 18px);
+}
+
+.cu-contact-row .icon-sm {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: var(--color-green);
+    stroke-width: 1.8;
+    flex-shrink: 0;
+}
+
+.cu-contact-row strong {
+    font-family: "Balkist", sans-serif;
+    font-weight: 400;
+    color: #1c1918;
+}
+
+.cu-contact-row a {
+    color: var(--color-green);
+}
+
+.cu-contact-row a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- CAREERS ---------- */
+.cu-careers-section {
+    position: relative;
+    background: #f8f4e4;
+    /* arc rises above the section, behind the reach cards */
+    overflow: visible;
+}
+
+/* Curved arc edge into the darker sand background (Figma: Ellipse 76,
+   ~2302px wide x 371px tall flattened ellipse). The arc peaks ~230px
+   above this section, passing behind the lower half of the reach cards. */
+.cu-careers-section::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: clamp(-260px, -15vw, -140px);
+    bottom: 0;
+    width: max(2302px, 125vw);
+    background: linear-gradient(180deg, #ece2c4 0%, #e5dab6 55%);
+    border-radius: 100% 100% 0 0 / 371px 371px 0 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Decorative cutouts on this page (mirrors .bc-deco from the
+   business page stylesheet, which is not loaded here) */
+.bc-deco {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    z-index: 5;
+}
+
+.cu-plate-deco {
+    z-index: 5;
+}
+
+.cu-careers-section .copy-tight {
+    max-width: 640px;
+    margin-inline: auto;
+}
+
+.cu-careers-leaf {
+    position: absolute;
+    width: clamp(50px, 4.5vw, 80px);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* ---------- OUR OFFICES ---------- */
+.cu-offices-section {
+    background-color: var(--color-cream);
+}
+
+.cu-office-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 1160px;
+    margin-inline: auto;
+    border-top: 1px dashed rgba(28, 25, 24, 0.3);
+    border-bottom: 1px dashed rgba(28, 25, 24, 0.3);
+    /* Orange square markers at the dashed-line intersections */
+    background-image:
+        linear-gradient(var(--color-primary), var(--color-primary)),
+        linear-gradient(var(--color-primary), var(--color-primary)),
+        linear-gradient(var(--color-primary), var(--color-primary)),
+        linear-gradient(var(--color-primary), var(--color-primary)),
+        linear-gradient(var(--color-primary), var(--color-primary)),
+        linear-gradient(var(--color-primary), var(--color-primary)),
+        linear-gradient(var(--color-primary), var(--color-primary)),
+        linear-gradient(var(--color-primary), var(--color-primary)),
+        linear-gradient(var(--color-primary), var(--color-primary)),
+        linear-gradient(var(--color-primary), var(--color-primary)),
+        linear-gradient(var(--color-primary), var(--color-primary)),
+        linear-gradient(var(--color-primary), var(--color-primary));
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
+    background-position:
+        0% 0%, 33.35% 0%, 66.7% 0%, 100% 0%,
+        0% 50%, 33.35% 50%, 66.7% 50%, 100% 50%,
+        0% 100%, 33.35% 100%, 66.7% 100%, 100% 100%;
+}
+
+@media (min-width: 768px) {
+    .cu-office-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.cu-office-card {
+    padding: clamp(24px, 2.6vw, 44px) clamp(20px, 2.4vw, 42px);
+    border-bottom: 1px dashed rgba(28, 25, 24, 0.3);
+}
+
+.cu-office-card:last-child {
+    border-bottom: 0;
+}
+
+@media (min-width: 768px) {
+    .cu-office-card {
+        border-left: 1px dashed rgba(28, 25, 24, 0.3);
+        border-bottom: 0;
+    }
+
+    .cu-office-card:nth-child(3n + 1) {
+        border-left: 0;
+    }
+
+    .cu-office-card:nth-child(-n + 3) {
+        border-bottom: 1px dashed rgba(28, 25, 24, 0.3);
+    }
+}
+
+.cu-office-card img.cu-office-pin {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 14px;
+}
+
+.cu-office-card h3 {
+    font-family: "Balkist", sans-serif;
+    font-weight: 400;
+    font-size: clamp(17px, 1.1vw, 20px);
+    color: #1c1918;
+    margin-bottom: 8px;
+}
+
+.cu-office-card p {
+    color: var(--color-copy);
+    font-size: clamp(13px, 0.85vw, 15px);
+    letter-spacing: 0.02em;
+    min-height: 44px;
+    max-width: 240px;
+}
+
+.cu-map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: clamp(13px, 0.85vw, 15px);
+    transition: transform var(--motion-fast) var(--ease-premium);
+}
+
+.cu-map-link:hover {
+    transform: translateX(3px);
+}
+
+.cu-map-link img {
+    width: 18px;
+}
+
+.cu-offices-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.cu-title-leaf {
+    display: inline-block;
+    width: clamp(34px, 3vw, 56px);
+    margin-left: 10px;
+    vertical-align: middle;
+    transform: rotate(-8deg);
+}
+
+/* ---------- TAILORED SOLUTIONS ---------- */
+.cu-tailored-section {
+    position: relative;
+    background-color: #faf7ec;
+    overflow: hidden;
+}
+
+.cu-tailored-media {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    max-width: 620px;
+    margin-inline: auto;
+}
+
+/* Offset beige circle behind, plate overlapping its left edge */
+.cu-tailored-media::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 6%;
+    width: 80%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: #ece4cb;
+}
+
+.cu-tailored-media img {
+    position: absolute;
+    left: -4%;
+    top: 22%;
+    width: 62%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    box-shadow: 0 34px 55px rgba(43, 52, 40, 0.22);
+}
+
+.cu-tailored-copy {
+    max-width: 480px;
+}
+
+.cu-tailored-copy p {
+    font-size: clamp(14px, 0.95vw, 16px);
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    color: var(--color-copy);
+}
+
+.cu-tailored-copy .cu-copy-leaf {
+    width: clamp(38px, 3vw, 56px);
+    margin-top: 20px;
+    margin-left: auto;
+    display: block;
+    transform: rotate(-10deg);
+}
+
+/* ---------- FOLLOW BAND ---------- */
+.cu-follow-section {
+    position: relative;
+    background-color: #e6dbbd;
+    overflow: hidden;
+}
+
+.cu-social-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 9999px;
+    background: #fdf6e4;
+    border: 1px solid #cdb787;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #1c1918;
+    transition:
+        transform var(--motion-fast) var(--ease-premium),
+        background-color var(--motion-fast) var(--ease-premium);
+}
+
+.cu-social-circle:hover {
+    transform: translateY(-3px);
+    background: #fffdf3;
+}
+
+.cu-social-circle svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* ---------- EVERY ENQUIRY ---------- */
+.cu-enquiry-section {
+    position: relative;
+    background-color: var(--color-cream);
+    overflow: hidden;
+}
+
+/* Thin decorative curves sweeping behind the plates */
+.cu-enquiry-section::before,
+.cu-enquiry-section::after {
+    content: "";
+    position: absolute;
+    left: -12%;
+    right: -12%;
+    height: 900px;
+    border-top: 1px solid rgba(150, 140, 100, 0.35);
+    border-radius: 50% / 140px;
+    pointer-events: none;
+}
+
+.cu-enquiry-section::before {
+    top: 46%;
+}
+
+.cu-enquiry-section::after {
+    top: 56%;
+    transform: rotate(-3deg);
+}
+
+.cu-arch-media {
+    width: min(80%, 430px);
+    margin-inline: auto;
+    background: #eef2e4;
+    border-radius: 999px 999px 24px 24px;
+    padding: 14px;
+}
+
+.cu-enquiry-copy {
+    max-width: 620px;
+    margin-inline: auto;
+    font-size: clamp(13px, 0.9vw, 16px);
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    color: var(--color-copy);
+}
+
+.cu-arch-media img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 400 / 342;
+    object-fit: cover;
+    border-radius: 999px 999px 14px 14px;
+}
+
+.cu-plate-deco {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    user-select: none;
+}
