@@ -1,15 +1,18 @@
 /**=====================================
 TITLE ANIMATION
 =====================================**/
- .section-title-outer {margin-bottom: 40px;}
+ .section-title-outer {margin-bottom: 30px;}
 .title-section{font-weight:400; color: var(--color-text-heading);margin-bottom: 15px;} 
 .title-section .text-letters-slide{ color: var(--color-secondary) !important;  font-family: var(--font-heading) !important;  font-style: italic;  font-weight: 600;  letter-spacing: -0.02em;}
+.section-title--dark.text-letters-slide{ color: var(--color-text-dark) !important;  font-family: var(--font-heading) !important;  font-style: italic;  font-weight: 600;  letter-spacing: -0.02em;}
 .word {overflow: hidden;padding-bottom: 0.1em;margin-bottom: -0.1em;transform-origin: bottom;}
 .section-title--light {color: var(--color-cream);}
 .section-title--dark {color: var(--color-text-dark);}
 .section-title-outer p {font-size: var(--text-intro);}
 .section-title--light-outer p {color: #fff;}
 .section-title-outer-center {text-align: center;}
+
+.intro-outer-wrapper p {font-size: var(--text-intro);}
 
 .card,
 .feature-card,
