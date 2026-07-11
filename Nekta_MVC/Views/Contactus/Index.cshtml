@@ -1,0 +1,517 @@
+@{
+    ViewData["Title"] = "About us";
+}
+
+@section Styles {
+    
+
+
+     <link rel="stylesheet" href="assets/css/contact-us.css" />
+}
+
+         <!-- ==================== HERO BANNER ==================== -->
+
+      <section class="relative inside-banner-outer overflow-hidden">
+         <div class="inside-banner-inner banner-animation relative ">
+
+            <!-- Banner -->
+            <div class="rounded-bottom-lr overflow-hidden h-170 rounded-bl-xl rounded-br-xl relative innerbanner-image-wrapper">
+
+               <!-- Parallax Image -->
+               <picture>
+                  <!-- Desktop -->
+                  <source media="(min-width:1024px)"
+                     srcset="assets/images/banners/company-info-banner-desktop.webp">
+
+                  <!-- Tablet -->
+                  <source media="(min-width:768px)"
+                     srcset="assets/images/banners/company-info-banner-mob.webp">
+
+                  <!-- Mobile -->
+                  <img
+                     src="assets/images/banners/company-info-banner-mob.webp"
+                     alt="About Bubble Food"
+                     class="innerbanner-image absolute left-0 top-0 w-full h-full object-cover"
+                     loading="eager"
+                     fetchpriority="high">
+               </picture>
+
+               <!-- Keep Existing Overlay -->
+               <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-10"></div>
+
+
+            </div>
+
+            <!-- Content -->
+           
+               <div class="innerbanner-caption absolute inset-0 z-30 flex items-end">
+                  <div class="container pb-12 md:pb-15">
+                     <div class="max-w-4xl text-left">
+
+                        <nav class="mb-4" aria-label="Breadcrumb">
+                           <ol class="flex items-center gap-2 text-sm">
+                              <li>
+                                 <a href="/" class="text-white/70 hover:text-white transition">
+                                    Home
+                                 </a>
+                              </li>
+
+                              <li class="text-white/60">/</li>
+
+                              <li class="text-white">
+                                 About Us
+                              </li>
+                           </ol>
+                        </nav>
+
+                        <h1 class="innerbanner-title text-h1 text-white">
+                          Life is a 
+                           <span class="innerbanner-title-span">
+                              Beautiful Plate
+                           </span>
+                        </h1>
+
+                     </div>
+                  </div>
+               </div>
+           
+
+         </div>
+      </section>
+
+         <!-- ==================== ENQUIRY FORM ==================== -->
+         <section class="cu-form-section section-spacing relative">
+         
+               <!-- right green image -->
+            <img loading="lazy" src="assets/images/contact-us/right_green_leaf.webp" alt=""
+              class="cu-leaf-deco cu-leaf-right hidden lg:block" aria-hidden="true" />
+              <!-- left green image -->
+            <img loading="lazy" src="assets/images/contact-us/left_green_leaf.webp" alt=""
+               class="cu-leaf-deco cu-leaf-left hidden lg:block" aria-hidden="true" />
+
+
+            <div class="container relative z-10">
+               <div class="text-center mb-10 md:mb-14">
+                  <div class="text-center mb-6 px-6 mx-auto max-w-6xl section-title--light-outer">
+                        <h2 class="section-title section-title--light" data-leaf-target letters-slide-down text-split>
+                        Tell us a little about your
+                           <span
+                              class="section-title--dark text-letters-slide"
+                              >requirement</span
+                              >
+                        </h2>
+                  <p class="cu-form-intro">
+                     Share the basics and a member of our team will get back
+                     to you within one business day.
+                  </p>
+                   </div>
+
+
+               </div>
+               <div class="cu-form-card ">
+                  <form class="space-y-6" action="#" method="post">
+                     <div class="cu-form-grid">
+                        <div class="cu-field">
+                           <label for="cuFullName">Full Name <span class="req">*</span></label>
+                           <input id="cuFullName" name="fullName" type="text" placeholder="Your full name"
+                              autocomplete="name" required />
+                        </div>
+                        <div class="cu-field">
+                           <label for="cuDesignation">Designation</label>
+                           <input id="cuDesignation" name="designation" type="text" placeholder="Your role or title"
+                              autocomplete="organization-title" />
+                        </div>
+                        <div class="cu-field">
+                           <label for="cuOrganisation">Organisation Name <span class="req">*</span></label>
+                           <input id="cuOrganisation" name="organisation" type="text" placeholder="Your organisation"
+                              autocomplete="organization" required />
+                        </div>
+                        <div class="cu-field">
+                           <label for="cuEmail">Work Email <span class="req">*</span></label>
+                           <input id="cuEmail" name="email" type="email" placeholder="you@company.com"
+                              autocomplete="email" required />
+                        </div>
+                        <div class="cu-field">
+                           <label for="cuPhone">Contact Number <span class="req">*</span></label>
+                           <input id="cuPhone" name="phone" type="tel" placeholder="+91XXXXXXXXXX"
+                              autocomplete="tel" required />
+                        </div>
+                        <div class="cu-field">
+                           <label for="cuCity">City <span class="req">*</span></label>
+                           <select id="cuCity" name="city" required>
+                              <option value="">Select your city</option>
+                              <option value="mumbai">Mumbai</option>
+                              <option value="gurugram">Gurugram</option>
+                              <option value="bengaluru">Bengaluru</option>
+                              <option value="chennai">Chennai</option>
+                              <option value="kolkata">Kolkata</option>
+                              <option value="goa">MOPA, Goa</option>
+                              <option value="other">Other</option>
+                           </select>
+                        </div>
+                        <div class="cu-field cu-field--full">
+                           <label for="cuInterest">Area of Interest <span class="req">*</span></label>
+                           <select id="cuInterest" name="interest" required>
+                              <option value="">Select an area of interest</option>
+                              <option value="corporate">Business and Corporate</option>
+                              <option value="education">Education</option>
+                              <option value="healthcare">Healthcare</option>
+                              <option value="events">Outdoor Events</option>
+                           </select>
+                        </div>
+                        <div class="cu-field cu-field--full">
+                           <label for="cuMessage">Tell us more.</label>
+                           <textarea id="cuMessage" name="message"
+                              placeholder="Describe your requirement, scale, or any context that would help us respond meaningfully."></textarea>
+                        </div>
+                     </div>
+                     <label class="cu-consent">
+                     <input type="checkbox" name="consent" />
+                     <span>I agree to be contacted by Nekta regarding my enquiry.</span>
+                     </label>
+               
+                     <span>
+                      <a href="#" class="common-btn btn-slide-fill" type="button" data-modal-open="contactModal">
+                      <span>Send enquiry</span>
+                      <img loading="lazy" src="assets/images/arrows/creamarrow-long-right.png" alt="rightArrow" />
+                      </a>
+                     </span>
+                     
+
+                  </form>
+               </div>
+            </div>
+         </section>
+
+         <!-- ==================== HOW TO REACH US ==================== -->
+         <section class="reach-section section-spacing ">
+               
+                <!-- Decorative bowl of pistachios (top right) -->
+               <img loading="lazy" src="assets/images/contact-us/pista_right.png" alt="" class="deco-bowl" aria-hidden="true" />
+
+               <!-- Decorative plate of pistachios (bottom left) -->
+               <img loading="lazy" src="assets/images/contact-us/pista_left.png" alt="" class="deco-plate" aria-hidden="true" />
+
+               <div class="container">
+
+               <!-- Section Heading -->
+               <div class="section-title-outer text-center mx-auto max-w-5xl">
+                  <h2 class="title-section text-h2 " data-leaf-target letters-slide-down text-split>
+                 How to <span class="text-letters-slide"> Reach Us</span>
+                  </h2>
+                 
+               </div>
+
+                  <div class="reach-grid">
+
+                     <!-- Partnership Enquiries -->
+                     <div class="reach-card">
+                     <h3>For Partnership Enquiries</h3>
+                     <p>If you are looking to partner with Nekta on a food service programme, fill out the form below or write to us directly.</p>
+
+                     <div class="reach-line">
+                         <img src="assets/images/contact-us/phone-icon.svg" alt="" class="reach-icon" />
+                        <span><h4>Tel No.:</h4> <span class="reach-value">+91 22 3122 0200</span></span>
+                     </div>
+                     <div class="reach-line">
+                         <img src="assets/images/contact-us/mail-icon.svg" alt="" class="reach-icon" />
+                        <span><h4>Email id :</h4> <span class="reach-value"><a href="mailto:sales@nektafoods.com">sales@nektafoods.com</a></span></span>
+                   
+                     </div>
+
+                     <svg class="reach-card-leaf" viewBox="0 0 60 40" aria-hidden="true">
+                        <path d="M2 38C10 10 40 2 58 4c-4 18-24 34-56 34z" fill="#8fae6f"/>
+                        <path d="M4 36C16 16 38 6 55 5" stroke="#6f8f57" stroke-width="1.4" fill="none"/>
+                     </svg>
+                     </div>
+
+                     <!-- General Queries -->
+                     <div class="reach-card">
+                     <h3>For General Queries</h3>
+                     <p>For anything else, including media, vendor enquiries or feedback, write to us.</p>
+
+                     <div class="reach-line">
+                         <img src="assets/images/contact-us/mail-icon.svg" alt="" class="reach-icon" />
+                        <span><h4>Email id :</h4> <span class="reach-value"><a href="mailto:sales@nektafoods.com">sales@nektafoods.com</a></span></span>
+                   
+                     </div>
+                     </div>
+
+                  </div>
+
+                  <!-- ---------- Careers ---------- -->
+                  <div class="careers">
+               <!-- Section Heading -->
+               <div class="section-title-outer text-center mx-auto max-w-5xl">
+                  <h2 class="title-section text-h2 " data-leaf-target letters-slide-down text-split>
+                Careers at  <span class="text-letters-slide">NektaOpportunities</span>
+                  </h2>
+                 
+               </div>
+                     <p>At Nekta, we're building a team driven by passion, purpose, and a shared commitment to excellence. If you're inspired to shape the future of institutional catering and be part of a dynamic, evolving organisation, we would love to hear from you.</p>
+                     <p>Explore current opportunities and take the next step in your journey with us through our careers portal.</p>
+
+                      <a href="#" class="common-btn btn-slide-fill mt-3" type="button" data-modal-open="contactModal">
+                      <span>Visit Careers</span>
+                      <img loading="lazy" src="assets/images/arrows/creamarrow-long-right.png" alt="rightArrow" />
+                      </a>
+
+                     <svg class="careers-leaf-deco" viewBox="0 0 60 40" aria-hidden="true">
+                     <path d="M2 38C10 10 40 2 58 4c-4 18-24 34-56 34z" fill="#8fae6f"/>
+                     <path d="M4 36C16 16 38 6 55 5" stroke="#6f8f57" stroke-width="1.4" fill="none"/>
+                     </svg>
+                  </div>
+
+               </div>
+         </section>
+
+
+
+
+
+         <!-- ==================== OUR OFFICES ==================== -->
+         <section class="offices-section section-spacing ">
+              <div class="container">
+
+                  <div class="offices-heading-wrap">
+                  <!-- Section Heading -->
+                     <div class="section-title-outer text-center mx-auto max-w-5xl">
+                        <h2 class="title-section text-h2 " data-leaf-target letters-slide-down text-split>
+                     Our <span class="text-letters-slide"> Offices</span>
+                        </h2>
+                     
+                     </div>
+                     <svg class="heading-leaf" viewBox="0 0 80 50" aria-hidden="true">
+                     <path d="M2 46C14 12 50 2 78 6c-6 22-30 40-76 40z" fill="#8fae6f"/>
+                     <path d="M5 43C20 18 48 8 74 8" stroke="#6f8f57" stroke-width="1.4" fill="none"/>
+                     </svg>
+                  </div>
+
+                  <div class="offices-grid-wrap">
+
+                     <!-- Decorative food photography -->
+                     <img loading="lazy" src="assets/images/contact-us/avocado-toast.webp" alt="" class="deco-food deco-avocado" aria-hidden="true" />
+                     <img loading="lazy" src="assets/images/contact-us/heart-jam-toast.webp" alt="" class="deco-food deco-jam" aria-hidden="true" />
+                     <img loading="lazy" src="assets/images/contact-us/lettuce.webp" alt="" class="deco-food deco-lettuce" aria-hidden="true" />
+
+                     <!-- Grid intersection dots (4 columns of lines x 3 rows of lines) -->
+                     <span class="grid-dot dot-col-1 dot-row-1"></span>
+                     <span class="grid-dot dot-col-2 dot-row-1"></span>
+                     <span class="grid-dot dot-col-3 dot-row-1"></span>
+                     <span class="grid-dot dot-col-4 dot-row-1"></span>
+
+                     <span class="grid-dot dot-col-1 dot-row-2"></span>
+                     <span class="grid-dot dot-col-2 dot-row-2"></span>
+                     <span class="grid-dot dot-col-3 dot-row-2"></span>
+                     <span class="grid-dot dot-col-4 dot-row-2"></span>
+
+                     <span class="grid-dot dot-col-1 dot-row-3"></span>
+                     <span class="grid-dot dot-col-2 dot-row-3"></span>
+                     <span class="grid-dot dot-col-3 dot-row-3"></span>
+                     <span class="grid-dot dot-col-4 dot-row-3"></span>
+                     <div class="offices-grid">
+
+                     <!-- Mumbai -->
+                     <div class="office-card">
+                        <svg class="pin-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/>
+                           <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <h3>Mumbai</h3>
+                        <p>Please share the full registered office address for Mumbai.</p>
+                        <a href="#" class="view-map">
+                           <span>View on map</span>
+                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                           <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                           </svg>
+                        </a>
+                     </div>
+
+                     <!-- Gurugram -->
+                     <div class="office-card">
+                        <svg class="pin-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/>
+                           <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <h3>Gurugram</h3>
+                        <p>Please share the office address for Gurugram.</p>
+                        <a href="#" class="view-map">
+                           <span>View on map</span>
+                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                           <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                           </svg>
+                        </a>
+                     </div>
+
+                     <!-- Bengaluru -->
+                     <div class="office-card">
+                        <svg class="pin-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/>
+                           <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <h3>Bengaluru</h3>
+                        <p>: Please share the office address for Bengaluru.</p>
+                        <a href="#" class="view-map">
+                           <span>View on map</span>
+                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                           <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                           </svg>
+                        </a>
+                     </div>
+
+                     <!-- Chennai -->
+                     <div class="office-card">
+                        <svg class="pin-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/>
+                           <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <h3>Chennai</h3>
+                        <p>TajSATS Unit — Address to be confirmed.</p>
+                        <a href="#" class="view-map">
+                           <span>View on map</span>
+                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                           <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                           </svg>
+                        </a>
+                     </div>
+
+                     <!-- Kolkata -->
+                     <div class="office-card">
+                        <svg class="pin-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/>
+                           <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <h3>Kolkata</h3>
+                        <p>TajSATS Unit — Address to be confirmed.</p>
+                        <a href="#" class="view-map">
+                           <span>View on map</span>
+                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                           <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                           </svg>
+                        </a>
+                     </div>
+
+                     <!-- MOPA, Goa -->
+                     <div class="office-card">
+                        <svg class="pin-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/>
+                           <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <h3>MOPA, Goa</h3>
+                        <p>TajSATS Unit — Address to be confirmed.</p>
+                        <a href="#" class="view-map">
+                           <span>View on map</span>
+                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                           <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                           </svg>
+                        </a>
+                     </div>
+
+                     </div>
+                  </div>
+
+              </div>
+         </section>
+
+         <!-- ==================== TAILORED SOLUTIONS ==================== -->
+            <section class="solutions-section">
+                  <div class="container">
+                  
+                     <div class="solutions-grid">
+                  
+                        <!-- Media: salad bowl over decorative circle -->
+                        <div class="solutions-media">
+                        <img loading="lazy" src="assets/images/contact-us/circle-bg.webp" alt="" class="solutions-circle" aria-hidden="true" />
+                        <img loading="lazy" src="assets/images/contact-us/salad-bowl.webp" alt="Fresh salad bowl with vegetables" class="solutions-salad" />
+                        </div>
+                  
+                        <!-- Copy -->
+                        <div class="solutions-copy">
+                        <p>At Nekta, we recognise that every requirement is distinct—and deserves a solution that is equally thoughtful. Whether you aim to elevate your corporate dining experience, develop a holistic hospital nutrition programme, manage the hospitality of a dynamic campus environment, or curate a seamless one-time event, our team is committed to partnering with you to deliver tailored, high-impact solutions.</p>
+                  
+                        <p>Reach out to us to explore how we can bring together expertise, innovation, and care to create solutions tailored to your needs. We look forward to starting a conversation that builds something exceptional.</p>
+                  
+                        <img loading="lazy" src="assets/images/contact-us/leaf-icon.webp" alt="" class="solutions-leaf" aria-hidden="true" />
+                        </div>
+                  
+                     </div>
+                  
+                     <!-- Decorative splash bleeding off the right edge -->
+                     <img loading="lazy" src="assets/images/contact-us/juice-splash.webp" alt="" class="solutions-splash" aria-hidden="true" />
+                  
+                  </div>
+            </section>
+
+
+         <!-- ==================== FOLLOW NEKTA ==================== -->
+         <section class="cu-follow-section py-16 md:py-20">
+            <div class="container text-center">
+                  <!-- Section Heading -->
+                     <div class="section-title-outer text-center mx-auto max-w-7xl ">
+                        <h2 class="title-section text-h2 " data-leaf-target letters-slide-down text-split>
+                     Follow Nekta for stories <span class="text-letters-slide"> fromour kitchens and bey </span>
+                        </h2>
+                     
+                     </div>
+               <p >
+                  Behind-the-scenes moments, what&rsquo;s new on our plate
+               </p>
+               <div class="flex items-center justify-center gap-4">
+                  <a href="#" class="cu-social-circle" aria-label="Facebook">
+                     <svg class="fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                           d="M14.5 8.5V6.75c0-.5.42-.75.92-.75H17V3.2A20 20 0 0 0 14.66 3c-2.32 0-3.91 1.42-3.91 4.02V8.5H8.13v3.13h2.62V21h3.21v-9.37h2.51l.4-3.13z" />
+                     </svg>
+                  </a>
+                  <a href="#" class="cu-social-circle" aria-label="Instagram">
+                     <svg class="fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                           d="M7.6 2.75h8.8A4.86 4.86 0 0 1 21.25 7.6v8.8a4.86 4.86 0 0 1-4.85 4.85H7.6a4.86 4.86 0 0 1-4.85-4.85V7.6A4.86 4.86 0 0 1 7.6 2.75m0 1.75A3.1 3.1 0 0 0 4.5 7.6v8.8a3.1 3.1 0 0 0 3.1 3.1h8.8a3.1 3.1 0 0 0 3.1-3.1V7.6a3.1 3.1 0 0 0-3.1-3.1zm8.98 1.44a1.16 1.16 0 1 1 0 2.32 1.16 1.16 0 0 1 0-2.32M12 7.25A4.75 4.75 0 1 1 12 16.75 4.75 4.75 0 0 1 12 7.25m0 1.75a3 3 0 1 0 0 6 3 3 0 0 0 0-6" />
+                     </svg>
+                  </a>
+                  <a href="#" class="cu-social-circle" aria-label="LinkedIn">
+                     <svg class="fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                           d="M6.94 8.75H3.75V21h3.19zM5.35 3a1.85 1.85 0 1 0 0 3.7 1.85 1.85 0 0 0 0-3.7m5.6 5.75H7.9V21h3.19v-6.44c0-1.7.32-3.35 2.43-3.35 2.08 0 2.1 1.94 2.1 3.46V21h3.19v-7.14c0-3.5-.75-6.2-4.85-6.2a4.24 4.24 0 0 0-3.82 2.1h-.04z" />
+                     </svg>
+                  </a>
+               </div>
+            </div>
+         </section>
+
+         <!-- ==================== EVERY ENQUIRY ==================== -->
+         <section class="cu-enquiry-section py-16 md:py-24">
+            <img loading="lazy" src="assets/images/contact-us/plate-circle.png" alt=""
+               class="cu-plate-deco hidden xl:block w-72 left-[12%] top-[42%] -rotate-6" aria-hidden="true" />
+            <img loading="lazy" src="assets/images/contact-us/plate-circle.png" alt=""
+               class="cu-plate-deco hidden xl:block w-64 right-[12%] top-[40%] rotate-6" aria-hidden="true" />
+            <div class="container relative z-10 text-center">
+                  <!-- Section Heading -->
+                     <div class="section-title-outer text-center mx-auto max-w-2xl ">
+                        <h2 class="title-section text-h2 " data-leaf-target letters-slide-down text-split>
+                     Every enquiry reaches  <span class="text-letters-slide">someone who can act on it.</span>
+                        </h2>
+                     
+                     </div>
+               <div class="cu-arch-media mb-5 md:mb-6">
+                  <img loading="lazy" src="assets/images/contact-us/arch-team.png"
+                     alt="Nekta team reviewing an enquiry" />
+               </div>
+               <p class="cu-enquiry-copy">
+                  We do not believe in generic auto-responses. Every form
+                  submission is reviewed by a member of our team and routed
+                  to the right specialist within the business. You will hear
+                  back from us within
+                  <span class="text-green font-balkistItalic italic">two business days.</span>
+               </p>
+            </div>
+         </section>
+
+@section Scripts {
+     <script src="~/Assets/js/inner-banner-script.js"></script>
+    <script src="~/Assets/js/contactus-script.js"></script>
+    
+  
+    
+}
+

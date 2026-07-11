@@ -4,11 +4,11 @@ using Nekta_MVC.Models;
 
 namespace Nekta_MVC.Controllers;
 
-public class ContactusController : Controller
+public class EducationController : Controller
 {
-    private readonly ILogger<ContactusController> _logger;
+    private readonly ILogger<EducationController> _logger;
 
-    public ContactusController(ILogger<ContactusController> logger)
+    public EducationController(ILogger<EducationController> logger)
     {
         _logger = logger;
     }
@@ -18,7 +18,7 @@ public class ContactusController : Controller
         return View();
     }
 
- 
+   
 
-  
+   
 }
