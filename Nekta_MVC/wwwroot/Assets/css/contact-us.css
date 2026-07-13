@@ -7,8 +7,8 @@
 .cu-form-section { position: relative; }
 
 .cu-leaf-deco { position: absolute; pointer-events: none; z-index: 0;}
-.cu-leaf-right {  top: 26%; right: -2%;  rotate: 11deg;}
-.cu-leaf-left { bottom: 8%; left: -2%; transform: rotate(192deg) scaleX(-1);}
+.cu-leaf-right {  top: 26%; right: 1vw;  rotate: 11deg;}
+.cu-leaf-left { bottom: 8%; left: 3vw; transform: rotate(192deg) scaleX(-1);}
 .dot-col-1{ left:0%; }
 .dot-col-2{ left:33.333%; }
 .dot-col-3{ left:66.666%; }
@@ -322,6 +322,10 @@
     border-right:2px dashed var(--line);
     border-bottom:2px dashed var(--line);
   }
+.office-card:nth-child(1),.office-card:nth-child(4){
+  border-left:2px dashed var(--line);
+}
+
   /* .office-card:nth-child(1n){
     border-left:none;
   } */
@@ -399,7 +403,7 @@
 /*  */
     .solutions-section{
     position:relative;
-    padding:150px 0;
+
     overflow: hidden;
     
   }
@@ -433,9 +437,9 @@
  
   .solutions-salad{
     position: absolute;
-    top: -49%;
-    left: -100%;
-    max-width: 52vw;
+    top: -35%;
+    left: -86%;
+    max-width: 48vw;
     z-index: 2;
     rotate: 34deg;
   }
@@ -475,51 +479,6 @@ position: absolute;
     pointer-events: none;
     rotate: -88deg;
   }
- 
-  @media (max-width:1100px){
-    .solutions-splash{
-      max-width:220px;
-      transform:translateX(25%);
-      opacity:0.7;
-    }
-  }
- 
-  @media (max-width:900px){
-    .solutions-grid{
-      flex-direction:column;
-      gap:40px;
-    }
-    .solutions-media{
-      margin:0 auto;
-      max-width:320px;
-    }
-    .solutions-copy{
-      max-width:100%;
-      text-align:center;
-    }
-    .solutions-splash{
-      display:none;
-    }
-    .solutions-salad {
-    position: absolute;
-    top: 1%;
-    left: -37%;
-    max-width: 120vw;
-    z-index: 2;
-    rotate: 34deg;
-}
-  }
- 
-  @media (max-width:560px){
-    .solutions-section{ padding:56px 0; }
-
-  }
-
-  /*  */
-  @media (max-width:560px){
-    .solutions-section{ padding:56px 0; }
-   
-  }
 
   /* ---------- Decorative food images ---------- */
   .deco-food{
@@ -546,26 +505,11 @@ position: absolute;
     bottom: calc(22% - 56px);
     right: calc(-6% - 56px);
     z-index: 12;
+
+    
   }
 
-  @media (max-width:820px){
-    .offices-grid{ grid-template-columns:repeat(2, 1fr); }
-    .office-card:nth-child(3n){ border-right:1px dashed var(--line); }
-    .office-card:nth-child(2n){ border-right:none; }
-    .office-card:nth-child(n+4){ border-bottom:1px dashed var(--line); }
-    .office-card:nth-child(n+5){ border-bottom:none; }
-    .deco-avocado{ width:70px; top:-24px; left:20px; }
-    .deco-jam{ display:none; }
-    .deco-lettuce{ width:90px; bottom:-30px; right:-30px; }
-  }
 
-  @media (max-width:560px){
-    .offices-grid{ grid-template-columns:1fr; }
-    .office-card{ border-right:none !important; border-bottom:1px dashed var(--line) !important; }
-    .office-card:last-child{ border-bottom:none !important; }
-    .deco-avocado{ display:none; }
-    .deco-lettuce{ width:70px; bottom:-20px; right:-20px; }
-  }
 /* ---------- TAILORED SOLUTIONS ---------- */
 .cu-tailored-section {
     position: relative;
@@ -662,19 +606,6 @@ position: absolute;
     overflow: hidden;
 }
 
-/* Thin decorative curves sweeping behind the plates */
-.cu-enquiry-section::before,
-.cu-enquiry-section::after {
-    content: "";
-    position: absolute;
-    left: -12%;
-    right: -12%;
-    height: 900px;
-    border-top: 1px solid rgba(150, 140, 100, 0.35);
-    border-radius: 50% / 140px;
-    pointer-events: none;
-}
-
 .cu-enquiry-section::before {
     top: 46%;
 }
@@ -695,10 +626,10 @@ position: absolute;
 .cu-enquiry-copy {
     max-width: 620px;
     margin-inline: auto;
-    font-size: clamp(13px, 0.9vw, 16px);
+    margin-top: 10px;
     line-height: 1.6;
     letter-spacing: 0.02em;
-    color: var(--color-copy);
+  
 }
 
 .cu-arch-media img {
@@ -715,3 +646,180 @@ position: absolute;
     pointer-events: none;
     user-select: none;
 }
+
+.cu-plate-wrap{
+    position:absolute;
+    z-index:1;
+}
+
+.cu-plate-left{
+    left:12%;
+    top:42%;
+    width:290px;
+    transform:rotate(-6deg);
+}
+
+.cu-plate-right{
+    right:12%;
+    top:40%;
+    width:260px;
+    transform:rotate(6deg);
+}
+
+/* Background Circle */
+.cu-plate-circle{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    z-index:0;
+}
+
+/* Plate */
+.cu-plate-img{
+    position:relative;
+    width:100%;
+    display:block;
+    z-index:2;
+}
+.cu-plate-wrap{
+    position:absolute;
+}
+
+/* Common decorative image */
+.cu-plate-deco{
+    position:absolute;
+    z-index:5;
+    pointer-events:none;
+    user-select:none;
+}
+.cu-coriander{
+    width:62px;
+
+    top:18px;
+    right:8px;
+
+    transform:rotate(-15deg);
+}
+.cu-strawberry{
+    width:52px;
+    top:24px;
+    left:-8px;
+    transform:rotate(-18deg);
+}
+
+.cu-arch-media {position: relative;width: 100%; max-width: 22vw;  margin: 0 auto; background: #e9e3cf; padding: 12px; border-radius: 999px 999px 24px 24px; overflow: hidden; transition: transform 0.4s ease, box-shadow 0.4s ease; box-shadow: 0 24px 60px rgba(35, 35, 35, 0.12);}
+.cu-arch-media img {  width: 100%;  display: block;  border-radius: 999px 999px 16px 16px;}
+.cu-arch-media:hover { transform: translateY(-8px); box-shadow: 0 40px 80px rgba(35, 35, 35, 0.18);}
+.text-green {font-family: var(--font-heading);font-size: var(--text-h4);font-style: italic;font-weight: 700;}
+
+.cu-enquiry-section .cu-plate-right .cu-plate-img{margin-left: -1.5vw;}
+
+
+/*  Media queries */ 
+  @media (max-width:1100px){
+    .solutions-splash{
+      max-width:220px;
+      transform:translateX(25%);
+      opacity:0.7;
+    }
+  }
+ 
+  @media (max-width:900px){
+    .solutions-grid{
+      flex-direction:column;
+      gap:40px;
+    }
+    .solutions-media{
+      margin:0 auto;
+      max-width:320px;
+    }
+    .solutions-copy{
+      max-width:100%;
+      text-align:center;
+    }
+    .solutions-splash{
+      display:none;
+    }
+    .solutions-salad {
+    position: absolute;
+    top: 1%;
+    left: -37%;
+    max-width: 120vw;
+    z-index: 2;
+    rotate: 34deg;
+}
+  }
+ 
+
+  /*  */
+  @media (max-width:560px){
+    .offices-section{
+        overflow:hidden;
+    }
+
+    .offices-heading-wrap{
+        margin-bottom:40px;
+    }
+
+    .heading-leaf{
+        width:42px;
+        right:50%;
+        transform:translateX(110px);
+        top:-6px;
+    }
+
+    .offices-grid-wrap{
+        width:100%;
+    }
+
+    .offices-grid{
+        grid-template-columns:1fr;
+        border-top:none;
+    }
+
+    /* Hide grid dots */
+    .grid-dot{
+        display:none;
+    }
+
+    .office-card{
+        border:2px dashed var(--line)!important;
+        border-radius:18px;
+        padding:24px 20px;
+        margin-bottom:18px;
+    }
+
+    .office-card:last-child{
+        margin-bottom:0;
+    }
+
+    .office-card h3{
+        font-size:22px;
+        margin-bottom:10px;
+    }
+
+    .office-card p{
+        max-width:100%;
+        margin-bottom:16px;
+    }
+
+    .pin-icon{
+        width:28px;
+        height:28px;
+    }
+
+    /* Hide decorative images */
+    .deco-avocado,
+    .deco-jam,
+    .deco-lettuce{
+        display:none;
+    }
+
+    /* Remove bottom border created by wrapper */
+    .offices-grid-wrap::after{
+        display:none;
+    }
+   
+  }
