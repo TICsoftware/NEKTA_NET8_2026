@@ -4,3 +4,4 @@
 .blogs-prev,.blogs-next { width: 52px; height: 52px; border: 1px solid #ddd; border-radius: 50%; background: var(--color-green);color: #fff; display: flex; align-items: center;justify-content: center; cursor: pointer; transition: all .3s ease;}
 .blogs-prev:hover,.blogs-next:hover { background: var(--color-orange); color: #fff; border-color: var(--color-orange);}
 .blogs-prev.swiper-button-disabled,.blogs-next.swiper-button-disabled { opacity: .35; pointer-events: none;}
+.blogs-cards-slider .insight-title{padding-top: 10px;}
