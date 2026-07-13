@@ -1,6 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-
+document.querySelectorAll('.footprint-section').forEach((section) => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle('in-view', entry.isIntersecting);
+      });
+    },
+    { threshold: 0.2 }
+  );
+  observer.observe(section);
+});
 
    
 

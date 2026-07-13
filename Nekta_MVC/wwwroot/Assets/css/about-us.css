@@ -25,11 +25,33 @@
 /* Mobile */
 
 @media(max-width:767px){
+.counter-section {margin-top: -15vw;}
+.counter-item {    padding-top: 0; padding-bottom: 0;}
+.counter-wrapper{
 
-.counter-wrapper{ flex-direction:column;  gap:0rem;}
-.counter-divider{ width:60px;  height:1px;}
-.counter-number{  font-size:2rem;}
-.counter-title{ font-size:1.25rem;}
+flex-wrap:wrap;
+    gap:1rem;
+
+}
+
+.counter-divider{
+display: none;
+    width:60px;
+    height:1px;
+
+}
+
+.counter-number{
+
+    font-size:2rem;
+
+}
+
+.counter-title{
+
+    font-size:1.25rem;
+
+}
 
 }
 
@@ -49,10 +71,24 @@
 /* Tablet */
 
 @media(max-width:991px){
+.left-copy {
+    margin-left: 0;
+}
+.copy-tight{
 
-.copy-tight{font-size:17px;}
-.footprint-decor{width: 39%;  left: -15%;  top: -23%;}
-.left-copy { margin-left: 00rem;}
+    font-size:17px;
+
+}
+
+.footprint-decor{
+
+    width:120px;
+    left:0;
+    top:-30px;
+
+}
+
+}
 
 /* Mobile */
 
@@ -61,6 +97,22 @@
 .footprint-section{ text-align:center;}
 
 
+
+.copy-tight{
+
+    font-size:16px;
+    line-height:1.7;
+
+}
+
+.footprint-decor{
+
+    position:absolute;
+    inset:auto;
+
+    display:block;
+top: -25vw;
+        left: -12vw;
 }
 
 .footprint-map{
@@ -68,11 +120,22 @@
     margin-top:1rem;
 
 }
+.story-gallery-left {display: none;}
+.story-gallery-right {display: none;}
+
 
 }
 
+.footprint-decor {
+  opacity: 0;
+  transform: translateY(40px) rotate(-10deg);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
 
-
+.footprint-section.in-view .footprint-decor {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
 /* ============================
    BASE / RESET
 ============================ */
@@ -83,7 +146,7 @@
 .map-inside-wrapper {
   position: relative;
 }
-.map-inside-wrapper svg {width: 100%;}
+.map-inside-wrapper svg {width: 100%; height: auto;}
 
 /* ============================
    STATE / REGION SHAPES

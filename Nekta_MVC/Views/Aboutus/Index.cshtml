@@ -81,7 +81,7 @@
    
          <!-- INTRO SECTION -->
          <section class="section-spacing">
-            <div class="container mx-auto px-4">
+            <div class="container">
                <div class="max-w-5xl mx-auto text-center intro-section-wrap">
                   <p > A hallmark of catering excellence. Trusted by institutions. Driven by innovation. Nekta Food Solutions Limited is an institutional and corporate catering organization built with purpose and driven by legacy. A wholly owned subsidiary of Taj SATS Air Catering Limited, Nekta is silently extending its craft to serving premium cafés and renowned blue-chip corporates, education and healthcare institutions.
                   </p>
@@ -91,41 +91,42 @@
          <!-- INTRO SECTION END -->
 
           <!-- THREE TILT CARD -->
-         <section class="story-gallery overflow-hidden">
-            <div class="container mx-auto px-4 relative">
-               <!-- Decorations -->
-               <img src="assets/images/about-us/tomato.svg"
-                  class="absolute left-[11%] bottom-0  pointer-events-none">
-               <!-- Leaf -->
-               <img
-                  src="assets/images/about-us/leaf (2).svg"
-                  alt=""
-                  class="absolute bottom-10 right-[10%]   z-10">
-               <img src="assets/images/about-us/turmuric.svg"
-                  class="absolute right-0 bottom-0 pointer-events-none">
-               <!-- Cards -->
-               <div class="cards-wrapper relative flex justify-center items-center h-[520px] ">
-                  <!-- Left -->
-                  <div class="gallery-card gallery-left">
-                     <img src="assets/images/about-us/card-1.png" alt="">
+         
+         <section class="story-gallery">
+            <div class="container">
+               <div class="relative">
+                  <div class="story-gallery-left">
+                     <img src="assets/images/about-us/tomato.svg" class="max-w-auto">
                   </div>
-                  <!-- Center -->
-                  <div class="gallery-card gallery-center">
-                     <img src="assets/images/about-us/card-2.jpg" alt="">
+                  <div class="story-gallery-right">
+                     <img src="assets/images/about-us/turmuric.svg" class="max-w-auto z-10 story-turmuric">
+                      <img src="assets/images/about-us/leaf.svg" alt="" class="max-w-auto z-10 story-leaf">
                   </div>
-                  <!-- Right -->
-                  <div class="gallery-card gallery-right">
-                     <img src="assets/images/about-us/card-3.jpg" alt="">
+                  <!-- Cards -->
+                  <div class="cards-wrapper relative flex justify-center items-center">
+                     <!-- Left -->
+                     <div class="gallery-card gallery-left">
+                        <img src="assets/images/about-us/card-1.png" alt="">
+                     </div>
+                     <!-- Center -->
+                     <div class="gallery-card gallery-center">
+                        <img src="assets/images/about-us/card-2.jpg" alt="">
+                     </div>
+                     <!-- Right -->
+                     <div class="gallery-card gallery-right">
+                        <img src="assets/images/about-us/card-3.jpg" alt="">
+                     </div>
                   </div>
                </div>
             </div>
          </section>
+       
          <!-- THREE CARDS END -->
         
          <!-- COOUNTER SECTION -->
-         <section class="counter-section">
+         <section class="counter-section section-pb">
             <div class="container">
-               <div class="counter-wrapper max-w-4xl mx-auto">
+               <div class="counter-wrapper sm:max-w-4xl sm:mx-auto">
                   <!-- Counter -->
 
                 <div class="flex flex-col shrink-0 rounded-2xl px-4 py-6 items-start gap-0 box-itm counter-item">
@@ -188,7 +189,7 @@
          6: Who we are
          ==================== -->
          <section class="bg-green center-slider relative section-spacing overflow-hidden">
-            <div class="">
+            <div class="inner-center-slider">
                <div class="text-center mb-6 px-6 mx-auto max-w-5xl section-title--light-outer">
                   <h2 class="section-title section-title--light" data-leaf-target letters-slide-down text-split>
                     Who 
@@ -535,7 +536,9 @@
                   <!-- Left Content -->
                   <div class="relative ">
                      <!-- Decorative -->
-                     <img src="assets/images/about-us/coffe.svg" alt="" class="footprint-decor absolute -left-16 -top-[50%]  pointer-events-none select-none">
+                     <div class="footprint-decor-img">
+                        <img src="assets/images/about-us/coffe.svg" alt="" class="footprint-decor absolute -left-16 -top-[50%]  pointer-events-none select-none">
+                     </div>
                      <div class="left-copy ">
                         <p >
                            Nekta's footprint spans all major metropolitan cities
@@ -869,7 +872,8 @@
            <!-- ==================================
          4: Diverse Playgrounds. Singular Spirit
          =================================== -->
-         <section id="playgrounds-section" class="bg-darkcream section-spacing overflow-hidden">
+         <section id="playgrounds-section" class="bg-cream section-spacing relative overflow-hidden">
+            <img src="assets/images/bg-pattern.webp" alt="" class="w-full h-full absolute top-0 left-0"/>
             <div class="container">
                <!-- Section Heading -->
                <div class="section-title-outer text-center mx-auto max-w-5xl">
