@@ -1,18 +1,19 @@
 @{
-    ViewData["Title"] = "About us";
+    ViewData["Title"] = "Company Information";
 }
 
 @section Styles {
-    
-    <link rel="stylesheet" href="~/Assets/css/center-mode-slider.css">
-    <link rel="stylesheet" href="~/Assets/css/three-box-slider.css">
-    <link rel="stylesheet" href="~/Assets/css/three-tilt-card.css">
-     <link rel="stylesheet" href="Assets/css/education.css" />
-     <link rel="stylesheet" href="Assets/css/page-intro-section.css" /> 
+      <link rel="stylesheet" href="~/Assets/css/center-mode-slider.css">
+      
       <link rel="stylesheet" href="Assets/css/thumb-slider.css" />
+      <link rel="stylesheet" href="Assets/css/healthcare.css" />
+      <link rel="stylesheet" href="Assets/css/page-intro-section.css" />
+       <link rel="stylesheet" href="~/Assets/css/three-tilt-card.css">
+       <link rel="stylesheet" href="~/Assets/css/three-box-slider.css">
+
 }
 
-        <!-- HERO BANNER END-->
+      <!-- HERO BANNER END-->
       <section class="relative inside-banner-outer overflow-hidden">
          <div class="inside-banner-inner banner-animation relative ">
 
@@ -48,7 +49,7 @@
            
                <div class="innerbanner-caption absolute inset-0 z-30 flex items-end">
                   <div class="container pb-12 md:pb-15">
-                     <div class="max-w-4xl text-left">
+                     <div class="max-w-5xl text-left">
 
                         <nav class="mb-4" aria-label="Breadcrumb">
                            <ol class="flex items-center gap-2 text-sm">
@@ -61,15 +62,15 @@
                               <li class="text-white/60">/</li>
 
                               <li class="text-white">
-                                 About Us
+                                 Business & Corporates
                               </li>
                            </ol>
                         </nav>
 
                         <h1 class="innerbanner-title text-h1 text-white">
-                          Life is a 
+                           Nekta - 
                            <span class="innerbanner-title-span">
-                              Beautiful Plate
+                              Healthcare
                            </span>
                         </h1>
 
@@ -80,31 +81,34 @@
 
          </div>
       </section>
+      <!-- HERO BANNER END -->
 
-
-         <!-- ====================Intro Section Delivering Experiences that Matter ==================== -->
+      <!-- ==================== INTR0- DELIVERING EXPERIENCES ==================== -->
          <section class=" bc-experience-section relative section-spacing overflow-hidden page-intro-section">
-
+            <!-- Decorative sushi platter on far right -->
+            <img loading="lazy" src="Assets/images/business/icon-right.svg" alt=""
+               class="bc-deco hidden xl:block w-40 -right-0 top-1/4" aria-hidden="true" />
             <div class="container relative z-10">
                <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                  <!-- Left:img  -->
+                  <!-- Left: plate in circle -->
                   <div class="relative">
-                  <div class="nourish-media">
-                     <img
-                        src="Assets/images/education/next_generation.png"
-                        alt="Nourishing the Next Generation">
-                  </div>
+                     <div class="bc-plate-wrap">
+                        <img loading="lazy" src="Assets/images/business/plate-circle.png" alt="Signature Nekta plate"
+                           class="bc-plate-img" />
+                        <img loading="lazy" src="Assets/images/business/coriander.svg" alt=""
+                           class="bc-plate-mini" aria-hidden="true" />
+                     </div>
                   </div>
                   <!-- Right: copy -->
                   <div class="relative space-y-6 md:space-y-8 sm:max-w-[35vw]">
                      <div class="section-title-outer mx-auto max-w-5xl">
                         <h2 class="title-section text-h2 " data-leaf-target letters-slide-down text-split>
-                           Delivering Experiences <span class="text-letters-slide"> that Matter</span>
+                           Nutrition That Heals. Standards  <span class="text-letters-slide"> That Protect.</span>
                         </h2>
                         
                      </div>
                     <div class="intro-outer-wrapper sm:pl-15">
-                     <p>From daily cafeteria operations to exclusive boardroom dining, executive offsites and curated events, Nekta understands performance excellence at the highest level. Its relationships with global brands also highlight its compliance with stringent international standards, including security, quality, and employee satisfaction metrics that bring a blend of operational excellence and elevated dining experiences that redefine institutional catering in India.</p>
+                     <p>From patient meal programmes to associate cafeterias, visitor food courts and round-the-clock food services, Nekta brings the precision of aviation hospitality and the trust of institutional catering to the most demanding sector in food service. Our associations with leading hospitals reflect our ability to operate within stringent clinical, hygiene and dietary standards delivering food programmes that support recovery, sustain caregivers and reassure families.</p>
                      <div class="flex justify-start mt-5">
                            <a href="#" class="common-btn flex items-center gap-2 btn-slide-fill">
                            <span>Get in Touch</span>
@@ -112,8 +116,7 @@
                            </a>
                         </div>
                      </div>
-                  
-                  <!-- Decorative leaf bottom-right -->
+                     <!-- Decorative leaf bottom-right -->
                   <img loading="lazy" src="Assets/images/intro-leaf/green_leaf_travel.svg" alt="" class="bc-leaf-deco absolute -bottom-6 right-0 md:right-4 w-10 md:w-12" aria-hidden="true" />
 
                   </div>
@@ -121,181 +124,58 @@
             </div>
          </section>
 
-      
-      <!-- ==================== Campus Dining Excellence==================== -->
-            <section class="bg-darkcream cd-section section-spacing relative">
-               <div class="cd-band bg-green"></div>
-
-               <div class="container cd-inner relative">
-
-               <div class="cd-stamp cd-stamp-1" data-cd="stamp">
-                  
-                  <img loading="lazy" src="Assets/images/education/bowl-steam-rice.webp" alt="" class="bowl" aria-hidden="true" />
-                
-               </div>
-
-               <img loading="lazy" src="Assets/images/education/students.webp" alt="Students reviewing a campus dining menu together"
-                  class="cd-photo cd-photo-1" data-cd="photo" data-from="left" />
-
-                  <div class="cd-copy">
-                  <!-- Section Heading -->
-               <div class="section-title-outer text-center mx-auto max-w-7xl">
+         <!-- ==================== THREE TILT CARD ==================== -->
+         <section class="bg-darkcream story-gallery section-spacing">
+            <!-- Section Heading -->
+               <div class="section-title-outer text-center mx-auto max-w-5xl">
                   <h2 class="title-section text-h2 " data-leaf-target letters-slide-down text-split>
-                    Campus Dining   <span class="text-letters-slide"> Excellence</span>
-                  </h2>
-                 
+                   Healthcare <span class="text-letters-slide"> Dining Excellence </span>
+                  </h2
                </div>
-                     <p data-cd="para">As a new-age catering partner, Nekta designs and manages dining programmes for schools, colleges, and universities that seamlessly balance nutrition, safety, and consistency&mdash;delivering at scale without compromise.</p>
-                     <p data-cd="para">Our approach goes beyond meal delivery. From well-structured mess plans and chef-curated menus to convenient grab-and-go formats and engaging themed food activations, we create integrated dining experiences. Each offering is thoughtfully designed around nutritional balance while reflecting the elevated standards of modern campus dining&mdash;supporting student well-being, engagement, and performance.</p>
-
-
+            <!-- Intro paragraphs -->
+                  <div class="story-intro text-center max-w-4xl mx-auto mb-25">
+                     <p>We curate integrated healthcare dining experiences where every meal is engineered around clinical needs, nutritional integrity and the highest hygiene standards. From therapeutic diets and dietitian-approved menus every element is designed to reflect the premium standards modern healthcare institutions stand for.</p>
+                     <p>With deep operational expertise in high-volume institutional environments, we partner with leading healthcare providers to design, manage and continuously refine food programmes that earn the trust of patients, doctors, hospital administrators and families.</p>
                   </div>
 
-               <div class="cd-stamp cd-stamp-2" data-cd="stamp">
-           
-                  <img loading="lazy" src="Assets/images/education/soup.webp" alt="" class="bowl" aria-hidden="true" />
-         
-               </div>
-
-               <img loading="lazy" src="Assets/images/education/meal.webp" alt="A campus dining spread of freshly prepared dishes"
-                  class="cd-photo cd-photo-3" data-cd="photo" data-from="right" />
-               <img loading="lazy" src="Assets/images/education/burger.webp" alt="Two students sharing a meal on campus"
-                  class="cd-photo cd-photo-2" data-cd="photo" data-from="bottom" />
-
-               </div>
-            </section>
-
-         <!-- ==================== LIFE IS A BEAUTIFUL PLATE (GALLERY) ==================== -->
-         <section class="bg-green center-slider relative section-spacing overflow-hidden">
             <div class="container">
-               <div class="relative z-10">
-                     <div class="section-title-outer text-center max-w-6xl mx-auto section-title--light-outer">
-                           <h2 class="section-title section-title--light" data-leaf-target letters-slide-down text-split>
-                              Life is a <span class="section-title--dark text-letters-slide"> beautiful plate.</span>
-                           </h2>
+               <div class="relative">
+                  <div class="story-gallery-left">
+                     <img src="assets/images/healthcare/left_decor.webp" class="max-w-auto">
+                  </div>
+                  <div class="story-gallery-right">
+                     <img src="assets/images/healthcare/right_decor.webp" class="max-w-auto z-10 story-turmuric">
+                      <img src="assets/images/healthcare/right_decor_leaf.webp" alt="" class="max-w-auto z-10 story-leaf">
+                  </div>
+                  <!-- Cards -->
+                  <div class="cards-wrapper relative flex justify-center items-center">
+                     <!-- Left -->
+                     <div class="gallery-card gallery-left">
+                        <img src="assets/images/about-us/card-1.png" alt="">
                      </div>
-                    
-                   <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch thumb-slider-outer">
-                        <div class="merge-imgs">
-                           <img class="merge-img merge-img--cup" src="Assets/images/business/cup.webp" alt="" loading="lazy" />
-                           <img class="merge-img merge-img--beans" src="Assets/images/business/coffee-beans.webp" alt="" loading="lazy" />
-                        </div>
-
-                        <!-- Main image -->
-                        <div class="bc-life-frame bc-life-main thumb-slider-main">
-                           <img id="lifeMainImage" src="Assets/images/business/Frame1.webp"
-                              alt="Cafeteria management in action" loading="lazy" />
-                        </div>
-
-                        <!-- Thumbs + copy -->
-                        <div class="flex flex-col gap-8 justify-start thumb-slider-thumbs">
-                           <div class="grid grid-cols-4 gap-3 md:gap-4 thumb-grid-wrapper" id="lifeThumbWrapper">
-                              <button type="button" class="thumb-arrow thumb-arrow--prev" id="thumbPrev" aria-label="Previous">‹</button>
-
-                              <div class="thumb-track" id="lifeThumbTrack">
-                                 <button type="button" class="bc-life-thumb is-active" style="display:none;"
-                                    data-frame-index="1"
-                                    data-life-image="Assets/images/business/Frame1.webp"
-                                    aria-label="View Cafeteria Management">
-                                    <img loading="lazy" src="Assets/images/business/Frame1.webp" alt="" />
-                                 </button>
-                                 <button type="button" class="bc-life-thumb"
-                                    data-frame-index="2"
-                                    data-life-image="Assets/images/business/Frame2.webp"
-                                    aria-label="View gallery image 2">
-                                    <img loading="lazy" src="Assets/images/business/Frame2.webp" alt="" />
-                                 </button>
-                                 <button type="button" class="bc-life-thumb"
-                                    data-frame-index="3"
-                                    data-life-image="Assets/images/business/Frame3.webp"
-                                    aria-label="View gallery image 3">
-                                    <img loading="lazy" src="Assets/images/business/Frame3.webp" alt="" />
-                                 </button>
-                                 <button type="button" class="bc-life-thumb"
-                                    data-frame-index="4"
-                                    data-life-image="Assets/images/business/Frame4.webp"
-                                    aria-label="View gallery image 4">
-                                    <img loading="lazy" src="Assets/images/business/Frame4.webp" alt="" />
-                                 </button>
-                                 <button type="button" class="bc-life-thumb"
-                                    data-frame-index="5"
-                                    data-life-image="Assets/images/business/Frame5.webp"
-                                    aria-label="View gallery image 5">
-                                    <img loading="lazy" src="Assets/images/business/Frame5.webp" alt="" />
-                                 </button>
-                              </div>
-
-                              <button type="button" class="thumb-arrow thumb-arrow--next" id="thumbNext" aria-label="Next">›</button>
-                           </div>
-
-                           <div class="bc-life-copy sm:mt-5" id="lifeCopyBox">
-                              <div class="read-more-wrapper" id="lifeCopyWrapper">
-                                 <!-- active frame's heading + content gets injected here -->
-                              </div>
-                              <div class="link-md link-light mt-5 read-more-toggle cursor-pointer">
-                                 <span class="underline read-more-text">Read More</span>
-                                 <img loading="lazy" src="Assets/images/plus-icon.svg" alt="plus" class="max-w-auto read-more-icon" />
-                              </div>
-                           </div>
-
-                           <!-- Hidden per-frame content templates. Edit heading + text here per frame. -->
-                           <template id="frameContent-1">
-                              <h3>Cafeteria Management</h3>
-                              <div class="read-more-content" data-lines="12">
-                                 <p>Nekta delivers end-to-end cafeteria management with a focus on scale, consistency, and a distinctly premium experience. We take complete operational ownership&mdash;from manpower deployment and procurement to service delivery&mdash;ensuring seamless, efficient, and high-quality operations across every location.</p>
-                                 <p>Our approach goes beyond serving meals. We curate thoughtfully engineered menus that blend local preferences with global cuisines, offering diversity and relevance to today&rsquo;s consumers.</p>
-                                    <p>Our approach goes beyond serving meals. We curate thoughtfully engineered menus that blend local preferences with global cuisines, offering diversity and relevance to today&rsquo;s consumers.</p>
-                                    
-                              </div>
-                           </template>
-                           <template id="frameContent-2">
-                              <h3>Bakery &amp; Confectionery</h3>
-                              <div class="read-more-content" data-lines="12">
-                                 <p>Our specialised bakery and confectionery expertise, powered by TajSATS&rsquo; culinary heritage, brings artisanal quality, innovation, and indulgence into everyday dining.</p>
-                                 <p>Our specialised bakery and confectionery expertise, powered by TajSATS&rsquo; culinary heritage, brings artisanal quality, innovation, and indulgence into everyday dining.</p>
-                              </div>
-                           </template>
-                           <template id="frameContent-3">
-                              <h3>Menu Curation</h3>
-                              <div class="read-more-content" data-lines="12">
-                                 <p>We curate thoughtfully engineered menus that blend local preferences with global cuisines, offering diversity and relevance to today&rsquo;s consumers.</p>
-                                 <p>We curate thoughtfully engineered menus that blend local preferences with global cuisines, offering diversity and relevance to today&rsquo;s consumers.</p>
-                              </div>
-                           </template>
-                           <template id="frameContent-4">
-                              <h3>Operational Ownership</h3>
-                              <div class="read-more-content" data-lines="12">
-                                 <p>We take complete operational ownership&mdash;from manpower deployment and procurement to service delivery&mdash;ensuring seamless, high-quality operations across every location.</p>
-                                 <p>We take complete operational ownership&mdash;from manpower deployment and procurement to service delivery&mdash;ensuring seamless, high-quality operations across every location.</p>
-                              </div>
-                           </template>
-                           <template id="frameContent-5">
-                              <h3>Culinary Heritage</h3>
-                              <div class="read-more-content" data-lines="12">
-                                 <p>TajSATS&rsquo; culinary heritage brings innovation and indulgence into everyday dining across every location we serve.</p>
-                                 <p>TajSATS&rsquo; culinary heritage brings innovation and indulgence into everyday dining across every location we serve.</p>
-                              </div>
-                           </template>
-                        </div>
+                     <!-- Center -->
+                     <div class="gallery-card gallery-center">
+                        <img src="assets/images/about-us/card-2.jpg" alt="">
                      </div>
+                     <!-- Right -->
+                     <div class="gallery-card gallery-right">
+                        <img src="assets/images/about-us/card-3.jpg" alt="">
+                     </div>
+                  </div>
                </div>
             </div>
          </section>
 
 
-          <!-- ==================== 
-         6: Who we are
-         ==================== -->
-         <section class="bg-darkcream center-slider relative section-spacing overflow-hidden">
-            <div class="">
-               <!-- Section Heading -->
-               <div class="section-title-outer text-center mx-auto max-w-5xl">
-                  <h2 class="title-section text-h2 " data-leaf-target letters-slide-down text-split>
-                    Nekta's Edge for  <span class="text-letters-slide"> Educational Clients </span>
+         <!-- ==================== TECHNOLOGY SECTION ==================== -->
+         <section class="bg-green center-slider relative section-spacing overflow-hidden">
+            <div class="inner-center-slider">
+               <div class="text-center mb-6 px-6 mx-auto max-w-5xl section-title--light-outer">
+                  <h2 class="section-title section-title--light" data-leaf-target letters-slide-down text-split>
+                    Services for <span class="section-title--dark text-letters-slide"> Healthcare Clients </span>
                   </h2>
-                 
+                  
                </div>
-
                <!-- Swiper Slider -->
                <div class="swiper edgeSwiper px-4 py-6">
                   <div class="swiper-wrapper py-4 pb-2">
@@ -336,10 +216,10 @@
                               >
                               <div>
                                  <h3 class="edge-card-title">
-                                    Innovation & Operational Excellence
+                                    Structured Feedback & Continuous Improvement
                                  </h3>
                                  <p class="edge-card-text">
-                                    Forward-thinking solutions combined with robust systems and efficiencies that enable seamless, scalable, and consistent service.
+                                   A robust feedback escalation matrix, supported by real-time dashboards, ensures issues are promptly identified, addressed, and closed—creating a complete and responsive improvement loop.
                                  </p>
                               </div>
                               <div>
@@ -385,10 +265,10 @@
                               >
                               <div>
                                  <h3 class="edge-card-title">
-                                     Innovation & Operational Excellence
+                                    Structured Feedback & Continuous Improvement
                                  </h3>
                                  <p class="edge-card-text">
-                                    Forward-thinking solutions combined with robust systems and efficiencies that enable seamless, scalable, and consistent service.
+                                   A robust feedback escalation matrix, supported by real-time dashboards, ensures issues are promptly identified, addressed, and closed—creating a complete and responsive improvement loop.
                                  </p>
                               </div>
                               <div>
@@ -434,11 +314,10 @@
                               >
                               <div>
                                  <h3 class="edge-card-title">
-                                    Food Solutioning
+                                    Structured Feedback & Continuous Improvement
                                  </h3>
                                  <p class="edge-card-text">
-                                    Your Vision, our expertise,
-                                    brought to life
+                                   A robust feedback escalation matrix, supported by real-time dashboards, ensures issues are promptly identified, addressed, and closed—creating a complete and responsive improvement loop.
                                  </p>
                               </div>
                               <div>
@@ -617,17 +496,137 @@
             </div>
          </section>
 
-         <!-- ==================== DIVERSE PLAYGROUNDS SECTION ==================== -->
+         <!-- ==================== LIFE IS A BEAUTIFUL PLATE (GALLERY) ==================== -->
+         <section class="bg-darkcream-thumbslider center-slider relative section-spacing ">
+            <div class="container">
+               <div class="relative z-10">
+               <!-- Section Heading -->
+               <div class="section-title-outer text-center mx-auto max-w-5xl">
+                  <h2 class="title-section text-h2 " data-leaf-target letters-slide-down text-split>
+                   Nekta's Edge <span class="text-letters-slide"> for Healthcare </span>
+                  </h2>
+               </div>
+                    
+                   <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch thumb-slider-outer">
+                        <div class="merge-imgs">
+                           <!-- Top Decorative Image -->
+                           <img class="merge-img merge-img--beans" src="Assets/images/healthcare/chocolate-dessert-right.webp" alt="" loading="lazy" />
+                          
+                        </div>
+                        
 
+                        <!-- Main image -->
+                        <div class="bc-life-frame bc-life-main thumb-slider-main">
+                           <img id="lifeMainImage" src="Assets/images/business/Frame1.webp"
+                              alt="Cafeteria management in action" loading="lazy" />
+                        </div>
+
+                        <!-- Thumbs + copy -->
+                        <div class="flex flex-col gap-8 justify-start thumb-slider-thumbs">
+                           <div class="grid grid-cols-4 gap-3 md:gap-4 thumb-grid-wrapper" id="lifeThumbWrapper">
+                              <button type="button" class="thumb-arrow thumb-arrow--prev" id="thumbPrev" aria-label="Previous">‹</button>
+
+                              <div class="thumb-track" id="lifeThumbTrack">
+                                 <button type="button" class="bc-life-thumb is-active" style="display:none;"
+                                    data-frame-index="1"
+                                    data-life-image="Assets/images/business/Frame1.webp"
+                                    aria-label="View Cafeteria Management">
+                                    <img loading="lazy" src="Assets/images/business/Frame1.webp" alt="" />
+                                 </button>
+                                 <button type="button" class="bc-life-thumb"
+                                    data-frame-index="2"
+                                    data-life-image="Assets/images/business/Frame2.webp"
+                                    aria-label="View gallery image 2">
+                                    <img loading="lazy" src="Assets/images/business/Frame2.webp" alt="" />
+                                 </button>
+                                 <button type="button" class="bc-life-thumb"
+                                    data-frame-index="3"
+                                    data-life-image="Assets/images/business/Frame3.webp"
+                                    aria-label="View gallery image 3">
+                                    <img loading="lazy" src="Assets/images/business/Frame3.webp" alt="" />
+                                 </button>
+                                 <button type="button" class="bc-life-thumb"
+                                    data-frame-index="4"
+                                    data-life-image="Assets/images/business/Frame4.webp"
+                                    aria-label="View gallery image 4">
+                                    <img loading="lazy" src="Assets/images/business/Frame4.webp" alt="" />
+                                 </button>
+                                 <button type="button" class="bc-life-thumb"
+                                    data-frame-index="5"
+                                    data-life-image="Assets/images/business/Frame5.webp"
+                                    aria-label="View gallery image 5">
+                                    <img loading="lazy" src="Assets/images/business/Frame5.webp" alt="" />
+                                 </button>
+                              </div>
+
+                              <button type="button" class="thumb-arrow thumb-arrow--next" id="thumbNext" aria-label="Next">›</button>
+                           </div>
+
+                           <div class="bc-life-copy sm:mt-5" id="lifeCopyBox">
+                              <div class="read-more-wrapper" id="lifeCopyWrapper">
+                                 <!-- active frame's heading + content gets injected here -->
+                              </div>
+                              <div class="link-md link-light mt-5 read-more-toggle cursor-pointer">
+                                 <span class="underline read-more-text">Read More</span>
+                                 <img loading="lazy" src="Assets/images/plus-icon.svg" alt="plus" class="max-w-auto read-more-icon" />
+                              </div>
+                           </div>
+
+                           <!-- Hidden per-frame content templates. Edit heading + text here per frame. -->
+                           <template id="frameContent-1">
+                              <h3>Cafeteria Management</h3>
+                              <div class="read-more-content" data-lines="12">
+                                 <p>Nekta delivers end-to-end cafeteria management with a focus on scale, consistency, and a distinctly premium experience. We take complete operational ownership&mdash;from manpower deployment and procurement to service delivery&mdash;ensuring seamless, efficient, and high-quality operations across every location.</p>
+                                 <p>Our approach goes beyond serving meals. We curate thoughtfully engineered menus that blend local preferences with global cuisines, offering diversity and relevance to today&rsquo;s consumers.</p>
+                                    <p>Our approach goes beyond serving meals. We curate thoughtfully engineered menus that blend local preferences with global cuisines, offering diversity and relevance to today&rsquo;s consumers.</p>
+                              </div>
+                           </template>
+                           <template id="frameContent-2">
+                              <h3>Bakery &amp; Confectionery</h3>
+                              <div class="read-more-content" data-lines="12">
+                                 <p>Our specialised bakery and confectionery expertise, powered by TajSATS&rsquo; culinary heritage, brings artisanal quality, innovation, and indulgence into everyday dining.</p>
+                                 <p>Our specialised bakery and confectionery expertise, powered by TajSATS&rsquo; culinary heritage, brings artisanal quality, innovation, and indulgence into everyday dining.</p>
+                              </div>
+                           </template>
+                           <template id="frameContent-3">
+                              <h3>Menu Curation</h3>
+                              <div class="read-more-content" data-lines="12">
+                                 <p>We curate thoughtfully engineered menus that blend local preferences with global cuisines, offering diversity and relevance to today&rsquo;s consumers.</p>
+                                 <p>We curate thoughtfully engineered menus that blend local preferences with global cuisines, offering diversity and relevance to today&rsquo;s consumers.</p>
+                              </div>
+                           </template>
+                           <template id="frameContent-4">
+                              <h3>Operational Ownership</h3>
+                              <div class="read-more-content" data-lines="12">
+                                 <p>We take complete operational ownership&mdash;from manpower deployment and procurement to service delivery&mdash;ensuring seamless, high-quality operations across every location.</p>
+                                 <p>We take complete operational ownership&mdash;from manpower deployment and procurement to service delivery&mdash;ensuring seamless, high-quality operations across every location.</p>
+                              </div>
+                           </template>
+                           <template id="frameContent-5">
+                              <h3>Culinary Heritage</h3>
+                              <div class="read-more-content" data-lines="12">
+                                 <p>TajSATS&rsquo; culinary heritage brings innovation and indulgence into everyday dining across every location we serve.</p>
+                                 <p>TajSATS&rsquo; culinary heritage brings innovation and indulgence into everyday dining across every location we serve.</p>
+                              </div>
+                           </template>
+                        </div>
+                     </div>
+
+                          
+               </div>
+            </div>
+         </section>
+
+
+                  <!-- ==================== Last three box slider==================== -->
          <section id="playgrounds-section" class="section-spacing  relative overflow-hidden">
             <img src="Assets/images/bg-pattern.webp" alt="" class="w-full h-full absolute top-0 left-0"/>
             <div class="container">
                <!-- Section Heading -->
-               <div class="section-title-outer text-center mx-auto max-w-5xl">
+               <div class="section-title-outer text-center mx-auto max-w-8xl">
                   <h2 class="title-section text-h2 " data-leaf-target letters-slide-down text-split>
-                    Diverse Playgrounds.  <span class="text-letters-slide"> Singular Spirit</span>
+                    Technology That  <span class="text-letters-slide"> Runs Quietly in the Background </span>
                   </h2>
-                 
                </div>
 
                <!-- Swiper Slider Container -->
@@ -742,15 +741,37 @@
             </div>
          </section>
 
-@section Scripts {
-     <script src="~/Assets/js/inner-banner-script.js"></script>
-    <script src="~/Assets/js/center-mode-slider.js"></script>
-    <script src="~/Assets/js/three-box-slider.js"></script>
-     <script src="~/Assets/js/thumb-slider.js"></script>
-      <script src="~/Assets/js/education.js"></script>
-  
+                  <!-- ==================== CTA ==================== -->
+         <section class="cta-section bg-darkcream section-spacing relative overflow-hidden">
+            <img src="Assets/images/bg-pattern.webp" alt="" class="w-full h-full absolute top-0 left-0"/>
+            <div class="container">
+                <!-- Section Heading -->
+               <div class="section-title-outer text-center max-w-6xl mx-auto">
+                  <h2 class="title-section text text-h2" data-leaf-target letters-slide-down text-split>Proof Is on <span class="text-letters-slide"> the Plate</span>
+                  </h2>
+               
+               </div>
+               <!-- View All Button -->
+               <div class="flex justify-center mt-6">
+                  <a href="#" class="common-btn flex items-center gap-2 btn-slide-fill">
+                  <span>View All Case Studies </span>
+                  <img loading="lazy" src="Assets/images/arrows/creamarrow-long-right.png" alt="rightArrow" />
+                  </a>
+               </div>
+            </div>
+         </section>
+
 
     
+
+@section Scripts {
+   <script src="~/Assets/js/inner-banner-script.js"></script>
+   <script src="~/Assets/js/center-mode-slider.js"></script>
+
+   <script src="~/Assets/js/thumb-slider.js"></script>
+  
+   <script src="~/Assets/js/three-tilt-card.js"></script>
+     <script src="~/Assets/js/three-box-slider.js"></script>
   
     
 }

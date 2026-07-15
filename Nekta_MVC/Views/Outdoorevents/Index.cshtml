@@ -1,18 +1,17 @@
 @{
-    ViewData["Title"] = "About us";
+    ViewData["Title"] = "Company Information";
 }
 
 @section Styles {
-    
-    <link rel="stylesheet" href="~/Assets/css/center-mode-slider.css">
-    <link rel="stylesheet" href="~/Assets/css/three-box-slider.css">
-    <link rel="stylesheet" href="~/Assets/css/three-tilt-card.css">
-     <link rel="stylesheet" href="Assets/css/education.css" />
-     <link rel="stylesheet" href="Assets/css/page-intro-section.css" /> 
+      <link rel="stylesheet" href="~/Assets/css/center-mode-slider.css">
+      <link rel="stylesheet" href="~/Assets/css/blogs-cards-slider.css">
       <link rel="stylesheet" href="Assets/css/thumb-slider.css" />
+     
+       <link rel="stylesheet" href="Assets/css/outdoorevents.css" />
+        <link rel="stylesheet" href="assets/css/page-intro-section.css" /> 
 }
 
-        <!-- HERO BANNER END-->
+      <!-- HERO BANNER END-->
       <section class="relative inside-banner-outer overflow-hidden">
          <div class="inside-banner-inner banner-animation relative ">
 
@@ -48,7 +47,7 @@
            
                <div class="innerbanner-caption absolute inset-0 z-30 flex items-end">
                   <div class="container pb-12 md:pb-15">
-                     <div class="max-w-4xl text-left">
+                     <div class="max-w-5xl text-left">
 
                         <nav class="mb-4" aria-label="Breadcrumb">
                            <ol class="flex items-center gap-2 text-sm">
@@ -61,15 +60,15 @@
                               <li class="text-white/60">/</li>
 
                               <li class="text-white">
-                                 About Us
+                                 Business & Corporates
                               </li>
                            </ol>
                         </nav>
 
                         <h1 class="innerbanner-title text-h1 text-white">
-                          Life is a 
+                           Nekta —
                            <span class="innerbanner-title-span">
-                              Beautiful Plate
+                              Business & Corporates
                            </span>
                         </h1>
 
@@ -80,105 +79,174 @@
 
          </div>
       </section>
+      <!-- HERO BANNER END -->
 
+      <!-- ====================INTRO DOUBLE IMAGE STRUCTURE CSS==================== -->
+      <section class=" bc-experience-section relative section-spacing overflow-hidden page-intro-section">
 
-         <!-- ====================Intro Section Delivering Experiences that Matter ==================== -->
-         <section class=" bc-experience-section relative section-spacing overflow-hidden page-intro-section">
-
-            <div class="container relative z-10">
-               <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                  <!-- Left:img  -->
-                  <div class="relative">
-                  <div class="nourish-media">
-                     <img
-                        src="Assets/images/education/next_generation.png"
-                        alt="Nourishing the Next Generation">
-                  </div>
-                  </div>
-                  <!-- Right: copy -->
-                  <div class="relative space-y-6 md:space-y-8 sm:max-w-[35vw]">
-                     <div class="section-title-outer mx-auto max-w-5xl">
-                        <h2 class="title-section text-h2 " data-leaf-target letters-slide-down text-split>
-                           Delivering Experiences <span class="text-letters-slide"> that Matter</span>
-                        </h2>
-                        
-                     </div>
-                    <div class="intro-outer-wrapper sm:pl-15">
-                     <p>From daily cafeteria operations to exclusive boardroom dining, executive offsites and curated events, Nekta understands performance excellence at the highest level. Its relationships with global brands also highlight its compliance with stringent international standards, including security, quality, and employee satisfaction metrics that bring a blend of operational excellence and elevated dining experiences that redefine institutional catering in India.</p>
-                     <div class="flex justify-start mt-5">
-                           <a href="#" class="common-btn flex items-center gap-2 btn-slide-fill">
-                           <span>Get in Touch</span>
-                           <img loading="lazy" src="Assets/images/arrows/creamarrow-long-right.png" alt="rightArrow" />
-                           </a>
-                        </div>
-                     </div>
-                  
-                  <!-- Decorative leaf bottom-right -->
-                  <img loading="lazy" src="Assets/images/intro-leaf/green_leaf_travel.svg" alt="" class="bc-leaf-deco absolute -bottom-6 right-0 md:right-4 w-10 md:w-12" aria-hidden="true" />
-
-                  </div>
-               </div>
-            </div>
-         </section>
+         <div class="container relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+               
+                  <!-- Left: layered photo composition -->
+               <div class="relative">
+                  <div class="nourish-media-wrap relative">
 
       
-      <!-- ==================== Campus Dining Excellence==================== -->
-            <section class="bg-darkcream cd-section section-spacing relative">
-               <div class="cd-band bg-green"></div>
 
-               <div class="container cd-inner relative">
+                     <!-- back photo: chef portrait -->
+                     <div class="nourish-photo nourish-photo-back">
+                        <img loading="lazy"
+                           src="assets/images/outdoorevents/outdoor_intro_behind.webp"
+                           alt="Nekta chef in the kitchen">
+                     </div>
 
-               <div class="cd-stamp cd-stamp-1" data-cd="stamp">
-                  
-                  <img loading="lazy" src="Assets/images/education/bowl-steam-rice.webp" alt="" class="bowl" aria-hidden="true" />
-                
+                     <!-- front photo: plating close-up, overlaps the back photo -->
+                     <div class="nourish-photo nourish-photo-front">
+                        <img loading="lazy"
+                           src="assets/images/outdoorevents/outdoor_intro_front.webp"
+                           alt="Chef plating a dish with precision">
+                     </div>
+
+                  </div>
                </div>
-
-               <img loading="lazy" src="Assets/images/education/students.webp" alt="Students reviewing a campus dining menu together"
-                  class="cd-photo cd-photo-1" data-cd="photo" data-from="left" />
-
-                  <div class="cd-copy">
-                  <!-- Section Heading -->
-               <div class="section-title-outer text-center mx-auto max-w-7xl">
-                  <h2 class="title-section text-h2 " data-leaf-target letters-slide-down text-split>
-                    Campus Dining   <span class="text-letters-slide"> Excellence</span>
-                  </h2>
-                 
-               </div>
-                     <p data-cd="para">As a new-age catering partner, Nekta designs and manages dining programmes for schools, colleges, and universities that seamlessly balance nutrition, safety, and consistency&mdash;delivering at scale without compromise.</p>
-                     <p data-cd="para">Our approach goes beyond meal delivery. From well-structured mess plans and chef-curated menus to convenient grab-and-go formats and engaging themed food activations, we create integrated dining experiences. Each offering is thoughtfully designed around nutritional balance while reflecting the elevated standards of modern campus dining&mdash;supporting student well-being, engagement, and performance.</p>
-
+               <!-- Right: copy -->
+               <div class="relative space-y-6 md:space-y-8 sm:max-w-[35vw]">
+                  <div class="section-title-outer mx-auto max-w-5xl">
+                     <h2 class="title-section text-h2 " data-leaf-target letters-slide-down text-split>
+                       Outdoor Operations. <span class="text-letters-slide">Indoor Standards </span>
+                     </h2>
+                     
+                  </div>
+                  <div class="intro-outer-wrapper sm:pl-15">
+                  <p>Culinary excellence is at the heart of everything Nekta delivers. From globally inspired cuisines to regional classics, our culinary team brings together innovation, technique and tradition to create food experiences that delight at every scale. As a hospitality-backed catering company drawn from TajSATS catering services and the wider Tata catering company legacy, we treat food as craft, not commodity.</p>
 
                   </div>
 
-               <div class="cd-stamp cd-stamp-2" data-cd="stamp">
-           
-                  <img loading="lazy" src="Assets/images/education/soup.webp" alt="" class="bowl" aria-hidden="true" />
-         
                </div>
+            </div>
+         </div>
+      </section>
 
-               <img loading="lazy" src="Assets/images/education/meal.webp" alt="A campus dining spread of freshly prepared dishes"
-                  class="cd-photo cd-photo-3" data-cd="photo" data-from="right" />
-               <img loading="lazy" src="Assets/images/education/burger.webp" alt="Two students sharing a meal on campus"
-                  class="cd-photo cd-photo-2" data-cd="photo" data-from="bottom" />
 
-               </div>
-            </section>
+<!-- ==================== Outdoor Catering Excellence ==================== -->
+<section class="relative bg-[var(--color-primary)] section-spacing overflow-visible">
+   <div class="container-fluid mx-auto relative px-0!">
 
-         <!-- ==================== LIFE IS A BEAUTIFUL PLATE (GALLERY) ==================== -->
+      <div class="relative w-full aspect-[16/6] overflow-hidden oce-dome">
+         <div class="curveSvg-bg relative">
+   <svg class="curveSvg absolute inset-0 w-full h-full" viewBox="0 0 1000 400" preserveAspectRatio="none" overflow="visible">
+      <defs>
+         <clipPath id="oceClip" clipPathUnits="userSpaceOnUse">
+            <path class="curveClipPath" d="M0,144 A962.8571428571429,962.8571428571429 0 0,1 1000,144 L1000,400 L0,400 Z"></path>
+         </clipPath>
+      </defs>
+      <path class="curvePath" data-max-curve="140" d="M0,144 A962.8571428571429,962.8571428571429 0 0,1 1000,144 L1000,400 L0,400 Z" fill="#e8e0c4"></path>
+   </svg>
+
+   <img loading="lazy"
+      src="assets/images/outdoorevents/outdoor_catering.png"
+      alt="Chef plating outdoor catering desserts"
+      class="oce-photo absolute inset-0 w-full h-full object-cover"
+      style="clip-path: url(#oceClip);" />
+</div>
+
+         <div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 max-w-2xl mx-auto">
+            <h2 class="text-h3 text-[var(--color-cream)]" data-leaf-target letters-slide-down text-split>
+               Outdoor <em class="italic font-medium text-[var(--color-secondary)]">Catering Excellence</em>
+            </h2>
+
+            <p class="text-[var(--color-cream)]/90 mt-4 max-w-xl">Nekta designs and runs outdoor events with the same discipline followed at our central kitchen, controlling every variable, and utilizing the culinary expertise of TajSATS to elevate the event.</p>
+
+            <p class="text-[var(--color-cream)]/90 mt-4 max-w-xl">Outdoor catering experiences are engineered around the audience, the setting and the moment, blending culinary craftsmanship, banquet-scale logistics and refined service to deliver events that feel effortless and memorable.</p>
+         </div>
+      </div>
+
+      <!-- Decorative fork + pasta, breaks top-left edge of the dome -->
+      <img loading="lazy" src="assets/images/outdoor-catering/fork-pasta.webp" alt=""
+         class="hidden md:block absolute -top-8 left-0 w-28 -rotate-6 z-20" aria-hidden="true" />
+
+      <!-- Decorative leaf, top-right, outside the dome -->
+      <img loading="lazy" src="assets/images/outdoor-catering/leaf-deco.svg" alt=""
+         class="hidden md:block absolute -top-4 right-6 w-10 z-20" aria-hidden="true" />
+
+      <!-- Decorative leaf, small, bottom-left inside the dome -->
+      <img loading="lazy" src="assets/images/outdoor-catering/leaf-small.svg" alt=""
+         class="hidden md:block absolute bottom-8 left-[16%] w-8 z-20" aria-hidden="true" />
+
+      <!-- Decorative tomato/spice splash, breaks right edge of the dome -->
+      <img loading="lazy" src="assets/images/outdoor-catering/tomato-splash.webp" alt=""
+         class="hidden md:block absolute top-16 right-0 w-24 z-20" aria-hidden="true" />
+
+   </div>
+</section>
+
+
+  
+<!-- ==================== Outdoor Catering Excellence ==================== -->
+<section class="outdoor-catering-section section-spacing">
+
+    <!-- Decorations -->
+    <img src="assets/images/business/fork-pasta.webp"
+        alt=""
+        class="oc-fork"
+        aria-hidden="true">
+
+    <img src="assets/images/business/tomato-splash.webp"
+        alt=""
+        class="oc-splash"
+        aria-hidden="true">
+
+    <img src="assets/images/business/leaf.webp"
+        alt=""
+        class="oc-leaf"
+        aria-hidden="true">
+
+    <div class="container">
+
+        <div class="oc-banner">
+
+            <div class="oc-overlay"></div>
+
+            <div class="oc-content">
+                <h2>
+                    Outdoor
+                    <span>Catering Excellence</span>
+                </h2>
+
+                <p>
+                    Nekta designs memorable outdoor events with the same
+                    discipline followed at our central kitchens, ensuring every
+                    gathering benefits from the culinary expertise and precision
+                    behind our operations.
+                </p>
+
+                <p>
+                    Outdoor catering experiences are engineered around the
+                    audience, the setting and the occasion, blending quality,
+                    craftsmanship and service to create unforgettable moments.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+         <!-- ==================== Services for Outdoor Events ==================== -->
          <section class="bg-green center-slider relative section-spacing overflow-hidden">
             <div class="container">
                <div class="relative z-10">
                      <div class="section-title-outer text-center max-w-6xl mx-auto section-title--light-outer">
                            <h2 class="section-title section-title--light" data-leaf-target letters-slide-down text-split>
-                              Life is a <span class="section-title--dark text-letters-slide"> beautiful plate.</span>
+                              Services for <span class="section-title--dark text-letters-slide"> Outdoor Events</span>
                            </h2>
                      </div>
                     
                    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch thumb-slider-outer">
                         <div class="merge-imgs">
-                           <img class="merge-img merge-img--cup" src="Assets/images/business/cup.webp" alt="" loading="lazy" />
-                           <img class="merge-img merge-img--beans" src="Assets/images/business/coffee-beans.webp" alt="" loading="lazy" />
+                           <img class="merge-img merge-img--cup" src="Assets/images/outdoorevents/icecream-left.webp" alt="" loading="lazy" />
+                          
                         </div>
 
                         <!-- Main image -->
@@ -245,7 +313,6 @@
                                  <p>Nekta delivers end-to-end cafeteria management with a focus on scale, consistency, and a distinctly premium experience. We take complete operational ownership&mdash;from manpower deployment and procurement to service delivery&mdash;ensuring seamless, efficient, and high-quality operations across every location.</p>
                                  <p>Our approach goes beyond serving meals. We curate thoughtfully engineered menus that blend local preferences with global cuisines, offering diversity and relevance to today&rsquo;s consumers.</p>
                                     <p>Our approach goes beyond serving meals. We curate thoughtfully engineered menus that blend local preferences with global cuisines, offering diversity and relevance to today&rsquo;s consumers.</p>
-                                    
                               </div>
                            </template>
                            <template id="frameContent-2">
@@ -283,19 +350,15 @@
          </section>
 
 
-          <!-- ==================== 
-         6: Who we are
-         ==================== -->
-         <section class="bg-darkcream center-slider relative section-spacing overflow-hidden">
-            <div class="">
-               <!-- Section Heading -->
-               <div class="section-title-outer text-center mx-auto max-w-5xl">
-                  <h2 class="title-section text-h2 " data-leaf-target letters-slide-down text-split>
-                    Nekta's Edge for  <span class="text-letters-slide"> Educational Clients </span>
-                  </h2>
-                 
-               </div>
 
+         <!-- ==================== TECHNOLOGY SECTION ==================== -->
+         <section class="bg-darkcream center-slider relative section-spacing overflow-hidden">
+            <div class="inner-center-slider">
+                  <!-- Section Heading -->
+                        <div class="section-title-outer text-center max-w-6xl mx-auto">
+                           <h2 class="title-section text text-h2" data-leaf-target letters-slide-down text-split>Nekta's Edge for <span class="text-letters-slide">Outdoor Events</span>
+                           </h2>
+                        </div>
                <!-- Swiper Slider -->
                <div class="swiper edgeSwiper px-4 py-6">
                   <div class="swiper-wrapper py-4 pb-2">
@@ -336,10 +399,10 @@
                               >
                               <div>
                                  <h3 class="edge-card-title">
-                                    Innovation & Operational Excellence
+                                    Structured Feedback & Continuous Improvement
                                  </h3>
                                  <p class="edge-card-text">
-                                    Forward-thinking solutions combined with robust systems and efficiencies that enable seamless, scalable, and consistent service.
+                                   A robust feedback escalation matrix, supported by real-time dashboards, ensures issues are promptly identified, addressed, and closed—creating a complete and responsive improvement loop.
                                  </p>
                               </div>
                               <div>
@@ -385,10 +448,10 @@
                               >
                               <div>
                                  <h3 class="edge-card-title">
-                                     Innovation & Operational Excellence
+                                    Structured Feedback & Continuous Improvement
                                  </h3>
                                  <p class="edge-card-text">
-                                    Forward-thinking solutions combined with robust systems and efficiencies that enable seamless, scalable, and consistent service.
+                                   A robust feedback escalation matrix, supported by real-time dashboards, ensures issues are promptly identified, addressed, and closed—creating a complete and responsive improvement loop.
                                  </p>
                               </div>
                               <div>
@@ -434,11 +497,10 @@
                               >
                               <div>
                                  <h3 class="edge-card-title">
-                                    Food Solutioning
+                                    Structured Feedback & Continuous Improvement
                                  </h3>
                                  <p class="edge-card-text">
-                                    Your Vision, our expertise,
-                                    brought to life
+                                   A robust feedback escalation matrix, supported by real-time dashboards, ensures issues are promptly identified, addressed, and closed—creating a complete and responsive improvement loop.
                                  </p>
                               </div>
                               <div>
@@ -617,140 +679,36 @@
             </div>
          </section>
 
-         <!-- ==================== DIVERSE PLAYGROUNDS SECTION ==================== -->
 
-         <section id="playgrounds-section" class="section-spacing  relative overflow-hidden">
+         <!-- ==================== CTA ==================== -->
+         <section class="cta-section bg-green section-spacing relative overflow-hidden">
             <img src="Assets/images/bg-pattern.webp" alt="" class="w-full h-full absolute top-0 left-0"/>
             <div class="container">
-               <!-- Section Heading -->
-               <div class="section-title-outer text-center mx-auto max-w-5xl">
-                  <h2 class="title-section text-h2 " data-leaf-target letters-slide-down text-split>
-                    Diverse Playgrounds.  <span class="text-letters-slide"> Singular Spirit</span>
-                  </h2>
-                 
-               </div>
-
-               <!-- Swiper Slider Container -->
-               <div class="swiper mySwiper three-box-slider px-0 md:px-4 pt-10">
-                  <div class="swiper-wrapper">
-                     <!-- Slide 1 -->
-                     <div class="swiper-slide group cursor-pointer">
-                        <div class="feature-card">
-                           <div class="playground-media w-full overflow-hidden rounded-t-full mb-6 relative">
-                              <img loading="lazy" src="Assets/images/playgrounds/Business.jpg" alt="Business" class="playground-image w-full h-full object-cover transition-transform duration-700" />
-                              <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent  text-center">
-                                 <h3 class="text-white">Business & Corporates</h3>
-                              </div>
-                           </div>
-
-                           <a href="#" class="link-md link-dark">
-                              <span class="underline">Learn More</span>
-                              <img loading="lazy" src="Assets/images/arrows/blackarrow-long-right.png" alt="→" />
-                           </a>
-                        </div>
+                <!-- Section Heading -->
+                     <div class="section-title-outer text-center max-w-6xl mx-auto section-title--light-outer">
+                           <h2 class="section-title section-title--light" data-leaf-target letters-slide-down text-split>
+                              Proof Is on <span class="section-title--dark text-letters-slide"> the Plate </span>
+                           </h2>
                      </div>
-                     <!-- Slide 2 -->
-                     <div class="swiper-slide group cursor-pointer">
-                        <div class="feature-card">
-                           <div class="playground-media w-full overflow-hidden rounded-t-full mb-6 relative">
-                              <img loading="lazy" src="Assets/images/playgrounds/Education.jpg" alt="Education"
-                                 class="playground-image w-full h-full object-cover transition-transform duration-700" />
-                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent text-center">
-                                 <h3  class="text-white">Education</h3>
-                              </div>
-                           </div>
-                           <a href="#" class="link-md link-dark">
-                           <span class="underline">Learn More</span>
-                           <img loading="lazy" src="Assets/images/arrows/blackarrow-long-right.png" alt="→" />
-                           </a>
-                        </div>
-                     </div>
-                     <!-- Slide 3 -->
-                     <div class="swiper-slide group cursor-pointer">
-                        <div class="feature-card">
-                           <div class="playground-media w-full overflow-hidden rounded-t-full mb-6 relative">
-                              <img loading="lazy" src="Assets/images/playgrounds/Healthcare.jpg" alt="Healthcare"
-                                 class="playground-image w-full h-full object-cover transition-transform duration-700" />
-                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent text-center">
-                                 <h3 class="text-white">Healthcare</h3>
-                              </div>
-                           </div>
-                           <a href="#" class="link-md link-dark">
-                           <span class="underline">Learn More</span>
-                           <img loading="lazy" src="Assets/images/arrows/blackarrow-long-right.png" alt="→" />
-                           </a>
-                        </div>
-                     </div>
-                     <!-- Slide 4, 5, 6 (same as before - kept short for space) -->
-                     <div class="swiper-slide group cursor-pointer">
-                        <div class="feature-card">
-                           <div class="playground-media w-full overflow-hidden rounded-t-full mb-6 relative">
-                              <img loading="lazy" src="Assets/images/playgrounds/Business.jpg" alt="Business"
-                                 class="playground-image w-full h-full object-cover transition-transform duration-700" />
-                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent">
-                                 <h3 class="text-white">Business & Corporates</h3>
-                              </div>
-                           </div>
-                           <a href="#" class="link-md link-dark">
-                           <span class="underline">Learn More</span>
-                           <img loading="lazy" src="Assets/images/arrows/blackarrow-long-right.png" alt="→" />
-                           </a>
-                        </div>
-                     </div>
-                     <div class="swiper-slide group cursor-pointer">
-                        <div class="feature-card">
-                           <div class="playground-media w-full overflow-hidden rounded-t-full mb-6 relative">
-                              <img loading="lazy" src="Assets/images/playgrounds/Education.jpg" alt="Education"
-                                 class="playground-image w-full h-full object-cover transition-transform duration-700" />
-                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent  text-center">
-                                 <h3 class="text-white">Education</h3>
-                              </div>
-                           </div>
-                           <a href="#" class="link-md link-dark">
-                           <span class="underline">Learn More</span>
-                           <img loading="lazy" src="Assets/images/arrows/blackarrow-long-right.png" alt="→" />
-                           </a>
-                        </div>
-                     </div>
-                     <div class="swiper-slide group cursor-pointer">
-                        <div class="feature-card">
-                           <div class="playground-media w-full overflow-hidden rounded-t-full mb-6 relative">
-                              <img loading="lazy" src="Assets/images/playgrounds/Healthcare.jpg" alt="Healthcare"
-                                 class="playground-image w-full h-full object-cover transition-transform duration-700" />
-                              <div class="playground-caption absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent">
-                                 <h3 class="text-white">Healthcare</h3>
-                              </div>
-                           </div>
-                           <a href="#" class="link-md link-dark">
-                           <span class="underline">Learn More</span>
-                           <img loading="lazy" src="Assets/images/arrows/blackarrow-long-right.png" alt="→" />
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-                  <!-- Slider Navigation -->
-                  <div class="flex justify-center items-center gap-4 md:gap-6 mt-8 md:mt-12  w-auto!">
-                     <div class="swiper-button-prev-custom cursor-pointer w-10 h-10 md:w-12 md:h-12 rounded-full bg-green flex items-center justify-center text-cream transition-all hover:scale-110">
-                        <img loading="lazy" src="Assets/images/arrows/swiperLeft.png" alt="swiperLeft" />
-                     </div>
-                     <div class="swiper-pagination-custom flex items-center justify-center gap-3 md:gap-4"></div>
-                     <div class="swiper-button-next-custom cursor-pointer w-10 h-10 md:w-12 md:h-12 rounded-full bg-green flex items-center justify-center text-cream transition-all hover:scale-110">
-                        <img loading="lazy" src="Assets/images/arrows/swiperRight.png" alt="swiperRight" />
-                     </div>
-                  </div>
+               <!-- View All Button -->
+               <div class="flex justify-center mt-6">
+                  <a href="#" class="common-btn flex items-center gap-2 btn-slide-fill">
+                  <span>Partner with Us </span>
+                  <img loading="lazy" src="Assets/images/arrows/creamarrow-long-right.png" alt="rightArrow" />
+                  </a>
                </div>
             </div>
          </section>
 
-@section Scripts {
-     <script src="~/Assets/js/inner-banner-script.js"></script>
-    <script src="~/Assets/js/center-mode-slider.js"></script>
-    <script src="~/Assets/js/three-box-slider.js"></script>
-     <script src="~/Assets/js/thumb-slider.js"></script>
-      <script src="~/Assets/js/education.js"></script>
-  
-
     
+
+@section Scripts {
+   <script src="~/Assets/js/inner-banner-script.js"></script>
+   <script src="~/Assets/js/center-mode-slider.js"></script>
+   <script src="~/Assets/js/blogs-cards-slider.js"></script>
+   <script src="~/Assets/js/thumb-slider.js"></script>
+   
+    <script src="~/Assets/js/outdoorevents.js"></script>
   
     
 }
