@@ -4,11 +4,11 @@ using Nekta_MVC.Models;
 
 namespace Nekta_MVC.Controllers;
 
-public class SportsController : Controller
+public class HealthcareController : Controller
 {
-    private readonly ILogger<SportsController> _logger;
+    private readonly ILogger<HealthcareController> _logger;
 
-    public SportsController(ILogger<SportsController> logger)
+    public HealthcareController(ILogger<HealthcareController> logger)
     {
         _logger = logger;
     }
