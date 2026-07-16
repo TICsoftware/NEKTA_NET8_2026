@@ -99,3 +99,74 @@ window.addEventListener('load', () => {
       }
    });
 });
+
+
+//outdoor dome section
+gsap.registerPlugin(ScrollTrigger);
+
+function buildCurvePath(curveHeight, flatY, width, totalHeight){
+   const halfW = width / 2;
+   if (curveHeight <= 0.5){
+      return `M0,${flatY} L${width},${flatY} L${width},${totalHeight} L0,${totalHeight} Z`;
+   }
+   const radius = (curveHeight / 2) + (halfW * halfW) / (2 * curveHeight);
+   return `M0,${flatY} A${radius},${radius} 0 0,1 ${width},${flatY} L${width},${totalHeight} L0,${totalHeight} Z`;
+}
+
+function buildNormalizedClipPath(curveHeight, flatY, width, totalHeight){
+   const halfW = width / 2;
+   const nFlatY = flatY / totalHeight;
+   if (curveHeight <= 0.5){
+      return `M0,${nFlatY} L1,${nFlatY} L1,1 L0,1 Z`;
+   }
+   const radius = (curveHeight / 2) + (halfW * halfW) / (2 * curveHeight);
+   const nRx = radius / halfW;
+   const nRy = radius / totalHeight;
+   return `M0,${nFlatY} A${nRx},${nRy} 0 0,1 1,${nFlatY} L1,1 L0,1 Z`;
+}
+
+window.addEventListener('load', () => {
+
+   const wrap = document.querySelector('.curveSvg-bg');
+   const bgPath = document.querySelector('.curvePath');
+   const clipPath = document.querySelector('.curveClipPath');
+   if (!wrap || !bgPath) return;
+
+   const section = wrap.closest('section');
+   const copy = wrap.querySelector('.oce-copy');
+
+const maxCurve = parseFloat(bgPath.dataset.maxCurve) || 420;
+const flatY = 300;
+const width = 1000;
+const totalHeight = 500;
+
+   const state = { curve: 0 };
+
+   const applyCurve = (val) => {
+      bgPath.setAttribute('d', buildCurvePath(val, flatY, width, totalHeight));
+      if (clipPath) clipPath.setAttribute('d', buildNormalizedClipPath(val, flatY, width, totalHeight));
+   };
+
+   applyCurve(0);
+   if (copy) gsap.set(copy, { opacity: 0, y: 20 });
+
+   const tl = gsap.timeline({
+      scrollTrigger: {
+         trigger: section,
+         start: 'top 70%',
+         end: 'bottom 20%',
+         toggleActions: 'restart none none reverse',
+         invalidateOnRefresh: true
+      }
+   });
+
+   tl.to(state, {
+         curve: maxCurve,
+         duration: 1.3,
+         ease: 'power3.inOut',
+         onUpdate: () => applyCurve(state.curve)
+      })
+      .to(copy, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.6');
+
+   ScrollTrigger.refresh();
+});

@@ -251,6 +251,13 @@ width: 350px;
     color: var(--color-text-heading);
 }
 
+/* Thumbslider coffe image position */
+.merge-imgs img:nth-child(1) {
+    left: -6vw !important;
+    top: 0vw !;
+    z-index: 10;
+}
+
 
 /* remove: background: var(--color-primary) from .cd-stamp .bowl */
 
@@ -270,40 +277,18 @@ width: 350px;
   }
  
   /* ---------- Responsive ---------- */
-  @media (max-width:900px){
-    .nourish-grid{
-      flex-direction:column;
-      align-items:center;
-      gap:40px;
-      text-align:center;
-    }
-
-    .nourish-copy{
-      max-width:520px;
-    }
-    .nourish-copy p{
-      margin-left:auto;
-      margin-right:auto;
-    }
-    .nourish-btn-row{
-      justify-content:center;
-      gap:24px;
-      flex-wrap:wrap;
-    }
+  @media (max-width:900px){ .nourish-grid{   
+    flex-direction:column; align-items:center; gap:40px; text-align:center;}
+    .nourish-copy{ max-width:520px;}
+    .nourish-copy p{margin-left:auto;margin-right:auto;}
+    .nourish-btn-row{ justify-content:center; gap:24px; flex-wrap:wrap;}
   }
  
   @media (max-width:560px){
     .nourish-section{ padding:56px 0; }
-  
-
     .nourish-title{ font-size:1.7rem; }
-    .nourish-btn{
-      padding:12px 24px;
-      font-size:0.85rem;
-    }
-    .nourish-leaf{
-      width:40px;
-    }
+    .nourish-btn{padding:12px 24px;font-size:0.85rem;}
+    .nourish-leaf{ width:40px;}
   }
   
 
