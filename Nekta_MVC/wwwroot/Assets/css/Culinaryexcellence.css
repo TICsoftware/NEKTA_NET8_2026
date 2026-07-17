@@ -45,6 +45,7 @@ box-shadow: 0 24px 45px rgba(67, 60, 40, 0.22); display: none; z-index: 5;}
 /* Left tommato decoration three tilt card */
 .story-gallery-left { position: absolute; left: 9%; top: -4vw;}
 
+
 /* Want to explore more with nekta  */
 /* ---------- EVERY ENQUIRY ---------- */
 .cu-enquiry-section { position: relative; background-color: var(--color-cream); overflow: hidden;}
@@ -69,6 +70,8 @@ box-shadow: 0 24px 45px rgba(67, 60, 40, 0.22); display: none; z-index: 5;}
 .bg-darkcream-thumbslider .merge-imgs img:nth-child(1) {left: -7vw;top: 7vw;z-index: 10;}
 .bg-darkcream-thumbslider .merge-imgs img:nth-child(2) { left: -3vw; top: -3vw;z-index: -10;}
 
+.underline{text-decoration-line: underline;color:var(--color-third);}
+.read-more-content.is-collapsed::after {background: linear-gradient(   to bottom, rgba(247, 242, 231, 0), rgb(228, 215, 171)) !important;}
 /* WHat our culinary capability */
 .bc-deco { position: absolute; pointer-events: none; user-select: none; z-index: 1234; width: 11vw; rotate: -33deg;}
 
@@ -83,15 +86,15 @@ box-shadow: 0 24px 45px rgba(67, 60, 40, 0.22); display: none; z-index: 5;}
 .av-heading{color: var(--color-cream);margin-bottom: 2rem;}
 .av-heading em{ font-style: italic; font-weight: 500; color: var(--color-cream); opacity: 0.85;}
 /* -- media / arch image -- */
-.av-media-wrap{max-width: 480px;margin-inline: auto;}
-.av-arch{ position: relative; width: 100%; aspect-ratio: 4 / 4.6; overflow: hidden; border-radius: 220px 220px 24px 24px; border: 8px solid var(--color-cream); box-shadow: 0 24px 44px rgba(0,0,0,0.18);}
+.av-media-wrap{max-width: 640px;margin-inline: auto;}
+.av-arch{ position: relative; width: 100%; aspect-ratio: 4 / 4.25; overflow: hidden; border-radius: 340px 340px 24px 24px; border: 8px solid #8B9E84; box-shadow: 0 24px 44px rgba(0,0,0,0.18);}
 .av-arch img{ width: 100%; height: 100%; object-fit: cover;}
 .av-arrow{ position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: none; background: var(--color-cream); color: var(--color-text-heading);display: flex;align-items: center;justify-content: center;box-shadow: 0 10px 20px rgba(0,0,0,0.18);cursor: pointer;transition: transform var(--motion-fast) var(--ease-premium), background var(--motion-fast) var(--ease-premium);}
 .av-arrow:hover{background: var(--color-third); color: var(--color-cream);}
 .av-arrow-prev{ left: -8px; }
 .av-arrow-next{ right: -8px; }
 /* -- list -- */
-.av-list{ list-style: none; margin: 0; padding: 0px 0px 0px 40px;}
+.av-list{ list-style: none; margin: 0; padding: 0px 0px 0px 80px;}
 .av-item{ padding: 14px 0; border-bottom: 1px solid var(--line-light); cursor: pointer;}
 .av-item:first-child{ padding-top: 0; }
 .av-item span{ font-family: var(--font-heading); font-size: var(--text-22); color: var(--color-cream); opacity: 0.6; font-weight: 400;
@@ -154,7 +157,12 @@ transition: opacity var(--motion-fast) var(--ease-premium), font-weight var(--mo
     .bc-arch-grid { grid-template-columns: repeat(3, minmax(0, 1fr));}
 }
 @media (min-width: 1280px) {
-    .bc-arch-grid {grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0;}
+.bc-arch-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 330px); /* adjust to your card width */
+    justify-content: center;
+    gap: 0;
+}
 }
 @media (min-width: 1280px) {
     .bc-arch-card + .bc-arch-card {margin-left: -1px;margin-bottom: -1px;}
@@ -179,4 +187,15 @@ transition: opacity var(--motion-fast) var(--ease-premium), font-weight var(--mo
   .thumb-slider-thumbs {margin-top: -15vw;}
   .bc-arch-grid {padding: 0 20px;}
   .bc-dining-deco--basil {display: none;}
+.counter-wrapper {flex-wrap: wrap;gap: 1rem;}
+.bg-darkcream-thumbslider .merge-imgs img:nth-child(1) { left: -7vw; top: 52vw; z-index: 10;}
+.av-list {
+    list-style: none;
+    margin: 0;
+    padding: 0px 0px 0px 20px;
+}
+    .counter-wrapper {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
 }

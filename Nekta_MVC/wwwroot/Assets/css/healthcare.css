@@ -33,3 +33,28 @@
     top: 35vw;
     width: 12vw;
 overflow: hidden;}
+
+
+/* Bottom right heart deco cs */
+.section-bottom-decor {
+   position: absolute;
+   z-index: 5;
+   pointer-events: none;
+}
+ 
+.section-bottom-decor--heart {
+right: -9vw;
+    bottom: -7vw;
+    width: 160px;
+    height: auto;
+    rotate: -22deg;
+}
+ 
+/* Responsive scaling for smaller screens */
+@media (max-width: 768px) {
+   .section-bottom-decor--heart {
+      width: 90px;
+      right: -10px;
+      bottom: -20px;
+   }
+}

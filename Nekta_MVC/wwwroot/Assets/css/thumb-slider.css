@@ -29,3 +29,9 @@
 @media (min-width: 1024px) {
     .bc-life-polaroid { display: block;}
 }
+
+@media (max-width: 767px) {
+ .thumb-grid-wrapper {position: relative; left: 0; margin-top: 0;}
+  .merge-imgs {top: 18vw;left: -10vw;max-width: 175px;}
+  .thumb-slider-thumbs {margin-top: -15vw;}
+}

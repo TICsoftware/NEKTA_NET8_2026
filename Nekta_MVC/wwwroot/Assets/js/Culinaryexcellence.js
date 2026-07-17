@@ -844,48 +844,81 @@ document.addEventListener('DOMContentLoaded', () => {
 
    let activeIndex = 0;
 
-   function setActive(index, { animate = true } = {}){
-      // wrap around both directions
+   function setActive(index, { animate = true } = {}) {
+
+      // Wrap around
       const total = items.length;
       activeIndex = (index + total) % total;
 
+      // Active class
       items.forEach((item, i) => {
          item.classList.toggle('active', i === activeIndex);
       });
 
       const newSrc = items[activeIndex].dataset.image;
+
       if (!newSrc || newSrc === image.getAttribute('src')) return;
 
-      if (!animate){
-         image.setAttribute('src', newSrc);
+      if (!animate) {
+         image.src = newSrc;
          return;
       }
 
       gsap.to(image, {
          opacity: 0,
-         duration: 0.35,
-         ease: 'power2.out',
+         duration: 0.3,
+         ease: "power2.out",
          onComplete: () => {
-            image.setAttribute('src', newSrc);
-            const onLoad = () => {
-               gsap.to(image, { opacity: 1, duration: 0.25, ease: 'power2.out' });
-               image.removeEventListener('load', onLoad);
+
+            image.src = newSrc;
+
+            const showImage = () => {
+               gsap.to(image, {
+                  opacity: 1,
+                  duration: 0.3,
+                  ease: "power2.out"
+               });
+
+               image.removeEventListener("load", showImage);
             };
-            if (image.complete){
-               onLoad();
+
+            if (image.complete) {
+               showImage();
             } else {
-               image.addEventListener('load', onLoad);
+               image.addEventListener("load", showImage);
             }
          }
       });
    }
 
-   // right-side text controls the image
+   // Hover + Click
    items.forEach((item, index) => {
-      item.addEventListener('click', () => setActive(index));
+
+      item.addEventListener('mouseenter', () => {
+         setActive(index);
+      });
+
+      item.addEventListener('click', () => {
+         setActive(index);
+      });
+
    });
 
-   // left-side arrows control the highlighted text, and vice versa
-   if (prevBtn) prevBtn.addEventListener('click', () => setActive(activeIndex - 1));
-   if (nextBtn) nextBtn.addEventListener('click', () => setActive(activeIndex + 1));
+   // Previous
+   if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+         setActive(activeIndex - 1);
+      });
+   }
+
+   // Next
+   if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+         setActive(activeIndex + 1);
+      });
+   }
+
+   // Initial active state
+   setActive(0, { animate: false });
+
 });
