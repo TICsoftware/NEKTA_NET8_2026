@@ -34,14 +34,14 @@ builder.Services.AddSession();
 //.AddRazorRuntimeCompilation();
 if (builder.Environment.IsDevelopment())
 {
-    builder.Services.AddControllersWithViews()
-    .AddRazorRuntimeCompilation();//uncomment while live
+    builder.Services.AddControllersWithViews();
+    //.AddRazorRuntimeCompilation();//uncomment while live
 }
 else
 {
     builder.Services
-        .AddControllersWithViews()
-        .AddRazorRuntimeCompilation();
+        .AddControllersWithViews();
+       // .AddRazorRuntimeCompilation();
 }
 
 
@@ -103,7 +103,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 });
 
 //uncomment while live
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseStaticFiles(new StaticFileOptions
 {
