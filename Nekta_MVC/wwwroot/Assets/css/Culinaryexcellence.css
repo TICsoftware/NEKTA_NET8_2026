@@ -157,12 +157,7 @@ transition: opacity var(--motion-fast) var(--ease-premium), font-weight var(--mo
     .bc-arch-grid { grid-template-columns: repeat(3, minmax(0, 1fr));}
 }
 @media (min-width: 1280px) {
-.bc-arch-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 330px); /* adjust to your card width */
-    justify-content: center;
-    gap: 0;
-}
+.bc-arch-grid {display: grid;grid-template-columns: repeat(5, 330px); /* adjust to your card width */justify-content: center;gap: 0;}
 }
 @media (min-width: 1280px) {
     .bc-arch-card + .bc-arch-card {margin-left: -1px;margin-bottom: -1px;}
@@ -180,22 +175,15 @@ transition: opacity var(--motion-fast) var(--ease-premium), font-weight var(--mo
 }
 
 @media (max-width: 767px) {
-    .bc-plate-wrap {width: min(100%, 620px);}
+  .bc-plate-wrap {width: min(100%, 620px);}
   .bc-plate-wrap::before{ width: 100%; height: 100%; right: 0;top: 50%;}
   .thumb-grid-wrapper {position: relative; left: 0; margin-top: 0;}
   .merge-imgs {top: 18vw;left: -10vw;max-width: 175px;}
   .thumb-slider-thumbs {margin-top: -15vw;}
   .bc-arch-grid {padding: 0 20px;}
   .bc-dining-deco--basil {display: none;}
-.counter-wrapper {flex-wrap: wrap;gap: 1rem;}
-.bg-darkcream-thumbslider .merge-imgs img:nth-child(1) { left: -7vw; top: 52vw; z-index: 10;}
-.av-list {
-    list-style: none;
-    margin: 0;
-    padding: 0px 0px 0px 20px;
-}
-    .counter-wrapper {
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
+  .counter-wrapper {flex-wrap: wrap;gap: 1rem;}
+  .bg-darkcream-thumbslider .merge-imgs img:nth-child(1) { left: -7vw; top: 52vw; z-index: 10;}
+  .av-list {list-style: none;margin: 0;padding: 0px 0px 0px 20px;}
+  .counter-wrapper {flex-wrap: wrap;gap: 1rem;}
 }
